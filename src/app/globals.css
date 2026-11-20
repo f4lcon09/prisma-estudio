@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --border-subtle: #e2e8f0;
+  --ink-muted: #64748b;
+  --cobalt: #2563eb;
+  --cobalt-hover: #1d4ed8;
+  --amber: #f59e0b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-tech {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* Subtle architectural grid inspired by Flow 1 */
+.bg-studio-grid {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Dotted canvas for node workflow previews */
+.bg-canvas-dots {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.12) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
