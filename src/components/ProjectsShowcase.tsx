@@ -3,11 +3,7 @@
 import { useState } from "react";
 import { ArrowUpRight, Maximize2, X } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig, type HeroModeId, type ModelProject } from "@/config/site";
-import {
-  AutomationProgramScreen,
-  SaasProgramScreen,
-  SiteProgramScreen,
-} from "@/components/RealMockups";
+import { ProjectProgramVariant } from "@/components/ProjectProgramVariants";
 import { Reveal } from "@/components/Reveal";
 
 type FilterOption = "Todos" | ModelProject["category"];
@@ -40,18 +36,6 @@ const modeStyles: Record<
   },
 };
 
-function ProjectProgramPreview({
-  mode,
-  interactive,
-}: {
-  mode: HeroModeId;
-  interactive: boolean;
-}) {
-  if (mode === "sistemas") return <SaasProgramScreen interactive={interactive} />;
-  if (mode === "sites") return <SiteProgramScreen interactive={interactive} />;
-  return <AutomationProgramScreen interactive={interactive} />;
-}
-
 export function ProjectsShowcase() {
   const [activeFilter, setActiveFilter] = useState<FilterOption>("Todos");
   const [inspectProject, setInspectProject] = useState<ModelProject | null>(null);
@@ -60,6 +44,11 @@ export function ProjectsShowcase() {
     activeFilter === "Todos"
       ? siteConfig.projects
       : siteConfig.projects.filter((p) => p.category === activeFilter);
+
+  function countFor(value: FilterOption) {
+    if (value === "Todos") return siteConfig.projects.length;
+    return siteConfig.projects.filter((p) => p.category === value).length;
+  }
 
   return (
     <section
@@ -91,88 +80,95 @@ export function ProjectsShowcase() {
                   role="tab"
                   aria-selected={selected}
                   onClick={() => setActiveFilter(f.value)}
-                  className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+                  className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
                     selected
                       ? "bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white shadow-sm"
                       : "text-slate-600 hover:text-blue-700"
                   }`}
                 >
-                  {f.label}
+                  <span>{f.label}</span>
+                  <span
+                    className={`font-tech rounded-full px-1.5 py-0.2 text-[10px] ${
+                      selected ? "bg-white/20 text-white" : "bg-slate-200/70 text-slate-500"
+                    }`}
+                  >
+                    {countFor(f.value)}
+                  </span>
                 </button>
               );
             })}
           </div>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {visibleProjects.map((project, idx) => {
             const waUrl = buildWhatsAppUrl(project.whatsappPrompt);
             const styles = modeStyles[project.mode];
 
             return (
-              <Reveal key={project.id} delayMs={idx * 90}>
+              <Reveal key={project.id} delayMs={(idx % 3) * 80}>
                 <article
                   className={`group flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-slate-200/90 p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_-15px_rgba(37,99,235,0.14)] ${styles.cardTint}`}
                 >
-                <div>
-                  {/* Scaled Real Software Thumbnail */}
-                  <div className={`relative h-52 overflow-hidden rounded-2xl border bg-white ${styles.frameTint}`}>
-                    <div className="pointer-events-none origin-top-left scale-[0.55] w-[181%]">
-                      <ProjectProgramPreview mode={project.mode} interactive={false} />
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => setInspectProject(project)}
-                      className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#4F46E5] px-3.5 py-1.5 text-[11px] font-semibold text-white shadow-md transition-all hover:scale-105"
-                    >
-                      <Maximize2 className="h-3 w-3" aria-hidden="true" />
-                      <span>Testar programa</span>
-                    </button>
-                  </div>
-
-                  {/* Minimal Card Info */}
-                  <div className="mt-4 px-1">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className={`font-tech rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${styles.badgeTint}`}>
-                        {project.badge}
-                      </span>
-                      <span className="font-tech text-[11px] text-slate-400">
-                        {project.stack[0]}
-                      </span>
-                    </div>
-
-                    <h3 className="mt-3 text-lg font-bold tracking-tight text-slate-950">
-                      {project.title}
-                    </h3>
-                    <p className="mt-1 text-sm leading-relaxed text-slate-600">
-                      {project.subtitle}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-5 flex items-center justify-between border-t border-slate-200/70 px-1 pt-4">
-                  <div className="flex gap-1.5">
-                    {project.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="font-tech rounded bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600"
+                  <div>
+                    {/* Scaled Real Software Thumbnail */}
+                    <div className={`relative h-52 overflow-hidden rounded-2xl border bg-white ${styles.frameTint}`}>
+                      <div className="pointer-events-none w-[181%] origin-top-left scale-[0.55]">
+                        <ProjectProgramVariant variant={project.variant} interactive={false} />
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setInspectProject(project)}
+                        className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#4F46E5] px-3.5 py-1.5 text-[11px] font-semibold text-white shadow-md transition-all hover:scale-105"
                       >
-                        {tech}
-                      </span>
-                    ))}
+                        <Maximize2 className="h-3 w-3" aria-hidden="true" />
+                        <span>Testar programa</span>
+                      </button>
+                    </div>
+
+                    {/* Minimal Card Info */}
+                    <div className="mt-4 px-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className={`font-tech rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${styles.badgeTint}`}>
+                          {project.badge}
+                        </span>
+                        <span className="font-tech text-[11px] text-slate-400">
+                          {project.stack[0]}
+                        </span>
+                      </div>
+
+                      <h3 className="mt-3 text-lg font-bold tracking-tight text-slate-950">
+                        {project.title}
+                      </h3>
+                      <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                        {project.subtitle}
+                      </p>
+                    </div>
                   </div>
 
-                  <a
-                    href={waUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700"
-                  >
-                    <span>Cotar</span>
-                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-                  </a>
-                </div>
-              </article>
+                  <div className="mt-5 flex items-center justify-between border-t border-slate-200/70 px-1 pt-4">
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="font-tech rounded bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href={waUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700"
+                    >
+                      <span>Cotar</span>
+                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </a>
+                  </div>
+                </article>
               </Reveal>
             );
           })}
@@ -205,7 +201,7 @@ export function ProjectsShowcase() {
               </button>
             </div>
 
-            <ProjectProgramPreview mode={inspectProject.mode} interactive={true} />
+            <ProjectProgramVariant variant={inspectProject.variant} interactive={true} />
 
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
               <div className="flex flex-wrap gap-4">

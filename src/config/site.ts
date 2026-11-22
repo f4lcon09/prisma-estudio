@@ -1,5 +1,16 @@
 export type HeroModeId = "sites" | "sistemas" | "automacoes";
 
+export type ProjectVariantId =
+  | "erp"
+  | "portal"
+  | "agenda"
+  | "clinica"
+  | "imobiliaria"
+  | "catalogo"
+  | "triagem"
+  | "cobranca"
+  | "relatorio";
+
 export type ServiceCategory =
   | "Sites & Landing Pages"
   | "Sistemas Web & SaaS"
@@ -19,6 +30,7 @@ export interface ServiceItem {
 export interface ModelProject {
   id: string;
   mode: HeroModeId;
+  variant: ProjectVariantId;
   badge: string;
   category: Exclude<ServiceCategory, "Correções & Sob Demanda">;
   title: string;
@@ -83,9 +95,61 @@ export const siteConfig = {
   ] satisfies ServiceItem[],
 
   projects: [
+    // Sites (3 modelos)
+    {
+      id: "landing-conversao",
+      mode: "sites",
+      variant: "clinica",
+      badge: "Site · 5 dias",
+      category: "Sites & Landing Pages",
+      title: "Landing Page B2B & Agendamento",
+      subtitle: "Página rápida com seletor de serviço, horário disponível e botão direto no WhatsApp.",
+      turnaround: "5 dias úteis",
+      stack: ["Next.js", "Tailwind", "Analytics"],
+      metrics: [
+        { label: "Performance", value: "99 / 100" },
+        { label: "Carregamento", value: "0.6s LCP" },
+      ],
+      whatsappPrompt: "Olá! Vi a Landing Page B2B & Agendamento no portfólio e quero orçamento para um site.",
+    },
+    {
+      id: "site-imobiliaria",
+      mode: "sites",
+      variant: "imobiliaria",
+      badge: "Site · 7 dias",
+      category: "Sites & Landing Pages",
+      title: "Portal de Imóveis com Busca & Filtros",
+      subtitle: "Vitrine responsiva com filtro por bairro e faixa de valor, levando o interessado ao corretor.",
+      turnaround: "7 dias úteis",
+      stack: ["Next.js", "TypeScript", "SEO"],
+      metrics: [
+        { label: "Busca instantânea", value: "< 40ms" },
+        { label: "SEO técnico", value: "100 / 100" },
+      ],
+      whatsappPrompt: "Olá! Vi o Portal de Imóveis com Busca no portfólio e quero algo parecido.",
+    },
+    {
+      id: "catalogo-whatsapp",
+      mode: "sites",
+      variant: "catalogo",
+      badge: "Site · 6 dias",
+      category: "Sites & Landing Pages",
+      title: "Catálogo Digital com Pedido no WhatsApp",
+      subtitle: "Loja leve sem fricção: o cliente monta o carrinho e envia o pedido formatado no WhatsApp.",
+      turnaround: "6 dias úteis",
+      stack: ["Next.js", "React", "Tailwind"],
+      metrics: [
+        { label: "Checkout", value: "1 clique" },
+        { label: "Conversão mobile", value: "+42%" },
+      ],
+      whatsappPrompt: "Olá! Vi o Catálogo Digital com Pedido no WhatsApp e quero cotar para o meu negócio.",
+    },
+
+    // Sistemas (3 modelos)
     {
       id: "painel-erp",
       mode: "sistemas",
+      variant: "erp",
       badge: "Sistema · 3 sem",
       category: "Sistemas Web & SaaS",
       title: "Painel Financeiro & Gestão de Pedidos",
@@ -94,28 +158,48 @@ export const siteConfig = {
       stack: ["Next.js", "TypeScript", "PostgreSQL"],
       metrics: [
         { label: "Faturamento monitorado", value: "R$ 229.150/mês" },
-        { label: "Tempo de fechamento", value: "-68% manual" },
+        { label: "Tempo operacional", value: "-68% manual" },
       ],
       whatsappPrompt: "Olá! Vi o Painel Financeiro & Gestão de Pedidos no portfólio e quero algo parecido.",
     },
     {
-      id: "landing-conversao",
-      mode: "sites",
-      badge: "Site · 5 dias",
-      category: "Sites & Landing Pages",
-      title: "Landing Page B2B de Alta Conversão",
-      subtitle: "Estrutura visual leve com simulador interativo e captura direta no WhatsApp.",
-      turnaround: "5 dias úteis",
-      stack: ["Next.js", "Tailwind", "Analytics"],
+      id: "portal-assinantes",
+      mode: "sistemas",
+      variant: "portal",
+      badge: "Sistema · 3 sem",
+      category: "Sistemas Web & SaaS",
+      title: "Portal do Cliente & Área de Faturas",
+      subtitle: "Login exclusivo para clientes acessarem contratos, segunda via Pix e chamados de suporte.",
+      turnaround: "3 semanas",
+      stack: ["Next.js", "Auth", "Pix API"],
       metrics: [
-        { label: "Performance", value: "99 / 100" },
-        { label: "Carregamento", value: "0.7s LCP" },
+        { label: "Autoatendimento", value: "24/7" },
+        { label: "Chamados resolvidos", value: "-54% suporte" },
       ],
-      whatsappPrompt: "Olá! Vi a Landing Page B2B no portfólio e quero orçamento para uma página.",
+      whatsappPrompt: "Olá! Vi o Portal do Cliente & Área de Faturas no portfólio e quero cotar um sistema.",
     },
+    {
+      id: "agenda-operacional",
+      mode: "sistemas",
+      variant: "agenda",
+      badge: "Sistema · 2 sem",
+      category: "Sistemas Web & SaaS",
+      title: "Agenda Operacional & Fila de Equipe",
+      subtitle: "Grade diária com confirmação automática, bloqueio de horários e histórico por profissional.",
+      turnaround: "2 semanas",
+      stack: ["Next.js", "PostgreSQL", "API REST"],
+      metrics: [
+        { label: "Ocupação diária", value: "86% média" },
+        { label: "Faltas reduzidas", value: "-39%" },
+      ],
+      whatsappPrompt: "Olá! Vi a Agenda Operacional & Fila de Equipe no portfólio e quero orçamento.",
+    },
+
+    // Automações (3 modelos)
     {
       id: "fluxo-whatsapp-ia",
       mode: "automacoes",
+      variant: "triagem",
       badge: "Automação · 7 dias",
       category: "Automações & IA",
       title: "Triagem WhatsApp + IA + CRM",
@@ -127,6 +211,38 @@ export const siteConfig = {
         { label: "Leads qualificados", value: "100% registrados" },
       ],
       whatsappPrompt: "Olá! Vi o fluxo WhatsApp + IA + CRM no portfólio e quero automatizar meu atendimento.",
+    },
+    {
+      id: "cobranca-pix-auto",
+      mode: "automacoes",
+      variant: "cobranca",
+      badge: "Automação · 5 dias",
+      category: "Automações & IA",
+      title: "Régua de Cobrança Pix Automática",
+      subtitle: "Envia lembrete no WhatsApp com código Pix copia-e-cola e dá baixa automática ao pagar.",
+      turnaround: "5 dias úteis",
+      stack: ["Webhooks", "Pix API", "WhatsApp"],
+      metrics: [
+        { label: "Inadimplência", value: "-35% atrasos" },
+        { label: "Baixa automática", value: "Em tempo real" },
+      ],
+      whatsappPrompt: "Olá! Vi a Régua de Cobrança Pix Automática e quero implantar na minha empresa.",
+    },
+    {
+      id: "resumo-ia-diario",
+      mode: "automacoes",
+      variant: "relatorio",
+      badge: "Automação · 4 dias",
+      category: "Automações & IA",
+      title: "Relatório Diário de Vendas com IA",
+      subtitle: "Lê banco de dados, anúncios e planilhas às 08h e entrega o resumo pronto no WhatsApp.",
+      turnaround: "4 dias úteis",
+      stack: ["Cron", "SQL / APIs", "IA Generativa"],
+      metrics: [
+        { label: "Disparo diário", value: "08:00 pontual" },
+        { label: "Horas poupadas", value: "6h / semana" },
+      ],
+      whatsappPrompt: "Olá! Vi o Relatório Diário de Vendas com IA e quero cotar essa automação.",
     },
   ] satisfies ModelProject[],
 };
