@@ -129,7 +129,7 @@ export function ProjectBuilder() {
 
           {/* Step 2: Urgency + Primary WhatsApp Action */}
           <div className="mt-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-            <div className="inline-flex rounded-full border border-amber-200/80 bg-amber-50/60 p-1">
+            <div className="flex w-full flex-wrap justify-between gap-1 rounded-2xl border border-amber-200/80 bg-amber-50/60 p-1 sm:inline-flex sm:w-auto sm:rounded-full">
               {urgencyOptions.map((option) => {
                 const active = urgency === option;
                 return (

@@ -18,7 +18,7 @@ export default function AcompanharPage() {
   );
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col overflow-x-hidden">
       <Header />
 
       <main className="flex-1">
