@@ -133,7 +133,7 @@ body {
 
 .animate-tab-progress {
   transform-origin: left center;
-  animation: tabProgress 4800ms linear forwards;
+  animation: tabProgress 4500ms linear forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {

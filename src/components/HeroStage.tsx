@@ -47,20 +47,28 @@ const modeMeta: Record<
 };
 
 export function HeroStage() {
-  const [activeMode, setActiveMode] = useState<HeroModeId>("sites");
+  // Monotonic step counter so the 3D roulette drum always spins forward cleanly
+  const [stepCount, setStepCount] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+
+  const activeIndex = ((stepCount % modeOrder.length) + modeOrder.length) % modeOrder.length;
+  const activeMode = modeOrder[activeIndex];
 
   useEffect(() => {
     if (isPaused) return;
     const timer = window.setInterval(() => {
-      setActiveMode((current) => {
-        const nextIdx = (modeOrder.indexOf(current) + 1) % modeOrder.length;
-        return modeOrder[nextIdx];
-      });
-    }, 4800);
+      setStepCount((prev) => prev + 1);
+    }, 4500);
 
     return () => window.clearInterval(timer);
   }, [isPaused]);
+
+  function selectMode(targetMode: HeroModeId) {
+    const targetIdx = modeOrder.indexOf(targetMode);
+    const forwardDelta = (targetIdx - activeIndex + modeOrder.length) % modeOrder.length;
+    if (forwardDelta === 0) return;
+    setStepCount((prev) => prev + forwardDelta);
+  }
 
   return (
     <section
@@ -83,7 +91,7 @@ export function HeroStage() {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6 text-center">
-        {/* Top Micro-badge stacked smoothly without unmount flash */}
+        {/* Top Micro-badge stacked smoothly */}
         <div className="inline-grid items-center justify-items-center">
           {modeOrder.map((modeId) => {
             const active = activeMode === modeId;
@@ -104,26 +112,45 @@ export function HeroStage() {
           })}
         </div>
 
-        {/* Short Punchy Display Headline with Smooth Cross-Rotate Word Stack */}
-        <h1 className="mx-auto mt-3.5 max-w-4xl text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-[46px] lg:leading-[1.08]">
-          <span>Criamos </span>
-          <span className="inline-grid align-baseline">
-            {modeOrder.map((modeId) => {
-              const active = activeMode === modeId;
-              return (
-                <span
-                  key={modeId}
-                  aria-hidden={!active}
-                  className={`col-start-1 row-start-1 bg-gradient-to-r ${modeMeta[modeId].gradient} bg-clip-text text-transparent transition-all duration-500 ease-out ${
-                    active
-                      ? "translate-y-0 scale-100 opacity-100"
-                      : "pointer-events-none translate-y-2 scale-[0.97] opacity-0"
-                  }`}
-                >
-                  {modeMeta[modeId].headlineHighlight}
-                </span>
-              );
-            })}
+        {/* Display Headline with 3D Cylindrical Roulette Drum */}
+        <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-2xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-[46px] lg:leading-[1.15]">
+          <span>Criamos</span>
+          <span
+            className="relative inline-block h-[1.28em] overflow-hidden align-middle [mask-image:linear-gradient(to_bottom,transparent_0%,black_14%,black_86%,transparent_100%)]"
+            style={{ perspective: "900px" }}
+          >
+            {/* Invisible sizer keeps exact width of the longest phrase without layout jump */}
+            <span className="invisible block whitespace-nowrap px-1" aria-hidden="true">
+              sistemas de alto nível.
+            </span>
+
+            {/* Rotating 3-faced 3D Roulette Drum */}
+            <span
+              className="absolute inset-0 block transition-transform duration-700 ease-[cubic-bezier(0.22,1.12,0.36,1)]"
+              style={{
+                transformStyle: "preserve-3d",
+                transform: `translateZ(-0.46em) rotateX(${stepCount * 120}deg)`,
+              }}
+            >
+              {modeOrder.map((modeId, idx) => {
+                const isFront = idx === activeIndex;
+                return (
+                  <span
+                    key={modeId}
+                    aria-hidden={!isFront}
+                    className={`absolute inset-0 flex items-center justify-center whitespace-nowrap bg-gradient-to-r ${modeMeta[modeId].gradient} bg-clip-text text-transparent transition-opacity duration-500 ${
+                      isFront ? "opacity-100" : "opacity-60"
+                    }`}
+                    style={{
+                      backfaceVisibility: "hidden",
+                      transform: `rotateX(${-idx * 120}deg) translateZ(0.46em)`,
+                    }}
+                  >
+                    {modeMeta[modeId].headlineHighlight}
+                  </span>
+                );
+              })}
+            </span>
           </span>
         </h1>
 
@@ -144,7 +171,7 @@ export function HeroStage() {
                   type="button"
                   role="tab"
                   aria-selected={selected}
-                  onClick={() => setActiveMode(modeId)}
+                  onClick={() => selectMode(modeId)}
                   className={`relative overflow-hidden rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-200 sm:px-5 sm:text-sm ${
                     selected
                       ? "bg-[#2563EB] text-white shadow-sm"
@@ -154,7 +181,7 @@ export function HeroStage() {
                   <span className="relative z-10">{modeMeta[modeId].label}</span>
                   {selected && !isPaused && (
                     <span
-                      key={`progress-${activeMode}`}
+                      key={`progress-${stepCount}`}
                       aria-hidden="true"
                       className="animate-tab-progress absolute inset-x-2 bottom-0.5 h-[2px] rounded-full bg-white/60"
                     />
@@ -231,7 +258,7 @@ export function HeroStage() {
               })}
             </div>
 
-            {/* Center Real Browser Program Window — stacked smoothly with 3D glide */}
+            {/* Center Real Browser Program Window — stacked smoothly */}
             <div className="z-10 order-1 grid w-full max-w-[615px] lg:mx-auto">
               {modeOrder.map((modeId) => {
                 const active = activeMode === modeId;
