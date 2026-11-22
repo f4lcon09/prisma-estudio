@@ -56,9 +56,33 @@ export function ProjectBuilder() {
         <div className="absolute h-48 w-64 translate-y-12 rounded-full bg-emerald-400/25 blur-[80px]" />
       </div>
 
-      <div className="relative mx-auto max-w-2xl px-6">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
-          <div className="rounded-3xl border border-blue-200/70 bg-white/85 p-6 shadow-[0_24px_60px_-15px_rgba(37,99,235,0.16)] backdrop-blur-xl sm:p-8">
+          <div className="grid items-center gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <p className="font-tech text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-600">
+                Orçamento rápido
+              </p>
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+                Pronto para tirar seu projeto do papel?
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+                Escolha o formato e o prazo ao lado. A mensagem já abre pronta no WhatsApp para agilizar a conversa.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {["Escopo direto", "Entrega rápida", "Código no seu nome"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-700"
+                  >
+                    ✓ {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="lg:col-span-7">
+              <div className="rounded-3xl border border-blue-200/70 bg-white/85 p-6 shadow-[0_24px_60px_-15px_rgba(37,99,235,0.16)] backdrop-blur-xl sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-2xl font-extrabold tracking-tight text-slate-950">
               Monte seu projeto
@@ -164,6 +188,8 @@ export function ProjectBuilder() {
               <code className="font-tech text-slate-600">src/config/site.ts</code> — substitua pelo seu antes de publicar.
             </p>
           )}
+              </div>
+            </div>
           </div>
         </Reveal>
       </div>

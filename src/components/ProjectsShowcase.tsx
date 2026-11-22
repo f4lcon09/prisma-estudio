@@ -55,7 +55,7 @@ export function ProjectsShowcase() {
       id="projetos"
       className="relative border-t border-slate-200/80 bg-gradient-to-b from-white via-[#F4F8FF] to-[#FFFBEB]/50 py-20 sm:py-24"
     >
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-tech text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-600">

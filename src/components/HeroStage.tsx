@@ -90,7 +90,7 @@ export function HeroStage() {
         <div className="h-64 w-96 translate-x-24 rounded-full bg-blue-400/30 blur-[100px]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 text-center">
+      <div className="relative mx-auto max-w-7xl px-6 text-center lg:px-10">
         {/* Top Micro-badge stacked smoothly */}
         <div className="inline-grid items-center justify-items-center">
           {modeOrder.map((modeId) => {
@@ -113,7 +113,7 @@ export function HeroStage() {
         </div>
 
         {/* Display Headline with 3D Cylindrical Roulette Drum */}
-        <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-2xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-[46px] lg:leading-[1.15]">
+        <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-[22px] font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-[48px] lg:leading-[1.15]">
           <span>Criamos</span>
           <span
             className="relative inline-block h-[1.28em] overflow-hidden align-middle [mask-image:linear-gradient(to_bottom,transparent_0%,black_14%,black_86%,transparent_100%)]"
@@ -172,7 +172,7 @@ export function HeroStage() {
                   role="tab"
                   aria-selected={selected}
                   onClick={() => selectMode(modeId)}
-                  className={`relative overflow-hidden rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-200 sm:px-5 sm:text-sm ${
+                  className={`relative overflow-hidden rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40 sm:px-5 sm:text-sm ${
                     selected
                       ? "bg-[#2563EB] text-white shadow-sm"
                       : "text-slate-600 hover:text-blue-700"
@@ -219,27 +219,27 @@ export function HeroStage() {
           </div>
         </div>
 
-        {/* 3D Interactive Device Stage — crossfades smoothly with zero blank frame */}
+        {/* 3D Interactive Device Stage — wider full-canvas spread on desktop */}
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onFocusCapture={() => setIsPaused(true)}
           onBlurCapture={() => setIsPaused(false)}
-          className="relative mx-auto mt-7 max-w-5xl"
+          className="relative mx-auto mt-8 max-w-7xl"
         >
           {/* Warm Amber Glow (Left) + Cobalt Glow (Right) */}
           <div
             className="pointer-events-none absolute -inset-x-8 -top-10 bottom-0 -z-10 flex items-center justify-center"
             aria-hidden="true"
           >
-            <div className="h-80 w-96 -translate-x-24 rounded-full bg-amber-400/50 blur-[90px]" />
-            <div className="h-80 w-96 translate-x-24 rounded-full bg-blue-500/45 blur-[90px]" />
-            <div className="absolute bottom-2 h-44 w-72 rounded-full bg-emerald-400/25 blur-[80px]" />
+            <div className="h-80 w-[28rem] -translate-x-28 rounded-full bg-amber-400/45 blur-[95px]" />
+            <div className="h-80 w-[28rem] translate-x-28 rounded-full bg-blue-500/40 blur-[95px]" />
+            <div className="absolute bottom-2 h-44 w-80 rounded-full bg-emerald-400/25 blur-[85px]" />
           </div>
 
-          <div className="relative flex flex-col items-center justify-center gap-6 lg:block lg:min-h-[395px]">
-            {/* Left Tilted 3D Phone — swings up from bottom-left on a staggered beat */}
-            <div className="z-20 order-2 grid transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:absolute lg:bottom-2 lg:left-0 lg:order-none lg:-rotate-6">
+          <div className="relative flex flex-col items-center justify-center gap-6 lg:grid lg:grid-cols-12 lg:items-center lg:gap-6">
+            {/* Left Tilted 3D Phone */}
+            <div className="z-20 order-2 grid justify-items-center transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:-rotate-6 lg:justify-self-end lg:translate-y-6">
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
                 const active = rel === 0;
@@ -264,9 +264,9 @@ export function HeroStage() {
               })}
             </div>
 
-            {/* Center Real Browser Window — true 3D directional horizontal carousel */}
+            {/* Center Real Browser Window — wider, unobstructed */}
             <div
-              className="z-10 order-1 grid w-full max-w-[615px] lg:mx-auto"
+              className="z-10 order-1 grid w-full max-w-[700px] lg:col-span-6 lg:order-none lg:max-w-none"
               style={{ perspective: "1400px" }}
             >
               {modeOrder.map((modeId, idx) => {
@@ -296,8 +296,8 @@ export function HeroStage() {
               })}
             </div>
 
-            {/* Right Floating 3D Card — glides diagonally on the 3rd staggered beat */}
-            <div className="animate-float-slow z-20 order-3 grid transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:absolute lg:bottom-5 lg:right-0 lg:order-none lg:rotate-3">
+            {/* Right Floating 3D Card — sits cleanly beside the browser without covering content */}
+            <div className="animate-float-slow z-20 order-3 grid justify-items-center transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:rotate-3 lg:justify-self-start lg:translate-y-4">
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
                 const active = rel === 0;

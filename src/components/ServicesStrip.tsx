@@ -35,7 +35,7 @@ export function ServicesStrip() {
       id="servicos"
       className="border-t border-slate-200/80 bg-gradient-to-b from-[#FFFDF7] to-[#F4F8FF] py-20 sm:py-24"
     >
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
           <p className="font-tech text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-600">
             Frentes de entrega

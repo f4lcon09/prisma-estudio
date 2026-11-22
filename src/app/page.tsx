@@ -24,7 +24,7 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-slate-200/80 bg-[#F8FAFC] py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-6 sm:flex-row sm:items-center">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-6 sm:flex-row sm:items-center lg:px-10">
           <div className="flex items-center gap-3">
             <BrandLogo className="h-7 w-7" />
             <div>
