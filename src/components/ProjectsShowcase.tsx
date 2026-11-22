@@ -8,6 +8,7 @@ import {
   SaasProgramScreen,
   SiteProgramScreen,
 } from "@/components/RealMockups";
+import { Reveal } from "@/components/Reveal";
 
 type FilterOption = "Todos" | ModelProject["category"];
 
@@ -104,15 +105,15 @@ export function ProjectsShowcase() {
         </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {visibleProjects.map((project) => {
+          {visibleProjects.map((project, idx) => {
             const waUrl = buildWhatsAppUrl(project.whatsappPrompt);
             const styles = modeStyles[project.mode];
 
             return (
-              <article
-                key={project.id}
-                className={`group flex flex-col justify-between overflow-hidden rounded-3xl border border-slate-200/90 p-4 transition-all hover:-translate-y-1 hover:shadow-[0_20px_45px_-15px_rgba(37,99,235,0.14)] ${styles.cardTint}`}
-              >
+              <Reveal key={project.id} delayMs={idx * 90}>
+                <article
+                  className={`group flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-slate-200/90 p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_-15px_rgba(37,99,235,0.14)] ${styles.cardTint}`}
+                >
                 <div>
                   {/* Scaled Real Software Thumbnail */}
                   <div className={`relative h-52 overflow-hidden rounded-2xl border bg-white ${styles.frameTint}`}>
@@ -172,6 +173,7 @@ export function ProjectsShowcase() {
                   </a>
                 </div>
               </article>
+              </Reveal>
             );
           })}
         </div>

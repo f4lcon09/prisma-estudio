@@ -1,5 +1,6 @@
 import { ArrowUpRight, Clock, Code2, Cpu, Globe, Wrench } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig } from "@/config/site";
+import { Reveal } from "@/components/Reveal";
 
 const serviceVisuals = {
   sites: {
@@ -45,15 +46,15 @@ export function ServicesStrip() {
         </div>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {siteConfig.services.map((service) => {
+          {siteConfig.services.map((service, idx) => {
             const visual =
               serviceVisuals[service.id as keyof typeof serviceVisuals] ?? serviceVisuals.sistemas;
             const Icon = visual.icon;
             return (
-              <article
-                key={service.id}
-                className={`flex flex-col justify-between rounded-3xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-15px_rgba(37,99,235,0.14)] ${visual.cardBg}`}
-              >
+              <Reveal key={service.id} delayMs={idx * 75}>
+                <article
+                  className={`flex h-full flex-col justify-between rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-15px_rgba(37,99,235,0.14)] ${visual.cardBg}`}
+                >
                 <div>
                   <div className="flex items-center justify-between gap-2">
                     <span
@@ -96,6 +97,7 @@ export function ServicesStrip() {
                   <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </a>
               </article>
+              </Reveal>
             );
           })}
         </div>

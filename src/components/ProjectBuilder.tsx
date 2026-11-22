@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowRight, Check, Code2, Copy, Cpu, Globe, Wrench } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig } from "@/config/site";
+import { Reveal } from "@/components/Reveal";
 
 const projectTypes = [
   { id: "Site", label: "Site", icon: Globe },
@@ -56,7 +57,8 @@ export function ProjectBuilder() {
       </div>
 
       <div className="relative mx-auto max-w-2xl px-6">
-        <div className="rounded-3xl border border-blue-200/70 bg-white/85 p-6 shadow-[0_24px_60px_-15px_rgba(37,99,235,0.16)] backdrop-blur-xl sm:p-8">
+        <Reveal>
+          <div className="rounded-3xl border border-blue-200/70 bg-white/85 p-6 shadow-[0_24px_60px_-15px_rgba(37,99,235,0.16)] backdrop-blur-xl sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-2xl font-extrabold tracking-tight text-slate-950">
               Monte seu projeto
@@ -162,7 +164,8 @@ export function ProjectBuilder() {
               <code className="font-tech text-slate-600">src/config/site.ts</code> — substitua pelo seu antes de publicar.
             </p>
           )}
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
