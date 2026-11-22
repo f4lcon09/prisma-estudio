@@ -183,13 +183,19 @@ export function ProjectsShowcase() {
           aria-modal="true"
           aria-label={`Prévia interativa: ${inspectProject.title}`}
         >
-          <div className="relative w-full max-w-4xl rounded-3xl border border-slate-200 bg-slate-50 p-4 shadow-2xl sm:p-6">
+          <div className="relative w-full max-w-5xl rounded-3xl border border-slate-200 bg-slate-50 p-4 shadow-2xl sm:p-6">
             <div className="mb-4 flex items-center justify-between gap-4">
               <div>
-                <span className="font-tech text-[11px] font-semibold uppercase tracking-wider text-blue-600">
-                  Demonstração interativa · {inspectProject.badge}
-                </span>
-                <h3 className="text-lg font-bold text-slate-950">{inspectProject.title}</h3>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="font-tech text-[11px] font-semibold uppercase tracking-wider text-blue-600">
+                    {inspectProject.badge}
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-700">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+                    Simulador interativo — clique e teste os controles abaixo
+                  </span>
+                </div>
+                <h3 className="mt-1 text-lg font-bold text-slate-950">{inspectProject.title}</h3>
               </div>
               <button
                 type="button"
