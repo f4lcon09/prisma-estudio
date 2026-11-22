@@ -59,7 +59,7 @@ export function ProjectBuilder() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
           <div className="grid items-center gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-5">
+            <div className="min-w-0 lg:col-span-5">
               <p className="font-tech text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-600">
                 Orçamento rápido
               </p>
@@ -81,8 +81,8 @@ export function ProjectBuilder() {
               </div>
             </div>
 
-            <div className="lg:col-span-7">
-              <div className="rounded-3xl border border-blue-200/70 bg-white/85 p-6 shadow-[0_24px_60px_-15px_rgba(37,99,235,0.16)] backdrop-blur-xl sm:p-8">
+            <div className="min-w-0 lg:col-span-7">
+              <div className="w-full min-w-0 rounded-3xl border border-blue-200/70 bg-white/85 p-5 shadow-[0_24px_60px_-15px_rgba(37,99,235,0.16)] backdrop-blur-xl sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-2xl font-extrabold tracking-tight text-slate-950">
               Monte seu projeto
@@ -161,8 +161,8 @@ export function ProjectBuilder() {
           </div>
 
           {/* Compact Preview + Copy */}
-          <div className="mt-5 flex items-center justify-between gap-3 rounded-xl border border-slate-200/70 bg-slate-50 px-3.5 py-2.5 text-xs text-slate-600">
-            <p className="truncate">{message}</p>
+          <div className="mt-5 flex min-w-0 items-center justify-between gap-3 rounded-xl border border-slate-200/70 bg-slate-50 px-3.5 py-2.5 text-xs text-slate-600">
+            <p className="min-w-0 flex-1 truncate">{message}</p>
             <button
               type="button"
               onClick={handleCopy}
