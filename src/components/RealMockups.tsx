@@ -1,12 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import {
   Activity,
   Bot,
   CheckCircle2,
   FileText,
   Home,
-  Lock,
   MessageSquare,
   Settings,
   Sparkles,
@@ -120,69 +120,52 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
               )}
 
               {mode === "sites" && (
-                <div className="flex h-full flex-col justify-between bg-[#FAF7F2] p-2.5 text-left text-[#1F2A44]">
-                  <div>
-                    <div className="flex items-center justify-center gap-1 rounded-lg border border-[#1F2A44]/12 bg-white px-2 py-1 text-[8px] text-[#515C73] shadow-2xs">
-                      <Lock className="h-2 w-2 text-emerald-600" />
-                      <span className="font-tech truncate">atelierverso.com.br</span>
-                    </div>
-
-                    <div className="mt-2 flex items-center justify-between">
-                      <div className="flex items-center gap-1">
-                        <span className="flex h-3.5 w-3.5 items-center justify-center rounded bg-[#1F2A44] text-[6px] font-bold text-[#F4EDE0]">
-                          AV
-                        </span>
-                        <span className="text-[9px] font-extrabold uppercase tracking-wider text-[#1F2A44]">
-                          Atelier Verso
-                        </span>
-                      </div>
-                      <span className="rounded-full bg-emerald-50 px-1.5 py-0.5 text-[7px] font-semibold text-emerald-700">
-                        Pix -5%
+                <div className="flex h-full flex-col justify-between bg-[#FAF6EE] text-left text-[#1F2A44]">
+                  {/* Full-bleed Lookbook Photo Half */}
+                  <div className="relative h-[182px] w-full overflow-hidden bg-[#E8DEC8]">
+                    <Image
+                      src="/fashion/look-blazer.jpg"
+                      alt="Atelier Verso Lookbook"
+                      fill
+                      sizes="180px"
+                      className="object-cover object-top"
+                    />
+                    <div className="absolute inset-x-0 top-0 flex items-center justify-between bg-gradient-to-b from-[#182032]/70 to-transparent px-2.5 pb-3 pt-2 text-[#F4EDE0]">
+                      <span className="font-editorial text-[9px] font-semibold uppercase tracking-[0.2em]">
+                        Atelier Verso
+                      </span>
+                      <span className="font-tech rounded bg-[#D85D2A] px-1.5 py-0.5 text-[7px] font-bold text-white">
+                        DROP 04
                       </span>
                     </div>
 
-                    <div className="mt-2 rounded-xl border border-[#1F2A44]/12 bg-white p-2 shadow-2xs">
-                      <div className="flex h-16 items-center justify-between rounded-lg bg-gradient-to-br from-[#EFE6D6] to-[#DFCEB2] px-2.5">
-                        <div>
-                          <p className="font-tech text-[7px] font-semibold uppercase tracking-wider text-[#A8431B]">
-                            Drop 04
-                          </p>
-                          <p className="text-[10px] font-extrabold leading-tight text-[#1F2A44]">
-                            Blazer Linho
-                          </p>
-                          <p className="font-tech text-[9px] font-bold text-[#D85D2A]">
-                            R$ 389,00
-                          </p>
-                        </div>
-                        <svg viewBox="0 0 60 54" className="h-12 w-auto" fill="none" aria-hidden="true">
-                          <path
-                            d="M18 8L26 4H34L42 8L52 18L47 26L43 22V48H17V22L13 26L8 18L18 8Z"
-                            fill="#1F2A44"
-                          />
-                          <path d="M26 4L30 18L34 4M30 18V48" stroke="#F4EDE0" strokeOpacity="0.55" strokeWidth="1" />
-                        </svg>
-                      </div>
-
-                      <div className="mt-2 grid grid-cols-3 gap-1 text-center text-[8px]">
-                        <span className="font-tech rounded bg-[#EFE6D6] py-1 font-semibold text-[#515C73]">
-                          P
-                        </span>
-                        <span className="font-tech rounded bg-[#1F2A44] py-1 font-semibold text-[#F4EDE0]">
-                          M ✓
-                        </span>
-                        <span className="font-tech rounded bg-[#EFE6D6] py-1 font-semibold text-[#515C73]">
-                          G
-                        </span>
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#182032]/90 via-[#182032]/45 to-transparent px-2.5 pb-2 pt-5 text-[#F4EDE0]">
+                      <p className="font-editorial text-[12px] font-semibold leading-tight">
+                        Blazer Linho Cru
+                      </p>
+                      <div className="mt-0.5 flex items-center justify-between text-[8px]">
+                        <span className="font-tech font-bold text-[#F4EDE0]">R$ 389,00</span>
+                        <span className="text-emerald-300">R$ 370 Pix</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-1.5">
-                    <div className="rounded-lg border border-[#1F2A44]/10 bg-white px-2.5 py-1 text-[8px] text-[#515C73]">
-                      ✓ Entrega 24h · Troca grátis
+                  {/* Quick-Buy Bottom Sheet */}
+                  <div className="flex flex-1 flex-col justify-between p-2.5">
+                    <div className="grid grid-cols-3 gap-1 text-center text-[8px]">
+                      <span className="font-tech rounded border border-[#1F2A44]/15 bg-white py-1 font-semibold text-[#515C73]">
+                        P
+                      </span>
+                      <span className="font-tech rounded bg-[#1F2A44] py-1 font-semibold text-[#F4EDE0]">
+                        M ✓
+                      </span>
+                      <span className="font-tech rounded border border-[#1F2A44]/15 bg-white py-1 font-semibold text-[#515C73]">
+                        G
+                      </span>
                     </div>
-                    <div className="rounded-lg bg-[#D85D2A] py-2 text-center text-[9px] font-semibold text-white shadow-sm">
-                      Comprar pelo WhatsApp
+
+                    <div className="rounded-lg bg-[#D85D2A] py-2 text-center text-[8.5px] font-bold uppercase tracking-[0.12em] text-white shadow-sm">
+                      Adicionar à sacola
                     </div>
                   </div>
                 </div>

@@ -67,6 +67,10 @@ body {
   font-family: var(--font-mono), ui-monospace, monospace;
 }
 
+.font-editorial {
+  font-family: var(--font-editorial), Georgia, serif;
+}
+
 /* Subtle architectural grid tuned to active theme */
 .bg-studio-grid {
   background-image:
