@@ -26,10 +26,10 @@ const modeMeta: Record<
 > = {
   sites: {
     label: "Sites",
-    badge: "SITES & LOJAS · ALTA CONVERSÃO",
+    badge: "SITES & LOJAS · DESIGN EDITORIAL",
     headlineHighlight: "sites que vendem.",
     gradient:
-      "from-[#D85D2A] via-[#B44622] to-[#1F2A44] dark:from-[#E05A3A] dark:via-[#F28B6B] dark:to-[#60A5FA]",
+      "from-[#6E5636] via-[#8E6F3E] to-[#B08D57] dark:from-[#C88B53] dark:via-[#E09F67] dark:to-[#B7410E]",
     caption: "Prévia responsiva: loja de moda publicada em desktop e celular + métricas ao vivo",
   },
   sistemas: {
@@ -37,7 +37,7 @@ const modeMeta: Record<
     badge: "SISTEMAS WEB & SAAS · PAINÉIS SOB MEDIDA",
     headlineHighlight: "sistemas de alto nível.",
     gradient:
-      "from-[#1F2A44] via-[#2A52BE] to-[#D85D2A] dark:from-[#60A5FA] dark:via-[#93C5FD] dark:to-[#E05A3A]",
+      "from-[#1A1715] via-[#5C5348] to-[#B08D57] dark:from-[#ECE5D8] dark:via-[#B08D57] dark:to-[#C88B53]",
     caption: "Software web completo com app mobile e monitoramento em tempo real",
   },
   automacoes: {
@@ -45,13 +45,12 @@ const modeMeta: Record<
     badge: "AUTOMAÇÕES & IA · WHATSAPP E CRM",
     headlineHighlight: "automações com IA.",
     gradient:
-      "from-[#D85D2A] via-[#1F2A44] to-[#167953] dark:from-[#E05A3A] dark:via-[#F28B6B] dark:to-[#34D399]",
+      "from-[#263A32] via-[#8E6F3E] to-[#1A1715] dark:from-[#9CAF88] dark:via-[#B08D57] dark:to-[#B7410E]",
     caption: "Fluxo conectado de ponta a ponta: WhatsApp, agente de IA e CRM",
   },
 };
 
 export function HeroStage() {
-  // Monotonic step counter so the 3D roulette drum always spins forward cleanly
   const [stepCount, setStepCount] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -102,7 +101,7 @@ export function HeroStage() {
       ref={sectionRef}
       onMouseMove={handlePointerMove}
       onMouseLeave={handlePointerLeave}
-      className="ps-hero-section overflow-hidden bg-[#F4EDE0] pb-14 pt-6 transition-colors duration-300 sm:pb-20 sm:pt-8 dark:bg-[#182032]"
+      className="ps-hero-section overflow-hidden bg-[#EAE3D5] pb-16 pt-6 transition-colors duration-300 sm:pb-22 sm:pt-8 dark:bg-[#17181A]"
     >
       {/* Architectural Grid + Tactile Studio Grain */}
       <div
@@ -112,14 +111,8 @@ export function HeroStage() {
       <div className="ps-hero-grain pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="ps-hero-light pointer-events-none absolute inset-0" aria-hidden="true" />
 
-      {/* Light Mode Structural Navy Band Anchoring the Lower Stage (per Cream/Navy/Terracotta mockup) */}
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[#1F2A44] sm:h-32 dark:hidden"
-        aria-hidden="true"
-      />
-
       <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-10">
-        {/* Top Studio Spec Tag (crisp registration dot, no generic AI sparkles) */}
+        {/* Top Studio Spec Tag */}
         <div className="inline-grid items-center justify-items-center">
           {modeOrder.map((modeId) => {
             const active = activeMode === modeId;
@@ -127,13 +120,13 @@ export function HeroStage() {
               <div
                 key={modeId}
                 aria-hidden={!active}
-                className={`font-tech col-start-1 row-start-1 inline-flex items-center gap-2 rounded-md border border-[#1F2A44]/18 bg-[#FAF5EB]/95 px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#1F2A44] transition-all duration-500 ease-out dark:border-[#F2EFE6]/18 dark:bg-[#202B42]/95 dark:text-[#F2EFE6] ${
+                className={`font-tech col-start-1 row-start-1 inline-flex items-center gap-2 rounded-md border border-[#1A1715]/16 bg-[#FAF6EE]/95 px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#1A1715] transition-all duration-500 ease-out dark:border-[#ECE5D8]/16 dark:bg-[#202226]/95 dark:text-[#ECE5D8] ${
                   active
                     ? "translate-y-0 opacity-100"
                     : "pointer-events-none -translate-y-1.5 opacity-0"
                 }`}
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-[#D85D2A] dark:bg-[#E05A3A]" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[#B08D57] dark:bg-[#B7410E]" aria-hidden="true" />
                 <span>{modeMeta[modeId].badge}</span>
               </div>
             );
@@ -141,18 +134,16 @@ export function HeroStage() {
         </div>
 
         {/* Display Headline with 3D Cylindrical Roulette Drum */}
-        <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-[22px] font-extrabold tracking-tight text-[#1F2A44] sm:text-4xl lg:text-[48px] lg:leading-[1.15] dark:text-[#F2EFE6]">
+        <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-[22px] font-extrabold tracking-tight text-[#1A1715] sm:text-4xl lg:text-[48px] lg:leading-[1.15] dark:text-[#ECE5D8]">
           <span>Criamos</span>
           <span
             className="relative inline-block h-[1.28em] overflow-hidden align-middle [mask-image:linear-gradient(to_bottom,transparent_0%,black_14%,black_86%,transparent_100%)]"
             style={{ perspective: "900px" }}
           >
-            {/* Invisible sizer keeps exact width of the longest phrase without layout jump */}
             <span className="invisible block whitespace-nowrap px-1" aria-hidden="true">
               sistemas de alto nível.
             </span>
 
-            {/* Rotating 3-faced 3D Roulette Drum */}
             <span
               className="absolute inset-0 block transition-transform duration-700 ease-[cubic-bezier(0.22,1.12,0.36,1)]"
               style={{
@@ -189,7 +180,7 @@ export function HeroStage() {
             aria-label="Alternar tipo de software na vitrine"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            className="inline-flex items-center rounded-full border border-[#1F2A44]/15 bg-[#FAF5EB]/95 p-1 shadow-sm backdrop-blur-sm dark:border-[#F2EFE6]/15 dark:bg-[#202B42]/95"
+            className="inline-flex items-center rounded-full border border-[#1A1715]/15 bg-[#FAF6EE]/95 p-1 shadow-sm backdrop-blur-sm dark:border-[#ECE5D8]/15 dark:bg-[#202226]/95"
           >
             {modeOrder.map((modeId) => {
               const selected = activeMode === modeId;
@@ -200,10 +191,10 @@ export function HeroStage() {
                   role="tab"
                   aria-selected={selected}
                   onClick={() => selectMode(modeId)}
-                  className={`relative overflow-hidden rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D85D2A]/50 sm:px-5 sm:text-sm ${
+                  className={`relative overflow-hidden rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08D57]/60 sm:px-5 sm:text-sm ${
                     selected
-                      ? "bg-[#D85D2A] text-white shadow-sm dark:bg-[#E05A3A]"
-                      : "text-[#515C73] hover:text-[#1F2A44] dark:text-[#A9B4C9] dark:hover:text-[#F2EFE6]"
+                      ? "bg-[#1A1715] text-[#EAE3D5] shadow-sm dark:bg-[#B7410E] dark:text-[#FAF6EE]"
+                      : "text-[#5C5348] hover:text-[#1A1715] dark:text-[#A8A095] dark:hover:text-[#ECE5D8]"
                   }`}
                 >
                   <span className="relative z-10">{modeMeta[modeId].label}</span>
@@ -211,7 +202,7 @@ export function HeroStage() {
                     <span
                       key={`progress-${stepCount}`}
                       aria-hidden="true"
-                      className="animate-tab-progress absolute inset-x-2 bottom-0.5 h-[2px] rounded-full bg-white/60"
+                      className="animate-tab-progress absolute inset-x-2 bottom-0.5 h-[2px] rounded-full bg-[#B08D57] dark:bg-[#FAF6EE]/70"
                     />
                   )}
                 </button>
@@ -220,14 +211,14 @@ export function HeroStage() {
           </div>
         </div>
 
-        {/* Primary 10% Accent CTA */}
+        {/* Primary Quiet-Luxury / Editorial CTA */}
         <div className="mt-4 flex flex-col items-center gap-1.5">
           <a
             href="#orcamento"
-            className="ps-hero-cta inline-flex items-center gap-2 rounded-full bg-[#D85D2A] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]"
+            className="ps-hero-cta inline-flex items-center gap-2 rounded-full bg-[#1A1715] px-6 py-2.5 text-sm font-semibold text-[#EAE3D5] hover:bg-[#2E2924] dark:bg-[#B7410E] dark:text-[#FAF6EE] dark:hover:bg-[#9C3509]"
           >
             <span>{siteConfig.hero.primaryCta}</span>
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <ArrowRight className="h-4 w-4 text-[#B08D57] dark:text-[#FAF6EE]" aria-hidden="true" />
           </a>
           <div className="inline-grid items-center justify-items-center">
             {modeOrder.map((modeId) => {
@@ -236,7 +227,7 @@ export function HeroStage() {
                 <span
                   key={modeId}
                   aria-hidden={!active}
-                  className={`col-start-1 row-start-1 text-[11px] font-medium text-[#515C73] transition-all duration-500 ease-out dark:text-[#A9B4C9] ${
+                  className={`col-start-1 row-start-1 text-[11px] font-medium text-[#5C5348] transition-all duration-500 ease-out dark:text-[#A8A095] ${
                     active ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-1 opacity-0"
                   }`}
                 >
@@ -247,7 +238,7 @@ export function HeroStage() {
           </div>
         </div>
 
-        {/* 3D Interactive Device Stage with architectural registration marks & dynamic tilt */}
+        {/* 3D Interactive Device Stage */}
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -286,9 +277,7 @@ export function HeroStage() {
             </div>
 
             {/* Center Real Browser Window */}
-            <div
-              className="ps-hero-center-tilt z-10 order-1 grid w-full min-w-0 max-w-[700px] lg:col-span-6 lg:order-none lg:max-w-none"
-            >
+            <div className="ps-hero-center-tilt z-10 order-1 grid w-full min-w-0 max-w-[700px] lg:col-span-6 lg:order-none lg:max-w-none">
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
                 const active = rel === 0;

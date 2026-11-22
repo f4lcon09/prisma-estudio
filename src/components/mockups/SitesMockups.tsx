@@ -74,28 +74,28 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
 
   return (
     <BrowserShell url="atelierverso.com.br/drop-04">
-      <div className="bg-[#FAF6EE] text-left text-[#1F2A44]">
+      <div className="bg-[#FAF6EE] text-left text-[#1A1715]">
         {/* Top Luxury Campaign Strip */}
-        <div className="font-tech flex items-center justify-between gap-3 bg-[#1F2A44] px-4 py-1 text-[8.5px] tracking-[0.15em] text-[#F4EDE0]/90">
+        <div className="font-tech flex items-center justify-between gap-3 bg-[#1A1715] px-4 py-1 text-[8.5px] tracking-[0.15em] text-[#EAE3D5]/90">
           <span className="whitespace-nowrap">COLEÇÃO OUTONO · DROP 04</span>
-          <span className="hidden whitespace-nowrap lg:inline">5% NO PIX</span>
+          <span className="hidden whitespace-nowrap text-[#B08D57] lg:inline">5% NO PIX</span>
           <span className="whitespace-nowrap">ENVIO 24H</span>
         </div>
 
         {/* Editorial Store Header */}
-        <div className="flex items-center justify-between gap-2 border-b border-[#1F2A44]/10 px-4 py-2.5">
-          <div className="hidden items-center gap-3 text-[9px] font-medium uppercase tracking-[0.12em] text-[#515C73] sm:flex">
+        <div className="flex items-center justify-between gap-2 border-b border-[#1A1715]/10 px-4 py-2.5">
+          <div className="hidden items-center gap-3 text-[9px] font-medium uppercase tracking-[0.12em] text-[#5C5348] sm:flex">
             <span>Novidades</span>
             <span>Lookbook</span>
           </div>
 
-          <span className="font-editorial text-[16px] font-semibold uppercase tracking-[0.2em] text-[#1F2A44]">
+          <span className="font-editorial text-[16px] font-semibold uppercase tracking-[0.2em] text-[#1A1715]">
             Atelier Verso
           </span>
 
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-full border border-[#1F2A44]/15 bg-white px-2.5 py-1 text-[9.5px] font-semibold text-[#1F2A44]">
-              <ShoppingBag className="h-2.5 w-2.5 text-[#D85D2A]" />
+            <span className="inline-flex items-center gap-1 rounded-full border border-[#1A1715]/15 bg-white px-2.5 py-1 text-[9.5px] font-semibold text-[#1A1715]">
+              <ShoppingBag className="h-2.5 w-2.5 text-[#8E6F3E]" />
               <span>Sacola ({bagCount})</span>
             </span>
           </div>
@@ -106,24 +106,24 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
           {/* Left: Typography, Look Switcher & Quick-Buy */}
           <div className="flex flex-col justify-between sm:col-span-6">
             <div>
-              <p className="font-tech text-[9px] font-semibold tracking-[0.16em] text-[#A8431B]">
+              <p className="font-tech text-[9px] font-semibold tracking-[0.16em] text-[#8E6F3E]">
                 {product.collection}
               </p>
-              <h4 className="font-editorial mt-1.5 text-[24px] font-semibold leading-[1.06] tracking-tight text-[#1F2A44]">
-                Alfaiataria atemporal em <em className="italic text-[#D85D2A]">linho puro.</em>
+              <h4 className="font-editorial mt-1.5 text-[24px] font-semibold leading-[1.06] tracking-tight text-[#1A1715]">
+                Alfaiataria atemporal em <em className="italic text-[#8E6F3E] dark:text-[#B7410E]">linho puro.</em>
               </h4>
 
               {/* Piece & Price */}
-              <div className="mt-2.5 flex items-baseline justify-between border-b border-[#1F2A44]/10 pb-2">
+              <div className="mt-2.5 flex items-baseline justify-between border-b border-[#1A1715]/10 pb-2">
                 <div>
-                  <p className="text-[11px] font-bold text-[#1F2A44]">{product.name}</p>
-                  <p className="text-[9.5px] text-[#515C73]">{product.installment} sem juros</p>
+                  <p className="text-[11px] font-bold text-[#1A1715]">{product.name}</p>
+                  <p className="text-[9.5px] text-[#5C5348]">{product.installment} sem juros</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-tech text-xs font-extrabold text-[#1F2A44]">
+                  <p className="font-tech text-xs font-extrabold text-[#1A1715]">
                     R$ {product.price},00
                   </p>
-                  <p className="font-tech text-[9px] font-semibold text-emerald-700">
+                  <p className="font-tech text-[9px] font-semibold text-[#263A32]">
                     R$ {pixPrice} no Pix
                   </p>
                 </div>
@@ -142,8 +142,8 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
                       onClick={() => interactive && setItemKey(key)}
                       className={`group/thumb flex items-center gap-1.5 rounded-lg border p-1 text-left transition-all ${
                         active
-                          ? "border-[#1F2A44] bg-white shadow-2xs"
-                          : "border-[#1F2A44]/10 bg-[#FAF6EE] opacity-75 hover:opacity-100"
+                          ? "border-[#1A1715] bg-white shadow-2xs"
+                          : "border-[#1A1715]/10 bg-[#FAF6EE] opacity-75 hover:opacity-100"
                       }`}
                     >
                       <div className="relative h-8 w-6 shrink-0 overflow-hidden rounded">
@@ -155,7 +155,7 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
                           className="object-cover object-top"
                         />
                       </div>
-                      <span className="truncate text-[9px] font-semibold text-[#1F2A44]">
+                      <span className="truncate text-[9px] font-semibold text-[#1A1715]">
                         {entry.shortLabel}
                       </span>
                     </button>
@@ -166,7 +166,7 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
 
             {/* Size Matrix & Buy CTA */}
             <div className="mt-3 space-y-2">
-              <div className="flex items-center justify-between text-[9px] text-[#515C73]">
+              <div className="flex items-center justify-between text-[9px] text-[#5C5348]">
                 <span className="font-semibold uppercase tracking-wider">Tamanho</span>
                 <span>Guia de medidas</span>
               </div>
@@ -180,8 +180,8 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
                     onClick={() => interactive && setSize(s)}
                     className={`font-tech rounded-md border py-1 text-[9.5px] font-bold transition-colors ${
                       size === s
-                        ? "border-[#1F2A44] bg-[#1F2A44] text-[#F4EDE0]"
-                        : "border-[#1F2A44]/15 bg-white text-[#515C73] hover:border-[#1F2A44]/40"
+                        ? "border-[#1A1715] bg-[#1A1715] text-[#EAE3D5]"
+                        : "border-[#1A1715]/15 bg-white text-[#5C5348] hover:border-[#1A1715]/40"
                     }`}
                   >
                     {s}
@@ -193,9 +193,9 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
                 type="button"
                 disabled={!interactive}
                 onClick={handleAdd}
-                className="flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#D85D2A] py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[#BF4E20]"
+                className="flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#1A1715] py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[#EAE3D5] transition-colors hover:bg-[#332D28] dark:bg-[#B7410E] dark:text-[#FAF6EE] dark:hover:bg-[#9C3509]"
               >
-                <ShoppingBag className="h-3 w-3" />
+                <ShoppingBag className="h-3 w-3 text-[#B08D57] dark:text-[#FAF6EE]" />
                 <span>
                   {addedFlash ? "Adicionado à sacola ✓" : `Adicionar · Tam ${size}`}
                 </span>
@@ -204,7 +204,7 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
           </div>
 
           {/* Right: Full-Bleed Fashion Campaign Photograph */}
-          <div className="relative min-h-[252px] overflow-hidden rounded-xl border border-[#1F2A44]/12 bg-[#E8DEC8] sm:col-span-6">
+          <div className="relative min-h-[252px] overflow-hidden rounded-xl border border-[#1A1715]/12 bg-[#DFD6C5] sm:col-span-6">
             <Image
               src={product.image}
               alt={product.name}
@@ -214,19 +214,19 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
             />
 
             <div className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between p-2.5">
-              <span className="font-tech rounded bg-[#1F2A44]/85 px-2 py-0.5 text-[8px] font-semibold uppercase tracking-[0.14em] text-[#F4EDE0] backdrop-blur-xs">
+              <span className="font-tech rounded bg-[#1A1715]/85 px-2 py-0.5 text-[8px] font-semibold uppercase tracking-[0.14em] text-[#EAE3D5] backdrop-blur-xs">
                 {product.badge}
               </span>
-              <span className="font-tech rounded bg-white/85 px-1.5 py-0.5 text-[8px] font-bold text-[#1F2A44] backdrop-blur-xs">
+              <span className="font-tech rounded bg-white/85 px-1.5 py-0.5 text-[8px] font-bold text-[#1A1715] backdrop-blur-xs">
                 {product.lookCode}
               </span>
             </div>
 
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#182032]/85 via-[#182032]/35 to-transparent p-3 text-[#F4EDE0]">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A1715]/85 via-[#1A1715]/35 to-transparent p-3 text-[#EAE3D5]">
               <p className="font-editorial text-sm font-semibold leading-tight">
                 {product.name}
               </p>
-              <p className="font-tech mt-0.5 text-[8.5px] uppercase tracking-[0.14em] text-[#F4EDE0]/80">
+              <p className="font-tech mt-0.5 text-[8.5px] uppercase tracking-[0.14em] text-[#EAE3D5]/80">
                 Corte exclusivo · Envio imediato
               </p>
             </div>

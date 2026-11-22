@@ -3,51 +3,53 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root {
-  --background: #f4ede0;
-  --foreground: #1f2a44;
-  --surface: #faf5eb;
-  --surface-soft: #efe6d6;
-  --surface-contrast: #1f2a44;
-  --surface-contrast-ink: #f4ede0;
-  --border-subtle: rgba(31, 42, 68, 0.14);
-  --ink-muted: #515c73;
-  --accent: #d85d2a;
-  --accent-hover: #bf4e20;
-  --grid-line: rgba(31, 42, 68, 0.055);
-  --dot-color: rgba(31, 42, 68, 0.14);
+  --background: #eae3d5;
+  --foreground: #1a1715;
+  --surface: #faf6ee;
+  --surface-soft: #dfd6c5;
+  --surface-contrast: #231f1c;
+  --surface-contrast-ink: #eae3d5;
+  --border-subtle: rgba(26, 23, 21, 0.14);
+  --ink-muted: #5c5348;
+  --accent: #b08d57;
+  --accent-hover: #8e6f3e;
+  --grid-line: rgba(26, 23, 21, 0.055);
+  --dot-color: rgba(26, 23, 21, 0.14);
   --studio-grain-blend: multiply;
   --studio-grain-opacity: 1;
-  --light-primary: rgba(216, 93, 42, 0.085);
-  --light-secondary: rgba(31, 42, 68, 0.03);
-  --tick-color: rgba(31, 42, 68, 0.28);
-  --cta-shadow-color: #9f3e15;
-  --cta-drop-shadow: rgba(31, 42, 68, 0.38);
-  --drafting-line: rgba(31, 42, 68, 0.032);
-  --ticket-shadow: 6px 6px 0 0 rgba(31, 42, 68, 0.1), 0 20px 44px -18px rgba(31, 42, 68, 0.22);
+  --light-primary: rgba(176, 141, 87, 0.1);
+  --light-secondary: rgba(35, 31, 28, 0.03);
+  --tick-color: rgba(26, 23, 21, 0.28);
+  --cta-shadow-color: #0e0c0b;
+  --cta-drop-shadow: rgba(26, 23, 21, 0.34);
+  --drafting-line: rgba(26, 23, 21, 0.036);
+  --ticket-shadow: 6px 6px 0 0 rgba(176, 141, 87, 0.28), 0 20px 44px -18px rgba(26, 23, 21, 0.2);
+  --card-glow: rgba(176, 141, 87, 0.14);
 }
 
 :root[data-theme="dark"] {
-  --background: #182032;
-  --foreground: #f2efe6;
-  --surface: #202b42;
-  --surface-soft: #26334e;
-  --surface-contrast: #f2efe6;
-  --surface-contrast-ink: #182032;
-  --border-subtle: rgba(242, 239, 230, 0.14);
-  --ink-muted: #a9b4c9;
-  --accent: #e05a3a;
-  --accent-hover: #c94b2d;
-  --grid-line: rgba(242, 239, 230, 0.045);
-  --dot-color: rgba(242, 239, 230, 0.14);
+  --background: #17181a;
+  --foreground: #ece5d8;
+  --surface: #202226;
+  --surface-soft: #1e2421;
+  --surface-contrast: #ece5d8;
+  --surface-contrast-ink: #17181a;
+  --border-subtle: rgba(236, 229, 216, 0.14);
+  --ink-muted: #a8a095;
+  --accent: #b7410e;
+  --accent-hover: #9c3509;
+  --grid-line: rgba(236, 229, 216, 0.045);
+  --dot-color: rgba(236, 229, 216, 0.14);
   --studio-grain-blend: screen;
-  --studio-grain-opacity: 0.55;
-  --light-primary: rgba(224, 90, 58, 0.13);
-  --light-secondary: rgba(42, 82, 190, 0.06);
-  --tick-color: rgba(242, 239, 230, 0.25);
-  --cta-shadow-color: #9e351c;
-  --cta-drop-shadow: rgba(0, 0, 0, 0.58);
-  --drafting-line: rgba(242, 239, 230, 0.032);
-  --ticket-shadow: 6px 6px 0 0 rgba(224, 90, 58, 0.22), 0 24px 50px -18px rgba(0, 0, 0, 0.55);
+  --studio-grain-opacity: 0.5;
+  --light-primary: rgba(183, 65, 14, 0.12);
+  --light-secondary: rgba(38, 58, 50, 0.12);
+  --tick-color: rgba(236, 229, 216, 0.24);
+  --cta-shadow-color: #7c2b08;
+  --cta-drop-shadow: rgba(0, 0, 0, 0.6);
+  --drafting-line: rgba(236, 229, 216, 0.032);
+  --ticket-shadow: 6px 6px 0 0 rgba(183, 65, 14, 0.25), 0 24px 50px -18px rgba(0, 0, 0, 0.58);
+  --card-glow: rgba(183, 65, 14, 0.1);
 }
 
 @theme inline {

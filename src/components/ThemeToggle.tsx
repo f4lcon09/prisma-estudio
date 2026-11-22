@@ -43,13 +43,13 @@ export function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
       aria-label={isDark ? "Mudar para tema claro" : "Mudar para tema escuro"}
-      title={isDark ? "Tema claro (Creme & Marinho)" : "Tema escuro (Estúdio Noturno)"}
-      className="inline-flex h-9 items-center gap-1.5 rounded-full border border-[#1F2A44]/15 bg-[#FAF5EB] px-2.5 text-xs font-semibold text-[#1F2A44] shadow-2xs transition-colors hover:border-[#D85D2A]/60 hover:text-[#D85D2A] dark:border-[#F2EFE6]/15 dark:bg-[#202B42] dark:text-[#F2EFE6] dark:hover:border-[#E05A3A]/70 dark:hover:text-[#E05A3A]"
+      title={isDark ? "Tema claro (Quiet Luxury)" : "Tema escuro (Editorial Noturno)"}
+      className="inline-flex h-9 items-center gap-1.5 rounded-full border border-[#1A1715]/15 bg-[#FAF6EE] px-2.5 text-xs font-semibold text-[#1A1715] shadow-2xs transition-colors hover:border-[#B08D57] hover:text-[#8E6F3E] dark:border-[#ECE5D8]/16 dark:bg-[#202226] dark:text-[#ECE5D8] dark:hover:border-[#B08D57] dark:hover:text-[#B08D57]"
     >
       {isDark ? (
-        <Sun className="h-3.5 w-3.5 text-[#E05A3A]" aria-hidden="true" />
+        <Sun className="h-3.5 w-3.5 text-[#B08D57]" aria-hidden="true" />
       ) : (
-        <Moon className="h-3.5 w-3.5 text-[#D85D2A]" aria-hidden="true" />
+        <Moon className="h-3.5 w-3.5 text-[#8E6F3E]" aria-hidden="true" />
       )}
       <span className="hidden lg:inline">{isDark ? "Claro" : "Escuro"}</span>
     </button>

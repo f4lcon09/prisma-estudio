@@ -25,15 +25,15 @@ export function Header() {
   );
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[#1F2A44]/12 bg-[#F4EDE0]/90 backdrop-blur-md transition-colors duration-300 dark:border-[#F2EFE6]/12 dark:bg-[#182032]/90">
+    <header className="sticky top-0 z-40 border-b border-[#1A1715]/12 bg-[#EAE3D5]/90 backdrop-blur-md transition-colors duration-300 dark:border-[#ECE5D8]/12 dark:bg-[#17181A]/90">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3.5 sm:px-6 lg:px-10">
         <Link
           href="/"
-          className="group flex items-center gap-2.5 text-[#1F2A44] focus:outline-none dark:text-[#F2EFE6]"
+          className="group flex items-center gap-2.5 text-[#1A1715] focus:outline-none dark:text-[#ECE5D8]"
         >
           <BrandLogo className="h-8 w-8 transition-transform duration-200 group-hover:scale-105" />
-          <span className="text-[17px] font-extrabold tracking-tight text-[#1F2A44] dark:text-[#F2EFE6]">
-            prisma<span className="text-[#D85D2A] dark:text-[#E05A3A]">.estudio</span>
+          <span className="text-[17px] font-extrabold tracking-tight text-[#1A1715] dark:text-[#ECE5D8]">
+            prisma<span className="text-[#8E6F3E] dark:text-[#B08D57]">.estudio</span>
           </span>
         </Link>
 
@@ -42,7 +42,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-[#515C73] transition-colors hover:text-[#1F2A44] dark:text-[#A9B4C9] dark:hover:text-[#F2EFE6]"
+              className="text-sm font-medium text-[#5C5348] transition-colors hover:text-[#1A1715] dark:text-[#A8A095] dark:hover:text-[#ECE5D8]"
             >
               {link.label}
             </Link>
@@ -51,8 +51,8 @@ export function Header() {
             href="/acompanhar"
             className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
               isTracking
-                ? "bg-[#D85D2A] text-white dark:bg-[#E05A3A]"
-                : "border border-[#1F2A44]/15 bg-[#EFE6D6] text-[#1F2A44] hover:border-[#D85D2A]/50 hover:text-[#D85D2A] dark:border-[#F2EFE6]/15 dark:bg-[#202B42] dark:text-[#F2EFE6] dark:hover:border-[#E05A3A]/60 dark:hover:text-[#E05A3A]"
+                ? "bg-[#1A1715] text-[#EAE3D5] dark:bg-[#B7410E] dark:text-[#FAF6EE]"
+                : "border border-[#1A1715]/15 bg-[#DFD6C5]/75 text-[#1A1715] hover:border-[#B08D57] hover:text-[#8E6F3E] dark:border-[#ECE5D8]/15 dark:bg-[#202226] dark:text-[#ECE5D8] dark:hover:border-[#B08D57] dark:hover:text-[#B08D57]"
             }`}
           >
             <PackageSearch className="h-3.5 w-3.5" aria-hidden="true" />
@@ -67,9 +67,9 @@ export function Header() {
             href={defaultWaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-[#1F2A44] bg-[#1F2A44] px-3 py-1.5 text-xs font-semibold text-[#F4EDE0] shadow-2xs transition-all hover:border-[#D85D2A] hover:bg-[#D85D2A] hover:text-white sm:gap-2 sm:px-4 sm:py-2 dark:border-[#F2EFE6]/20 dark:bg-[#202B42] dark:text-[#F2EFE6] dark:hover:border-[#E05A3A] dark:hover:bg-[#E05A3A] dark:hover:text-white"
+            className="inline-flex items-center gap-1.5 rounded-full border border-[#1A1715] bg-[#1A1715] px-3 py-1.5 text-xs font-semibold text-[#EAE3D5] shadow-2xs transition-all hover:border-[#8E6F3E] hover:bg-[#231F1C] hover:text-[#FAF6EE] sm:gap-2 sm:px-4 sm:py-2 dark:border-[#ECE5D8]/20 dark:bg-[#202226] dark:text-[#ECE5D8] dark:hover:border-[#B7410E] dark:hover:bg-[#B7410E] dark:hover:text-white"
           >
-            <MessageCircle className="h-3.5 w-3.5 text-[#F4EDE0] dark:text-[#E05A3A]" aria-hidden="true" />
+            <MessageCircle className="h-3.5 w-3.5 text-[#B08D57]" aria-hidden="true" />
             <span className="hidden sm:inline">Fale Conosco</span>
             <span className="sm:hidden">WhatsApp</span>
           </a>
@@ -77,7 +77,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#1F2A44]/15 bg-[#FAF5EB] text-[#1F2A44] md:hidden dark:border-[#F2EFE6]/15 dark:bg-[#202B42] dark:text-[#F2EFE6]"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#1A1715]/15 bg-[#FAF6EE] text-[#1A1715] md:hidden dark:border-[#ECE5D8]/15 dark:bg-[#202226] dark:text-[#ECE5D8]"
             aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={mobileOpen}
           >
@@ -87,14 +87,14 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-[#1F2A44]/12 bg-[#FAF5EB] px-6 py-4 md:hidden dark:border-[#F2EFE6]/12 dark:bg-[#202B42]">
+        <div className="border-t border-[#1A1715]/12 bg-[#FAF6EE] px-6 py-4 md:hidden dark:border-[#ECE5D8]/12 dark:bg-[#202226]">
           <nav className="flex flex-col gap-3" aria-label="Navegação móvel">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="py-1 text-sm font-medium text-[#1F2A44] dark:text-[#F2EFE6]"
+                className="py-1 text-sm font-medium text-[#1A1715] dark:text-[#ECE5D8]"
               >
                 {link.label}
               </Link>
@@ -102,9 +102,9 @@ export function Header() {
             <Link
               href="/acompanhar"
               onClick={() => setMobileOpen(false)}
-              className="mt-1 inline-flex items-center gap-2 rounded-xl border border-[#1F2A44]/15 bg-[#EFE6D6] px-3 py-2 text-sm font-semibold text-[#1F2A44] dark:border-[#F2EFE6]/15 dark:bg-[#182032] dark:text-[#F2EFE6]"
+              className="mt-1 inline-flex items-center gap-2 rounded-xl border border-[#1A1715]/15 bg-[#DFD6C5]/70 px-3 py-2 text-sm font-semibold text-[#1A1715] dark:border-[#ECE5D8]/15 dark:bg-[#17181A] dark:text-[#ECE5D8]"
             >
-              <PackageSearch className="h-4 w-4 text-[#D85D2A] dark:text-[#E05A3A]" aria-hidden="true" />
+              <PackageSearch className="h-4 w-4 text-[#B08D57]" aria-hidden="true" />
               <span>Acompanhar pedido</span>
             </Link>
           </nav>

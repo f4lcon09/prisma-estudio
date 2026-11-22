@@ -120,9 +120,9 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
               )}
 
               {mode === "sites" && (
-                <div className="flex h-full flex-col justify-between bg-[#FAF6EE] text-left text-[#1F2A44]">
+                <div className="flex h-full flex-col justify-between bg-[#FAF6EE] text-left text-[#1A1715]">
                   {/* Full-bleed Lookbook Photo Half */}
-                  <div className="relative h-[182px] w-full overflow-hidden bg-[#E8DEC8]">
+                  <div className="relative h-[182px] w-full overflow-hidden bg-[#DFD6C5]">
                     <Image
                       src="/fashion/look-blazer.jpg"
                       alt="Atelier Verso Lookbook"
@@ -130,22 +130,22 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
                       sizes="180px"
                       className="object-cover object-top"
                     />
-                    <div className="absolute inset-x-0 top-0 flex items-center justify-between bg-gradient-to-b from-[#182032]/70 to-transparent px-2.5 pb-3 pt-2 text-[#F4EDE0]">
+                    <div className="absolute inset-x-0 top-0 flex items-center justify-between bg-gradient-to-b from-[#1A1715]/75 to-transparent px-2.5 pb-3 pt-2 text-[#EAE3D5]">
                       <span className="font-editorial text-[9px] font-semibold uppercase tracking-[0.2em]">
                         Atelier Verso
                       </span>
-                      <span className="font-tech rounded bg-[#D85D2A] px-1.5 py-0.5 text-[7px] font-bold text-white">
+                      <span className="font-tech rounded bg-[#B08D57] px-1.5 py-0.5 text-[7px] font-bold text-[#1A1715] dark:bg-[#B7410E] dark:text-[#FAF6EE]">
                         DROP 04
                       </span>
                     </div>
 
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#182032]/90 via-[#182032]/45 to-transparent px-2.5 pb-2 pt-5 text-[#F4EDE0]">
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A1715]/90 via-[#1A1715]/45 to-transparent px-2.5 pb-2 pt-5 text-[#EAE3D5]">
                       <p className="font-editorial text-[12px] font-semibold leading-tight">
                         Blazer Linho Cru
                       </p>
                       <div className="mt-0.5 flex items-center justify-between text-[8px]">
-                        <span className="font-tech font-bold text-[#F4EDE0]">R$ 389,00</span>
-                        <span className="text-emerald-300">R$ 370 Pix</span>
+                        <span className="font-tech font-bold text-[#EAE3D5]">R$ 389,00</span>
+                        <span className="text-[#9CAF88]">R$ 370 Pix</span>
                       </div>
                     </div>
                   </div>
@@ -153,18 +153,18 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
                   {/* Quick-Buy Bottom Sheet */}
                   <div className="flex flex-1 flex-col justify-between p-2.5">
                     <div className="grid grid-cols-3 gap-1 text-center text-[8px]">
-                      <span className="font-tech rounded border border-[#1F2A44]/15 bg-white py-1 font-semibold text-[#515C73]">
+                      <span className="font-tech rounded border border-[#1A1715]/15 bg-white py-1 font-semibold text-[#5C5348]">
                         P
                       </span>
-                      <span className="font-tech rounded bg-[#1F2A44] py-1 font-semibold text-[#F4EDE0]">
+                      <span className="font-tech rounded bg-[#1A1715] py-1 font-semibold text-[#EAE3D5]">
                         M ✓
                       </span>
-                      <span className="font-tech rounded border border-[#1F2A44]/15 bg-white py-1 font-semibold text-[#515C73]">
+                      <span className="font-tech rounded border border-[#1A1715]/15 bg-white py-1 font-semibold text-[#5C5348]">
                         G
                       </span>
                     </div>
 
-                    <div className="rounded-lg bg-[#D85D2A] py-2 text-center text-[8.5px] font-bold uppercase tracking-[0.12em] text-white shadow-sm">
+                    <div className="rounded-lg bg-[#1A1715] py-2 text-center text-[8.5px] font-bold uppercase tracking-[0.12em] text-[#EAE3D5] shadow-sm dark:bg-[#B7410E] dark:text-[#FAF6EE]">
                       Adicionar à sacola
                     </div>
                   </div>
@@ -229,25 +229,25 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
 export function TelemetryCardMockup({ mode }: { mode: HeroModeId }) {
   if (mode === "sites") {
     return (
-      <div className="w-[218px] rounded-2xl border border-[#F4EDE0]/15 bg-[#1F2A44] p-3.5 text-left text-[#F4EDE0] shadow-[0_22px_45px_-12px_rgba(15,23,42,0.42)] backdrop-blur-md">
+      <div className="w-[218px] rounded-2xl border border-[#B08D57]/30 bg-[#1A1715] p-3.5 text-left text-[#EAE3D5] shadow-[0_22px_45px_-12px_rgba(26,23,21,0.45)] backdrop-blur-md dark:bg-[#1E2421]">
         <div className="flex items-center justify-between">
-          <span className="text-[10px] font-bold text-[#F4EDE0]">Loja &amp; Conversão</span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/15 px-2 py-0.5 text-[9px] font-semibold text-emerald-300">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+          <span className="text-[10px] font-bold text-[#EAE3D5]">Loja &amp; Conversão</span>
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#263A32] px-2 py-0.5 text-[9px] font-semibold text-[#9CAF88]">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#9CAF88]" />
             142 online
           </span>
         </div>
         <div className="mt-3 grid grid-cols-2 gap-2">
-          <div className="rounded-lg border border-[#F4EDE0]/10 bg-[#2A3756] p-2">
-            <p className="text-[9px] text-[#F4EDE0]/65">Conversão</p>
-            <p className="font-tech text-xs font-bold text-[#E05A3A]">6,8%</p>
+          <div className="rounded-lg border border-[#EAE3D5]/10 bg-[#231F1C] p-2 dark:bg-[#262C28]">
+            <p className="text-[9px] text-[#EAE3D5]/65">Conversão</p>
+            <p className="font-tech text-xs font-bold text-[#B08D57]">6,8%</p>
           </div>
-          <div className="rounded-lg border border-[#F4EDE0]/10 bg-[#2A3756] p-2">
-            <p className="text-[9px] text-[#F4EDE0]/65">PageSpeed</p>
-            <p className="font-tech text-xs font-bold text-emerald-300">99/100</p>
+          <div className="rounded-lg border border-[#EAE3D5]/10 bg-[#231F1C] p-2 dark:bg-[#262C28]">
+            <p className="text-[9px] text-[#EAE3D5]/65">PageSpeed</p>
+            <p className="font-tech text-xs font-bold text-[#9CAF88]">99/100</p>
           </div>
         </div>
-        <p className="font-tech mt-2.5 text-[9px] text-[#F4EDE0]/65">
+        <p className="font-tech mt-2.5 text-[9px] text-[#EAE3D5]/65">
           +24 pedidos no WhatsApp hoje
         </p>
       </div>
@@ -256,68 +256,68 @@ export function TelemetryCardMockup({ mode }: { mode: HeroModeId }) {
 
   if (mode === "sistemas") {
     return (
-      <div className="w-[222px] rounded-2xl border border-[#F4EDE0]/15 bg-[#1F2A44] p-3.5 text-left text-[#F4EDE0] shadow-[0_22px_45px_-12px_rgba(15,23,42,0.42)] backdrop-blur-md">
-        <div className="flex items-center justify-between text-[10px] font-bold text-[#F4EDE0]">
+      <div className="w-[222px] rounded-2xl border border-[#B08D57]/30 bg-[#1A1715] p-3.5 text-left text-[#EAE3D5] shadow-[0_22px_45px_-12px_rgba(26,23,21,0.45)] backdrop-blur-md dark:bg-[#1E2421]">
+        <div className="flex items-center justify-between text-[10px] font-bold text-[#EAE3D5]">
           <span>Monitor do Sistema</span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/15 px-2 py-0.5 text-[9px] font-semibold text-emerald-300">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#263A32] px-2 py-0.5 text-[9px] font-semibold text-[#9CAF88]">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#9CAF88]" />
             Online
           </span>
         </div>
         <div className="mt-3 grid grid-cols-2 gap-2">
-          <div className="rounded-lg border border-[#F4EDE0]/10 bg-[#2A3756] p-2">
-            <p className="text-[9px] text-[#F4EDE0]/65">Uptime API</p>
-            <p className="font-tech text-xs font-bold text-[#60A5FA]">99,98%</p>
+          <div className="rounded-lg border border-[#EAE3D5]/10 bg-[#231F1C] p-2 dark:bg-[#262C28]">
+            <p className="text-[9px] text-[#EAE3D5]/65">Uptime API</p>
+            <p className="font-tech text-xs font-bold text-[#B08D57]">99,98%</p>
           </div>
-          <div className="rounded-lg border border-[#F4EDE0]/10 bg-[#2A3756] p-2">
-            <p className="text-[9px] text-[#F4EDE0]/65">Latência DB</p>
-            <p className="font-tech text-xs font-bold text-[#E05A3A]">14ms</p>
+          <div className="rounded-lg border border-[#EAE3D5]/10 bg-[#231F1C] p-2 dark:bg-[#262C28]">
+            <p className="text-[9px] text-[#EAE3D5]/65">Latência DB</p>
+            <p className="font-tech text-xs font-bold text-[#C88B53]">14ms</p>
           </div>
         </div>
-        <div className="mt-2.5 flex items-center justify-between rounded-lg border border-[#F4EDE0]/10 bg-[#2A3756] px-2.5 py-1.5 text-[9px]">
-          <span className="font-medium text-[#F4EDE0]/85">14 pedidos hoje</span>
-          <span className="font-tech font-semibold text-emerald-300">Pix ok</span>
+        <div className="mt-2.5 flex items-center justify-between rounded-lg border border-[#EAE3D5]/10 bg-[#231F1C] px-2.5 py-1.5 text-[9px] dark:bg-[#262C28]">
+          <span className="font-medium text-[#EAE3D5]/85">14 pedidos hoje</span>
+          <span className="font-tech font-semibold text-[#9CAF88]">Pix ok</span>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="w-[226px] rounded-2xl border border-[#F4EDE0]/15 bg-[#1F2A44] p-3.5 text-left text-[#F4EDE0] shadow-[0_22px_45px_-12px_rgba(15,23,42,0.42)] backdrop-blur-md">
-      <div className="flex items-center justify-between text-[11px] font-bold text-[#F4EDE0]">
+    <div className="w-[226px] rounded-2xl border border-[#B08D57]/30 bg-[#1A1715] p-3.5 text-left text-[#EAE3D5] shadow-[0_22px_45px_-12px_rgba(26,23,21,0.45)] backdrop-blur-md dark:bg-[#1E2421]">
+      <div className="flex items-center justify-between text-[11px] font-bold text-[#EAE3D5]">
         <span>WhatsApp → IA → CRM</span>
-        <Sparkles className="h-3.5 w-3.5 text-[#E05A3A]" />
+        <Sparkles className="h-3.5 w-3.5 text-[#B08D57]" />
       </div>
 
       <div className="mt-3 flex items-center justify-between px-1">
         <div className="flex flex-col items-center gap-1">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#E05A3A]/20 text-[#F28B6B]">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#B08D57]/20 text-[#C8A464]">
             <MessageSquare className="h-3 w-3" />
           </span>
-          <span className="text-[8px] font-medium text-[#F4EDE0]/65">Msg</span>
+          <span className="text-[8px] font-medium text-[#EAE3D5]/65">Msg</span>
         </div>
-        <div className="h-[2px] flex-1 bg-gradient-to-r from-[#E05A3A] via-emerald-400 to-[#60A5FA]" />
+        <div className="h-[2px] flex-1 bg-gradient-to-r from-[#B08D57] via-[#9CAF88] to-[#B7410E]" />
         <div className="flex flex-col items-center gap-1">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400/20 text-emerald-300">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#263A32] text-[#9CAF88]">
             <Bot className="h-3 w-3" />
           </span>
-          <span className="text-[8px] font-medium text-[#F4EDE0]/65">IA</span>
+          <span className="text-[8px] font-medium text-[#EAE3D5]/65">IA</span>
         </div>
-        <div className="h-[2px] flex-1 bg-gradient-to-r from-emerald-400 to-[#60A5FA]" />
+        <div className="h-[2px] flex-1 bg-gradient-to-r from-[#9CAF88] to-[#B7410E]" />
         <div className="flex flex-col items-center gap-1">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#60A5FA]/20 text-[#93C5FD]">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#B7410E]/25 text-[#E08A65]">
             <CheckCircle2 className="h-3 w-3" />
           </span>
-          <span className="text-[8px] font-medium text-[#F4EDE0]/65">CRM</span>
+          <span className="text-[8px] font-medium text-[#EAE3D5]/65">CRM</span>
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between rounded-lg border border-[#F4EDE0]/10 bg-[#2A3756] px-2.5 py-1.5 text-[9px]">
-        <span className="flex items-center gap-1 font-medium text-[#F4EDE0]/85">
-          <Zap className="h-2.5 w-2.5 text-[#E05A3A]" />
+      <div className="mt-3 flex items-center justify-between rounded-lg border border-[#EAE3D5]/10 bg-[#231F1C] px-2.5 py-1.5 text-[9px] dark:bg-[#262C28]">
+        <span className="flex items-center gap-1 font-medium text-[#EAE3D5]/85">
+          <Zap className="h-2.5 w-2.5 text-[#B08D57]" />
           Disparo IA · 466ms
         </span>
-        <span className="font-tech font-semibold text-emerald-300">Score 94</span>
+        <span className="font-tech font-semibold text-[#9CAF88]">Score 94</span>
       </div>
     </div>
   );

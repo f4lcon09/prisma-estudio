@@ -19,7 +19,7 @@
   opacity: 0;
   background: radial-gradient(
     320px circle at var(--card-mx) var(--card-my),
-    rgba(216, 93, 42, 0.1),
+    var(--card-glow),
     transparent 65%
   );
   transition: opacity 220ms ease;
