@@ -14,12 +14,12 @@ import {
   Zap,
 } from "lucide-react";
 import type { HeroModeId } from "@/config/site";
-import { SiteClinicaInteractive } from "@/components/mockups/SitesMockups";
+import { SiteModaVendasInteractive } from "@/components/mockups/SitesMockups";
 import { SistemaErpInteractive } from "@/components/mockups/SistemasMockups";
 import { AutomacaoTriagemInteractive } from "@/components/mockups/AutomacoesMockups";
 
 export function SiteProgramScreen({ interactive = true }: { interactive?: boolean }) {
-  return <SiteClinicaInteractive interactive={interactive} />;
+  return <SiteModaVendasInteractive interactive={interactive} />;
 }
 
 export function SaasProgramScreen({ interactive = true }: { interactive?: boolean }) {
@@ -120,47 +120,69 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
               )}
 
               {mode === "sites" && (
-                <div className="flex h-full flex-col justify-between bg-gradient-to-b from-amber-50/60 via-white to-blue-50/50 p-2.5 text-left">
+                <div className="flex h-full flex-col justify-between bg-[#FAF7F2] p-2.5 text-left text-[#1F2A44]">
                   <div>
-                    <div className="flex items-center justify-center gap-1 rounded-lg border border-slate-200/80 bg-white px-2 py-1 text-[8px] text-slate-500 shadow-2xs">
+                    <div className="flex items-center justify-center gap-1 rounded-lg border border-[#1F2A44]/12 bg-white px-2 py-1 text-[8px] text-[#515C73] shadow-2xs">
                       <Lock className="h-2 w-2 text-emerald-600" />
-                      <span className="font-tech truncate">clinicaaurora.com.br</span>
+                      <span className="font-tech truncate">atelierverso.com.br</span>
                     </div>
 
-                    <div className="mt-2.5 flex items-center justify-between">
+                    <div className="mt-2 flex items-center justify-between">
                       <div className="flex items-center gap-1">
-                        <span className="h-3 w-3 rounded bg-gradient-to-tr from-blue-600 to-amber-400" />
-                        <span className="text-[10px] font-bold text-slate-900">Aurora Saúde</span>
+                        <span className="flex h-3.5 w-3.5 items-center justify-center rounded bg-[#1F2A44] text-[6px] font-bold text-[#F4EDE0]">
+                          AV
+                        </span>
+                        <span className="text-[9px] font-extrabold uppercase tracking-wider text-[#1F2A44]">
+                          Atelier Verso
+                        </span>
                       </div>
                       <span className="rounded-full bg-emerald-50 px-1.5 py-0.5 text-[7px] font-semibold text-emerald-700">
-                        99 Speed
+                        Pix -5%
                       </span>
                     </div>
 
-                    <div className="mt-2.5 rounded-xl border border-blue-100 bg-white p-2.5 shadow-2xs">
-                      <p className="text-[10px] font-extrabold leading-tight text-slate-900">
-                        Consulta confirmada em 1 minuto.
-                      </p>
-                      <p className="mt-1 text-[8px] leading-snug text-slate-500">
-                        Versão mobile leve, responsiva e pronta para converter.
-                      </p>
-                      <div className="mt-2.5 grid grid-cols-2 gap-1 text-center text-[8px]">
-                        <span className="font-tech rounded bg-slate-100 py-1 font-semibold text-slate-700">
-                          09:30
+                    <div className="mt-2 rounded-xl border border-[#1F2A44]/12 bg-white p-2 shadow-2xs">
+                      <div className="flex h-16 items-center justify-between rounded-lg bg-gradient-to-br from-[#EFE6D6] to-[#DFCEB2] px-2.5">
+                        <div>
+                          <p className="font-tech text-[7px] font-semibold uppercase tracking-wider text-[#A8431B]">
+                            Drop 04
+                          </p>
+                          <p className="text-[10px] font-extrabold leading-tight text-[#1F2A44]">
+                            Blazer Linho
+                          </p>
+                          <p className="font-tech text-[9px] font-bold text-[#D85D2A]">
+                            R$ 389,00
+                          </p>
+                        </div>
+                        <svg viewBox="0 0 60 54" className="h-12 w-auto" fill="none" aria-hidden="true">
+                          <path
+                            d="M18 8L26 4H34L42 8L52 18L47 26L43 22V48H17V22L13 26L8 18L18 8Z"
+                            fill="#1F2A44"
+                          />
+                          <path d="M26 4L30 18L34 4M30 18V48" stroke="#F4EDE0" strokeOpacity="0.55" strokeWidth="1" />
+                        </svg>
+                      </div>
+
+                      <div className="mt-2 grid grid-cols-3 gap-1 text-center text-[8px]">
+                        <span className="font-tech rounded bg-[#EFE6D6] py-1 font-semibold text-[#515C73]">
+                          P
                         </span>
-                        <span className="font-tech rounded bg-blue-600 py-1 font-semibold text-white">
-                          14:30 ✓
+                        <span className="font-tech rounded bg-[#1F2A44] py-1 font-semibold text-[#F4EDE0]">
+                          M ✓
+                        </span>
+                        <span className="font-tech rounded bg-[#EFE6D6] py-1 font-semibold text-[#515C73]">
+                          G
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <div className="rounded-lg border border-slate-100 bg-white/90 px-2.5 py-1.5 text-[8.5px] text-slate-600">
-                      ✓ Sem fila · Confirmação imediata
+                  <div className="space-y-1.5">
+                    <div className="rounded-lg border border-[#1F2A44]/10 bg-white px-2.5 py-1 text-[8px] text-[#515C73]">
+                      ✓ Entrega 24h · Troca grátis
                     </div>
-                    <div className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 py-2 text-center text-[9px] font-semibold text-white shadow-sm">
-                      Agendar pelo WhatsApp
+                    <div className="rounded-lg bg-[#D85D2A] py-2 text-center text-[9px] font-semibold text-white shadow-sm">
+                      Comprar pelo WhatsApp
                     </div>
                   </div>
                 </div>
@@ -226,7 +248,7 @@ export function TelemetryCardMockup({ mode }: { mode: HeroModeId }) {
     return (
       <div className="w-[218px] rounded-2xl border border-[#F4EDE0]/15 bg-[#1F2A44] p-3.5 text-left text-[#F4EDE0] shadow-[0_22px_45px_-12px_rgba(15,23,42,0.42)] backdrop-blur-md">
         <div className="flex items-center justify-between">
-          <span className="text-[10px] font-bold text-[#F4EDE0]">SEO &amp; Conversão</span>
+          <span className="text-[10px] font-bold text-[#F4EDE0]">Loja &amp; Conversão</span>
           <span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/15 px-2 py-0.5 text-[9px] font-semibold text-emerald-300">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
             142 online
@@ -243,7 +265,7 @@ export function TelemetryCardMockup({ mode }: { mode: HeroModeId }) {
           </div>
         </div>
         <p className="font-tech mt-2.5 text-[9px] text-[#F4EDE0]/65">
-          +18 cliques no WhatsApp hoje
+          +24 pedidos no WhatsApp hoje
         </p>
       </div>
     );

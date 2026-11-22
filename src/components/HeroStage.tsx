@@ -26,11 +26,11 @@ const modeMeta: Record<
 > = {
   sites: {
     label: "Sites",
-    badge: "SITES & LANDING PAGES · ALTA CONVERSÃO",
-    headlineHighlight: "sites que convertem.",
+    badge: "SITES & LOJAS · ALTA CONVERSÃO",
+    headlineHighlight: "sites que vendem.",
     gradient:
       "from-[#D85D2A] via-[#B44622] to-[#1F2A44] dark:from-[#E05A3A] dark:via-[#F28B6B] dark:to-[#60A5FA]",
-    caption: "Prévia responsiva: site publicado em desktop e celular + métricas ao vivo",
+    caption: "Prévia responsiva: loja de moda publicada em desktop e celular + métricas ao vivo",
   },
   sistemas: {
     label: "Sistemas",

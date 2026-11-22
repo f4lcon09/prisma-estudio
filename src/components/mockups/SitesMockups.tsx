@@ -17,6 +17,231 @@ import {
 } from "lucide-react";
 import { BrowserShell } from "@/components/mockups/BrowserShell";
 
+const fashionItems = {
+  blazer: {
+    name: "Blazer Linho Cru",
+    collection: "Alfaiataria · Drop 04",
+    price: 389,
+    swatch: "#D8C8AE",
+    accentBg: "from-[#EFE6D6] via-[#E5D7C0] to-[#D4C2A5]",
+    garmentTone: "#1F2A44",
+    badge: "Mais vendido",
+  },
+  trench: {
+    name: "Trench Terracota",
+    collection: "Edição Limitada",
+    price: 540,
+    swatch: "#D85D2A",
+    accentBg: "from-[#F7E3DA] via-[#EFCBC0] to-[#DFAB99]",
+    garmentTone: "#9F3E15",
+    badge: "Últimas peças",
+  },
+  conjunto: {
+    name: "Conjunto Carvão",
+    collection: "Essenciais Noite",
+    price: 460,
+    swatch: "#1F2A44",
+    accentBg: "from-[#DFE3EC] via-[#CBD2E0] to-[#B7C1D4]",
+    garmentTone: "#182032",
+    badge: "Novo drop",
+  },
+} as const;
+
+const fashionSizes = ["P", "M", "G", "GG"] as const;
+
+export function SiteModaVendasInteractive({ interactive = true }: { interactive?: boolean }) {
+  const [itemKey, setItemKey] = useState<keyof typeof fashionItems>("blazer");
+  const [size, setSize] = useState<(typeof fashionSizes)[number]>("M");
+  const [bagCount, setBagCount] = useState(1);
+  const [addedFlash, setAddedFlash] = useState(false);
+
+  const product = fashionItems[itemKey];
+  const pixPrice = Math.round(product.price * 0.95);
+
+  function handleAdd() {
+    if (!interactive) return;
+    setBagCount((c) => c + 1);
+    setAddedFlash(true);
+    window.setTimeout(() => setAddedFlash(false), 1200);
+  }
+
+  return (
+    <BrowserShell url="atelierverso.com.br/drop-04">
+      <div className="min-h-[330px] bg-[#FAF7F2] p-4 text-left text-[#1F2A44]">
+        {/* Store Header */}
+        <div className="flex items-center justify-between border-b border-[#1F2A44]/10 pb-2.5">
+          <div className="flex items-center gap-2">
+            <span className="flex h-5 w-5 items-center justify-center rounded bg-[#1F2A44] text-[9px] font-extrabold tracking-tighter text-[#F4EDE0]">
+              AV
+            </span>
+            <span className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#1F2A44]">
+              Atelier Verso
+            </span>
+          </div>
+          <div className="hidden items-center gap-3 text-[10px] font-medium text-[#515C73] sm:flex">
+            <span>Lançamentos</span>
+            <span>Alfaiataria</span>
+            <span>Lookbook</span>
+          </div>
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#1F2A44] px-2.5 py-1 text-[10px] font-semibold text-[#F4EDE0]">
+            <ShoppingBag className="h-2.5 w-2.5 text-[#E05A3A]" />
+            <span>Sacola ({bagCount})</span>
+          </span>
+        </div>
+
+        {/* Editorial Fashion Hero + Live Buy Card */}
+        <div className="mt-3.5 grid gap-3.5 sm:grid-cols-12 sm:items-stretch">
+          {/* Left Copy & Selectors */}
+          <div className="flex flex-col justify-between sm:col-span-6">
+            <div>
+              <span className="font-tech inline-flex items-center gap-1.5 rounded bg-[#EFE6D6] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#A8431B]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#D85D2A]" />
+                {product.collection}
+              </span>
+              <h4 className="mt-2 text-[15px] font-extrabold leading-tight tracking-tight text-[#1F2A44]">
+                Moda autoral pronta para vender no 1º clique.
+              </h4>
+              <p className="mt-1 text-[11px] leading-relaxed text-[#515C73]">
+                Escolha a peça e o tamanho para testar o checkout direto no WhatsApp.
+              </p>
+
+              {/* Collection Swatches */}
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {(Object.keys(fashionItems) as (keyof typeof fashionItems)[]).map((key) => {
+                  const active = itemKey === key;
+                  const entry = fashionItems[key];
+                  return (
+                    <button
+                      key={key}
+                      type="button"
+                      disabled={!interactive}
+                      onClick={() => interactive && setItemKey(key)}
+                      className={`inline-flex items-center gap-1.5 rounded-lg border px-2 py-1 text-[10px] font-semibold transition-all ${
+                        active
+                          ? "border-[#1F2A44] bg-[#1F2A44] text-[#F4EDE0] shadow-xs"
+                          : "border-[#1F2A44]/15 bg-white text-[#515C73] hover:border-[#D85D2A]"
+                      }`}
+                    >
+                      <span
+                        className="h-2.5 w-2.5 rounded-full border border-black/15"
+                        style={{ backgroundColor: entry.swatch }}
+                      />
+                      <span>{entry.name.split(" ")[0]}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Size + Price + CTA */}
+            <div className="mt-3 rounded-xl border border-[#1F2A44]/12 bg-white p-2.5 shadow-2xs">
+              <div className="flex items-center justify-between text-[10px]">
+                <span className="font-bold text-[#1F2A44]">{product.name}</span>
+                <div className="text-right">
+                  <span className="font-tech font-extrabold text-[#D85D2A]">
+                    R$ {product.price},00
+                  </span>
+                  <span className="ml-1 text-[9px] text-emerald-700">· R$ {pixPrice} Pix</span>
+                </div>
+              </div>
+
+              <div className="mt-2 flex items-center gap-1.5">
+                <div className="grid flex-1 grid-cols-4 gap-1">
+                  {fashionSizes.map((s) => (
+                    <button
+                      key={s}
+                      type="button"
+                      disabled={!interactive}
+                      onClick={() => interactive && setSize(s)}
+                      className={`font-tech rounded py-1 text-[9px] font-bold transition-colors ${
+                        size === s
+                          ? "bg-[#1F2A44] text-[#F4EDE0]"
+                          : "bg-[#EFE6D6]/80 text-[#515C73] hover:bg-[#EFE6D6]"
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  disabled={!interactive}
+                  onClick={handleAdd}
+                  className="shrink-0 rounded-lg bg-[#D85D2A] px-3 py-1.5 text-[10px] font-semibold text-white transition-colors hover:bg-[#BF4E20]"
+                >
+                  {addedFlash ? "Adicionado ✓" : `Comprar ${size}`}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Visual Lookbook Frame */}
+          <div className="flex flex-col justify-between rounded-xl border border-[#1F2A44]/12 bg-white p-2.5 shadow-sm sm:col-span-6">
+            <div
+              className={`relative flex h-[168px] flex-col justify-between overflow-hidden rounded-lg bg-gradient-to-br ${product.accentBg} p-3`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-tech rounded bg-[#1F2A44]/85 px-2 py-0.5 text-[8.5px] font-semibold uppercase tracking-wider text-[#F4EDE0]">
+                  {product.badge}
+                </span>
+                <span className="font-tech text-[9px] font-bold text-[#1F2A44]/75">
+                  LOOK 04
+                </span>
+              </div>
+
+              {/* Minimal Editorial Tailored Coat / Bag Vector Silhouette */}
+              <svg
+                viewBox="0 0 180 110"
+                className="mx-auto my-auto h-24 w-auto drop-shadow-sm"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M68 16L82 10H98L112 16L134 36L124 52L116 44V98H64V44L56 52L46 36L68 16Z"
+                  fill={product.garmentTone}
+                />
+                <path
+                  d="M82 10L90 36L98 10M90 36V98"
+                  stroke="#F4EDE0"
+                  strokeOpacity="0.55"
+                  strokeWidth="1.5"
+                />
+                <circle cx="95" cy="54" r="1.8" fill="#E05A3A" />
+                <circle cx="95" cy="68" r="1.8" fill="#E05A3A" />
+              </svg>
+
+              <div className="flex items-center justify-between text-[9px] font-semibold text-[#1F2A44]">
+                <span>Linho &amp; Corte Italiano</span>
+                <span className="font-tech rounded-full bg-white/85 px-2 py-0.5 text-[8px] font-bold">
+                  Entrega 24h
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-2 flex items-center justify-between px-0.5 text-[9.5px] text-[#515C73]">
+              <span>Frete grátis acima de R$ 299</span>
+              <span className="font-tech font-bold text-emerald-700">Pix -5%</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Store Web Vitals Strip */}
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[#1F2A44]/12 bg-white px-3 py-1.5 text-[10px]">
+          <span className="flex items-center gap-1.5 font-medium text-[#1F2A44]">
+            <Globe className="h-3.5 w-3.5 text-[#D85D2A]" />
+            Loja otimizada para tráfego pago
+          </span>
+          <div className="font-tech flex items-center gap-3 text-[10px]">
+            <span className="font-bold text-emerald-700">99 Performance</span>
+            <span className="font-bold text-emerald-700">100 SEO</span>
+            <span className="text-[#515C73]">0.5s LCP</span>
+          </div>
+        </div>
+      </div>
+    </BrowserShell>
+  );
+}
+
 const clinicPlans = {
   express: { label: "Avaliação Express", duration: "30 min", price: "R$ 180,00", doctor: "Dra. Camila" },
   clareamento: { label: "Clareamento LED", duration: "50 min", price: "R$ 490,00", doctor: "Dr. Rafael" },
