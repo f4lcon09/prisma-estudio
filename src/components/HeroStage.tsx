@@ -62,8 +62,6 @@ export function HeroStage() {
     return () => window.clearInterval(timer);
   }, [isPaused]);
 
-  const currentMeta = modeMeta[activeMode];
-
   return (
     <section
       id="vitrine"
@@ -85,23 +83,47 @@ export function HeroStage() {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6 text-center">
-        {/* Top Micro-badge synced with current area */}
-        <div
-          key={`badge-${activeMode}`}
-          className="animate-word-flip inline-flex items-center gap-2 rounded-full border border-amber-200/90 bg-gradient-to-r from-amber-50/90 via-white to-blue-50/90 px-3.5 py-1 text-[11px] font-semibold tracking-[0.14em] text-slate-700 shadow-2xs backdrop-blur-sm"
-        >
-          <Sparkles className="h-3 w-3 text-amber-500" aria-hidden="true" />
-          <span>{currentMeta.badge}</span>
+        {/* Top Micro-badge stacked smoothly without unmount flash */}
+        <div className="inline-grid items-center justify-items-center">
+          {modeOrder.map((modeId) => {
+            const active = activeMode === modeId;
+            return (
+              <div
+                key={modeId}
+                aria-hidden={!active}
+                className={`col-start-1 row-start-1 inline-flex items-center gap-2 rounded-full border border-amber-200/90 bg-gradient-to-r from-amber-50/90 via-white to-blue-50/90 px-3.5 py-1 text-[11px] font-semibold tracking-[0.14em] text-slate-700 shadow-2xs backdrop-blur-sm transition-all duration-500 ease-out ${
+                  active
+                    ? "translate-y-0 opacity-100"
+                    : "pointer-events-none -translate-y-1.5 opacity-0"
+                }`}
+              >
+                <Sparkles className="h-3 w-3 text-amber-500" aria-hidden="true" />
+                <span>{modeMeta[modeId].badge}</span>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Short Punchy Display Headline with Smooth 3D Word Transition */}
+        {/* Short Punchy Display Headline with Smooth Cross-Rotate Word Stack */}
         <h1 className="mx-auto mt-3.5 max-w-4xl text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl lg:text-[46px] lg:leading-[1.08]">
-          Criamos{" "}
-          <span
-            key={`headline-${activeMode}`}
-            className={`animate-word-flip bg-gradient-to-r ${currentMeta.gradient} bg-clip-text text-transparent`}
-          >
-            {currentMeta.headlineHighlight}
+          <span>Criamos </span>
+          <span className="inline-grid align-baseline">
+            {modeOrder.map((modeId) => {
+              const active = activeMode === modeId;
+              return (
+                <span
+                  key={modeId}
+                  aria-hidden={!active}
+                  className={`col-start-1 row-start-1 bg-gradient-to-r ${modeMeta[modeId].gradient} bg-clip-text text-transparent transition-all duration-500 ease-out ${
+                    active
+                      ? "translate-y-0 scale-100 opacity-100"
+                      : "pointer-events-none translate-y-2 scale-[0.97] opacity-0"
+                  }`}
+                >
+                  {modeMeta[modeId].headlineHighlight}
+                </span>
+              );
+            })}
           </span>
         </h1>
 
@@ -123,9 +145,9 @@ export function HeroStage() {
                   role="tab"
                   aria-selected={selected}
                   onClick={() => setActiveMode(modeId)}
-                  className={`relative overflow-hidden rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-300 sm:px-5 sm:text-sm ${
+                  className={`relative overflow-hidden rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-200 sm:px-5 sm:text-sm ${
                     selected
-                      ? "bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white shadow-sm"
+                      ? "bg-[#2563EB] text-white shadow-sm"
                       : "text-slate-600 hover:text-blue-700"
                   }`}
                 >
@@ -134,7 +156,7 @@ export function HeroStage() {
                     <span
                       key={`progress-${activeMode}`}
                       aria-hidden="true"
-                      className="animate-tab-progress absolute inset-x-2 bottom-0.5 h-[2px] rounded-full bg-white/55"
+                      className="animate-tab-progress absolute inset-x-2 bottom-0.5 h-[2px] rounded-full bg-white/60"
                     />
                   )}
                 </button>
@@ -152,15 +174,25 @@ export function HeroStage() {
             <span>{siteConfig.hero.primaryCta}</span>
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </a>
-          <span
-            key={`caption-${activeMode}`}
-            className="animate-word-flip text-[11px] font-medium text-slate-500"
-          >
-            {currentMeta.caption}
-          </span>
+          <div className="inline-grid items-center justify-items-center">
+            {modeOrder.map((modeId) => {
+              const active = activeMode === modeId;
+              return (
+                <span
+                  key={modeId}
+                  aria-hidden={!active}
+                  className={`col-start-1 row-start-1 text-[11px] font-medium text-slate-500 transition-all duration-500 ease-out ${
+                    active ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-1 opacity-0"
+                  }`}
+                >
+                  {modeMeta[modeId].caption}
+                </span>
+              );
+            })}
+          </div>
         </div>
 
-        {/* 3D Interactive Device Stage — pauses auto-rotation while user interacts */}
+        {/* 3D Interactive Device Stage — crossfades smoothly with zero blank frame */}
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -173,36 +205,72 @@ export function HeroStage() {
             className="pointer-events-none absolute -inset-x-8 -top-10 bottom-0 -z-10 flex items-center justify-center"
             aria-hidden="true"
           >
-            <div className="h-80 w-96 -translate-x-24 rounded-full bg-amber-400/50 blur-[90px] transition-all duration-700" />
-            <div className="h-80 w-96 translate-x-24 rounded-full bg-blue-500/45 blur-[90px] transition-all duration-700" />
+            <div className="h-80 w-96 -translate-x-24 rounded-full bg-amber-400/50 blur-[90px]" />
+            <div className="h-80 w-96 translate-x-24 rounded-full bg-blue-500/45 blur-[90px]" />
             <div className="absolute bottom-2 h-44 w-72 rounded-full bg-emerald-400/25 blur-[80px]" />
           </div>
 
           <div className="relative flex flex-col items-center justify-center gap-6 lg:block lg:min-h-[395px]">
-            {/* Left Tilted 3D Phone */}
-            <div
-              key={`left-${activeMode}`}
-              className="animate-stage-left z-20 order-2 transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:absolute lg:bottom-2 lg:left-0 lg:order-none lg:-rotate-6"
-            >
-              <MobileProgramMockup mode={activeMode} />
+            {/* Left Tilted 3D Phone — stacked smoothly */}
+            <div className="z-20 order-2 grid transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:absolute lg:bottom-2 lg:left-0 lg:order-none lg:-rotate-6">
+              {modeOrder.map((modeId) => {
+                const active = activeMode === modeId;
+                return (
+                  <div
+                    key={modeId}
+                    aria-hidden={!active}
+                    className={`col-start-1 row-start-1 transition-all duration-500 ease-out ${
+                      active
+                        ? "translate-y-0 rotate-0 scale-100 opacity-100"
+                        : "pointer-events-none translate-y-3 -rotate-3 scale-95 opacity-0"
+                    }`}
+                  >
+                    <MobileProgramMockup mode={modeId} />
+                  </div>
+                );
+              })}
             </div>
 
-            {/* Center Real Browser Program Window */}
-            <div
-              key={`center-${activeMode}`}
-              className="animate-stage-center z-10 order-1 w-full max-w-[615px] lg:mx-auto"
-            >
-              {activeMode === "sistemas" && <SaasProgramScreen />}
-              {activeMode === "sites" && <SiteProgramScreen />}
-              {activeMode === "automacoes" && <AutomationProgramScreen />}
+            {/* Center Real Browser Program Window — stacked smoothly with 3D glide */}
+            <div className="z-10 order-1 grid w-full max-w-[615px] lg:mx-auto">
+              {modeOrder.map((modeId) => {
+                const active = activeMode === modeId;
+                return (
+                  <div
+                    key={modeId}
+                    aria-hidden={!active}
+                    className={`col-start-1 row-start-1 transition-all duration-500 ease-out ${
+                      active
+                        ? "translate-y-0 scale-100 opacity-100"
+                        : "pointer-events-none translate-y-3 scale-[0.97] opacity-0"
+                    }`}
+                  >
+                    {modeId === "sistemas" && <SaasProgramScreen interactive={active} />}
+                    {modeId === "sites" && <SiteProgramScreen interactive={active} />}
+                    {modeId === "automacoes" && <AutomationProgramScreen interactive={active} />}
+                  </div>
+                );
+              })}
             </div>
 
-            {/* Right Floating 3D Card */}
-            <div
-              key={`right-${activeMode}`}
-              className="animate-stage-right animate-float-slow z-20 order-3 transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:absolute lg:bottom-5 lg:right-0 lg:order-none lg:rotate-3"
-            >
-              <TelemetryCardMockup mode={activeMode} />
+            {/* Right Floating 3D Card — stacked smoothly */}
+            <div className="animate-float-slow z-20 order-3 grid transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:absolute lg:bottom-5 lg:right-0 lg:order-none lg:rotate-3">
+              {modeOrder.map((modeId) => {
+                const active = activeMode === modeId;
+                return (
+                  <div
+                    key={modeId}
+                    aria-hidden={!active}
+                    className={`col-start-1 row-start-1 transition-all duration-500 ease-out ${
+                      active
+                        ? "translate-y-0 rotate-0 scale-100 opacity-100"
+                        : "pointer-events-none translate-y-3 rotate-3 scale-95 opacity-0"
+                    }`}
+                  >
+                    <TelemetryCardMockup mode={modeId} />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
