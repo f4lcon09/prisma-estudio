@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Header } from "@/components/Header";
@@ -37,15 +38,23 @@ export default function Home() {
             </div>
           </div>
 
-          <a
-            href={footerWaUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-900 transition-colors hover:border-slate-900 hover:bg-slate-900 hover:text-white"
-          >
-            <span>WhatsApp direto</span>
-            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-          </a>
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href="/acompanhar"
+              className="rounded-full border border-blue-200 bg-blue-50/70 px-4 py-2 text-xs font-semibold text-blue-700 transition-colors hover:bg-blue-100"
+            >
+              Acompanhar pedido
+            </Link>
+            <a
+              href={footerWaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-900 transition-colors hover:border-slate-900 hover:bg-slate-900 hover:text-white"
+            >
+              <span>WhatsApp direto</span>
+              <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </footer>
     </div>

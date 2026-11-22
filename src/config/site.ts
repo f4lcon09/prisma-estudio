@@ -41,6 +41,29 @@ export interface ModelProject {
   whatsappPrompt: string;
 }
 
+export type OrderStageStatus = "done" | "current" | "upcoming";
+
+export interface OrderStageItem {
+  title: string;
+  date: string;
+  status: OrderStageStatus;
+  note: string;
+}
+
+export interface TrackedOrder {
+  code: string;
+  isExample: boolean;
+  clientName: string;
+  projectTitle: string;
+  category: "Site" | "Sistema" | "Automação";
+  estimatedDelivery: string;
+  daysRemainingLabel: string;
+  progressPercent: number;
+  currentStageTitle: string;
+  previewUrl?: string;
+  stages: OrderStageItem[];
+}
+
 export const siteConfig = {
   // EDITE AQUI: substitua pelo nome definitivo do seu estúdio/marca quando escolher
   brandName: "prisma.estudio",
@@ -245,6 +268,139 @@ export const siteConfig = {
       whatsappPrompt: "Olá! Vi o Relatório Diário de Vendas com IA e quero cotar essa automação.",
     },
   ] satisfies ModelProject[],
+
+  // EDITE AQUI: substitua ou adicione pedidos reais dos seus clientes para eles acompanharem em /acompanhar
+  orders: [
+    {
+      code: "PRISMA-104",
+      isExample: true,
+      clientName: "Clínica Aurora (Exemplo)",
+      projectTitle: "Landing Page + Agendamento WhatsApp",
+      category: "Site",
+      estimatedDelivery: "28 nov 2026",
+      daysRemainingLabel: "6 dias para entrega",
+      progressPercent: 68,
+      currentStageTitle: "Desenvolvimento & Responsividade",
+      stages: [
+        {
+          title: "Briefing & Escopo fechado",
+          date: "18 nov",
+          status: "done",
+          note: "Estrutura da página, textos e fluxos aprovados.",
+        },
+        {
+          title: "Protótipo & Identidade visual",
+          date: "20 nov",
+          status: "done",
+          note: "Layout desktop e celular validados.",
+        },
+        {
+          title: "Desenvolvimento & Responsividade",
+          date: "22–25 nov",
+          status: "current",
+          note: "Implementação das telas interativas e links de WhatsApp.",
+        },
+        {
+          title: "Testes de velocidade & SEO",
+          date: "26 nov",
+          status: "upcoming",
+          note: "Ajuste fino de performance, meta tags e revisão final.",
+        },
+        {
+          title: "Publicação no domínio oficial",
+          date: "28 nov",
+          status: "upcoming",
+          note: "Entrega dos acessos, código e site no ar.",
+        },
+      ],
+    },
+    {
+      code: "PRISMA-108",
+      isExample: true,
+      clientName: "Grupo Vértice (Exemplo)",
+      projectTitle: "Painel Financeiro & Gestão de Pedidos",
+      category: "Sistema",
+      estimatedDelivery: "09 dez 2026",
+      daysRemainingLabel: "17 dias para entrega",
+      progressPercent: 45,
+      currentStageTitle: "Banco de dados & API",
+      stages: [
+        {
+          title: "Arquitetura & Regras de negócio",
+          date: "14 nov",
+          status: "done",
+          note: "Modelagem de clientes, pedidos e permissões.",
+        },
+        {
+          title: "Interface do Painel ERP",
+          date: "19 nov",
+          status: "done",
+          note: "Telas de dashboard, filtros e tabela aprovadas.",
+        },
+        {
+          title: "Banco de dados & API",
+          date: "22–29 nov",
+          status: "current",
+          note: "Integração PostgreSQL, login seguro e emissão Pix.",
+        },
+        {
+          title: "Homologação com sua equipe",
+          date: "04 dez",
+          status: "upcoming",
+          note: "Ambiente de testes liberado para validação real.",
+        },
+        {
+          title: "Virada para produção",
+          date: "09 dez",
+          status: "upcoming",
+          note: "Deploy final, backup automático e treinamento.",
+        },
+      ],
+    },
+    {
+      code: "PRISMA-112",
+      isExample: true,
+      clientName: "Studio Atlas (Exemplo)",
+      projectTitle: "Triagem WhatsApp + IA + CRM",
+      category: "Automação",
+      estimatedDelivery: "25 nov 2026",
+      daysRemainingLabel: "3 dias para entrega",
+      progressPercent: 84,
+      currentStageTitle: "Testes com leads reais",
+      stages: [
+        {
+          title: "Mapeamento do funil",
+          date: "17 nov",
+          status: "done",
+          note: "Critérios de qualificação e campos do CRM definidos.",
+        },
+        {
+          title: "Webhooks & Agente de IA",
+          date: "20 nov",
+          status: "done",
+          note: "Leitura de mensagens e classificação automática.",
+        },
+        {
+          title: "Integração com CRM",
+          date: "21 nov",
+          status: "done",
+          note: "Criação automática de cards e registro de logs.",
+        },
+        {
+          title: "Testes com leads reais",
+          date: "22–24 nov",
+          status: "current",
+          note: "Ajuste fino de respostas e monitoramento de latência.",
+        },
+        {
+          title: "Ativação definitiva",
+          date: "25 nov",
+          status: "upcoming",
+          note: "Fluxo operando 24h com painel de alertas.",
+        },
+      ],
+    },
+  ] satisfies TrackedOrder[],
 };
 
 export function buildWhatsAppUrl(message: string): string {
