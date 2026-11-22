@@ -15,6 +15,18 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const themeInitScript = `
+(() => {
+  try {
+    const saved = window.localStorage.getItem("prisma-theme");
+    const theme = saved === "dark" ? "dark" : "light";
+    document.documentElement.dataset.theme = theme;
+  } catch {
+    document.documentElement.dataset.theme = "light";
+  }
+})();
+`;
+
 export const metadata: Metadata = {
   title: `${siteConfig.brandName} — Sites, Sistemas Web e Automações`,
   description:
@@ -25,9 +37,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pt-BR"
+      suppressHydrationWarning
       className={`${plusJakarta.variable} ${jetbrainsMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#F8FAFC] text-[#0F172A] selection:bg-[#2563EB]/15 selection:text-[#0F172A]">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 selection:bg-[#D85D2A]/20 selection:text-[var(--foreground)]">
         {children}
       </body>
     </html>

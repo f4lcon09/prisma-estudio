@@ -224,25 +224,25 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
 export function TelemetryCardMockup({ mode }: { mode: HeroModeId }) {
   if (mode === "sites") {
     return (
-      <div className="w-[218px] rounded-2xl border border-amber-200/80 bg-gradient-to-br from-white via-white to-amber-50/70 p-3.5 text-left shadow-[0_18px_40px_-12px_rgba(15,23,42,0.18)] backdrop-blur-md">
+      <div className="w-[218px] rounded-2xl border border-[#F4EDE0]/15 bg-[#1F2A44] p-3.5 text-left text-[#F4EDE0] shadow-[0_22px_45px_-12px_rgba(15,23,42,0.42)] backdrop-blur-md">
         <div className="flex items-center justify-between">
-          <span className="text-[10px] font-bold text-slate-900">SEO &amp; Conversão</span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[9px] font-semibold text-emerald-700">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+          <span className="text-[10px] font-bold text-[#F4EDE0]">SEO &amp; Conversão</span>
+          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/15 px-2 py-0.5 text-[9px] font-semibold text-emerald-300">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
             142 online
           </span>
         </div>
         <div className="mt-3 grid grid-cols-2 gap-2">
-          <div className="rounded-lg border border-blue-100 bg-blue-50/60 p-2">
-            <p className="text-[9px] text-slate-500">Conversão</p>
-            <p className="font-tech text-xs font-bold text-blue-600">6,8%</p>
+          <div className="rounded-lg border border-[#F4EDE0]/10 bg-[#2A3756] p-2">
+            <p className="text-[9px] text-[#F4EDE0]/65">Conversão</p>
+            <p className="font-tech text-xs font-bold text-[#E05A3A]">6,8%</p>
           </div>
-          <div className="rounded-lg border border-emerald-100 bg-emerald-50/60 p-2">
-            <p className="text-[9px] text-slate-500">PageSpeed</p>
-            <p className="font-tech text-xs font-bold text-emerald-600">99/100</p>
+          <div className="rounded-lg border border-[#F4EDE0]/10 bg-[#2A3756] p-2">
+            <p className="text-[9px] text-[#F4EDE0]/65">PageSpeed</p>
+            <p className="font-tech text-xs font-bold text-emerald-300">99/100</p>
           </div>
         </div>
-        <p className="font-tech mt-2.5 text-[9px] text-slate-500">
+        <p className="font-tech mt-2.5 text-[9px] text-[#F4EDE0]/65">
           +18 cliques no WhatsApp hoje
         </p>
       </div>
@@ -251,68 +251,68 @@ export function TelemetryCardMockup({ mode }: { mode: HeroModeId }) {
 
   if (mode === "sistemas") {
     return (
-      <div className="w-[222px] rounded-2xl border border-blue-200/80 bg-gradient-to-br from-white via-white to-blue-50/80 p-3.5 text-left shadow-[0_18px_40px_-12px_rgba(37,99,235,0.2)] backdrop-blur-md">
-        <div className="flex items-center justify-between text-[10px] font-bold text-slate-900">
+      <div className="w-[222px] rounded-2xl border border-[#F4EDE0]/15 bg-[#1F2A44] p-3.5 text-left text-[#F4EDE0] shadow-[0_22px_45px_-12px_rgba(15,23,42,0.42)] backdrop-blur-md">
+        <div className="flex items-center justify-between text-[10px] font-bold text-[#F4EDE0]">
           <span>Monitor do Sistema</span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[9px] font-semibold text-emerald-700">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/15 px-2 py-0.5 text-[9px] font-semibold text-emerald-300">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
             Online
           </span>
         </div>
         <div className="mt-3 grid grid-cols-2 gap-2">
-          <div className="rounded-lg border border-blue-100 bg-blue-50/60 p-2">
-            <p className="text-[9px] text-slate-500">Uptime API</p>
-            <p className="font-tech text-xs font-bold text-blue-700">99,98%</p>
+          <div className="rounded-lg border border-[#F4EDE0]/10 bg-[#2A3756] p-2">
+            <p className="text-[9px] text-[#F4EDE0]/65">Uptime API</p>
+            <p className="font-tech text-xs font-bold text-[#60A5FA]">99,98%</p>
           </div>
-          <div className="rounded-lg border border-indigo-100 bg-indigo-50/60 p-2">
-            <p className="text-[9px] text-slate-500">Latência DB</p>
-            <p className="font-tech text-xs font-bold text-indigo-700">14ms</p>
+          <div className="rounded-lg border border-[#F4EDE0]/10 bg-[#2A3756] p-2">
+            <p className="text-[9px] text-[#F4EDE0]/65">Latência DB</p>
+            <p className="font-tech text-xs font-bold text-[#E05A3A]">14ms</p>
           </div>
         </div>
-        <div className="mt-2.5 flex items-center justify-between rounded-lg border border-slate-100 bg-slate-50 px-2.5 py-1.5 text-[9px]">
-          <span className="font-medium text-slate-700">14 pedidos hoje</span>
-          <span className="font-tech font-semibold text-emerald-600">Pix ok</span>
+        <div className="mt-2.5 flex items-center justify-between rounded-lg border border-[#F4EDE0]/10 bg-[#2A3756] px-2.5 py-1.5 text-[9px]">
+          <span className="font-medium text-[#F4EDE0]/85">14 pedidos hoje</span>
+          <span className="font-tech font-semibold text-emerald-300">Pix ok</span>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="w-[226px] rounded-2xl border border-emerald-200/80 bg-gradient-to-br from-white via-white to-emerald-50/75 p-3.5 text-left shadow-[0_18px_40px_-12px_rgba(16,185,129,0.22)] backdrop-blur-md">
-      <div className="flex items-center justify-between text-[11px] font-bold text-slate-900">
+    <div className="w-[226px] rounded-2xl border border-[#F4EDE0]/15 bg-[#1F2A44] p-3.5 text-left text-[#F4EDE0] shadow-[0_22px_45px_-12px_rgba(15,23,42,0.42)] backdrop-blur-md">
+      <div className="flex items-center justify-between text-[11px] font-bold text-[#F4EDE0]">
         <span>WhatsApp → IA → CRM</span>
-        <Sparkles className="h-3.5 w-3.5 text-amber-500" />
+        <Sparkles className="h-3.5 w-3.5 text-[#E05A3A]" />
       </div>
 
       <div className="mt-3 flex items-center justify-between px-1">
         <div className="flex flex-col items-center gap-1">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#E05A3A]/20 text-[#F28B6B]">
             <MessageSquare className="h-3 w-3" />
           </span>
-          <span className="text-[8px] font-medium text-slate-500">Msg</span>
+          <span className="text-[8px] font-medium text-[#F4EDE0]/65">Msg</span>
         </div>
-        <div className="h-[2px] flex-1 bg-gradient-to-r from-amber-300 via-emerald-400 to-blue-500" />
+        <div className="h-[2px] flex-1 bg-gradient-to-r from-[#E05A3A] via-emerald-400 to-[#60A5FA]" />
         <div className="flex flex-col items-center gap-1">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400/20 text-emerald-300">
             <Bot className="h-3 w-3" />
           </span>
-          <span className="text-[8px] font-medium text-slate-500">IA</span>
+          <span className="text-[8px] font-medium text-[#F4EDE0]/65">IA</span>
         </div>
-        <div className="h-[2px] flex-1 bg-gradient-to-r from-emerald-400 to-blue-600" />
+        <div className="h-[2px] flex-1 bg-gradient-to-r from-emerald-400 to-[#60A5FA]" />
         <div className="flex flex-col items-center gap-1">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#60A5FA]/20 text-[#93C5FD]">
             <CheckCircle2 className="h-3 w-3" />
           </span>
-          <span className="text-[8px] font-medium text-slate-500">CRM</span>
+          <span className="text-[8px] font-medium text-[#F4EDE0]/65">CRM</span>
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between rounded-lg border border-slate-100 bg-slate-50 px-2.5 py-1.5 text-[9px]">
-        <span className="flex items-center gap-1 font-medium text-slate-700">
-          <Zap className="h-2.5 w-2.5 text-amber-500" />
-          Disparo IA · 0.4s
+      <div className="mt-3 flex items-center justify-between rounded-lg border border-[#F4EDE0]/10 bg-[#2A3756] px-2.5 py-1.5 text-[9px]">
+        <span className="flex items-center gap-1 font-medium text-[#F4EDE0]/85">
+          <Zap className="h-2.5 w-2.5 text-[#E05A3A]" />
+          Disparo IA · 466ms
         </span>
-        <span className="font-tech font-semibold text-emerald-600">Qualificado</span>
+        <span className="font-tech font-semibold text-emerald-300">Score 94</span>
       </div>
     </div>
   );

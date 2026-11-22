@@ -1,14 +1,35 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --surface: #ffffff;
-  --border-subtle: #e2e8f0;
-  --ink-muted: #64748b;
-  --cobalt: #2563eb;
-  --cobalt-hover: #1d4ed8;
-  --amber: #f59e0b;
+  --background: #f4ede0;
+  --foreground: #1f2a44;
+  --surface: #faf5eb;
+  --surface-soft: #efe6d6;
+  --surface-contrast: #1f2a44;
+  --surface-contrast-ink: #f4ede0;
+  --border-subtle: rgba(31, 42, 68, 0.14);
+  --ink-muted: #515c73;
+  --accent: #d85d2a;
+  --accent-hover: #bf4e20;
+  --grid-line: rgba(31, 42, 68, 0.055);
+  --dot-color: rgba(31, 42, 68, 0.14);
+}
+
+:root[data-theme="dark"] {
+  --background: #182032;
+  --foreground: #f2efe6;
+  --surface: #202b42;
+  --surface-soft: #26334e;
+  --surface-contrast: #f2efe6;
+  --surface-contrast-ink: #182032;
+  --border-subtle: rgba(242, 239, 230, 0.14);
+  --ink-muted: #a9b4c9;
+  --accent: #e05a3a;
+  --accent-hover: #c94b2d;
+  --grid-line: rgba(242, 239, 230, 0.045);
+  --dot-color: rgba(242, 239, 230, 0.14);
 }
 
 @theme inline {
@@ -28,17 +49,17 @@ body {
   font-family: var(--font-mono), ui-monospace, monospace;
 }
 
-/* Subtle architectural grid inspired by Flow 1 */
+/* Subtle architectural grid tuned to active theme */
 .bg-studio-grid {
   background-image:
-    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
 /* Dotted canvas for node workflow previews */
 .bg-canvas-dots {
-  background-image: radial-gradient(rgba(15, 23, 42, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
   background-size: 16px 16px;
 }
 

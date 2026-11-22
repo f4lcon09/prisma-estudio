@@ -20,19 +20,25 @@ const modeStyles: Record<
   { cardTint: string; badgeTint: string; frameTint: string }
 > = {
   sistemas: {
-    cardTint: "hover:border-blue-300 bg-gradient-to-b from-blue-50/50 to-white",
-    badgeTint: "border-blue-200 bg-blue-50 text-blue-700",
-    frameTint: "border-blue-100 bg-blue-50/40",
+    cardTint:
+      "bg-[#FAF5EB] hover:border-[#1F2A44]/40 dark:bg-[#FAF7F0] dark:hover:border-[#E05A3A]/50",
+    badgeTint:
+      "border-[#1F2A44]/15 bg-[#EFE6D6] text-[#1F2A44] dark:border-[#182032]/15 dark:bg-[#E8E2D5] dark:text-[#182032]",
+    frameTint: "border-[#1F2A44]/12 bg-white",
   },
   sites: {
-    cardTint: "hover:border-amber-300 bg-gradient-to-b from-amber-50/55 to-white",
-    badgeTint: "border-amber-200 bg-amber-50 text-amber-800",
-    frameTint: "border-amber-100 bg-amber-50/40",
+    cardTint:
+      "bg-[#FAF5EB] hover:border-[#D85D2A]/55 dark:bg-[#FAF7F0] dark:hover:border-[#E05A3A]/55",
+    badgeTint:
+      "border-[#D85D2A]/25 bg-[#F9E7DF] text-[#A8431B] dark:border-[#E05A3A]/25 dark:bg-[#F9E6DF] dark:text-[#B53D21]",
+    frameTint: "border-[#D85D2A]/15 bg-white",
   },
   automacoes: {
-    cardTint: "hover:border-emerald-300 bg-gradient-to-b from-emerald-50/50 to-white",
-    badgeTint: "border-emerald-200 bg-emerald-50 text-emerald-700",
-    frameTint: "border-emerald-100 bg-emerald-50/40",
+    cardTint:
+      "bg-[#FAF5EB] hover:border-[#1F2A44]/40 dark:bg-[#FAF7F0] dark:hover:border-[#E05A3A]/50",
+    badgeTint:
+      "border-[#1F2A44]/15 bg-[#E6ECE7] text-[#1D4B3B] dark:border-[#182032]/15 dark:bg-[#E4ECE7] dark:text-[#174233]",
+    frameTint: "border-[#1F2A44]/12 bg-white",
   },
 };
 
@@ -53,21 +59,21 @@ export function ProjectsShowcase() {
   return (
     <section
       id="projetos"
-      className="relative border-t border-slate-200/80 bg-gradient-to-b from-white via-[#F4F8FF] to-[#FFFBEB]/50 py-20 sm:py-24"
+      className="relative border-t border-[#1F2A44]/12 bg-[#EFE6D6] py-20 text-[#1F2A44] transition-colors duration-300 sm:py-24 dark:border-[#F2EFE6]/15 dark:bg-[#F2EFE6] dark:text-[#182032]"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="font-tech text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-600">
+            <p className="font-tech text-[11px] font-semibold uppercase tracking-[0.18em] text-[#D85D2A] dark:text-[#E05A3A]">
               Vitrine interativa
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1F2A44] sm:text-4xl dark:text-[#182032]">
               Projetos-Modelo
             </h2>
           </div>
 
           <div
-            className="flex flex-wrap gap-1.5 rounded-full border border-slate-200 bg-slate-50 p-1"
+            className="flex flex-wrap gap-1.5 rounded-full border border-[#1F2A44]/15 bg-[#FAF5EB] p-1 dark:border-[#182032]/15 dark:bg-[#E5DFD2]"
             role="tablist"
             aria-label="Filtrar projetos por categoria"
           >
@@ -82,14 +88,16 @@ export function ProjectsShowcase() {
                   onClick={() => setActiveFilter(f.value)}
                   className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
                     selected
-                      ? "bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white shadow-sm"
-                      : "text-slate-600 hover:text-blue-700"
+                      ? "bg-[#1F2A44] text-[#F4EDE0] shadow-sm dark:bg-[#182032] dark:text-[#F2EFE6]"
+                      : "text-[#515C73] hover:text-[#1F2A44] dark:text-[#3A4459] dark:hover:text-[#182032]"
                   }`}
                 >
                   <span>{f.label}</span>
                   <span
                     className={`font-tech rounded-full px-1.5 py-0.2 text-[10px] ${
-                      selected ? "bg-white/20 text-white" : "bg-slate-200/70 text-slate-500"
+                      selected
+                        ? "bg-[#D85D2A] text-white dark:bg-[#E05A3A]"
+                        : "bg-[#1F2A44]/10 text-[#515C73] dark:bg-[#182032]/10 dark:text-[#3A4459]"
                     }`}
                   >
                     {countFor(f.value)}
@@ -108,18 +116,18 @@ export function ProjectsShowcase() {
             return (
               <Reveal key={project.id} delayMs={(idx % 3) * 80}>
                 <article
-                  className={`group flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-slate-200/90 p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_-15px_rgba(37,99,235,0.14)] ${styles.cardTint}`}
+                  className={`group flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-[#1F2A44]/12 p-4 shadow-[0_14px_35px_-18px_rgba(31,42,68,0.16)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_45px_-16px_rgba(31,42,68,0.22)] ${styles.cardTint}`}
                 >
                   <div>
                     {/* Scaled Real Software Thumbnail */}
-                    <div className={`relative h-52 overflow-hidden rounded-2xl border bg-white ${styles.frameTint}`}>
+                    <div className={`relative h-52 overflow-hidden rounded-2xl border ${styles.frameTint}`}>
                       <div className="pointer-events-none w-[181%] origin-top-left scale-[0.55]">
                         <ProjectProgramVariant variant={project.variant} interactive={false} />
                       </div>
                       <button
                         type="button"
                         onClick={() => setInspectProject(project)}
-                        className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#4F46E5] px-3.5 py-1.5 text-[11px] font-semibold text-white shadow-md transition-all hover:scale-105"
+                        className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-[#D85D2A] px-3.5 py-1.5 text-[11px] font-semibold text-white shadow-md transition-all hover:scale-105 hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]"
                       >
                         <Maximize2 className="h-3 w-3" aria-hidden="true" />
                         <span>Testar programa</span>
@@ -132,26 +140,26 @@ export function ProjectsShowcase() {
                         <span className={`font-tech rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${styles.badgeTint}`}>
                           {project.badge}
                         </span>
-                        <span className="font-tech text-[11px] text-slate-400">
+                        <span className="font-tech text-[11px] text-[#515C73]">
                           {project.stack[0]}
                         </span>
                       </div>
 
-                      <h3 className="mt-3 text-lg font-bold tracking-tight text-slate-950">
+                      <h3 className="mt-3 text-lg font-bold tracking-tight text-[#1F2A44] dark:text-[#182032]">
                         {project.title}
                       </h3>
-                      <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                      <p className="mt-1 text-sm leading-relaxed text-[#515C73] dark:text-[#3A4459]">
                         {project.subtitle}
                       </p>
                     </div>
                   </div>
 
-                  <div className="mt-5 flex items-center justify-between border-t border-slate-200/70 px-1 pt-4">
+                  <div className="mt-5 flex items-center justify-between border-t border-[#1F2A44]/10 px-1 pt-4">
                     <div className="flex flex-wrap gap-1.5">
                       {project.stack.map((tech) => (
                         <span
                           key={tech}
-                          className="font-tech rounded bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600"
+                          className="font-tech rounded bg-[#EFE6D6] px-2 py-0.5 text-[10px] font-medium text-[#1F2A44] dark:bg-[#E8E2D5] dark:text-[#182032]"
                         >
                           {tech}
                         </span>
@@ -162,7 +170,7 @@ export function ProjectsShowcase() {
                       href={waUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700"
+                      className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-[#D85D2A] hover:text-[#BF4E20] dark:text-[#E05A3A] dark:hover:text-[#C94B2D]"
                     >
                       <span>Cotar</span>
                       <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -178,29 +186,31 @@ export function ProjectsShowcase() {
       {/* Live Interactive Software Modal */}
       {inspectProject && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#182032]/70 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           aria-label={`Prévia interativa: ${inspectProject.title}`}
         >
-          <div className="relative w-full max-w-5xl rounded-3xl border border-slate-200 bg-slate-50 p-4 shadow-2xl sm:p-6">
+          <div className="relative w-full max-w-5xl rounded-3xl border border-[#1F2A44]/20 bg-[#FAF5EB] p-4 shadow-2xl sm:p-6 dark:border-[#F2EFE6]/15 dark:bg-[#182032]">
             <div className="mb-4 flex items-center justify-between gap-4">
               <div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-tech text-[11px] font-semibold uppercase tracking-wider text-blue-600">
+                  <span className="font-tech text-[11px] font-semibold uppercase tracking-wider text-[#D85D2A] dark:text-[#E05A3A]">
                     {inspectProject.badge}
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-700">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300">
                     <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
                     Simulador interativo — clique e teste os controles abaixo
                   </span>
                 </div>
-                <h3 className="mt-1 text-lg font-bold text-slate-950">{inspectProject.title}</h3>
+                <h3 className="mt-1 text-lg font-bold text-[#1F2A44] dark:text-[#F2EFE6]">
+                  {inspectProject.title}
+                </h3>
               </div>
               <button
                 type="button"
                 onClick={() => setInspectProject(null)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-900 hover:text-white"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#1F2A44]/15 bg-[#EFE6D6] text-[#1F2A44] hover:bg-[#1F2A44] hover:text-[#F4EDE0] dark:border-[#F2EFE6]/15 dark:bg-[#202B42] dark:text-[#F2EFE6] dark:hover:bg-[#E05A3A] dark:hover:text-white"
                 aria-label="Fechar prévia"
               >
                 <X className="h-4 w-4" />
@@ -213,8 +223,10 @@ export function ProjectsShowcase() {
               <div className="flex flex-wrap gap-4">
                 {inspectProject.metrics.map((m) => (
                   <div key={m.label} className="text-xs">
-                    <span className="text-slate-500">{m.label}: </span>
-                    <strong className="font-tech text-slate-900">{m.value}</strong>
+                    <span className="text-[#515C73] dark:text-[#A9B4C9]">{m.label}: </span>
+                    <strong className="font-tech text-[#1F2A44] dark:text-[#F2EFE6]">
+                      {m.value}
+                    </strong>
                   </div>
                 ))}
               </div>
@@ -222,7 +234,7 @@ export function ProjectsShowcase() {
                 href={buildWhatsAppUrl(inspectProject.whatsappPrompt)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-[#2563EB] px-4 py-2 text-xs font-semibold text-white hover:bg-[#1D4ED8]"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#D85D2A] px-4 py-2 text-xs font-semibold text-white hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]"
               >
                 <span>Quero um projeto assim</span>
                 <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />

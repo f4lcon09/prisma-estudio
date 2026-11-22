@@ -5,27 +5,19 @@ import { Reveal } from "@/components/Reveal";
 const serviceVisuals = {
   sites: {
     icon: Globe,
-    cardBg: "border-blue-100 bg-gradient-to-b from-blue-50/70 to-white hover:border-blue-300",
-    iconBg: "bg-blue-600 text-white shadow-sm shadow-blue-500/30",
-    linkColor: "text-blue-700 hover:text-blue-800",
+    iconBg: "bg-[#D85D2A] text-white dark:bg-[#E05A3A]",
   },
   sistemas: {
     icon: Code2,
-    cardBg: "border-indigo-100 bg-gradient-to-b from-indigo-50/70 to-white hover:border-indigo-300",
-    iconBg: "bg-indigo-600 text-white shadow-sm shadow-indigo-500/30",
-    linkColor: "text-indigo-700 hover:text-indigo-800",
+    iconBg: "bg-[#1F2A44] text-[#F4EDE0] dark:bg-[#2A52BE] dark:text-white",
   },
   automacoes: {
     icon: Cpu,
-    cardBg: "border-emerald-100 bg-gradient-to-b from-emerald-50/70 to-white hover:border-emerald-300",
-    iconBg: "bg-emerald-600 text-white shadow-sm shadow-emerald-500/30",
-    linkColor: "text-emerald-700 hover:text-emerald-800",
+    iconBg: "bg-[#167953] text-white dark:bg-[#10B981] dark:text-[#092118]",
   },
   correcoes: {
     icon: Wrench,
-    cardBg: "border-amber-200/80 bg-gradient-to-b from-amber-50/75 to-white hover:border-amber-300",
-    iconBg: "bg-amber-500 text-white shadow-sm shadow-amber-500/30",
-    linkColor: "text-amber-700 hover:text-amber-800",
+    iconBg: "bg-[#B86A22] text-white dark:bg-[#D97706] dark:text-white",
   },
 } as const;
 
@@ -33,14 +25,14 @@ export function ServicesStrip() {
   return (
     <section
       id="servicos"
-      className="border-t border-slate-200/80 bg-gradient-to-b from-[#FFFDF7] to-[#F4F8FF] py-20 sm:py-24"
+      className="border-t border-[#1F2A44]/15 bg-[#1F2A44] py-20 text-[#F4EDE0] transition-colors duration-300 sm:py-24 dark:border-[#F2EFE6]/12 dark:bg-[#182032] dark:text-[#F2EFE6]"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
-          <p className="font-tech text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-600">
+          <p className="font-tech text-[11px] font-semibold uppercase tracking-[0.18em] text-[#F08B63] dark:text-[#E05A3A]">
             Frentes de entrega
           </p>
-          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#F4EDE0] sm:text-4xl dark:text-[#F2EFE6]">
             Do site rápido ao sistema completo
           </h2>
         </div>
@@ -52,51 +44,49 @@ export function ServicesStrip() {
             const Icon = visual.icon;
             return (
               <Reveal key={service.id} delayMs={idx * 75}>
-                <article
-                  className={`flex h-full flex-col justify-between rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-15px_rgba(37,99,235,0.14)] ${visual.cardBg}`}
-                >
-                <div>
-                  <div className="flex items-center justify-between gap-2">
-                    <span
-                      className={`flex h-10 w-10 items-center justify-center rounded-2xl ${visual.iconBg}`}
-                    >
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                    <span className="font-tech inline-flex items-center gap-1 rounded-full border border-slate-200/70 bg-white/90 px-2.5 py-1 text-[10px] font-semibold text-slate-700">
-                      <Clock className="h-3 w-3 text-amber-500" aria-hidden="true" />
-                      {service.turnaround}
-                    </span>
-                  </div>
-
-                  <h3 className="mt-5 text-base font-bold tracking-tight text-slate-950">
-                    {service.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
-                    {service.tagline}
-                  </p>
-
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {service.highlights.map((item) => (
+                <article className="flex h-full flex-col justify-between rounded-3xl border border-[#F4EDE0]/15 bg-[#FAF5EB] p-6 text-[#1F2A44] shadow-[0_20px_45px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:border-[#D85D2A] dark:border-[#F2EFE6]/12 dark:bg-[#202B42] dark:text-[#F2EFE6] dark:hover:border-[#E05A3A]/70">
+                  <div>
+                    <div className="flex items-center justify-between gap-2">
                       <span
-                        key={item}
-                        className="rounded-lg border border-slate-200/70 bg-white/90 px-2 py-1 text-[11px] font-medium text-slate-700"
+                        className={`flex h-10 w-10 items-center justify-center rounded-2xl shadow-sm ${visual.iconBg}`}
                       >
-                        {item}
+                        <Icon className="h-5 w-5" aria-hidden="true" />
                       </span>
-                    ))}
-                  </div>
-                </div>
+                      <span className="font-tech inline-flex items-center gap-1 rounded-full border border-[#1F2A44]/15 bg-[#EFE6D6] px-2.5 py-1 text-[10px] font-semibold text-[#1F2A44] dark:border-[#F2EFE6]/15 dark:bg-[#182032] dark:text-[#F2EFE6]">
+                        <Clock className="h-3 w-3 text-[#D85D2A] dark:text-[#E05A3A]" aria-hidden="true" />
+                        {service.turnaround}
+                      </span>
+                    </div>
 
-                <a
-                  href={buildWhatsAppUrl(service.whatsappPrompt)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`mt-6 inline-flex items-center gap-1 text-xs font-semibold transition-colors ${visual.linkColor}`}
-                >
-                  <span>Pedir {service.shortTitle.toLowerCase()}</span>
-                  <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-                </a>
-              </article>
+                    <h3 className="mt-5 text-base font-bold tracking-tight text-[#1F2A44] dark:text-[#F2EFE6]">
+                      {service.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-[#515C73] dark:text-[#A9B4C9]">
+                      {service.tagline}
+                    </p>
+
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                      {service.highlights.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-lg border border-[#1F2A44]/12 bg-[#EFE6D6]/75 px-2 py-1 text-[11px] font-medium text-[#1F2A44] dark:border-[#F2EFE6]/12 dark:bg-[#182032]/80 dark:text-[#F2EFE6]/90"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <a
+                    href={buildWhatsAppUrl(service.whatsappPrompt)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex items-center gap-1 text-xs font-semibold text-[#D85D2A] transition-colors hover:text-[#BF4E20] dark:text-[#E05A3A] dark:hover:text-[#F28B6B]"
+                  >
+                    <span>Pedir {service.shortTitle.toLowerCase()}</span>
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </a>
+                </article>
               </Reveal>
             );
           })}
