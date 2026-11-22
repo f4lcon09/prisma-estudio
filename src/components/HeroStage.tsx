@@ -10,7 +10,7 @@ import {
   SiteProgramScreen,
   TelemetryCardMockup,
 } from "@/components/RealMockups";
-import styles from "@/components/HeroStage.module.css";
+import "@/components/HeroStage.css";
 
 const modeOrder: HeroModeId[] = ["sites", "sistemas", "automacoes"];
 
@@ -102,15 +102,15 @@ export function HeroStage() {
       ref={sectionRef}
       onMouseMove={handlePointerMove}
       onMouseLeave={handlePointerLeave}
-      className={`${styles.heroSection} overflow-hidden bg-[#F4EDE0] pb-14 pt-6 transition-colors duration-300 sm:pb-20 sm:pt-8 dark:bg-[#182032]`}
+      className="ps-hero-section overflow-hidden bg-[#F4EDE0] pb-14 pt-6 transition-colors duration-300 sm:pb-20 sm:pt-8 dark:bg-[#182032]"
     >
       {/* Architectural Grid + Tactile Studio Grain */}
       <div
         className="bg-studio-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_85%_80%_at_50%_35%,black_45%,transparent_100%)]"
         aria-hidden="true"
       />
-      <div className={`${styles.studioGrain} pointer-events-none absolute inset-0`} aria-hidden="true" />
-      <div className={`${styles.dynamicLight} pointer-events-none absolute inset-0`} aria-hidden="true" />
+      <div className="ps-hero-grain pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div className="ps-hero-light pointer-events-none absolute inset-0" aria-hidden="true" />
 
       {/* Light Mode Structural Navy Band Anchoring the Lower Stage (per Cream/Navy/Terracotta mockup) */}
       <div
@@ -224,7 +224,7 @@ export function HeroStage() {
         <div className="mt-4 flex flex-col items-center gap-1.5">
           <a
             href="#orcamento"
-            className={`${styles.studioCta} inline-flex items-center gap-2 rounded-full bg-[#D85D2A] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]`}
+            className="ps-hero-cta inline-flex items-center gap-2 rounded-full bg-[#D85D2A] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]"
           >
             <span>{siteConfig.hero.primaryCta}</span>
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -253,10 +253,10 @@ export function HeroStage() {
           onMouseLeave={() => setIsPaused(false)}
           onFocusCapture={() => setIsPaused(true)}
           onBlurCapture={() => setIsPaused(false)}
-          className={`${styles.stageFrame} mx-auto mt-8 max-w-7xl`}
+          className="ps-hero-stage-frame mx-auto mt-8 max-w-7xl"
         >
-          <span className={`${styles.cornerTickTL} hidden lg:block`} aria-hidden="true" />
-          <span className={`${styles.cornerTickTR} hidden lg:block`} aria-hidden="true" />
+          <span className="ps-hero-tick-tl hidden lg:block" aria-hidden="true" />
+          <span className="ps-hero-tick-tr hidden lg:block" aria-hidden="true" />
 
           <div className="relative flex flex-col items-center justify-center gap-6 lg:grid lg:grid-cols-12 lg:items-center lg:gap-6">
             {/* Left Tilted 3D Phone */}
@@ -287,7 +287,7 @@ export function HeroStage() {
 
             {/* Center Real Browser Window */}
             <div
-              className={`${styles.stageCenterTilt} z-10 order-1 grid w-full min-w-0 max-w-[700px] lg:col-span-6 lg:order-none lg:max-w-none`}
+              className="ps-hero-center-tilt z-10 order-1 grid w-full min-w-0 max-w-[700px] lg:col-span-6 lg:order-none lg:max-w-none"
             >
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;

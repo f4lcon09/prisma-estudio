@@ -1,5 +1,5 @@
 /* Isolated dynamic studio styling for HeroStage */
-.heroSection {
+.ps-hero-section {
   --mx: 50%;
   --my: 42%;
   --tilt-x: 0deg;
@@ -7,15 +7,13 @@
   position: relative;
 }
 
-/* Subtle tactile paper / matte-ink grain (no blurry AI orbs) */
-.studioGrain {
+.ps-hero-grain {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
   mix-blend-mode: var(--studio-grain-blend);
   opacity: var(--studio-grain-opacity);
 }
 
-/* Pointer-driven architectural studio lighting (subtle, zero neon glow) */
-.dynamicLight {
+.ps-hero-light {
   background: radial-gradient(
     540px circle at var(--mx) var(--my),
     var(--light-primary),
@@ -25,13 +23,12 @@
   transition: opacity 250ms ease;
 }
 
-/* Architectural registration corner ticks framing the hero stage */
-.stageFrame {
+.ps-hero-stage-frame {
   position: relative;
 }
 
-.cornerTickTL,
-.cornerTickTR {
+.ps-hero-tick-tl,
+.ps-hero-tick-tr {
   position: absolute;
   top: -10px;
   width: 14px;
@@ -40,43 +37,41 @@
   border-color: var(--tick-color);
 }
 
-.cornerTickTL {
+.ps-hero-tick-tl {
   left: -4px;
   border-top: 1.5px solid;
   border-left: 1.5px solid;
 }
 
-.cornerTickTR {
+.ps-hero-tick-tr {
   right: -4px;
   border-top: 1.5px solid;
   border-right: 1.5px solid;
 }
 
-/* Dynamic micro-tilt on the center browser showcase */
-.stageCenterTilt {
+.ps-hero-center-tilt {
   transform: perspective(1400px) rotateX(var(--tilt-y)) rotateY(var(--tilt-x));
   transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
-/* Tactile studio CTA button with crisp physical offset instead of blurred glow */
-.studioCta {
+.ps-hero-cta {
   box-shadow: 0 3px 0 0 var(--cta-shadow-color), 0 10px 22px -10px var(--cta-drop-shadow);
   transition: transform 160ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 160ms ease, background-color 160ms ease;
 }
 
-.studioCta:hover {
+.ps-hero-cta:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 0 0 var(--cta-shadow-color), 0 14px 26px -10px var(--cta-drop-shadow);
 }
 
-.studioCta:active {
+.ps-hero-cta:active {
   transform: translateY(2px);
   box-shadow: 0 1px 0 0 var(--cta-shadow-color);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .stageCenterTilt {
+  .ps-hero-center-tilt {
     transform: none !important;
     transition: none !important;
   }

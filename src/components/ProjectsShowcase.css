@@ -1,5 +1,5 @@
 /* Isolated dynamic specimen styling for ProjectsShowcase */
-.specimenCard {
+.ps-specimen-card {
   --card-mx: 50%;
   --card-my: 50%;
   position: relative;
@@ -10,7 +10,7 @@
     box-shadow 240ms ease;
 }
 
-.specimenCard::before {
+.ps-specimen-card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -25,45 +25,45 @@
   transition: opacity 220ms ease;
 }
 
-.specimenCard:hover {
+.ps-specimen-card:hover {
   transform: translateY(-3px);
 }
 
-.specimenCard:hover::before {
+.ps-specimen-card:hover::before {
   opacity: 1;
 }
 
-.specimenNumber {
+.ps-specimen-number {
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.14em;
 }
 
-.specimenViewport {
+.ps-specimen-viewport {
   border-radius: 12px;
   box-shadow: inset 0 0 0 1px rgba(31, 42, 68, 0.08);
 }
 
-.specimenButton {
+.ps-specimen-btn {
   box-shadow: 0 2px 0 0 var(--cta-shadow-color), 0 8px 16px -6px rgba(31, 42, 68, 0.32);
   transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
 }
 
-.specimenButton:hover {
+.ps-specimen-btn:hover {
   transform: translateY(-1px);
 }
 
-.specimenButton:active {
+.ps-specimen-btn:active {
   transform: translateY(1px);
   box-shadow: 0 1px 0 0 var(--cta-shadow-color);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .specimenCard,
-  .specimenCard::before,
-  .specimenButton {
+  .ps-specimen-card,
+  .ps-specimen-card::before,
+  .ps-specimen-btn {
     transition: none !important;
   }
-  .specimenCard:hover {
+  .ps-specimen-card:hover {
     transform: none;
   }
 }

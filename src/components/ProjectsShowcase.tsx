@@ -5,7 +5,7 @@ import { ArrowUpRight, Maximize2, X } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig, type HeroModeId, type ModelProject } from "@/config/site";
 import { ProjectProgramVariant } from "@/components/ProjectProgramVariants";
 import { Reveal } from "@/components/Reveal";
-import showcaseStyles from "@/components/ProjectsShowcase.module.css";
+import "@/components/ProjectsShowcase.css";
 
 type FilterOption = "Todos" | ModelProject["category"];
 
@@ -122,18 +122,18 @@ export function ProjectsShowcase() {
                     e.currentTarget.style.setProperty("--card-mx", `${e.clientX - rect.left}px`);
                     e.currentTarget.style.setProperty("--card-my", `${e.clientY - rect.top}px`);
                   }}
-                  className={`${showcaseStyles.specimenCard} group flex h-full flex-col justify-between overflow-hidden border border-[#1F2A44]/15 p-4 shadow-[0_12px_30px_-18px_rgba(31,42,68,0.16)] hover:shadow-[0_20px_40px_-16px_rgba(31,42,68,0.22)] ${styles.cardTint}`}
+                  className={`ps-specimen-card group flex h-full flex-col justify-between overflow-hidden border border-[#1F2A44]/15 p-4 shadow-[0_12px_30px_-18px_rgba(31,42,68,0.16)] hover:shadow-[0_20px_40px_-16px_rgba(31,42,68,0.22)] ${styles.cardTint}`}
                 >
                   <div>
                     {/* Scaled Real Software Thumbnail */}
-                    <div className={`${showcaseStyles.specimenViewport} relative h-52 overflow-hidden border ${styles.frameTint}`}>
+                    <div className={`ps-specimen-viewport relative h-52 overflow-hidden border ${styles.frameTint}`}>
                       <div className="pointer-events-none w-[181%] origin-top-left scale-[0.55]">
                         <ProjectProgramVariant variant={project.variant} interactive={false} />
                       </div>
                       <button
                         type="button"
                         onClick={() => setInspectProject(project)}
-                        className={`${showcaseStyles.specimenButton} absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-[#D85D2A] px-3.5 py-1.5 text-[11px] font-semibold text-white hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]`}
+                        className="ps-specimen-btn absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-[#D85D2A] px-3.5 py-1.5 text-[11px] font-semibold text-white hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]"
                       >
                         <Maximize2 className="h-3 w-3" aria-hidden="true" />
                         <span>Testar programa</span>
@@ -146,7 +146,7 @@ export function ProjectsShowcase() {
                         <span className={`font-tech rounded-md border px-2.5 py-0.5 text-[11px] font-semibold ${styles.badgeTint}`}>
                           {project.badge}
                         </span>
-                        <span className={`${showcaseStyles.specimenNumber} font-tech text-[10px] font-semibold text-[#515C73]`}>
+                        <span className="ps-specimen-number font-tech text-[10px] font-semibold text-[#515C73]">
                           {String(idx + 1).padStart(2, "0")} · {project.stack[0]}
                         </span>
                       </div>

@@ -1,5 +1,5 @@
 /* Isolated architectural styling for ServicesStrip */
-.serviceCard {
+.ps-service-card {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
@@ -10,7 +10,7 @@
 }
 
 /* Precision top hairline that draws across on hover */
-.serviceCard::after {
+.ps-service-card::after {
   content: "";
   position: absolute;
   top: 0;
@@ -23,25 +23,25 @@
   transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.serviceCard:hover {
+.ps-service-card:hover {
   transform: translateY(-3px);
 }
 
-.serviceCard:hover::after {
+.ps-service-card:hover::after {
   transform: scaleX(1);
 }
 
-.indexWatermark {
+.ps-service-index {
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.16em;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .serviceCard,
-  .serviceCard::after {
+  .ps-service-card,
+  .ps-service-card::after {
     transition: none !important;
   }
-  .serviceCard:hover {
+  .ps-service-card:hover {
     transform: none;
   }
 }

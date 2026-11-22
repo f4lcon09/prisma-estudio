@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ArrowRight, Check, Code2, Copy, Cpu, Globe, Wrench } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig } from "@/config/site";
 import { Reveal } from "@/components/Reveal";
-import styles from "@/components/ProjectBuilder.module.css";
+import "@/components/ProjectBuilder.css";
 
 const projectTypes = [
   { id: "Site", label: "Site", icon: Globe },
@@ -49,7 +49,7 @@ export function ProjectBuilder() {
     >
       {/* Subtle architectural drafting pattern (replaces fuzzy AI gradient blobs) */}
       <div
-        className={`${styles.draftingBackdrop} pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_85%_80%_at_50%_50%,black_30%,transparent_100%)]`}
+        className="ps-drafting-backdrop pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_85%_80%_at_50%_50%,black_30%,transparent_100%)]"
         aria-hidden="true"
       />
 
@@ -80,7 +80,7 @@ export function ProjectBuilder() {
 
             <div className="min-w-0 lg:col-span-7">
               <div
-                className={`${styles.ticketCard} w-full min-w-0 border border-[#1F2A44]/18 bg-[#FAF5EB] p-5 sm:p-8 dark:border-[#F2EFE6]/18 dark:bg-[#202B42]`}
+                className="ps-ticket-card w-full min-w-0 border border-[#1F2A44]/18 bg-[#FAF5EB] p-5 sm:p-8 dark:border-[#F2EFE6]/18 dark:bg-[#202B42]"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <h2 className="text-2xl font-extrabold tracking-tight text-[#1F2A44] dark:text-[#F2EFE6]">
@@ -152,7 +152,7 @@ export function ProjectBuilder() {
                     href={waUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${styles.tactileAction} inline-flex items-center justify-center gap-2 rounded-full bg-[#D85D2A] px-6 py-3 text-sm font-semibold text-white hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]`}
+                    className="ps-tactile-action inline-flex items-center justify-center gap-2 rounded-full bg-[#D85D2A] px-6 py-3 text-sm font-semibold text-white hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]"
                   >
                     <span>Abrir no WhatsApp</span>
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
