@@ -21,6 +21,7 @@ import { BrowserShell } from "@/components/mockups/BrowserShell";
 const fashionItems = {
   blazer: {
     name: "Blazer Linho Cru",
+    shortLabel: "Blazer",
     collection: "DROP 04 · LINHO ITALIANO",
     price: 389,
     installment: "3x R$ 129,66",
@@ -31,6 +32,7 @@ const fashionItems = {
   },
   trench: {
     name: "Trench Terracota",
+    shortLabel: "Trench",
     collection: "EDIÇÃO LIMITADA · SÃO PAULO",
     price: 540,
     installment: "3x R$ 180,00",
@@ -41,6 +43,7 @@ const fashionItems = {
   },
   conjunto: {
     name: "Conjunto Alfaiataria Noite",
+    shortLabel: "Noite",
     collection: "ESSENCIAIS · LÃ FRIA",
     price: 490,
     installment: "3x R$ 163,33",
@@ -73,21 +76,20 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
     <BrowserShell url="atelierverso.com.br/drop-04">
       <div className="bg-[#FAF6EE] text-left text-[#1F2A44]">
         {/* Top Luxury Campaign Strip */}
-        <div className="font-tech flex items-center justify-between bg-[#1F2A44] px-4 py-1 text-[8.5px] tracking-[0.16em] text-[#F4EDE0]/90">
-          <span>COLEÇÃO OUTONO · DROP 04</span>
-          <span className="hidden sm:inline">FRETE GRÁTIS ACIMA DE R$ 299 · 5% OFF NO PIX</span>
-          <span>ENVIO 24H</span>
+        <div className="font-tech flex items-center justify-between gap-3 bg-[#1F2A44] px-4 py-1 text-[8.5px] tracking-[0.15em] text-[#F4EDE0]/90">
+          <span className="whitespace-nowrap">COLEÇÃO OUTONO · DROP 04</span>
+          <span className="hidden whitespace-nowrap lg:inline">5% NO PIX</span>
+          <span className="whitespace-nowrap">ENVIO 24H</span>
         </div>
 
         {/* Editorial Store Header */}
-        <div className="flex items-center justify-between border-b border-[#1F2A44]/10 px-4 py-2.5">
-          <div className="hidden items-center gap-3.5 text-[9.5px] font-medium uppercase tracking-[0.12em] text-[#515C73] sm:flex">
+        <div className="flex items-center justify-between gap-2 border-b border-[#1F2A44]/10 px-4 py-2.5">
+          <div className="hidden items-center gap-3 text-[9px] font-medium uppercase tracking-[0.12em] text-[#515C73] sm:flex">
             <span>Novidades</span>
-            <span>Alfaiataria</span>
             <span>Lookbook</span>
           </div>
 
-          <span className="font-editorial text-[17px] font-semibold uppercase tracking-[0.22em] text-[#1F2A44]">
+          <span className="font-editorial text-[16px] font-semibold uppercase tracking-[0.2em] text-[#1F2A44]">
             Atelier Verso
           </span>
 
@@ -154,7 +156,7 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
                         />
                       </div>
                       <span className="truncate text-[9px] font-semibold text-[#1F2A44]">
-                        {entry.name.split(" ")[0]}
+                        {entry.shortLabel}
                       </span>
                     </button>
                   );
