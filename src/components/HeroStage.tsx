@@ -238,18 +238,24 @@ export function HeroStage() {
           </div>
 
           <div className="relative flex flex-col items-center justify-center gap-6 lg:block lg:min-h-[395px]">
-            {/* Left Tilted 3D Phone — stacked smoothly */}
+            {/* Left Tilted 3D Phone — swings up from bottom-left on a staggered beat */}
             <div className="z-20 order-2 grid transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:absolute lg:bottom-2 lg:left-0 lg:order-none lg:-rotate-6">
-              {modeOrder.map((modeId) => {
-                const active = activeMode === modeId;
+              {modeOrder.map((modeId, idx) => {
+                const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
+                const active = rel === 0;
+                const hiddenTransform =
+                  rel === 2
+                    ? "pointer-events-none -translate-x-8 translate-y-4 -rotate-12 scale-90 opacity-0"
+                    : "pointer-events-none translate-x-6 translate-y-5 rotate-6 scale-90 opacity-0";
+
                 return (
                   <div
                     key={modeId}
                     aria-hidden={!active}
-                    className={`col-start-1 row-start-1 transition-all duration-500 ease-out ${
+                    className={`col-start-1 row-start-1 origin-bottom-right transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] delay-75 ${
                       active
-                        ? "translate-y-0 rotate-0 scale-100 opacity-100"
-                        : "pointer-events-none translate-y-3 -rotate-3 scale-95 opacity-0"
+                        ? "translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100"
+                        : hiddenTransform
                     }`}
                   >
                     <MobileProgramMockup mode={modeId} />
@@ -258,18 +264,28 @@ export function HeroStage() {
               })}
             </div>
 
-            {/* Center Real Browser Program Window — stacked smoothly */}
-            <div className="z-10 order-1 grid w-full max-w-[615px] lg:mx-auto">
-              {modeOrder.map((modeId) => {
-                const active = activeMode === modeId;
+            {/* Center Real Browser Window — true 3D directional horizontal carousel */}
+            <div
+              className="z-10 order-1 grid w-full max-w-[615px] lg:mx-auto"
+              style={{ perspective: "1400px" }}
+            >
+              {modeOrder.map((modeId, idx) => {
+                const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
+                const active = rel === 0;
+                const hiddenStyle =
+                  rel === 2
+                    ? "translateX(-48px) rotateY(-10deg) scale(0.94)"
+                    : "translateX(48px) rotateY(10deg) scale(0.94)";
+
                 return (
                   <div
                     key={modeId}
                     aria-hidden={!active}
-                    className={`col-start-1 row-start-1 transition-all duration-500 ease-out ${
-                      active
-                        ? "translate-y-0 scale-100 opacity-100"
-                        : "pointer-events-none translate-y-3 scale-[0.97] opacity-0"
+                    style={{
+                      transform: active ? "translateX(0px) rotateY(0deg) scale(1)" : hiddenStyle,
+                    }}
+                    className={`col-start-1 row-start-1 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      active ? "opacity-100" : "pointer-events-none opacity-0"
                     }`}
                   >
                     {modeId === "sistemas" && <SaasProgramScreen interactive={active} />}
@@ -280,18 +296,24 @@ export function HeroStage() {
               })}
             </div>
 
-            {/* Right Floating 3D Card — stacked smoothly */}
+            {/* Right Floating 3D Card — glides diagonally on the 3rd staggered beat */}
             <div className="animate-float-slow z-20 order-3 grid transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:absolute lg:bottom-5 lg:right-0 lg:order-none lg:rotate-3">
-              {modeOrder.map((modeId) => {
-                const active = activeMode === modeId;
+              {modeOrder.map((modeId, idx) => {
+                const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
+                const active = rel === 0;
+                const hiddenTransform =
+                  rel === 2
+                    ? "pointer-events-none -translate-x-6 translate-y-4 -rotate-6 scale-90 opacity-0"
+                    : "pointer-events-none translate-x-8 -translate-y-4 rotate-12 scale-90 opacity-0";
+
                 return (
                   <div
                     key={modeId}
                     aria-hidden={!active}
-                    className={`col-start-1 row-start-1 transition-all duration-500 ease-out ${
+                    className={`col-start-1 row-start-1 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] delay-150 ${
                       active
-                        ? "translate-y-0 rotate-0 scale-100 opacity-100"
-                        : "pointer-events-none translate-y-3 rotate-3 scale-95 opacity-0"
+                        ? "translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100"
+                        : hiddenTransform
                     }`}
                   >
                     <TelemetryCardMockup mode={modeId} />
