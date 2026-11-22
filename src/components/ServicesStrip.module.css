@@ -1,0 +1,47 @@
+/* Isolated architectural styling for ServicesStrip */
+.serviceCard {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  transition:
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    box-shadow 240ms ease;
+}
+
+/* Precision top hairline that draws across on hover */
+.serviceCard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.serviceCard:hover {
+  transform: translateY(-3px);
+}
+
+.serviceCard:hover::after {
+  transform: scaleX(1);
+}
+
+.indexWatermark {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.16em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .serviceCard,
+  .serviceCard::after {
+    transition: none !important;
+  }
+  .serviceCard:hover {
+    transform: none;
+  }
+}

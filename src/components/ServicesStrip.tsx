@@ -1,6 +1,7 @@
 import { ArrowUpRight, Clock, Code2, Cpu, Globe, Wrench } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig } from "@/config/site";
 import { Reveal } from "@/components/Reveal";
+import styles from "@/components/ServicesStrip.module.css";
 
 const serviceVisuals = {
   sites: {
@@ -44,23 +45,30 @@ export function ServicesStrip() {
             const Icon = visual.icon;
             return (
               <Reveal key={service.id} delayMs={idx * 75}>
-                <article className="flex h-full flex-col justify-between rounded-3xl border border-[#F4EDE0]/15 bg-[#FAF5EB] p-6 text-[#1F2A44] shadow-[0_20px_45px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:border-[#D85D2A] dark:border-[#F2EFE6]/12 dark:bg-[#202B42] dark:text-[#F2EFE6] dark:hover:border-[#E05A3A]/70">
+                <article
+                  className={`${styles.serviceCard} flex h-full flex-col justify-between border border-[#F4EDE0]/15 bg-[#FAF5EB] p-6 text-[#1F2A44] shadow-[0_20px_45px_-20px_rgba(0,0,0,0.35)] hover:border-[#D85D2A] dark:border-[#F2EFE6]/12 dark:bg-[#202B42] dark:text-[#F2EFE6] dark:hover:border-[#E05A3A]/70`}
+                >
                   <div>
                     <div className="flex items-center justify-between gap-2">
                       <span
-                        className={`flex h-10 w-10 items-center justify-center rounded-2xl shadow-sm ${visual.iconBg}`}
+                        className={`flex h-10 w-10 items-center justify-center rounded-xl shadow-sm ${visual.iconBg}`}
                       >
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </span>
-                      <span className="font-tech inline-flex items-center gap-1 rounded-full border border-[#1F2A44]/15 bg-[#EFE6D6] px-2.5 py-1 text-[10px] font-semibold text-[#1F2A44] dark:border-[#F2EFE6]/15 dark:bg-[#182032] dark:text-[#F2EFE6]">
+                      <span className={`${styles.indexWatermark} font-tech inline-flex items-center gap-1 rounded-md border border-[#1F2A44]/15 bg-[#EFE6D6] px-2.5 py-1 text-[10px] font-semibold text-[#1F2A44] dark:border-[#F2EFE6]/15 dark:bg-[#182032] dark:text-[#F2EFE6]`}>
                         <Clock className="h-3 w-3 text-[#D85D2A] dark:text-[#E05A3A]" aria-hidden="true" />
                         {service.turnaround}
                       </span>
                     </div>
 
-                    <h3 className="mt-5 text-base font-bold tracking-tight text-[#1F2A44] dark:text-[#F2EFE6]">
-                      {service.title}
-                    </h3>
+                    <div className="mt-5 flex items-baseline justify-between gap-2">
+                      <h3 className="text-base font-bold tracking-tight text-[#1F2A44] dark:text-[#F2EFE6]">
+                        {service.title}
+                      </h3>
+                      <span className={`${styles.indexWatermark} font-tech text-[10px] font-semibold text-[#515C73]/60 dark:text-[#A9B4C9]/50`}>
+                        0{idx + 1}
+                      </span>
+                    </div>
                     <p className="mt-1.5 text-sm leading-relaxed text-[#515C73] dark:text-[#A9B4C9]">
                       {service.tagline}
                     </p>

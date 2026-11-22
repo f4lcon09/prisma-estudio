@@ -1,0 +1,30 @@
+/* Isolated drafting-desk styling for ProjectBuilder (#orcamento) */
+.draftingBackdrop {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--drafting-line) 0px,
+    var(--drafting-line) 1px,
+    transparent 1px,
+    transparent 22px
+  );
+}
+
+.ticketCard {
+  border-radius: 20px;
+  box-shadow: var(--ticket-shadow);
+}
+
+.tactileAction {
+  box-shadow: 0 3px 0 0 var(--cta-shadow-color);
+  transition: transform 150ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 150ms ease, background-color 150ms ease;
+}
+
+.tactileAction:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 0 var(--cta-shadow-color);
+}
+
+.tactileAction:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 0 var(--cta-shadow-color);
+}

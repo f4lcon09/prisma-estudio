@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ArrowRight, Check, Code2, Copy, Cpu, Globe, Wrench } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig } from "@/config/site";
 import { Reveal } from "@/components/Reveal";
+import styles from "@/components/ProjectBuilder.module.css";
 
 const projectTypes = [
   { id: "Site", label: "Site", icon: Globe },
@@ -46,14 +47,11 @@ export function ProjectBuilder() {
       id="orcamento"
       className="relative overflow-hidden border-t border-[#1F2A44]/12 bg-[#F4EDE0] py-20 transition-colors duration-300 sm:py-24 dark:border-[#F2EFE6]/12 dark:bg-[#182032]"
     >
-      {/* Subtle 60-30-10 Aura behind the configurator */}
+      {/* Subtle architectural drafting pattern (replaces fuzzy AI gradient blobs) */}
       <div
-        className="pointer-events-none absolute inset-0 flex items-center justify-center"
+        className={`${styles.draftingBackdrop} pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_85%_80%_at_50%_50%,black_30%,transparent_100%)]`}
         aria-hidden="true"
-      >
-        <div className="h-72 w-80 -translate-x-28 rounded-full bg-[#D85D2A]/18 blur-[95px] dark:bg-[#2A52BE]/28" />
-        <div className="h-72 w-80 translate-x-28 rounded-full bg-[#1F2A44]/14 blur-[95px] dark:bg-[#E05A3A]/24" />
-      </div>
+      />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
@@ -81,7 +79,9 @@ export function ProjectBuilder() {
             </div>
 
             <div className="min-w-0 lg:col-span-7">
-              <div className="w-full min-w-0 rounded-3xl border border-[#1F2A44]/15 bg-[#FAF5EB] p-5 shadow-[0_24px_60px_-15px_rgba(31,42,68,0.16)] backdrop-blur-xl sm:p-8 dark:border-[#F2EFE6]/15 dark:bg-[#202B42] dark:shadow-[0_28px_65px_-18px_rgba(0,0,0,0.45)]">
+              <div
+                className={`${styles.ticketCard} w-full min-w-0 border border-[#1F2A44]/18 bg-[#FAF5EB] p-5 sm:p-8 dark:border-[#F2EFE6]/18 dark:bg-[#202B42]`}
+              >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <h2 className="text-2xl font-extrabold tracking-tight text-[#1F2A44] dark:text-[#F2EFE6]">
                     Monte seu projeto
@@ -152,7 +152,7 @@ export function ProjectBuilder() {
                     href={waUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#D85D2A] px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_28px_-6px_rgba(216,93,42,0.45)] transition-all hover:-translate-y-0.5 hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:shadow-[0_12px_28px_-6px_rgba(224,90,58,0.45)] dark:hover:bg-[#C94B2D]"
+                    className={`${styles.tactileAction} inline-flex items-center justify-center gap-2 rounded-full bg-[#D85D2A] px-6 py-3 text-sm font-semibold text-white hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]`}
                   >
                     <span>Abrir no WhatsApp</span>
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />

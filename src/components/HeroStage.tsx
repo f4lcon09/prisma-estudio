@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
 import { siteConfig, type HeroModeId } from "@/config/site";
 import {
   AutomationProgramScreen,
@@ -10,6 +10,7 @@ import {
   SiteProgramScreen,
   TelemetryCardMockup,
 } from "@/components/RealMockups";
+import styles from "@/components/HeroStage.module.css";
 
 const modeOrder: HeroModeId[] = ["sites", "sistemas", "automacoes"];
 
@@ -53,6 +54,7 @@ export function HeroStage() {
   // Monotonic step counter so the 3D roulette drum always spins forward cleanly
   const [stepCount, setStepCount] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const activeIndex = ((stepCount % modeOrder.length) + modeOrder.length) % modeOrder.length;
   const activeMode = modeOrder[activeIndex];
@@ -73,16 +75,42 @@ export function HeroStage() {
     setStepCount((prev) => prev + forwardDelta);
   }
 
+  function handlePointerMove(e: React.MouseEvent<HTMLElement>) {
+    const el = sectionRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const xPct = ((e.clientX - rect.left) / rect.width) * 100;
+    const yPct = ((e.clientY - rect.top) / rect.height) * 100;
+    const tiltX = ((xPct - 50) / 50) * 1.4;
+    const tiltY = ((50 - yPct) / 50) * 1.1;
+    el.style.setProperty("--mx", `${xPct.toFixed(2)}%`);
+    el.style.setProperty("--my", `${yPct.toFixed(2)}%`);
+    el.style.setProperty("--tilt-x", `${tiltX.toFixed(2)}deg`);
+    el.style.setProperty("--tilt-y", `${tiltY.toFixed(2)}deg`);
+  }
+
+  function handlePointerLeave() {
+    const el = sectionRef.current;
+    if (!el) return;
+    el.style.setProperty("--tilt-x", "0deg");
+    el.style.setProperty("--tilt-y", "0deg");
+  }
+
   return (
     <section
       id="vitrine"
-      className="relative overflow-hidden bg-[#F4EDE0] pb-14 pt-6 transition-colors duration-300 sm:pb-20 sm:pt-8 dark:bg-[#182032]"
+      ref={sectionRef}
+      onMouseMove={handlePointerMove}
+      onMouseLeave={handlePointerLeave}
+      className={`${styles.heroSection} overflow-hidden bg-[#F4EDE0] pb-14 pt-6 transition-colors duration-300 sm:pb-20 sm:pt-8 dark:bg-[#182032]`}
     >
-      {/* Architectural Grid Background fading out softly */}
+      {/* Architectural Grid + Tactile Studio Grain */}
       <div
-        className="bg-studio-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_80%_75%_at_50%_35%,black_40%,transparent_100%)]"
+        className="bg-studio-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_85%_80%_at_50%_35%,black_45%,transparent_100%)]"
         aria-hidden="true"
       />
+      <div className={`${styles.studioGrain} pointer-events-none absolute inset-0`} aria-hidden="true" />
+      <div className={`${styles.dynamicLight} pointer-events-none absolute inset-0`} aria-hidden="true" />
 
       {/* Light Mode Structural Navy Band Anchoring the Lower Stage (per Cream/Navy/Terracotta mockup) */}
       <div
@@ -90,17 +118,8 @@ export function HeroStage() {
         aria-hidden="true"
       />
 
-      {/* Ambient Top Aurora */}
-      <div
-        className="pointer-events-none absolute -top-24 left-1/2 flex -translate-x-1/2 items-center justify-center"
-        aria-hidden="true"
-      >
-        <div className="h-64 w-96 -translate-x-24 rounded-full bg-[#D85D2A]/16 blur-[105px] dark:bg-[#2A52BE]/30" />
-        <div className="h-64 w-96 translate-x-24 rounded-full bg-[#1F2A44]/12 blur-[105px] dark:bg-[#E05A3A]/25" />
-      </div>
-
       <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-10">
-        {/* Top Micro-badge stacked smoothly */}
+        {/* Top Studio Spec Tag (crisp registration dot, no generic AI sparkles) */}
         <div className="inline-grid items-center justify-items-center">
           {modeOrder.map((modeId) => {
             const active = activeMode === modeId;
@@ -108,13 +127,13 @@ export function HeroStage() {
               <div
                 key={modeId}
                 aria-hidden={!active}
-                className={`col-start-1 row-start-1 inline-flex items-center gap-2 rounded-full border border-[#1F2A44]/15 bg-[#FAF5EB]/95 px-3.5 py-1 text-[11px] font-semibold tracking-[0.14em] text-[#1F2A44] shadow-2xs backdrop-blur-sm transition-all duration-500 ease-out dark:border-[#F2EFE6]/15 dark:bg-[#202B42]/90 dark:text-[#F2EFE6] ${
+                className={`font-tech col-start-1 row-start-1 inline-flex items-center gap-2 rounded-md border border-[#1F2A44]/18 bg-[#FAF5EB]/95 px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#1F2A44] transition-all duration-500 ease-out dark:border-[#F2EFE6]/18 dark:bg-[#202B42]/95 dark:text-[#F2EFE6] ${
                   active
                     ? "translate-y-0 opacity-100"
                     : "pointer-events-none -translate-y-1.5 opacity-0"
                 }`}
               >
-                <Sparkles className="h-3 w-3 text-[#D85D2A] dark:text-[#E05A3A]" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[#D85D2A] dark:bg-[#E05A3A]" aria-hidden="true" />
                 <span>{modeMeta[modeId].badge}</span>
               </div>
             );
@@ -205,7 +224,7 @@ export function HeroStage() {
         <div className="mt-4 flex flex-col items-center gap-1.5">
           <a
             href="#orcamento"
-            className="inline-flex items-center gap-2 rounded-full bg-[#D85D2A] px-6 py-2.5 text-sm font-semibold text-white shadow-[0_12px_30px_-6px_rgba(216,93,42,0.48)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:shadow-[0_12px_30px_-6px_rgba(224,90,58,0.48)] dark:hover:bg-[#C94B2D]"
+            className={`${styles.studioCta} inline-flex items-center gap-2 rounded-full bg-[#D85D2A] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]`}
           >
             <span>{siteConfig.hero.primaryCta}</span>
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -228,22 +247,16 @@ export function HeroStage() {
           </div>
         </div>
 
-        {/* 3D Interactive Device Stage */}
+        {/* 3D Interactive Device Stage with architectural registration marks & dynamic tilt */}
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onFocusCapture={() => setIsPaused(true)}
           onBlurCapture={() => setIsPaused(false)}
-          className="relative mx-auto mt-8 max-w-7xl"
+          className={`${styles.stageFrame} mx-auto mt-8 max-w-7xl`}
         >
-          {/* Balanced Stage Glow */}
-          <div
-            className="pointer-events-none absolute -inset-x-8 -top-10 bottom-0 -z-10 flex items-center justify-center"
-            aria-hidden="true"
-          >
-            <div className="h-80 w-[28rem] -translate-x-28 rounded-full bg-[#D85D2A]/22 blur-[95px] dark:bg-[#2A52BE]/35" />
-            <div className="h-80 w-[28rem] translate-x-28 rounded-full bg-[#1F2A44]/16 blur-[95px] dark:bg-[#E05A3A]/30" />
-          </div>
+          <span className={`${styles.cornerTickTL} hidden lg:block`} aria-hidden="true" />
+          <span className={`${styles.cornerTickTR} hidden lg:block`} aria-hidden="true" />
 
           <div className="relative flex flex-col items-center justify-center gap-6 lg:grid lg:grid-cols-12 lg:items-center lg:gap-6">
             {/* Left Tilted 3D Phone */}
@@ -274,8 +287,7 @@ export function HeroStage() {
 
             {/* Center Real Browser Window */}
             <div
-              className="z-10 order-1 grid w-full min-w-0 max-w-[700px] lg:col-span-6 lg:order-none lg:max-w-none"
-              style={{ perspective: "1400px" }}
+              className={`${styles.stageCenterTilt} z-10 order-1 grid w-full min-w-0 max-w-[700px] lg:col-span-6 lg:order-none lg:max-w-none`}
             >
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;

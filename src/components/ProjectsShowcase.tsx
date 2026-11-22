@@ -5,6 +5,7 @@ import { ArrowUpRight, Maximize2, X } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig, type HeroModeId, type ModelProject } from "@/config/site";
 import { ProjectProgramVariant } from "@/components/ProjectProgramVariants";
 import { Reveal } from "@/components/Reveal";
+import showcaseStyles from "@/components/ProjectsShowcase.module.css";
 
 type FilterOption = "Todos" | ModelProject["category"];
 
@@ -116,32 +117,37 @@ export function ProjectsShowcase() {
             return (
               <Reveal key={project.id} delayMs={(idx % 3) * 80}>
                 <article
-                  className={`group flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-[#1F2A44]/12 p-4 shadow-[0_14px_35px_-18px_rgba(31,42,68,0.16)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_45px_-16px_rgba(31,42,68,0.22)] ${styles.cardTint}`}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    e.currentTarget.style.setProperty("--card-mx", `${e.clientX - rect.left}px`);
+                    e.currentTarget.style.setProperty("--card-my", `${e.clientY - rect.top}px`);
+                  }}
+                  className={`${showcaseStyles.specimenCard} group flex h-full flex-col justify-between overflow-hidden border border-[#1F2A44]/15 p-4 shadow-[0_12px_30px_-18px_rgba(31,42,68,0.16)] hover:shadow-[0_20px_40px_-16px_rgba(31,42,68,0.22)] ${styles.cardTint}`}
                 >
                   <div>
                     {/* Scaled Real Software Thumbnail */}
-                    <div className={`relative h-52 overflow-hidden rounded-2xl border ${styles.frameTint}`}>
+                    <div className={`${showcaseStyles.specimenViewport} relative h-52 overflow-hidden border ${styles.frameTint}`}>
                       <div className="pointer-events-none w-[181%] origin-top-left scale-[0.55]">
                         <ProjectProgramVariant variant={project.variant} interactive={false} />
                       </div>
                       <button
                         type="button"
                         onClick={() => setInspectProject(project)}
-                        className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-[#D85D2A] px-3.5 py-1.5 text-[11px] font-semibold text-white shadow-md transition-all hover:scale-105 hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]"
+                        className={`${showcaseStyles.specimenButton} absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-[#D85D2A] px-3.5 py-1.5 text-[11px] font-semibold text-white hover:bg-[#BF4E20] dark:bg-[#E05A3A] dark:hover:bg-[#C94B2D]`}
                       >
                         <Maximize2 className="h-3 w-3" aria-hidden="true" />
                         <span>Testar programa</span>
                       </button>
                     </div>
 
-                    {/* Minimal Card Info */}
+                    {/* Specimen Card Info */}
                     <div className="mt-4 px-1">
                       <div className="flex items-center justify-between gap-2">
-                        <span className={`font-tech rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${styles.badgeTint}`}>
+                        <span className={`font-tech rounded-md border px-2.5 py-0.5 text-[11px] font-semibold ${styles.badgeTint}`}>
                           {project.badge}
                         </span>
-                        <span className="font-tech text-[11px] text-[#515C73]">
-                          {project.stack[0]}
+                        <span className={`${showcaseStyles.specimenNumber} font-tech text-[10px] font-semibold text-[#515C73]`}>
+                          {String(idx + 1).padStart(2, "0")} · {project.stack[0]}
                         </span>
                       </div>
 
