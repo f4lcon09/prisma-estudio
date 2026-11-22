@@ -38,7 +38,7 @@ interface BrowserShellProps {
 
 export function BrowserShell({ url, children, compact = false }: BrowserShellProps) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_24px_60px_-15px_rgba(15,23,42,0.16)]">
+    <div className="w-full min-w-0 overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_24px_60px_-15px_rgba(15,23,42,0.16)]">
       {/* macOS Browser Title & Address Bar */}
       <div
         className={`flex items-center justify-between border-b border-slate-200/80 bg-slate-50/90 px-3 ${
@@ -581,7 +581,7 @@ export function AutomationProgramScreen({ interactive = true }: { interactive?: 
               <span className="font-tech">EXECUTION OUTPUT</span>
               <span className="font-tech text-emerald-400">✓ 466ms total</span>
             </div>
-            <pre className="font-tech mt-1.5 overflow-x-auto text-[9px] leading-relaxed text-slate-200">
+            <pre className="font-tech mt-1.5 whitespace-pre-wrap break-words text-[9px] leading-relaxed text-slate-200">
 {`{ "cliente": "Mariana Costa", "servico": "Sistema Web", "urgencia": "Este mês", "crm_id": 482 }`}
             </pre>
           </div>

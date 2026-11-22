@@ -25,7 +25,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5 lg:px-10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3.5 sm:px-6 lg:px-10">
         <Link
           href="/"
           className="group flex items-center gap-2.5 text-slate-900 focus:outline-none"
@@ -59,12 +59,12 @@ export function Header() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
           <a
             href={defaultWaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50/90 px-4 py-2 text-xs font-semibold text-emerald-900 shadow-2xs transition-all hover:border-emerald-600 hover:bg-emerald-600 hover:text-white"
+            className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50/90 px-3 py-1.5 text-xs font-semibold text-emerald-900 shadow-2xs transition-all hover:border-emerald-600 hover:bg-emerald-600 hover:text-white sm:gap-2 sm:px-4 sm:py-2"
           >
             <MessageCircle className="h-3.5 w-3.5 text-emerald-600" aria-hidden="true" />
             <span className="hidden sm:inline">Fale Conosco</span>

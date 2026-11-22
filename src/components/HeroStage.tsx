@@ -239,7 +239,7 @@ export function HeroStage() {
 
           <div className="relative flex flex-col items-center justify-center gap-6 lg:grid lg:grid-cols-12 lg:items-center lg:gap-6">
             {/* Left Tilted 3D Phone */}
-            <div className="z-20 order-2 grid justify-items-center transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:-rotate-6 lg:justify-self-end lg:translate-y-6">
+            <div className="z-20 order-2 grid min-w-0 justify-items-center transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:-rotate-6 lg:justify-self-end lg:translate-y-6">
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
                 const active = rel === 0;
@@ -252,7 +252,7 @@ export function HeroStage() {
                   <div
                     key={modeId}
                     aria-hidden={!active}
-                    className={`col-start-1 row-start-1 origin-bottom-right transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] delay-75 ${
+                    className={`col-start-1 row-start-1 min-w-0 origin-bottom-right transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] delay-75 ${
                       active
                         ? "translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100"
                         : hiddenTransform
@@ -266,7 +266,7 @@ export function HeroStage() {
 
             {/* Center Real Browser Window — wider, unobstructed */}
             <div
-              className="z-10 order-1 grid w-full max-w-[700px] lg:col-span-6 lg:order-none lg:max-w-none"
+              className="z-10 order-1 grid w-full min-w-0 max-w-[700px] lg:col-span-6 lg:order-none lg:max-w-none"
               style={{ perspective: "1400px" }}
             >
               {modeOrder.map((modeId, idx) => {
@@ -284,7 +284,7 @@ export function HeroStage() {
                     style={{
                       transform: active ? "translateX(0px) rotateY(0deg) scale(1)" : hiddenStyle,
                     }}
-                    className={`col-start-1 row-start-1 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    className={`col-start-1 row-start-1 min-w-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                       active ? "opacity-100" : "pointer-events-none opacity-0"
                     }`}
                   >
@@ -297,7 +297,7 @@ export function HeroStage() {
             </div>
 
             {/* Right Floating 3D Card — sits cleanly beside the browser without covering content */}
-            <div className="animate-float-slow z-20 order-3 grid justify-items-center transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:rotate-3 lg:justify-self-start lg:translate-y-4">
+            <div className="animate-float-slow z-20 order-3 grid min-w-0 justify-items-center transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:rotate-3 lg:justify-self-start lg:translate-y-4">
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
                 const active = rel === 0;
