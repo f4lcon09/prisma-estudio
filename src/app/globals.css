@@ -191,3 +191,21 @@ body {
     animation: none !important;
   }
 }
+
+/* Fio animado dos canvases de automação */
+@keyframes wireFlow {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+
+.wire-flow {
+  stroke-dasharray: 6 6;
+  animation: wireFlow 0.7s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wire-flow {
+    animation: none;
+  }
+}
