@@ -56,14 +56,14 @@ const leads = [
 
 // Coordenadas do canvas (viewBox 600 x 230)
 const N = {
-  trigger: { x: 62, y: 115 },
-  agent: { x: 200, y: 115 },
-  memory: { x: 168, y: 200 },
-  kb: { x: 236, y: 200 },
-  branch: { x: 330, y: 115 },
-  crm: { x: 470, y: 52 },
-  notify: { x: 540, y: 128 },
-  nurture: { x: 470, y: 196 },
+  trigger: { x: 58, y: 62 },
+  agent: { x: 182, y: 62 },
+  memory: { x: 150, y: 128 },
+  kb: { x: 218, y: 128 },
+  branch: { x: 312, y: 62 },
+  crm: { x: 452, y: 26 },
+  notify: { x: 532, y: 84 },
+  nurture: { x: 452, y: 132 },
 };
 const pct = (p: { x: number; y: number }) => ({ left: `${(p.x / 600) * 100}%`, top: `${(p.y / 230) * 100}%` });
 const wire = (a: { x: number; y: number }, b: { x: number; y: number }) => {
@@ -94,7 +94,7 @@ function Node({
     <div
       style={pct(at)}
       className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 rounded-xl border bg-white shadow-sm transition-all duration-300 ${
-        small ? "p-0.5 @[480px]:px-1.5 @[480px]:py-1" : "p-1 @[480px]:px-2 @[480px]:py-1.5"
+        small ? "p-0.5 @[440px]:px-1.5 @[440px]:py-1" : "p-1 @[440px]:px-2 @[440px]:py-1.5"
       } ${state === "running" ? "border-(--m-accent) ring-4 ring-(--m-accent)/25" : state === "done" ? "border-emerald-400" : "border-(--m-ink)/12"} ${
         state === "skipped" ? "opacity-45" : ""
       }`}
@@ -103,13 +103,13 @@ function Node({
         <span className={`flex shrink-0 items-center justify-center rounded-lg text-white ${small ? "h-4 w-4" : "h-5 w-5"} ${tone}`}>
           <Icon className={small ? "h-2.5 w-2.5" : "h-3 w-3"} />
         </span>
-        <span className="hidden min-w-0 @[480px]:block">
+        <span className="hidden min-w-0 @[440px]:block">
           <span className={`block whitespace-nowrap font-bold ${small ? "text-[8px]" : "text-[9px]"}`}>{title}</span>
-          {sub && !small && <span className="hidden whitespace-nowrap text-[7.5px] text-(--m-ink)/65 @[720px]:block">{sub}</span>}
+          {sub && !small && <span className="hidden whitespace-nowrap text-[7.5px] text-(--m-ink)/65 @[560px]:block">{sub}</span>}
         </span>
       </div>
       {/* Em telas estreitas o bloco vira só o ícone, com o nome pequeno embaixo */}
-      <span className="absolute left-1/2 top-full mt-0.5 -translate-x-1/2 whitespace-nowrap text-[7px] font-semibold text-(--m-ink)/80 @[480px]:hidden">
+      <span className="absolute left-1/2 top-full mt-0.5 -translate-x-1/2 whitespace-nowrap text-[7px] font-semibold text-(--m-ink)/80 @[440px]:hidden">
         {title}
       </span>
       {state === "done" && (
@@ -185,11 +185,11 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
           </div>
         </div>
 
-        <div className="grid min-h-0 flex-1 grid-rows-[minmax(0,1.25fr)_minmax(0,1fr)] @[720px]:grid-cols-[1fr_250px] @[720px]:grid-rows-1">
+        <div className="grid min-h-0 flex-1 grid-rows-[minmax(0,1.6fr)_minmax(0,1fr)] @[480px]:grid-cols-[minmax(0,1fr)_minmax(176px,34%)] @[480px]:grid-rows-1">
           {/* Canvas */}
-          <div className="bg-canvas-dots relative min-h-0 overflow-hidden">
+          <div className="bg-canvas-dots @container relative min-h-0 overflow-hidden">
             <svg viewBox="0 0 600 230" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
-              <g fill="none" strokeWidth="2" vectorEffect="non-scaling-stroke">
+              <g fill="none" strokeWidth="2">
                 <path d={wire(N.trigger, N.agent)} vectorEffect="non-scaling-stroke" className={wireCls(phase >= 1, phase === 1)} />
                 <path d={wire(N.agent, N.branch)} vectorEffect="non-scaling-stroke" className={wireCls(phase >= 2, phase === 2)} />
                 <path d={`M${N.agent.x},${N.agent.y} L${N.memory.x},${N.memory.y}`} strokeDasharray="3 3" vectorEffect="non-scaling-stroke" className="stroke-(--m-ink)/25" />
@@ -207,51 +207,16 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
             <Node at={N.crm} icon={KanbanSquare} title="Criar card" sub="CRM · Qualificados" state={branchState(true)} tone="bg-sky-600" />
             <Node at={N.notify} icon={Bell} title="Avisar vendas" sub="WhatsApp da Carla" state={branchState(true)} tone="bg-(--m-accent)" />
             <Node at={N.nurture} icon={Sprout} title="Nutrição" sub="Sequência de conteúdo" state={branchState(false)} tone="bg-lime-600" />
-            <span className="absolute bottom-1.5 left-2 rounded bg-white/90 px-1.5 py-0.5 font-mono text-[8px] text-(--m-ink)/65">
-              {phase === 0 ? "Pronto para executar" : phase < 5 ? "Executando…" : "Concluído em 2,1 s"}
-            </span>
-          </div>
 
-          {/* Execução */}
-          <div className="grid min-h-0 grid-cols-[1.2fr_1fr] gap-px border-t border-(--m-ink)/10 bg-(--m-ink)/10 @[720px]:grid-cols-1 @[720px]:grid-rows-[1.3fr_1fr] @[720px]:border-l @[720px]:border-t-0">
-            <div className="flex min-h-0 flex-col bg-[#ECE5DD]">
-              <div className="flex items-center gap-1.5 bg-(--m-ink) px-2 py-1 text-white">
-                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-white/15 text-[8px] font-bold">{lead.name[0]}</span>
-                <span className="truncate text-[9px] font-bold">
-                  {lead.name} · {lead.company}
+            {/* Saída do agente, como o painel de output de um editor de fluxos */}
+            <div className="absolute inset-x-2 bottom-2 z-20 rounded-xl border border-(--m-ink)/10 bg-white/95 p-2 shadow-md backdrop-blur">
+              <div className="flex items-center justify-between gap-2">
+                <p className="text-[8.5px] font-bold uppercase tracking-[0.12em] text-(--m-ink)/65">Saída do agente IA</p>
+                <span className="font-mono text-[8px] text-(--m-ink)/65">
+                  {phase === 0 ? "aguardando" : phase < 5 ? "executando…" : "exec. #1.285 · 2,1 s"}
                 </span>
               </div>
-              {/* Conversa alinhada por baixo, como no WhatsApp: as mensagens antigas somem por cima */}
-              <div className="flex min-h-0 flex-1 flex-col justify-end gap-1.5 overflow-hidden px-2 pb-1.5 pt-2 text-[8.5px] leading-snug [mask-image:linear-gradient(to_bottom,transparent_0,black_8px)]">
-                {phase === 0 ? (
-                  <p className="m-auto max-w-[22ch] text-center text-(--m-ink)/65">Clique em Executar para ver o atendimento.</p>
-                ) : (
-                  <>
-                    <p className="max-w-[86%] shrink-0 rounded-md rounded-tl-none bg-white px-1.5 py-1 shadow-2xs">{lead.msg}</p>
-                    {phase >= 2 && (
-                      <p className="ml-auto max-w-[86%] shrink-0 rounded-md rounded-tr-none bg-[#D9FDD3] px-1.5 py-1 shadow-2xs">
-                        {phase === 2 ? "digitando…" : lead.reply}
-                        {phase > 2 && (
-                          <span className="mt-0.5 flex items-center justify-end gap-0.5 text-[7.5px] text-sky-700">
-                            <Sparkles className="h-2 w-2" /> IA <CheckCheck className="h-2.5 w-2.5" />
-                          </span>
-                        )}
-                      </p>
-                    )}
-                    {phase >= 3 && <p className="max-w-[86%] shrink-0 rounded-md rounded-tl-none bg-white px-1.5 py-1 shadow-2xs">{lead.answer}</p>}
-                  </>
-                )}
-              </div>
-              <div className="mx-1.5 mb-1.5 flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[8.5px] text-(--m-ink)/65">
-                <MessageCircle className="h-2.5 w-2.5" /> Mensagem
-              </div>
-            </div>
-            <div className="flex min-h-0 flex-col overflow-hidden bg-white p-2">
-              <div className="flex items-center justify-between gap-2">
-                <p className="text-[8.5px] font-bold uppercase tracking-[0.12em] text-(--m-ink)/65">Extraído pela IA</p>
-                <span className="font-mono text-[8px] text-(--m-ink)/65">{phase >= 5 ? "exec. #1.285 · 2,1 s" : phase > 0 ? "executando…" : "aguardando"}</span>
-              </div>
-              <div className="mt-1.5 grid grid-cols-2 gap-1">
+              <div className="mt-1.5 grid grid-cols-4 gap-1">
                 {Object.entries(lead.data).map(([k, v]) => (
                   <div key={k} className="rounded-md bg-(--m-bg) px-1.5 py-1">
                     <p className="text-[7.5px] text-(--m-ink)/65">{k}</p>
@@ -260,10 +225,44 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
                 ))}
               </div>
               {phase >= 4 && (
-                <p className={`mt-auto rounded-md px-1.5 py-1.5 text-[8.5px] font-semibold ${hot ? "bg-emerald-50 text-emerald-700" : "bg-lime-50 text-lime-800"}`}>
+                <p className={`mt-1.5 hidden rounded-md px-1.5 py-1 text-[8.5px] font-semibold @[440px]:block ${hot ? "bg-emerald-50 text-emerald-700" : "bg-lime-50 text-lime-800"}`}>
                   {hot ? `Card criado · score ${lead.score} · vendas avisada` : `Score ${lead.score} · entrou na nutrição`}
                 </p>
               )}
+            </div>
+          </div>
+
+          {/* WhatsApp em coluna lateral */}
+          <div className="flex min-h-0 flex-col border-t border-(--m-ink)/10 bg-[#ECE5DD] @[480px]:border-l @[480px]:border-t-0">
+            <div className="flex items-center gap-2 bg-(--m-ink) px-2.5 py-2 text-white">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/15 text-[9px] font-bold">{lead.name[0]}</span>
+              <span className="min-w-0">
+                <span className="block truncate text-[10px] font-bold">{lead.name}</span>
+                <span className="block truncate text-[8.5px] text-white/70">{phase === 2 ? "IA digitando…" : lead.company}</span>
+              </span>
+            </div>
+            <div className="flex min-h-0 flex-1 flex-col justify-end gap-1.5 overflow-hidden px-2 pb-2 pt-2 text-[9px] leading-snug [mask-image:linear-gradient(to_bottom,transparent_0,black_8px)]">
+              {phase === 0 ? (
+                <p className="m-auto max-w-[20ch] text-center text-(--m-ink)/65">Clique em Executar para ver o atendimento.</p>
+              ) : (
+                <>
+                  <p className="w-fit max-w-[88%] shrink-0 rounded-lg rounded-tl-none bg-white px-2 py-1.5 shadow-2xs">{lead.msg}</p>
+                  {phase >= 2 && (
+                    <p className="ml-auto w-fit max-w-[88%] shrink-0 rounded-lg rounded-tr-none bg-[#D9FDD3] px-2 py-1.5 shadow-2xs">
+                      {phase === 2 ? "digitando…" : lead.reply}
+                      {phase > 2 && (
+                        <span className="mt-0.5 flex items-center justify-end gap-0.5 text-[7.5px] text-sky-700">
+                          <Sparkles className="h-2 w-2" /> IA <CheckCheck className="h-2.5 w-2.5" />
+                        </span>
+                      )}
+                    </p>
+                  )}
+                  {phase >= 3 && <p className="w-fit max-w-[88%] shrink-0 rounded-lg rounded-tl-none bg-white px-2 py-1.5 shadow-2xs">{lead.answer}</p>}
+                </>
+              )}
+            </div>
+            <div className="mx-2 mb-2 flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1.5 text-[8.5px] text-(--m-ink)/65">
+              <MessageCircle className="h-2.5 w-2.5" /> Mensagem
             </div>
           </div>
         </div>
