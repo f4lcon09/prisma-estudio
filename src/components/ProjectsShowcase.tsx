@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowUpRight, Maximize2, X } from "lucide-react";
+import { useCallback, useMemo, useState } from "react";
+import { ArrowUpRight, Maximize2 } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig, type HeroModeId, type ModelProject } from "@/config/site";
 import { ProjectProgramVariant } from "@/components/ProjectProgramVariants";
 import { Reveal } from "@/components/Reveal";
 import { CtaPair } from "@/components/CtaPair";
+import { ModelInspector } from "@/components/ModelInspector";
 import "@/components/ProjectsShowcase.css";
 
 type FilterOption = "Todos" | ModelProject["category"];
@@ -48,10 +49,26 @@ export function ProjectsShowcase() {
   const [activeFilter, setActiveFilter] = useState<FilterOption>("Todos");
   const [inspectProject, setInspectProject] = useState<ModelProject | null>(null);
 
-  const visibleProjects =
-    activeFilter === "Todos"
-      ? siteConfig.projects
-      : siteConfig.projects.filter((p) => p.category === activeFilter);
+  const visibleProjects = useMemo(
+    () =>
+      activeFilter === "Todos"
+        ? siteConfig.projects
+        : siteConfig.projects.filter((p) => p.category === activeFilter),
+    [activeFilter],
+  );
+
+  const inspectIndex = inspectProject ? visibleProjects.findIndex((p) => p.id === inspectProject.id) : -1;
+  const closeInspector = useCallback(() => setInspectProject(null), []);
+  const stepInspector = useCallback(
+    (delta: 1 | -1) => {
+      setInspectProject((current) => {
+        if (!current) return current;
+        const idx = visibleProjects.findIndex((p) => p.id === current.id);
+        return visibleProjects[(idx + delta + visibleProjects.length) % visibleProjects.length];
+      });
+    },
+    [visibleProjects],
+  );
 
   function countFor(value: FilterOption) {
     if (value === "Todos") return siteConfig.projects.length;
@@ -191,65 +208,14 @@ export function ProjectsShowcase() {
         <CtaPair showSecondary={false} className="mt-12" />
       </div>
 
-      {/* Live Interactive Software Modal */}
-      {inspectProject && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#17181A]/75 p-4 backdrop-blur-sm"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Prévia interativa: ${inspectProject.title}`}
-        >
-          <div className="relative w-full max-w-5xl rounded-2xl border border-[#1A1715]/20 bg-[#FAF6EE] p-4 shadow-2xl sm:p-6 dark:border-[#ECE5D8]/15 dark:bg-[#17181A]">
-            <div className="mb-4 flex items-center justify-between gap-4">
-              <div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-tech text-[11px] font-semibold uppercase tracking-wider text-[#8E6F3E] dark:text-[#B08D57]">
-                    {inspectProject.badge}
-                  </span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-[#263A32]/12 px-2.5 py-0.5 text-[10px] font-semibold text-[#263A32] dark:bg-[#263A32]/40 dark:text-[#9CAF88]">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#263A32] dark:bg-[#9CAF88]" />
-                    Simulador interativo — clique e teste os controles abaixo
-                  </span>
-                </div>
-                <h3 className="mt-1 text-lg font-bold text-[#1A1715] dark:text-[#ECE5D8]">
-                  {inspectProject.title}
-                </h3>
-              </div>
-              <button
-                type="button"
-                onClick={() => setInspectProject(null)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#1A1715]/15 bg-[#EAE3D5] text-[#1A1715] hover:bg-[#1A1715] hover:text-[#EAE3D5] dark:border-[#ECE5D8]/15 dark:bg-[#202226] dark:text-[#ECE5D8] dark:hover:bg-[#B7410E] dark:hover:text-white"
-                aria-label="Fechar prévia"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-
-            <ProjectProgramVariant variant={inspectProject.variant} interactive={true} />
-
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-              <div className="flex flex-wrap gap-4">
-                {inspectProject.metrics.map((m) => (
-                  <div key={m.label} className="text-xs">
-                    <span className="text-[#5C5348] dark:text-[#A8A095]">{m.label}: </span>
-                    <strong className="font-tech text-[#1A1715] dark:text-[#ECE5D8]">
-                      {m.value}
-                    </strong>
-                  </div>
-                ))}
-              </div>
-              <a
-                href={buildWhatsAppUrl(inspectProject.whatsappPrompt)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-[#1A1715] px-4 py-2 text-xs font-semibold text-[#EAE3D5] hover:bg-[#332D28] dark:bg-[#B7410E] dark:text-[#FAF6EE] dark:hover:bg-[#9C3509]"
-              >
-                <span>Quero um projeto assim</span>
-                <ArrowUpRight className="h-3.5 w-3.5 text-[#B08D57] dark:text-[#FAF6EE]" aria-hidden="true" />
-              </a>
-            </div>
-          </div>
-        </div>
+      {inspectProject && inspectIndex >= 0 && (
+        <ModelInspector
+          project={inspectProject}
+          position={inspectIndex + 1}
+          total={visibleProjects.length}
+          onClose={closeInspector}
+          onStep={stepInspector}
+        />
       )}
     </section>
   );
