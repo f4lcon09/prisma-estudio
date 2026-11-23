@@ -66,7 +66,7 @@ export function Header() {
 
           <a
             href="#orcamento"
-            className="hidden items-center rounded-full bg-(--accent) px-4 py-2 text-xs font-semibold text-(--on-accent) transition-colors hover:bg-(--accent-hover) lg:inline-flex"
+            className="ps-prism-cta hidden items-center rounded-full bg-(--ink) px-4 py-2 text-xs font-semibold text-(--on-ink) transition-colors hover:bg-(--ink-hover) lg:inline-flex"
           >
             Montar orçamento
           </a>
@@ -75,7 +75,7 @@ export function Header() {
             href={defaultWaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-1.5 rounded-full border border-(--fg) bg-(--ink) px-3 py-1.5 md:inline-flex text-xs font-semibold text-(--on-ink) shadow-2xs transition-all hover:border-(--accent) hover:bg-(--ink) hover:text-(--on-ink) sm:gap-2 sm:px-4 sm:py-2 dark:hover:text-white"
+            className="hidden items-center gap-1.5 rounded-full border border-(--hairline) bg-(--surface) px-3 py-1.5 text-xs font-semibold text-(--fg) shadow-2xs transition-colors hover:border-(--fg)/30 md:inline-flex sm:gap-2 sm:px-4 sm:py-2"
           >
             <WhatsAppIcon className="h-3.5 w-3.5 text-[#25D366]" />
             <span className="hidden sm:inline">Fale Conosco</span>

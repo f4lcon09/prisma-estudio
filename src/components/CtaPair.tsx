@@ -23,9 +23,7 @@ export function CtaPair({ align = "center", showSecondary = true, className = ""
       <div className={`flex flex-wrap gap-2.5 ${align === "center" ? "justify-center" : ""}`}>
         <a
           href="#orcamento"
-          className={`ps-hero-cta inline-flex min-h-12 items-center gap-2 rounded-full px-6 text-[15px] font-semibold transition-colors sm:min-h-11 sm:text-sm ${
-            "bg-(--accent) text-(--on-accent) hover:bg-(--accent-hover)"
-          }`}
+          className="ps-prism-cta inline-flex min-h-12 items-center gap-2 rounded-full bg-(--ink) px-6 text-[15px] font-semibold text-(--on-ink) transition-colors hover:bg-(--ink-hover) sm:min-h-11 sm:text-sm"
         >
           <span>Montar meu orçamento</span>
           <ArrowRight
@@ -36,9 +34,7 @@ export function CtaPair({ align = "center", showSecondary = true, className = ""
         {showSecondary && (
           <a
             href="#projetos"
-            className={`inline-flex min-h-12 items-center gap-2 rounded-full border px-5 text-[15px] font-semibold transition-colors sm:min-h-11 sm:text-sm ${
-              "border-(--accent-text) text-(--accent-text) hover:bg-(--accent-text)/8"
-            }`}
+            className="inline-flex min-h-12 items-center gap-2 rounded-full border border-(--glass-border) bg-(--glass) px-5 text-[15px] font-semibold text-(--fg) shadow-[0_6px_20px_-12px_rgba(0,0,0,0.25)] backdrop-blur-xl backdrop-saturate-150 transition-colors hover:text-(--accent-text) sm:min-h-11 sm:text-sm"
           >
             <MousePointerClick className="h-4 w-4" aria-hidden="true" />
             <span>Testar um modelo</span>

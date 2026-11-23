@@ -29,7 +29,7 @@ export function BrowserShell({
       style={style}
       className="w-full min-w-0 overflow-hidden rounded-[14px] border border-black/10 bg-(--m-bg,#FFFFFF) shadow-[0_30px_60px_-20px_rgba(0,0,0,0.28),0_0_0_0.5px_rgba(0,0,0,0.06)] dark:border-white/10 dark:shadow-[0_30px_70px_-16px_rgba(0,0,0,0.7)]">
       <div
-        className={`flex items-center justify-between gap-2 border-b border-black/8 bg-[#F6F6F8]/92 px-3 backdrop-blur-xl ${
+        className={`flex items-center justify-between gap-2 border-b border-black/8 bg-[#EEF0F3]/90 px-3 backdrop-blur-xl ${
           compact ? "py-2" : "py-2.5"
         }`}
       >

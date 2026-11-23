@@ -27,14 +27,14 @@ export function ServicesStrip() {
   return (
     <section
       id="servicos"
-      className="band-dark bg-(--bg) py-20 text-(--fg) sm:py-24"
+      className="band-dark ps-band-glow py-20 text-(--fg) sm:py-24"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl">
           <p className="text-[13px] font-semibold text-(--accent-text)">
             Frentes de entrega
           </p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-(--on-ink) sm:text-4xl">
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-(--fg) sm:text-4xl">
             Do site rápido ao sistema completo
           </h2>
         </div>
