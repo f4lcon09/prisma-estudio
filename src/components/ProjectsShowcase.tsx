@@ -158,27 +158,29 @@ export function ProjectsShowcase() {
               );
             })}
           </div>
-          <div className="hidden items-center gap-1.5 md:flex">
-            {([
-              [-1, ChevronLeft, "Modelos anteriores", edges.start],
-              [1, ChevronRight, "Próximos modelos", edges.end],
-            ] as const).map(([dir, Icon, label, disabled]) => (
-              <button
-                key={label}
-                type="button"
-                onClick={() => slide(dir)}
-                disabled={disabled}
-                aria-label={label}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-(--glass-border) bg-(--glass) text-(--fg) shadow-[0_6px_18px_-12px_rgba(0,0,0,0.3)] backdrop-blur-xl transition-opacity disabled:opacity-35"
-              >
-                <Icon className="h-4 w-4" aria-hidden="true" />
-              </button>
-            ))}
-          </div>
           </div>
         </div>
 
         {/* Galeria dentro da coluna: mesmas bordas do título e dos filtros, 3 cards por vez no desktop */}
+        <div className="relative mt-10">
+        {/* Setas laterais: na margem fora da coluna em telas largas; encostadas na borda (sobre o fade) em notebooks; sem setas no toque */}
+        {([
+          [-1, ChevronLeft, "Modelos anteriores", edges.start, "left-1 min-[1360px]:-left-16"],
+          [1, ChevronRight, "Próximos modelos", edges.end, "right-1 min-[1360px]:-right-16"],
+        ] as const).map(([dir, Icon, label, atEdge, side]) => (
+          <button
+            key={label}
+            type="button"
+            onClick={() => slide(dir)}
+            disabled={atEdge}
+            aria-label={label}
+            className={`absolute top-[121px] z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-(--glass-border) bg-(--glass) text-(--fg) shadow-[0_8px_22px_-12px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-[opacity,scale] duration-300 hover:scale-105 lg:inline-flex ${side} ${
+              atEdge ? "pointer-events-none opacity-0" : "opacity-100"
+            }`}
+          >
+            <Icon className="h-5 w-5" aria-hidden="true" />
+          </button>
+        ))}
         <div
           ref={railRef}
           onScroll={updateEdges}
@@ -187,7 +189,7 @@ export function ProjectsShowcase() {
             WebkitMaskImage: `linear-gradient(to right, ${edges.start ? "#000" : "transparent"} 0, #000 32px, #000 calc(100% - 32px), ${edges.end ? "#000" : "transparent"} 100%)`,
             maskImage: `linear-gradient(to right, ${edges.start ? "#000" : "transparent"} 0, #000 32px, #000 calc(100% - 32px), ${edges.end ? "#000" : "transparent"} 100%)`,
           }}
-          className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {visibleProjects.map((project, idx) => {
             const waUrl = buildWhatsAppUrl(project.whatsappPrompt);
@@ -276,6 +278,7 @@ export function ProjectsShowcase() {
               </Reveal>
             );
           })}
+        </div>
         </div>
         <CtaPair showSecondary={false} className="mt-12" />
       </div>
