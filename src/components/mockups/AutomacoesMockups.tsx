@@ -65,12 +65,12 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
   }
 
   return (
-    <BrowserShell url="flow.prismaestudio.dev/workflows/triagem-ia">
-      <div className="flex min-h-[330px] flex-col justify-between bg-slate-50 text-left">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 bg-white px-3.5 py-2.5">
+    <BrowserShell url="flow.prismaestudio.dev/workflows/triagem-ia" palette="triagem">
+      <div className="flex min-h-[330px] flex-col justify-between bg-(--m-bg) text-left">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--m-ink)/12 bg-white px-3.5 py-2.5">
           <div className="flex items-center gap-2">
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            <span className="text-[11px] font-bold text-slate-900">Triagem WhatsApp + IA</span>
+            <span className="text-[11px] font-bold text-(--m-ink)">Triagem WhatsApp + IA</span>
             <span className="font-tech rounded bg-emerald-50 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-700">
               Ativo
             </span>
@@ -85,8 +85,8 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
                   onClick={() => runFlow(idx)}
                   className={`hidden rounded-md border px-2 py-0.5 text-[9px] font-semibold sm:inline-block ${
                     selectedIdx === idx
-                      ? "border-blue-600 bg-blue-50 text-blue-700"
-                      : "border-slate-200 bg-white text-slate-600 hover:border-blue-300"
+                      ? "border-(--m-accent) bg-(--m-accent)/10 text-(--m-accent-ink)"
+                      : "border-(--m-ink)/12 bg-white text-(--m-ink)/75 hover:border-(--m-accent)/60"
                   }`}
                 >
                   {msg.label}
@@ -96,7 +96,7 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
               type="button"
               disabled={!interactive}
               onClick={() => runFlow(selectedIdx)}
-              className="inline-flex items-center gap-1 rounded-md bg-blue-600 px-2.5 py-1 text-[10px] font-semibold text-white transition-colors hover:bg-blue-700"
+              className="inline-flex items-center gap-1 rounded-md bg-(--m-accent) px-2.5 py-1 text-[10px] font-semibold text-(--m-on-accent) transition-colors hover:brightness-95"
             >
               <Play className="h-2.5 w-2.5 fill-current" />
               <span>{running ? "Executando..." : "Simular fluxo"}</span>
@@ -104,60 +104,60 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
           </div>
         </div>
 
-        <div className="bg-canvas-dots relative flex-1 bg-gradient-to-br from-amber-50/40 via-slate-50 to-blue-50/50 p-3.5">
-          <div className="mb-2.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[10px] text-slate-600">
-            <strong className="text-slate-900">Entrada WhatsApp:</strong> &quot;{sample.text}&quot;
+        <div className="bg-canvas-dots relative flex-1 bg-gradient-to-br from-amber-50/40 via-(--m-bg) to-(--m-accent)/8 p-3.5">
+          <div className="mb-2.5 rounded-lg border border-(--m-ink)/12 bg-white px-2.5 py-1.5 text-[10px] text-(--m-ink)/75">
+            <strong className="text-(--m-ink)">Entrada WhatsApp:</strong> &quot;{sample.text}&quot;
           </div>
 
           <div className="grid grid-cols-1 items-center gap-2.5 sm:grid-cols-3">
             <div
               className={`rounded-xl border bg-white p-2.5 shadow-sm transition-all ${
-                step >= 1 ? "border-amber-400 bg-amber-50/30 ring-2 ring-amber-400/25" : "border-slate-200"
+                step >= 1 ? "border-amber-400 bg-amber-50/30 ring-2 ring-amber-400/25" : "border-(--m-ink)/12"
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-900">
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-(--m-ink)">
                   <Webhook className="h-3 w-3 text-amber-500" />
                   Webhook
                 </span>
                 <span className="font-tech text-[9px] text-emerald-600">200 OK</span>
               </div>
-              <p className="font-tech mt-1 truncate text-[9px] text-slate-500">POST /whatsapp/msg</p>
+              <p className="font-tech mt-1 truncate text-[9px] text-(--m-ink)/70">POST /whatsapp/msg</p>
             </div>
 
             <div
               className={`rounded-xl border bg-white p-2.5 shadow-sm transition-all ${
-                step >= 2 ? "border-blue-500 ring-2 ring-blue-500/20" : "border-slate-200"
+                step >= 2 ? "border-(--m-accent) ring-2 ring-(--m-accent)/25" : "border-(--m-ink)/12"
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-900">
-                  <Bot className="h-3 w-3 text-blue-600" />
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-(--m-ink)">
+                  <Bot className="h-3 w-3 text-(--m-accent-ink)" />
                   Agente IA
                 </span>
-                <span className="font-tech text-[9px] text-blue-600">Score {sample.score}</span>
+                <span className="font-tech text-[9px] text-(--m-accent-ink)">Score {sample.score}</span>
               </div>
-              <p className="mt-1 truncate text-[9px] text-slate-500">{sample.servico}</p>
+              <p className="mt-1 truncate text-[9px] text-(--m-ink)/70">{sample.servico}</p>
             </div>
 
             <div
               className={`rounded-xl border bg-white p-2.5 shadow-sm transition-all ${
-                step >= 3 ? "border-emerald-500 ring-2 ring-emerald-500/20" : "border-slate-200"
+                step >= 3 ? "border-emerald-500 ring-2 ring-emerald-500/20" : "border-(--m-ink)/12"
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-900">
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-(--m-ink)">
                   <Database className="h-3 w-3 text-emerald-600" />
                   CRM + Resposta
                 </span>
                 <Check className="h-3 w-3 text-emerald-600" />
               </div>
-              <p className="mt-1 truncate text-[9px] text-slate-500">{sample.urgencia}</p>
+              <p className="mt-1 truncate text-[9px] text-(--m-ink)/70">{sample.urgencia}</p>
             </div>
           </div>
 
-          <div className="mt-3 rounded-xl border border-slate-800 bg-[#0F172A] p-2.5 text-[10px] text-slate-300">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-1 text-[9px] text-slate-400">
+          <div className="mt-3 rounded-xl border border-white/10 bg-(--m-ink) p-2.5 text-[10px] text-white/75">
+            <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[9px] text-white/55">
               <span className="font-tech">RESPOSTA AUTOMÁTICA ENVIADA</span>
               <span className="font-tech text-emerald-400">✓ 466ms</span>
             </div>
@@ -181,10 +181,10 @@ export function AutomacaoCobrancaInteractive({ interactive = true }: { interacti
   const target = billingTargets[targetIdx] ?? billingTargets[0];
 
   return (
-    <BrowserShell url="flow.prismaestudio.dev/cobranca-pix">
-      <div className="bg-canvas-dots min-h-[330px] bg-gradient-to-br from-emerald-50/40 via-slate-50 to-amber-50/40 p-4 text-left">
-        <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2">
-          <span className="text-[11px] font-bold text-slate-900">Régua Pix Automática</span>
+    <BrowserShell url="flow.prismaestudio.dev/cobranca-pix" palette="cobranca">
+      <div className="bg-canvas-dots min-h-[330px] bg-gradient-to-br from-emerald-50/40 via-(--m-bg) to-amber-50/40 p-4 text-left">
+        <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-(--m-ink)/12 bg-white px-3 py-2">
+          <span className="text-[11px] font-bold text-(--m-ink)">Régua Pix Automática</span>
           <div className="flex items-center gap-1.5">
             {billingTargets.map((b, idx) => (
               <button
@@ -197,7 +197,7 @@ export function AutomacaoCobrancaInteractive({ interactive = true }: { interacti
                   setStage("idle");
                 }}
                 className={`rounded-md px-2 py-0.5 text-[9px] font-semibold ${
-                  targetIdx === idx ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-600"
+                  targetIdx === idx ? "bg-(--m-ink) text-white" : "bg-(--m-ink)/5 text-(--m-ink)/75"
                 }`}
               >
                 {b.client}
@@ -209,35 +209,35 @@ export function AutomacaoCobrancaInteractive({ interactive = true }: { interacti
         <div className="mt-3 grid grid-cols-3 gap-2.5">
           <div className="rounded-xl border border-amber-300 bg-white p-2.5 shadow-xs">
             <span className="text-[10px] font-bold text-amber-700">1. {target.due}</span>
-            <p className="mt-1 text-[9px] text-slate-500">Valor: {target.amount}</p>
+            <p className="mt-1 text-[9px] text-(--m-ink)/70">Valor: {target.amount}</p>
           </div>
           <div
             className={`rounded-xl border bg-white p-2.5 shadow-xs ${
-              stage !== "idle" ? "border-blue-400 ring-2 ring-blue-100" : "border-slate-200"
+              stage !== "idle" ? "border-(--m-accent) ring-2 ring-(--m-accent)/20" : "border-(--m-ink)/12"
             }`}
           >
-            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-blue-700">
+            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-(--m-accent-ink)">
               <QrCode className="h-3 w-3" /> 2. Pix Enviado
             </span>
-            <p className="mt-1 text-[9px] text-slate-500">WhatsApp com copia-e-cola</p>
+            <p className="mt-1 text-[9px] text-(--m-ink)/70">WhatsApp com copia-e-cola</p>
           </div>
           <div
             className={`rounded-xl border bg-white p-2.5 shadow-xs ${
-              stage === "paid" ? "border-emerald-500 ring-2 ring-emerald-100" : "border-slate-200"
+              stage === "paid" ? "border-emerald-500 ring-2 ring-emerald-100" : "border-(--m-ink)/12"
             }`}
           >
             <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700">
               <CheckCircle2 className="h-3 w-3" /> 3. Baixa ERP
             </span>
-            <p className="mt-1 text-[9px] text-slate-500">
+            <p className="mt-1 text-[9px] text-(--m-ink)/70">
               {stage === "paid" ? "Quitado & recibo enviado" : "Aguardando webhook"}
             </p>
           </div>
         </div>
 
-        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-slate-800 bg-[#0F172A] p-3 text-[10px] text-slate-200">
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-white/10 bg-(--m-ink) p-3 text-[10px] text-white/85">
           <div>
-            <p className="font-tech text-[9px] text-slate-400">
+            <p className="font-tech text-[9px] text-white/55">
               {stage === "paid" ? "WEBHOOK PIX · LIQUIDADO ✓" : "SIMULAÇÃO DO FLUXO"}
             </p>
             <p className="mt-0.5 text-[10px] text-emerald-300">
@@ -252,7 +252,7 @@ export function AutomacaoCobrancaInteractive({ interactive = true }: { interacti
               onClick={() =>
                 setStage((s) => (s === "idle" ? "sent" : s === "sent" ? "paid" : "idle"))
               }
-              className="rounded-lg bg-emerald-500 px-3 py-1.5 text-[10px] font-bold text-slate-950 hover:bg-emerald-400"
+              className="rounded-lg bg-emerald-500 px-3 py-1.5 text-[10px] font-bold text-white hover:bg-emerald-400"
             >
               {stage === "idle" && "Disparar cobrança"}
               {stage === "sent" && "Simular pagamento Pix"}
@@ -271,14 +271,14 @@ export function AutomacaoRelatorioInteractive({ interactive = true }: { interact
   const [tone, setTone] = useState<"direto" | "detalhado">("direto");
 
   return (
-    <BrowserShell url="flow.prismaestudio.dev/resumo-diario">
-      <div className="min-h-[330px] bg-gradient-to-br from-slate-50 via-white to-emerald-50/50 p-4 text-left">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-2.5">
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-slate-900">
+    <BrowserShell url="flow.prismaestudio.dev/resumo-diario" palette="relatorio">
+      <div className="min-h-[330px] bg-gradient-to-br from-(--m-bg) via-white to-emerald-50/50 p-4 text-left">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--m-ink)/12 pb-2.5">
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-(--m-ink)">
             <Sparkles className="h-3.5 w-3.5 text-amber-500" />
             Resumo Executivo IA · 08:00
           </span>
-          <div className="flex gap-1 rounded-lg bg-slate-200/70 p-0.5">
+          <div className="flex gap-1 rounded-lg bg-(--m-ink)/10 p-0.5">
             {(["direto", "detalhado"] as const).map((t) => (
               <button
                 key={t}
@@ -286,7 +286,7 @@ export function AutomacaoRelatorioInteractive({ interactive = true }: { interact
                 disabled={!interactive}
                 onClick={() => interactive && setTone(t)}
                 className={`rounded-md px-2 py-0.5 text-[9px] font-semibold capitalize ${
-                  tone === t ? "bg-slate-900 text-white" : "text-slate-600"
+                  tone === t ? "bg-(--m-ink) text-white" : "text-(--m-ink)/75"
                 }`}
               >
                 {t}
@@ -305,7 +305,7 @@ export function AutomacaoRelatorioInteractive({ interactive = true }: { interact
             disabled={!interactive}
             onClick={() => interactive && setIncludeAds((v) => !v)}
             className={`rounded-lg border p-2 text-left transition-colors ${
-              includeAds ? "border-blue-200 bg-blue-50/70 text-blue-900" : "border-slate-200 bg-white text-slate-400"
+              includeAds ? "border-(--m-accent)/35 bg-(--m-accent)/10 text-(--m-accent-ink)" : "border-(--m-ink)/12 bg-white text-(--m-ink)/55"
             }`}
           >
             <span className="font-semibold">{includeAds ? "✓" : "+"} Meta Ads</span>
@@ -316,7 +316,7 @@ export function AutomacaoRelatorioInteractive({ interactive = true }: { interact
             disabled={!interactive}
             onClick={() => interactive && setIncludeCash((v) => !v)}
             className={`rounded-lg border p-2 text-left transition-colors ${
-              includeCash ? "border-amber-200 bg-amber-50/70 text-amber-900" : "border-slate-200 bg-white text-slate-400"
+              includeCash ? "border-amber-200 bg-amber-50/70 text-amber-900" : "border-(--m-ink)/12 bg-white text-(--m-ink)/55"
             }`}
           >
             <span className="font-semibold">{includeCash ? "✓" : "+"} Caixa Pix</span>
@@ -324,7 +324,7 @@ export function AutomacaoRelatorioInteractive({ interactive = true }: { interact
           </button>
         </div>
 
-        <div className="mt-3 rounded-2xl border border-emerald-200 bg-[#E7FCEB] p-3 text-slate-900">
+        <div className="mt-3 rounded-2xl border border-(--m-accent)/40 bg-(--m-accent)/15 p-3 text-(--m-ink)">
           <div className="flex items-center justify-between text-[10px] font-bold text-emerald-900">
             <span className="inline-flex items-center gap-1">
               <MessageSquare className="h-3 w-3" /> Prévia no WhatsApp da Diretoria
@@ -333,7 +333,7 @@ export function AutomacaoRelatorioInteractive({ interactive = true }: { interact
               <TrendingUp className="h-3 w-3" /> +14%
             </span>
           </div>
-          <p className="mt-1.5 text-[10px] leading-relaxed text-slate-800">
+          <p className="mt-1.5 text-[10px] leading-relaxed text-(--m-ink)">
             Bom dia! Ontem fechamos <strong>11 pedidos (R$ 14.280)</strong>
             {includeAds ? ", com custo por lead de R$ 9,40 no Meta Ads" : ""}
             {includeCash ? " e 2 faturas Pix aguardando retorno" : ""}.

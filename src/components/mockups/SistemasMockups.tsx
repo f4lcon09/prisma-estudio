@@ -134,13 +134,13 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
   );
 
   return (
-    <BrowserShell url="app.prismaestudio.dev/painel">
-      <div className="grid min-h-[330px] grid-cols-12 bg-slate-50/70 text-left">
+    <BrowserShell url="app.prismaestudio.dev/painel" palette="erp">
+      <div className="grid min-h-[330px] grid-cols-12 bg-(--m-bg)/70 text-left">
         {/* Dark App Sidebar */}
-        <aside className="col-span-4 flex flex-col justify-between bg-[#0F172A] p-3 text-slate-300 sm:col-span-3">
+        <aside className="col-span-4 flex flex-col justify-between bg-(--m-ink) p-3 text-white/75 sm:col-span-3">
           <div>
             <div className="flex items-center gap-2 px-1.5 py-1">
-              <div className="flex h-5 w-5 items-center justify-center rounded bg-blue-600 text-[10px] font-bold text-white">
+              <div className="flex h-5 w-5 items-center justify-center rounded bg-(--m-accent) text-[10px] font-bold text-(--m-on-accent)">
                 P
               </div>
               <span className="truncate text-[11px] font-semibold text-white">Prisma ERP</span>
@@ -164,8 +164,8 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                     onClick={() => interactive && setActiveTab(item.id)}
                     className={`flex w-full items-center justify-between rounded-lg px-2 py-1.5 text-[11px] transition-colors ${
                       isActive
-                        ? "bg-gradient-to-r from-blue-600 to-indigo-600 font-medium text-white shadow-sm"
-                        : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"
+                        ? "bg-gradient-to-r from-(--m-accent) to-(--m-accent) font-medium text-(--m-on-accent) shadow-sm"
+                        : "text-white/55 hover:bg-white/10 hover:text-white/90"
                     }`}
                   >
                     <span className="flex items-center gap-1.5 truncate">
@@ -183,32 +183,32 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
             </div>
           </div>
 
-          <div className="mt-4 flex items-center gap-2 rounded-lg bg-slate-800/70 p-2">
-            <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-blue-600 text-[10px] font-bold text-white">
+          <div className="mt-4 flex items-center gap-2 rounded-lg bg-white/10 p-2">
+            <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-(--m-accent) text-[10px] font-bold text-(--m-on-accent)">
               LA
             </div>
             <div className="min-w-0">
               <p className="truncate text-[10px] font-medium text-white">Lucas A.</p>
-              <p className="truncate text-[9px] text-slate-400">Admin · Online</p>
+              <p className="truncate text-[9px] text-white/55">Admin · Online</p>
             </div>
           </div>
         </aside>
 
         {/* Workspace */}
         <div className="col-span-8 flex flex-col justify-between p-3.5 sm:col-span-9">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/80 pb-2.5">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--m-ink)/10 pb-2.5">
             <div>
-              <h3 className="text-xs font-bold text-slate-900">
+              <h3 className="text-xs font-bold text-(--m-ink)">
                 {activeTab === "painel" && "Visão Operacional"}
                 {activeTab === "financeiro" && "Lançamentos & Pix"}
                 {activeTab === "clientes" && "Base de Clientes"}
               </h3>
-              <p className="text-[10px] text-slate-500">Atualizado em tempo real</p>
+              <p className="text-[10px] text-(--m-ink)/70">Atualizado em tempo real</p>
             </div>
 
             <div className="flex items-center gap-1.5">
               {activeTab === "painel" && (
-                <div className="hidden rounded-lg border border-slate-200 bg-white p-0.5 sm:inline-flex">
+                <div className="hidden rounded-lg border border-(--m-ink)/12 bg-white p-0.5 sm:inline-flex">
                   {(["30d", "90d", "ano"] as const).map((key) => (
                     <button
                       key={key}
@@ -216,7 +216,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                       disabled={!interactive}
                       onClick={() => interactive && setPeriod(key)}
                       className={`rounded-md px-1.5 py-0.5 text-[9px] font-semibold ${
-                        period === key ? "bg-blue-600 text-white" : "text-slate-500"
+                        period === key ? "bg-(--m-accent) text-(--m-on-accent)" : "text-(--m-ink)/70"
                       }`}
                     >
                       {periodData[key].label}
@@ -228,7 +228,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                 type="button"
                 disabled={!interactive}
                 onClick={() => interactive && setShowNewForm((v) => !v)}
-                className="inline-flex items-center gap-1 rounded-md bg-slate-900 px-2 py-1 text-[10px] font-medium text-white hover:bg-blue-600"
+                className="inline-flex items-center gap-1 rounded-md bg-(--m-ink) px-2 py-1 text-[10px] font-medium text-white hover:bg-(--m-ink)/85"
               >
                 <Plus className="h-2.5 w-2.5" />
                 <span>Novo pedido</span>
@@ -239,25 +239,25 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
           {showNewForm && interactive && (
             <form
               onSubmit={handleAddOrder}
-              className="mt-2.5 flex flex-wrap items-center gap-2 rounded-xl border border-blue-200 bg-blue-50/70 p-2"
+              className="mt-2.5 flex flex-wrap items-center gap-2 rounded-xl border border-(--m-accent)/35 bg-(--m-accent)/10 p-2"
             >
               <input
                 type="text"
                 value={newClient}
                 onChange={(e) => setNewClient(e.target.value)}
                 placeholder="Nome do cliente"
-                className="min-w-[120px] flex-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-[10px] text-slate-900 focus:border-blue-500 focus:outline-none"
+                className="min-w-[120px] flex-1 rounded-lg border border-(--m-ink)/12 bg-white px-2.5 py-1 text-[10px] text-(--m-ink) focus:border-(--m-accent) focus:outline-none"
               />
               <input
                 type="number"
                 value={newValue}
                 onChange={(e) => setNewValue(e.target.value)}
                 placeholder="Valor"
-                className="font-tech w-20 rounded-lg border border-slate-200 bg-white px-2 py-1 text-[10px] text-slate-900 focus:border-blue-500 focus:outline-none"
+                className="font-tech w-20 rounded-lg border border-(--m-ink)/12 bg-white px-2 py-1 text-[10px] text-(--m-ink) focus:border-(--m-accent) focus:outline-none"
               />
               <button
                 type="submit"
-                className="rounded-lg bg-blue-600 px-2.5 py-1 text-[10px] font-semibold text-white hover:bg-blue-700"
+                className="rounded-lg bg-(--m-accent) px-2.5 py-1 text-[10px] font-semibold text-(--m-on-accent) hover:brightness-95"
               >
                 Salvar
               </button>
@@ -267,9 +267,9 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
           {activeTab === "painel" && (
             <>
               <div className="mt-2.5 grid grid-cols-3 gap-2">
-                <div className="rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50/80 to-white p-2.5">
-                  <span className="text-[9px] font-semibold text-blue-700">Faturamento</span>
-                  <p className="font-tech mt-0.5 text-xs font-bold text-slate-900 sm:text-sm">
+                <div className="rounded-xl border border-(--m-accent)/25 bg-gradient-to-br from-(--m-accent)/10 to-white p-2.5">
+                  <span className="text-[9px] font-semibold text-(--m-accent-ink)">Faturamento</span>
+                  <p className="font-tech mt-0.5 text-xs font-bold text-(--m-ink) sm:text-sm">
                     R$ {(data.total + extraRevenue).toLocaleString("pt-BR")}
                   </p>
                   <span className="font-tech inline-flex items-center gap-0.5 text-[9px] font-semibold text-emerald-600">
@@ -278,26 +278,26 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                 </div>
                 <div className="rounded-xl border border-emerald-100 bg-gradient-to-br from-emerald-50/80 to-white p-2.5">
                   <span className="text-[9px] font-semibold text-emerald-700">Contratos</span>
-                  <p className="font-tech mt-0.5 text-xs font-bold text-slate-900 sm:text-sm">
+                  <p className="font-tech mt-0.5 text-xs font-bold text-(--m-ink) sm:text-sm">
                     {data.contracts + orders.length - initialOrders.length} ativos
                   </p>
                   <span className="font-tech text-[9px] font-medium text-emerald-600">94% renovação</span>
                 </div>
                 <div className="rounded-xl border border-amber-100 bg-gradient-to-br from-amber-50/80 to-white p-2.5">
                   <span className="text-[9px] font-semibold text-amber-700">Ticket Médio</span>
-                  <p className="font-tech mt-0.5 text-xs font-bold text-slate-900 sm:text-sm">
+                  <p className="font-tech mt-0.5 text-xs font-bold text-(--m-ink) sm:text-sm">
                     {data.ticket}
                   </p>
                   <span className="font-tech text-[9px] font-semibold text-amber-600">+{data.label}</span>
                 </div>
               </div>
 
-              <div className="mt-2.5 rounded-xl border border-slate-200/80 bg-white p-3">
+              <div className="mt-2.5 rounded-xl border border-(--m-ink)/10 bg-white p-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-semibold text-slate-800">
+                  <span className="text-[10px] font-semibold text-(--m-ink)">
                     Receita Mensal vs Meta
                   </span>
-                  <span className="font-tech rounded bg-slate-900 px-1.5 py-0.5 text-[9px] text-white">
+                  <span className="font-tech rounded bg-(--m-ink) px-1.5 py-0.5 text-[9px] text-white">
                     {hoveredPoint.month}: R$ {(hoveredPoint.value / 1000).toFixed(1)}k
                   </span>
                 </div>
@@ -306,8 +306,8 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                   <svg viewBox="0 0 300 100" className="h-full w-full overflow-visible">
                     <defs>
                       <linearGradient id="cobaltAreaLive" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#2563EB" stopOpacity="0.24" />
-                        <stop offset="100%" stopColor="#2563EB" stopOpacity="0.0" />
+                        <stop offset="0%" stopColor="#00A86B" stopOpacity="0.24" />
+                        <stop offset="100%" stopColor="#00A86B" stopOpacity="0.0" />
                       </linearGradient>
                     </defs>
                     {[25, 55, 85].map((lineY) => (
@@ -336,7 +336,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                     <path
                       d={`M 10 ${data.points[0].y} L 66 ${data.points[1].y} L 122 ${data.points[2].y} L 178 ${data.points[3].y} L 234 ${data.points[4].y} L 290 ${data.points[5].y}`}
                       fill="none"
-                      stroke="#2563EB"
+                      stroke="#00A86B"
                       strokeWidth="2.2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -356,15 +356,15 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                             cx={cx}
                             cy={pt.y}
                             r={isHovered ? 4.5 : 3}
-                            fill={isHovered ? "#2563EB" : "#FFFFFF"}
-                            stroke="#2563EB"
+                            fill={isHovered ? "#00A86B" : "#FFFFFF"}
+                            stroke="#00A86B"
                             strokeWidth="2"
                           />
                         </g>
                       );
                     })}
                   </svg>
-                  <div className="mt-0.5 flex justify-between px-1 text-[9px] text-slate-400">
+                  <div className="mt-0.5 flex justify-between px-1 text-[9px] text-(--m-ink)/55">
                     {data.points.map((p) => (
                       <span key={p.month}>{p.month}</span>
                     ))}
@@ -379,14 +379,14 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
               {orders.map((row) => (
                 <div
                   key={row.id}
-                  className="flex items-center justify-between rounded-xl border border-slate-200/80 bg-white px-3 py-2"
+                  className="flex items-center justify-between rounded-xl border border-(--m-ink)/10 bg-white px-3 py-2"
                 >
                   <div>
-                    <p className="text-[11px] font-semibold text-slate-900">{row.client}</p>
-                    <p className="text-[9px] text-slate-500">{row.service}</p>
+                    <p className="text-[11px] font-semibold text-(--m-ink)">{row.client}</p>
+                    <p className="text-[9px] text-(--m-ink)/70">{row.service}</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="font-tech text-[11px] font-bold text-slate-900">
+                    <span className="font-tech text-[11px] font-bold text-(--m-ink)">
                       R$ {row.value.toLocaleString("pt-BR")}
                     </span>
                     <button
@@ -410,26 +410,26 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
           {activeTab === "clientes" && (
             <div className="mt-2.5 space-y-2">
               <div className="relative">
-                <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3 w-3 -translate-y-1/2 text-slate-400" />
+                <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3 w-3 -translate-y-1/2 text-(--m-ink)/55" />
                 <input
                   type="text"
                   disabled={!interactive}
                   value={searchClient}
                   onChange={(e) => setSearchClient(e.target.value)}
                   placeholder="Buscar cliente..."
-                  className="w-full rounded-lg border border-slate-200 bg-white py-1.5 pl-7 pr-3 text-[10px] text-slate-900 focus:border-blue-500 focus:outline-none"
+                  className="w-full rounded-lg border border-(--m-ink)/12 bg-white py-1.5 pl-7 pr-3 text-[10px] text-(--m-ink) focus:border-(--m-accent) focus:outline-none"
                 />
               </div>
               {filteredOrders.map((c) => (
                 <div
                   key={c.id}
-                  className="flex items-center justify-between rounded-xl border border-slate-200/80 bg-white px-3 py-2"
+                  className="flex items-center justify-between rounded-xl border border-(--m-ink)/10 bg-white px-3 py-2"
                 >
                   <div>
-                    <p className="text-[11px] font-semibold text-slate-900">{c.client}</p>
-                    <p className="text-[9px] text-slate-500">{c.service}</p>
+                    <p className="text-[11px] font-semibold text-(--m-ink)">{c.client}</p>
+                    <p className="text-[9px] text-(--m-ink)/70">{c.service}</p>
                   </div>
-                  <span className="rounded-md bg-blue-50 px-2 py-0.5 text-[9px] font-semibold text-blue-700">
+                  <span className="rounded-md bg-(--m-accent)/10 px-2 py-0.5 text-[9px] font-semibold text-(--m-accent-ink)">
                     Ativo
                   </span>
                 </div>
@@ -437,12 +437,12 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
             </div>
           )}
 
-          <div className="mt-2.5 flex items-center justify-between text-[10px] text-slate-500">
+          <div className="mt-2.5 flex items-center justify-between text-[10px] text-(--m-ink)/70">
             <span className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
               Banco PostgreSQL · 14ms
             </span>
-            <span className="font-tech text-slate-400">Clique nas abas para testar</span>
+            <span className="font-tech text-(--m-ink)/55">Clique nas abas para testar</span>
           </div>
         </div>
       </div>
@@ -470,14 +470,14 @@ export function SistemaPortalInteractive({ interactive = true }: { interactive?:
   }
 
   return (
-    <BrowserShell url="cliente.prismaestudio.dev">
-      <div className="min-h-[330px] bg-slate-50 p-4 text-left">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-2.5">
+    <BrowserShell url="cliente.prismaestudio.dev" palette="portal">
+      <div className="min-h-[330px] bg-(--m-bg) p-4 text-left">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--m-ink)/12 pb-2.5">
           <div>
-            <p className="text-xs font-bold text-slate-900">Portal do Assinante · Grupo Vértice</p>
-            <p className="text-[10px] text-slate-500">Plano Enterprise · Renovação ativa</p>
+            <p className="text-xs font-bold text-(--m-ink)">Portal do Assinante · Grupo Vértice</p>
+            <p className="text-[10px] text-(--m-ink)/70">Plano Enterprise · Renovação ativa</p>
           </div>
-          <div className="flex gap-1 rounded-lg bg-slate-200/70 p-0.5">
+          <div className="flex gap-1 rounded-lg bg-(--m-ink)/10 p-0.5">
             {(["faturas", "docs", "chamados"] as const).map((t) => (
               <button
                 key={t}
@@ -485,7 +485,7 @@ export function SistemaPortalInteractive({ interactive = true }: { interactive?:
                 disabled={!interactive}
                 onClick={() => interactive && setTab(t)}
                 className={`rounded-md px-2.5 py-1 text-[10px] font-semibold capitalize ${
-                  tab === t ? "bg-white text-slate-900 shadow-2xs" : "text-slate-600"
+                  tab === t ? "bg-white text-(--m-ink) shadow-2xs" : "text-(--m-ink)/75"
                 }`}
               >
                 {t}
@@ -496,14 +496,14 @@ export function SistemaPortalInteractive({ interactive = true }: { interactive?:
 
         {tab === "faturas" && (
           <div className="mt-3 space-y-2">
-            <div className="rounded-xl border border-slate-200 bg-white px-3 py-2.5">
+            <div className="rounded-xl border border-(--m-ink)/12 bg-white px-3 py-2.5">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[11px] font-semibold text-slate-900">Fatura #1042 · Nov/2026</p>
-                  <p className="text-[9px] text-slate-500">{paid1042 ? "Pago agora via Pix" : "Vence 25/11"}</p>
+                  <p className="text-[11px] font-semibold text-(--m-ink)">Fatura #1042 · Nov/2026</p>
+                  <p className="text-[9px] text-(--m-ink)/70">{paid1042 ? "Pago agora via Pix" : "Vence 25/11"}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-tech text-[11px] font-bold text-slate-900">R$ 1.850,00</span>
+                  <span className="font-tech text-[11px] font-bold text-(--m-ink)">R$ 1.850,00</span>
                   {paid1042 ? (
                     <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[9px] font-semibold text-emerald-700">
                       Quitado ✓
@@ -513,7 +513,7 @@ export function SistemaPortalInteractive({ interactive = true }: { interactive?:
                       type="button"
                       disabled={!interactive}
                       onClick={() => interactive && setShowPixBox((v) => !v)}
-                      className="inline-flex items-center gap-1 rounded-full bg-blue-600 px-2.5 py-0.5 text-[9px] font-semibold text-white hover:bg-blue-700"
+                      className="inline-flex items-center gap-1 rounded-full bg-(--m-accent) px-2.5 py-0.5 text-[9px] font-semibold text-(--m-on-accent) hover:brightness-95"
                     >
                       <QrCode className="h-2.5 w-2.5" />
                       <span>Pagar Pix</span>
@@ -523,8 +523,8 @@ export function SistemaPortalInteractive({ interactive = true }: { interactive?:
               </div>
 
               {showPixBox && !paid1042 && interactive && (
-                <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-blue-200 bg-blue-50/70 p-2.5 text-[10px]">
-                  <span className="font-tech truncate text-slate-700">
+                <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-(--m-accent)/35 bg-(--m-accent)/10 p-2.5 text-[10px]">
+                  <span className="font-tech truncate text-(--m-ink)/85">
                     00020126580014BR.GOV.BCB.PIX...PRISMA1042
                   </span>
                   <button
@@ -541,13 +541,13 @@ export function SistemaPortalInteractive({ interactive = true }: { interactive?:
               )}
             </div>
 
-            <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-3 py-2.5">
+            <div className="flex items-center justify-between rounded-xl border border-(--m-ink)/12 bg-white px-3 py-2.5">
               <div>
-                <p className="text-[11px] font-semibold text-slate-900">Fatura #1019 · Out/2026</p>
-                <p className="text-[9px] text-slate-500">Pago via Pix</p>
+                <p className="text-[11px] font-semibold text-(--m-ink)">Fatura #1019 · Out/2026</p>
+                <p className="text-[9px] text-(--m-ink)/70">Pago via Pix</p>
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-tech text-[11px] font-bold text-slate-900">R$ 1.850,00</span>
+                <span className="font-tech text-[11px] font-bold text-(--m-ink)">R$ 1.850,00</span>
                 <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[9px] font-semibold text-emerald-700">
                   Quitado
                 </span>
@@ -561,13 +561,13 @@ export function SistemaPortalInteractive({ interactive = true }: { interactive?:
             {["Contrato_Prestacao_2026.pdf", "Manual_API_Integracao.pdf"].map((doc) => (
               <div
                 key={doc}
-                className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-3 py-2.5"
+                className="flex items-center justify-between rounded-xl border border-(--m-ink)/12 bg-white px-3 py-2.5"
               >
-                <span className="flex items-center gap-2 text-[11px] font-medium text-slate-800">
-                  <FileText className="h-3.5 w-3.5 text-indigo-600" />
+                <span className="flex items-center gap-2 text-[11px] font-medium text-(--m-ink)">
+                  <FileText className="h-3.5 w-3.5 text-(--m-accent-ink)" />
                   {doc}
                 </span>
-                <Download className="h-3.5 w-3.5 text-slate-400" />
+                <Download className="h-3.5 w-3.5 text-(--m-ink)/55" />
               </div>
             ))}
           </div>
@@ -582,11 +582,11 @@ export function SistemaPortalInteractive({ interactive = true }: { interactive?:
                   value={ticketText}
                   onChange={(e) => setTicketText(e.target.value)}
                   placeholder="Descreva um novo chamado..."
-                  className="flex-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[10px] text-slate-900 focus:border-blue-500 focus:outline-none"
+                  className="flex-1 rounded-lg border border-(--m-ink)/12 bg-white px-2.5 py-1.5 text-[10px] text-(--m-ink) focus:border-(--m-accent) focus:outline-none"
                 />
                 <button
                   type="submit"
-                  className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[10px] font-semibold text-white hover:bg-indigo-700"
+                  className="rounded-lg bg-(--m-accent) px-3 py-1.5 text-[10px] font-semibold text-(--m-on-accent) hover:brightness-95"
                 >
                   Abrir
                 </button>
@@ -595,12 +595,12 @@ export function SistemaPortalInteractive({ interactive = true }: { interactive?:
             {tickets.map((t) => (
               <div
                 key={t.id}
-                className="flex items-center justify-between rounded-xl border border-indigo-100 bg-white px-3 py-2 text-[10px]"
+                className="flex items-center justify-between rounded-xl border border-(--m-accent)/25 bg-white px-3 py-2 text-[10px]"
               >
-                <span className="font-semibold text-slate-900">
+                <span className="font-semibold text-(--m-ink)">
                   {t.id} · {t.title}
                 </span>
-                <span className="font-tech text-indigo-700">{t.status}</span>
+                <span className="font-tech text-(--m-accent-ink)">{t.status}</span>
               </div>
             ))}
           </div>
@@ -650,15 +650,15 @@ export function SistemaAgendaInteractive({ interactive = true }: { interactive?:
   }
 
   return (
-    <BrowserShell url="agenda.prismaestudio.dev/equipe">
-      <div className="min-h-[330px] bg-slate-50 p-4 text-left">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-2.5">
+    <BrowserShell url="agenda.prismaestudio.dev/equipe" palette="agenda">
+      <div className="min-h-[330px] bg-(--m-bg) p-4 text-left">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--m-ink)/12 pb-2.5">
           <div className="flex items-center gap-2">
-            <Calendar className="h-4 w-4 text-indigo-600" />
-            <span className="text-xs font-bold text-slate-900">Grade Operacional</span>
+            <Calendar className="h-4 w-4 text-(--m-accent-ink)" />
+            <span className="text-xs font-bold text-(--m-ink)">Grade Operacional</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <div className="flex gap-1 rounded-lg bg-slate-200/70 p-0.5">
+            <div className="flex gap-1 rounded-lg bg-(--m-ink)/10 p-0.5">
               {(["Hoje", "Amanhã"] as const).map((day) => (
                 <button
                   key={day}
@@ -666,7 +666,7 @@ export function SistemaAgendaInteractive({ interactive = true }: { interactive?:
                   disabled={!interactive}
                   onClick={() => interactive && setSelectedDay(day)}
                   className={`rounded-md px-2.5 py-1 text-[10px] font-semibold ${
-                    selectedDay === day ? "bg-indigo-600 text-white" : "text-slate-600"
+                    selectedDay === day ? "bg-(--m-accent) text-(--m-on-accent)" : "text-(--m-ink)/75"
                   }`}
                 >
                   {day}
@@ -677,7 +677,7 @@ export function SistemaAgendaInteractive({ interactive = true }: { interactive?:
               <button
                 type="button"
                 onClick={addQuickSlot}
-                className="inline-flex items-center gap-1 rounded-md bg-slate-900 px-2 py-1 text-[10px] font-semibold text-white hover:bg-indigo-600"
+                className="inline-flex items-center gap-1 rounded-md bg-(--m-ink) px-2 py-1 text-[10px] font-semibold text-white hover:bg-(--m-ink)/85"
               >
                 <Plus className="h-3 w-3" /> Encaixe
               </button>
@@ -689,13 +689,13 @@ export function SistemaAgendaInteractive({ interactive = true }: { interactive?:
           {slots.map((slot) => (
             <div
               key={slot.id}
-              className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-3 py-2"
+              className="flex items-center justify-between rounded-xl border border-(--m-ink)/12 bg-white px-3 py-2"
             >
               <div className="flex items-center gap-2.5">
-                <span className="font-tech rounded bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-800">
+                <span className="font-tech rounded bg-(--m-ink)/5 px-2 py-0.5 text-[10px] font-bold text-(--m-ink)">
                   {slot.time}
                 </span>
-                <span className="text-[11px] font-semibold text-slate-900">{slot.title}</span>
+                <span className="text-[11px] font-semibold text-(--m-ink)">{slot.title}</span>
               </div>
               <button
                 type="button"
@@ -706,7 +706,7 @@ export function SistemaAgendaInteractive({ interactive = true }: { interactive?:
                   slot.status === "Concluído"
                     ? "bg-emerald-50 text-emerald-700"
                     : slot.status === "Em sala"
-                    ? "bg-blue-50 text-blue-700"
+                    ? "bg-(--m-accent)/10 text-(--m-accent-ink)"
                     : "bg-amber-50 text-amber-700"
                 }`}
               >
@@ -717,9 +717,9 @@ export function SistemaAgendaInteractive({ interactive = true }: { interactive?:
           ))}
         </div>
 
-        <div className="mt-3 flex items-center justify-between text-[10px] text-slate-500">
+        <div className="mt-3 flex items-center justify-between text-[10px] text-(--m-ink)/70">
           <span>Clique no status para avançar atendimento ({selectedDay})</span>
-          <span className="font-tech inline-flex items-center gap-1 font-bold text-indigo-700">
+          <span className="font-tech inline-flex items-center gap-1 font-bold text-(--m-accent-ink)">
             <CheckCircle2 className="h-3 w-3" /> {slots.length} horários
           </span>
         </div>

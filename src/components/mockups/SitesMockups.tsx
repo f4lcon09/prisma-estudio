@@ -73,29 +73,29 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
   }
 
   return (
-    <BrowserShell url="atelierverso.com.br/drop-04">
-      <div className="bg-[#FAF6EE] text-left text-[#1A1715]">
+    <BrowserShell url="atelierverso.com.br/drop-04" palette="moda">
+      <div className="bg-[#FAF6EE] text-left text-(--m-ink)">
         {/* Top Luxury Campaign Strip */}
-        <div className="font-tech flex items-center justify-between gap-3 bg-[#1A1715] px-4 py-1 text-[8.5px] tracking-[0.15em] text-[#EAE3D5]/90">
+        <div className="font-tech flex items-center justify-between gap-3 bg-(--m-ink) px-4 py-1 text-[8.5px] tracking-[0.15em] text-(--m-bg)/90">
           <span className="whitespace-nowrap">COLEÇÃO OUTONO · DROP 04</span>
-          <span className="hidden whitespace-nowrap text-[#B08D57] lg:inline">5% NO PIX</span>
+          <span className="hidden whitespace-nowrap text-(--m-bg) lg:inline">5% NO PIX</span>
           <span className="whitespace-nowrap">ENVIO 24H</span>
         </div>
 
         {/* Editorial Store Header */}
-        <div className="flex items-center justify-between gap-2 border-b border-[#1A1715]/10 px-4 py-2.5">
-          <div className="hidden items-center gap-3 text-[9px] font-medium uppercase tracking-[0.12em] text-[#5C5348] sm:flex">
+        <div className="flex items-center justify-between gap-2 border-b border-(--m-ink)/10 px-4 py-2.5">
+          <div className="hidden items-center gap-3 text-[9px] font-medium uppercase tracking-[0.12em] text-(--m-ink)/70 sm:flex">
             <span>Novidades</span>
             <span>Lookbook</span>
           </div>
 
-          <span className="font-editorial text-[16px] font-semibold uppercase tracking-[0.2em] text-[#1A1715]">
+          <span className="font-editorial text-[16px] font-semibold uppercase tracking-[0.2em] text-(--m-ink)">
             Atelier Verso
           </span>
 
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-full border border-[#1A1715]/15 bg-white px-2.5 py-1 text-[9.5px] font-semibold text-[#1A1715]">
-              <ShoppingBag className="h-2.5 w-2.5 text-[#8E6F3E]" />
+            <span className="inline-flex items-center gap-1 rounded-full border border-(--m-ink)/15 bg-white px-2.5 py-1 text-[9.5px] font-semibold text-(--m-ink)">
+              <ShoppingBag className="h-2.5 w-2.5 text-(--m-accent-ink)" />
               <span>Sacola ({bagCount})</span>
             </span>
           </div>
@@ -106,24 +106,24 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
           {/* Left: Typography, Look Switcher & Quick-Buy */}
           <div className="flex flex-col justify-between sm:col-span-6">
             <div>
-              <p className="font-tech text-[9px] font-semibold tracking-[0.16em] text-[#8E6F3E]">
+              <p className="font-tech text-[9px] font-semibold tracking-[0.16em] text-(--m-accent-ink)">
                 {product.collection}
               </p>
-              <h4 className="font-editorial mt-1.5 text-[24px] font-semibold leading-[1.06] tracking-tight text-[#1A1715]">
-                Alfaiataria atemporal em <em className="italic text-[#8E6F3E] dark:text-[#B7410E]">linho puro.</em>
+              <h4 className="font-editorial mt-1.5 text-[24px] font-semibold leading-[1.06] tracking-tight text-(--m-ink)">
+                Alfaiataria atemporal em <em className="italic text-(--m-accent-ink)">linho puro.</em>
               </h4>
 
               {/* Piece & Price */}
-              <div className="mt-2.5 flex items-baseline justify-between border-b border-[#1A1715]/10 pb-2">
+              <div className="mt-2.5 flex items-baseline justify-between border-b border-(--m-ink)/10 pb-2">
                 <div>
-                  <p className="text-[11px] font-bold text-[#1A1715]">{product.name}</p>
-                  <p className="text-[9.5px] text-[#5C5348]">{product.installment} sem juros</p>
+                  <p className="text-[11px] font-bold text-(--m-ink)">{product.name}</p>
+                  <p className="text-[9.5px] text-(--m-ink)/70">{product.installment} sem juros</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-tech text-xs font-extrabold text-[#1A1715]">
+                  <p className="font-tech text-xs font-extrabold text-(--m-ink)">
                     R$ {product.price},00
                   </p>
-                  <p className="font-tech text-[9px] font-semibold text-[#263A32]">
+                  <p className="font-tech text-[9px] font-semibold text-(--m-accent-ink)">
                     R$ {pixPrice} no Pix
                   </p>
                 </div>
@@ -142,8 +142,8 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
                       onClick={() => interactive && setItemKey(key)}
                       className={`group/thumb flex items-center gap-1.5 rounded-lg border p-1 text-left transition-all ${
                         active
-                          ? "border-[#1A1715] bg-white shadow-2xs"
-                          : "border-[#1A1715]/10 bg-[#FAF6EE] opacity-75 hover:opacity-100"
+                          ? "border-(--m-ink) bg-white shadow-2xs"
+                          : "border-(--m-ink)/10 bg-[#FAF6EE] opacity-75 hover:opacity-100"
                       }`}
                     >
                       <div className="relative h-8 w-6 shrink-0 overflow-hidden rounded">
@@ -155,7 +155,7 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
                           className="object-cover object-top"
                         />
                       </div>
-                      <span className="truncate text-[9px] font-semibold text-[#1A1715]">
+                      <span className="truncate text-[9px] font-semibold text-(--m-ink)">
                         {entry.shortLabel}
                       </span>
                     </button>
@@ -166,7 +166,7 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
 
             {/* Size Matrix & Buy CTA */}
             <div className="mt-3 space-y-2">
-              <div className="flex items-center justify-between text-[9px] text-[#5C5348]">
+              <div className="flex items-center justify-between text-[9px] text-(--m-ink)/70">
                 <span className="font-semibold uppercase tracking-wider">Tamanho</span>
                 <span>Guia de medidas</span>
               </div>
@@ -180,8 +180,8 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
                     onClick={() => interactive && setSize(s)}
                     className={`font-tech rounded-md border py-1 text-[9.5px] font-bold transition-colors ${
                       size === s
-                        ? "border-[#1A1715] bg-[#1A1715] text-[#EAE3D5]"
-                        : "border-[#1A1715]/15 bg-white text-[#5C5348] hover:border-[#1A1715]/40"
+                        ? "border-(--m-ink) bg-(--m-ink) text-(--m-bg)"
+                        : "border-(--m-ink)/15 bg-white text-(--m-ink)/70 hover:border-(--m-ink)/40"
                     }`}
                   >
                     {s}
@@ -193,9 +193,9 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
                 type="button"
                 disabled={!interactive}
                 onClick={handleAdd}
-                className="flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#1A1715] py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[#EAE3D5] transition-colors hover:bg-[#332D28] dark:bg-[#B7410E] dark:text-[#FAF6EE] dark:hover:bg-[#9C3509]"
+                className="flex w-full items-center justify-center gap-1.5 rounded-lg bg-(--m-ink) py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-(--m-bg) transition-colors hover:bg-(--m-accent)"
               >
-                <ShoppingBag className="h-3 w-3 text-[#B08D57] dark:text-[#FAF6EE]" />
+                <ShoppingBag className="h-3 w-3 text-(--m-bg)" />
                 <span>
                   {addedFlash ? "Adicionado à sacola ✓" : `Adicionar · Tam ${size}`}
                 </span>
@@ -204,7 +204,7 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
           </div>
 
           {/* Right: Full-Bleed Fashion Campaign Photograph */}
-          <div className="relative min-h-[252px] overflow-hidden rounded-xl border border-[#1A1715]/12 bg-[#DFD6C5] sm:col-span-6">
+          <div className="relative min-h-[252px] overflow-hidden rounded-xl border border-(--m-ink)/12 bg-[#DFD6C5] sm:col-span-6">
             <Image
               src={product.image}
               alt={product.name}
@@ -214,19 +214,19 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
             />
 
             <div className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between p-2.5">
-              <span className="font-tech rounded bg-[#1A1715]/85 px-2 py-0.5 text-[8px] font-semibold uppercase tracking-[0.14em] text-[#EAE3D5] backdrop-blur-xs">
+              <span className="font-tech rounded bg-(--m-ink)/85 px-2 py-0.5 text-[8px] font-semibold uppercase tracking-[0.14em] text-(--m-bg) backdrop-blur-xs">
                 {product.badge}
               </span>
-              <span className="font-tech rounded bg-white/85 px-1.5 py-0.5 text-[8px] font-bold text-[#1A1715] backdrop-blur-xs">
+              <span className="font-tech rounded bg-white/85 px-1.5 py-0.5 text-[8px] font-bold text-(--m-ink) backdrop-blur-xs">
                 {product.lookCode}
               </span>
             </div>
 
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A1715]/85 via-[#1A1715]/35 to-transparent p-3 text-[#EAE3D5]">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-(--m-ink)/85 via-(--m-ink)/35 to-transparent p-3 text-(--m-bg)">
               <p className="font-editorial text-sm font-semibold leading-tight">
                 {product.name}
               </p>
-              <p className="font-tech mt-0.5 text-[8.5px] uppercase tracking-[0.14em] text-[#EAE3D5]/80">
+              <p className="font-tech mt-0.5 text-[8.5px] uppercase tracking-[0.14em] text-(--m-bg)/80">
                 Corte exclusivo · Envio imediato
               </p>
             </div>
@@ -254,20 +254,20 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
   const plan = clinicPlans[planKey];
 
   return (
-    <BrowserShell url="clinicaaurora.com.br">
-      <div className="min-h-[330px] bg-gradient-to-br from-amber-50/60 via-white to-blue-50/70 p-4 text-left">
+    <BrowserShell url="clinicaaurora.com.br" palette="clinica">
+      <div className="min-h-[330px] bg-gradient-to-br from-amber-50/60 via-white to-(--m-accent)/10 p-4 text-left">
         {/* Site Header */}
-        <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+        <div className="flex items-center justify-between border-b border-(--m-ink)/8 pb-2.5">
           <div className="flex items-center gap-2">
-            <div className="h-5 w-5 rounded-md bg-gradient-to-tr from-blue-600 to-amber-400" />
-            <span className="text-xs font-bold tracking-tight text-slate-900">Aurora Saúde</span>
+            <div className="h-5 w-5 rounded-md bg-gradient-to-tr from-(--m-accent) to-amber-400" />
+            <span className="text-xs font-bold tracking-tight text-(--m-ink)">Aurora Saúde</span>
           </div>
-          <div className="hidden items-center gap-3 text-[10px] font-medium text-slate-500 sm:flex">
+          <div className="hidden items-center gap-3 text-[10px] font-medium text-(--m-ink)/70 sm:flex">
             <span>Tratamentos</span>
             <span>Especialistas</span>
             <span>Convênios</span>
           </div>
-          <span className="rounded-full bg-blue-600 px-2.5 py-1 text-[10px] font-semibold text-white">
+          <span className="rounded-full bg-(--m-accent) px-2.5 py-1 text-[10px] font-semibold text-(--m-on-accent)">
             Agendar online
           </span>
         </div>
@@ -278,10 +278,10 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
             <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[9px] font-semibold text-emerald-700">
               <CheckCircle2 className="h-2.5 w-2.5" /> Horários disponíveis hoje
             </span>
-            <h4 className="mt-2 text-base font-extrabold leading-tight tracking-tight text-slate-900">
+            <h4 className="mt-2 text-base font-extrabold leading-tight tracking-tight text-(--m-ink)">
               Sua consulta confirmada em menos de 1 minuto.
             </h4>
-            <p className="mt-1 text-[11px] leading-relaxed text-slate-500">
+            <p className="mt-1 text-[11px] leading-relaxed text-(--m-ink)/70">
               Escolha o atendimento e o horário ao lado para simular a reserva ao vivo.
             </p>
 
@@ -301,8 +301,8 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
                     }}
                     className={`rounded-lg border px-2.5 py-1 text-[10px] font-semibold transition-all ${
                       active
-                        ? "border-blue-600 bg-blue-600 text-white shadow-xs"
-                        : "border-slate-200 bg-white text-slate-600 hover:border-blue-300"
+                        ? "border-(--m-accent) bg-(--m-accent) text-(--m-on-accent) shadow-xs"
+                        : "border-(--m-ink)/12 bg-white text-(--m-ink)/75 hover:border-(--m-accent)/60"
                     }`}
                   >
                     {clinicPlans[key].label}
@@ -312,18 +312,18 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
             </div>
           </div>
 
-          <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:col-span-6">
+          <div className="rounded-xl border border-(--m-ink)/12 bg-white p-3 shadow-sm sm:col-span-6">
             {confirmed ? (
               <div className="space-y-2.5 py-1">
                 <div className="flex items-center gap-2 text-emerald-700">
                   <CheckCircle2 className="h-4 w-4 shrink-0" />
                   <span className="text-xs font-bold">Pré-reserva confirmada (#AUR-482)</span>
                 </div>
-                <div className="rounded-lg bg-emerald-50/70 p-2.5 text-[10px] text-slate-700">
+                <div className="rounded-lg bg-emerald-50/70 p-2.5 text-[10px] text-(--m-ink)/85">
                   <p>
                     <strong>{patientName.trim() || "Visitante"}</strong> · {plan.label}
                   </p>
-                  <p className="mt-0.5 text-slate-600">
+                  <p className="mt-0.5 text-(--m-ink)/75">
                     Hoje às <strong>{slot}</strong> com {plan.doctor} ({plan.price})
                   </p>
                 </div>
@@ -331,7 +331,7 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
                   type="button"
                   disabled={!interactive}
                   onClick={() => interactive && setConfirmed(false)}
-                  className="inline-flex w-full items-center justify-center gap-1 rounded-lg border border-slate-200 py-1.5 text-[10px] font-semibold text-slate-700 hover:bg-slate-50"
+                  className="inline-flex w-full items-center justify-center gap-1 rounded-lg border border-(--m-ink)/12 py-1.5 text-[10px] font-semibold text-(--m-ink)/85 hover:bg-(--m-bg)"
                 >
                   <RotateCcw className="h-3 w-3" />
                   <span>Escolher outro horário</span>
@@ -340,8 +340,8 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
             ) : (
               <>
                 <div className="flex items-center justify-between text-[10px]">
-                  <span className="font-semibold text-slate-800">{plan.doctor}</span>
-                  <span className="font-tech font-bold text-blue-700">{plan.price}</span>
+                  <span className="font-semibold text-(--m-ink)">{plan.doctor}</span>
+                  <span className="font-tech font-bold text-(--m-accent-ink)">{plan.price}</span>
                 </div>
 
                 {/* Slot Picker */}
@@ -354,8 +354,8 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
                       onClick={() => interactive && setSlot(s)}
                       className={`font-tech rounded-md py-1 text-[9px] font-semibold transition-colors ${
                         slot === s
-                          ? "bg-slate-900 text-white"
-                          : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                          ? "bg-(--m-ink) text-white"
+                          : "bg-(--m-ink)/5 text-(--m-ink)/75 hover:bg-(--m-ink)/10"
                       }`}
                     >
                       {s}
@@ -370,7 +370,7 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
                     onChange={(e) => setPatientName(e.target.value)}
                     placeholder="Seu nome (opcional)"
                     aria-label="Nome do paciente na simulação"
-                    className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-none"
+                    className="mt-2 w-full rounded-lg border border-(--m-ink)/12 bg-(--m-bg) px-2.5 py-1 text-[10px] text-(--m-ink) placeholder:text-(--m-ink)/45 focus:border-(--m-accent) focus:bg-white focus:outline-none"
                   />
                 )}
 
@@ -378,7 +378,7 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
                   type="button"
                   disabled={!interactive}
                   onClick={() => interactive && setConfirmed(true)}
-                  className="mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 py-1.5 text-[10px] font-semibold text-white shadow-xs transition-all hover:from-blue-700 hover:to-indigo-700"
+                  className="mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-(--m-accent) to-(--m-accent) py-1.5 text-[10px] font-semibold text-(--m-on-accent) shadow-xs transition-all hover:brightness-95"
                 >
                   <Calendar className="h-3 w-3" />
                   <span>Reservar {slot} · {plan.duration}</span>
@@ -389,15 +389,15 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
         </div>
 
         {/* Web Vitals */}
-        <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-slate-200/80 bg-white px-3 py-1.5 text-[10px]">
-          <span className="flex items-center gap-1.5 font-medium text-slate-700">
-            <Globe className="h-3.5 w-3.5 text-blue-600" />
+        <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-(--m-ink)/10 bg-white px-3 py-1.5 text-[10px]">
+          <span className="flex items-center gap-1.5 font-medium text-(--m-ink)/85">
+            <Globe className="h-3.5 w-3.5 text-(--m-accent-ink)" />
             Lighthouse Score
           </span>
           <div className="font-tech flex items-center gap-3 text-[10px]">
             <span className="font-bold text-emerald-600">99 Performance</span>
             <span className="font-bold text-emerald-600">100 SEO</span>
-            <span className="text-slate-500">0.6s LCP</span>
+            <span className="text-(--m-ink)/70">0.6s LCP</span>
           </div>
         </div>
       </div>
@@ -432,16 +432,16 @@ export function SiteImobiliariaInteractive({ interactive = true }: { interactive
   }
 
   return (
-    <BrowserShell url="horizonteimoveis.com.br">
-      <div className="min-h-[330px] bg-gradient-to-b from-amber-50/50 via-white to-slate-50 p-4 text-left">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2.5">
+    <BrowserShell url="horizonteimoveis.com.br" palette="imobiliaria">
+      <div className="min-h-[330px] bg-gradient-to-b from-amber-50/50 via-white to-(--m-bg) p-4 text-left">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--m-ink)/8 pb-2.5">
           <div className="flex items-center gap-2">
             <span className="flex h-5 w-5 items-center justify-center rounded-md bg-amber-500 text-white">
               <Building2 className="h-3 w-3" />
             </span>
-            <span className="text-xs font-bold text-slate-900">Horizonte Imóveis</span>
+            <span className="text-xs font-bold text-(--m-ink)">Horizonte Imóveis</span>
           </div>
-          <div className="flex flex-wrap gap-1 rounded-full border border-slate-200 bg-white p-0.5">
+          <div className="flex flex-wrap gap-1 rounded-full border border-(--m-ink)/12 bg-white p-0.5">
             {(["Todos", "Centro", "Praia", "Jardins"] as const).map((z) => (
               <button
                 key={z}
@@ -449,7 +449,7 @@ export function SiteImobiliariaInteractive({ interactive = true }: { interactive
                 disabled={!interactive}
                 onClick={() => interactive && setZone(z)}
                 className={`rounded-full px-2 py-0.5 text-[9px] font-semibold transition-colors ${
-                  zone === z ? "bg-slate-900 text-white" : "text-slate-500 hover:text-slate-900"
+                  zone === z ? "bg-(--m-ink) text-white" : "text-(--m-ink)/70 hover:text-(--m-ink)"
                 }`}
               >
                 {z}
@@ -467,7 +467,7 @@ export function SiteImobiliariaInteractive({ interactive = true }: { interactive
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Filtrar por bairro ou tipo (ex.: Praia, Duplex)..."
             aria-label="Buscar imóveis"
-            className="w-full rounded-xl border border-slate-200 bg-white py-1.5 pl-8 pr-3 text-[10px] text-slate-800 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none"
+            className="w-full rounded-xl border border-(--m-ink)/12 bg-white py-1.5 pl-8 pr-3 text-[10px] text-(--m-ink) placeholder:text-(--m-ink)/45 focus:border-(--m-accent) focus:outline-none"
           />
         </div>
 
@@ -478,11 +478,11 @@ export function SiteImobiliariaInteractive({ interactive = true }: { interactive
             return (
               <div
                 key={item.id}
-                className="flex flex-col justify-between rounded-xl border border-slate-200/80 bg-white p-2.5 shadow-2xs"
+                className="flex flex-col justify-between rounded-xl border border-(--m-ink)/10 bg-white p-2.5 shadow-2xs"
               >
                 <div>
-                  <div className="flex h-14 items-start justify-between rounded-lg bg-gradient-to-br from-blue-600/90 via-indigo-600 to-amber-500/85 p-1.5 text-white">
-                    <span className="inline-flex items-center gap-0.5 rounded bg-slate-950/50 px-1.5 py-0.5 text-[8px] font-semibold">
+                  <div className="flex h-14 items-start justify-between rounded-lg bg-gradient-to-br from-(--m-accent)/90 via-(--m-accent) to-amber-500/85 p-1.5 text-(--m-on-accent)">
+                    <span className="inline-flex items-center gap-0.5 rounded bg-(--m-ink)/50 px-1.5 py-0.5 text-[8px] font-semibold">
                       <MapPin className="h-2.5 w-2.5" /> {item.zone}
                     </span>
                     <button
@@ -490,19 +490,19 @@ export function SiteImobiliariaInteractive({ interactive = true }: { interactive
                       disabled={!interactive}
                       onClick={() => toggleFav(item.id)}
                       aria-label={`Favoritar ${item.title}`}
-                      className="rounded-full bg-slate-950/40 p-1 hover:bg-slate-950/70"
+                      className="rounded-full bg-(--m-ink)/40 p-1 hover:bg-(--m-ink)/70"
                     >
                       <Heart
                         className={`h-2.5 w-2.5 ${isFav ? "fill-rose-400 text-rose-400" : "text-white"}`}
                       />
                     </button>
                   </div>
-                  <p className="mt-2 text-[10px] font-bold leading-snug text-slate-900">{item.title}</p>
-                  <p className="text-[9px] text-slate-400">{item.beds}</p>
+                  <p className="mt-2 text-[10px] font-bold leading-snug text-(--m-ink)">{item.title}</p>
+                  <p className="text-[9px] text-(--m-ink)/55">{item.beds}</p>
                 </div>
 
-                <div className="mt-2 flex items-center justify-between border-t border-slate-100 pt-2">
-                  <span className="font-tech text-[10px] font-extrabold text-blue-700">
+                <div className="mt-2 flex items-center justify-between border-t border-(--m-ink)/8 pt-2">
+                  <span className="font-tech text-[10px] font-extrabold text-(--m-accent-ink)">
                     R$ {(item.price / 1000).toFixed(0)}k
                   </span>
                   <button
@@ -512,7 +512,7 @@ export function SiteImobiliariaInteractive({ interactive = true }: { interactive
                     className={`rounded-md px-2 py-0.5 text-[9px] font-semibold transition-colors ${
                       isBooked
                         ? "bg-emerald-600 text-white"
-                        : "bg-slate-900 text-white hover:bg-blue-600"
+                        : "bg-(--m-ink) text-white hover:bg-(--m-ink)/85"
                     }`}
                   >
                     {isBooked ? "Visita ok ✓" : "Visitar"}
@@ -522,7 +522,7 @@ export function SiteImobiliariaInteractive({ interactive = true }: { interactive
             );
           })}
           {visible.length === 0 && (
-            <p className="col-span-3 py-6 text-center text-[11px] text-slate-500">
+            <p className="col-span-3 py-6 text-center text-[11px] text-(--m-ink)/70">
               Nenhum imóvel encontrado para &quot;{query}&quot;.
             </p>
           )}
@@ -557,14 +557,14 @@ export function SiteCatalogoInteractive({ interactive = true }: { interactive?: 
   const finalTotal = pixDiscount ? subtotal * 0.95 : subtotal;
 
   return (
-    <BrowserShell url="emporiocentral.com.br/pedido">
-      <div className="min-h-[330px] bg-gradient-to-br from-white via-amber-50/35 to-blue-50/40 p-4 text-left">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+    <BrowserShell url="emporiocentral.com.br/pedido" palette="catalogo">
+      <div className="min-h-[330px] bg-gradient-to-br from-white via-amber-50/35 to-(--m-accent)/6 p-4 text-left">
+        <div className="flex items-center justify-between border-b border-(--m-ink)/8 pb-2.5">
           <div className="flex items-center gap-2">
-            <span className="flex h-5 w-5 items-center justify-center rounded-md bg-blue-600 text-white">
+            <span className="flex h-5 w-5 items-center justify-center rounded-md bg-(--m-accent) text-(--m-on-accent)">
               <ShoppingBag className="h-3 w-3" />
             </span>
-            <span className="text-xs font-bold text-slate-900">Empório Central</span>
+            <span className="text-xs font-bold text-(--m-ink)">Empório Central</span>
           </div>
           <button
             type="button"
@@ -573,7 +573,7 @@ export function SiteCatalogoInteractive({ interactive = true }: { interactive?: 
             className={`font-tech rounded-full border px-2 py-0.5 text-[9px] font-semibold transition-colors ${
               pixDiscount
                 ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-                : "border-slate-200 bg-white text-slate-500"
+                : "border-(--m-ink)/12 bg-white text-(--m-ink)/70"
             }`}
           >
             {pixDiscount ? "✓ Pix -5% ativo" : "Ativar Pix -5%"}
@@ -586,11 +586,11 @@ export function SiteCatalogoInteractive({ interactive = true }: { interactive?: 
             return (
               <div
                 key={product.id}
-                className="flex items-center justify-between rounded-xl border border-slate-200/80 bg-white px-3 py-2"
+                className="flex items-center justify-between rounded-xl border border-(--m-ink)/10 bg-white px-3 py-2"
               >
                 <div>
-                  <p className="text-[11px] font-bold text-slate-900">{product.name}</p>
-                  <p className="text-[9px] text-slate-500">
+                  <p className="text-[11px] font-bold text-(--m-ink)">{product.name}</p>
+                  <p className="text-[9px] text-(--m-ink)/70">
                     {product.cat} · R$ {product.price.toFixed(2).replace(".", ",")}
                   </p>
                 </div>
@@ -599,19 +599,19 @@ export function SiteCatalogoInteractive({ interactive = true }: { interactive?: 
                     type="button"
                     disabled={!interactive || qty === 0}
                     onClick={() => changeQty(product.id, -1)}
-                    className="inline-flex h-6 w-6 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-700 disabled:opacity-40"
+                    className="inline-flex h-6 w-6 items-center justify-center rounded-lg border border-(--m-ink)/12 bg-(--m-bg) text-(--m-ink)/85 disabled:opacity-40"
                     aria-label={`Remover ${product.name}`}
                   >
                     <Minus className="h-3 w-3" />
                   </button>
-                  <span className="font-tech w-4 text-center text-[11px] font-bold text-slate-900">
+                  <span className="font-tech w-4 text-center text-[11px] font-bold text-(--m-ink)">
                     {qty}
                   </span>
                   <button
                     type="button"
                     disabled={!interactive}
                     onClick={() => changeQty(product.id, 1)}
-                    className="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+                    className="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-(--m-accent) text-(--m-on-accent) hover:brightness-95"
                     aria-label={`Adicionar ${product.name}`}
                   >
                     <Plus className="h-3 w-3" />
@@ -622,10 +622,10 @@ export function SiteCatalogoInteractive({ interactive = true }: { interactive?: 
           })}
         </div>
 
-        <div className="mt-3.5 rounded-xl bg-slate-950 p-3 text-white">
+        <div className="mt-3.5 rounded-xl bg-(--m-ink) p-3 text-white">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <p className="text-[9px] text-slate-400">
+              <p className="text-[9px] text-white/55">
                 {totalCount} {totalCount === 1 ? "item" : "itens"} {pixDiscount ? "(com 5% Pix)" : ""}
               </p>
               <p className="font-tech text-sm font-bold">
@@ -636,13 +636,13 @@ export function SiteCatalogoInteractive({ interactive = true }: { interactive?: 
               type="button"
               disabled={!interactive || totalCount === 0}
               onClick={() => interactive && setSentPreview((v) => !v)}
-              className="rounded-full bg-emerald-500 px-3.5 py-1.5 text-[10px] font-bold text-slate-950 transition-colors hover:bg-emerald-400 disabled:opacity-40"
+              className="rounded-full bg-emerald-500 px-3.5 py-1.5 text-[10px] font-bold text-(--m-ink) transition-colors hover:bg-emerald-400 disabled:opacity-40"
             >
               {sentPreview ? "Ocultar resumo" : "Gerar resumo WhatsApp →"}
             </button>
           </div>
           {sentPreview && (
-            <p className="mt-2 border-t border-slate-800 pt-2 text-[10px] text-emerald-300">
+            <p className="mt-2 border-t border-white/10 pt-2 text-[10px] text-emerald-300">
               <Check className="mr-1 inline h-3 w-3" />
               Pedido pronto: {catalogItems.filter((i) => (cart[i.id] ?? 0) > 0).map((i) => `${cart[i.id]}x ${i.name}`).join(" + ")} — Total R$ {finalTotal.toFixed(2).replace(".", ",")}
             </p>

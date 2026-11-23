@@ -1,12 +1,14 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, Lock, Plus } from "lucide-react";
+import { paletteVars, type MockupPaletteId } from "@/components/mockups/palettes";
 
 interface BrowserShellProps {
   url: string;
   children: React.ReactNode;
   compact?: boolean;
   rightBadge?: React.ReactNode;
+  palette?: MockupPaletteId;
 }
 
 export function BrowserShell({
@@ -14,9 +16,13 @@ export function BrowserShell({
   children,
   compact = false,
   rightBadge,
+  palette,
 }: BrowserShellProps) {
   return (
-    <div className="w-full min-w-0 overflow-hidden rounded-2xl border border-[#1A1715]/16 bg-[#FAF6EE] shadow-[0_24px_55px_-16px_rgba(26,23,21,0.22)] dark:border-[#ECE5D8]/16 dark:bg-[#FAF6EE] dark:shadow-[0_28px_65px_-12px_rgba(0,0,0,0.55)]">
+    <div
+      data-palette={palette}
+      style={palette ? paletteVars(palette) : undefined}
+      className="w-full min-w-0 overflow-hidden rounded-2xl border border-[#1A1715]/16 bg-(--m-bg,#FAF6EE) shadow-[0_24px_55px_-16px_rgba(26,23,21,0.22)] dark:border-[#ECE5D8]/16 dark:bg-(--m-bg,#FAF6EE) dark:shadow-[0_28px_65px_-12px_rgba(0,0,0,0.55)]">
       <div
         className={`flex items-center justify-between gap-2 border-b border-[#1A1715]/25 bg-[#231F1C] px-3 ${
           compact ? "py-2" : "py-2.5"
