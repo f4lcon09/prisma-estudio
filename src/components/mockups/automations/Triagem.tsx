@@ -221,14 +221,15 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
                   {lead.name} · {lead.company}
                 </span>
               </div>
-              <div className="flex min-h-0 flex-1 flex-col gap-1 overflow-hidden p-1.5 text-[8.5px] leading-snug">
+              {/* Conversa alinhada por baixo, como no WhatsApp: as mensagens antigas somem por cima */}
+              <div className="flex min-h-0 flex-1 flex-col justify-end gap-1.5 overflow-hidden px-2 pb-1.5 pt-2 text-[8.5px] leading-snug">
                 {phase === 0 ? (
                   <p className="m-auto max-w-[22ch] text-center text-(--m-ink)/65">Clique em Executar para ver o atendimento.</p>
                 ) : (
                   <>
-                    <p className="max-w-[90%] rounded-md rounded-tl-none bg-white px-1.5 py-1 shadow-2xs">{lead.msg}</p>
+                    <p className="max-w-[86%] shrink-0 rounded-md rounded-tl-none bg-white px-1.5 py-1 shadow-2xs">{lead.msg}</p>
                     {phase >= 2 && (
-                      <p className="ml-auto max-w-[90%] rounded-md rounded-tr-none bg-[#D9FDD3] px-1.5 py-1 shadow-2xs">
+                      <p className="ml-auto max-w-[86%] shrink-0 rounded-md rounded-tr-none bg-[#D9FDD3] px-1.5 py-1 shadow-2xs">
                         {phase === 2 ? "digitando…" : lead.reply}
                         {phase > 2 && (
                           <span className="mt-0.5 flex items-center justify-end gap-0.5 text-[7.5px] text-sky-700">
@@ -237,14 +238,20 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
                         )}
                       </p>
                     )}
-                    {phase >= 3 && <p className="max-w-[90%] rounded-md rounded-tl-none bg-white px-1.5 py-1 shadow-2xs">{lead.answer}</p>}
+                    {phase >= 3 && <p className="max-w-[86%] shrink-0 rounded-md rounded-tl-none bg-white px-1.5 py-1 shadow-2xs">{lead.answer}</p>}
                   </>
                 )}
               </div>
+              <div className="mx-1.5 mb-1.5 flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[8.5px] text-(--m-ink)/65">
+                <MessageCircle className="h-2.5 w-2.5" /> Mensagem
+              </div>
             </div>
-            <div className="min-h-0 overflow-hidden bg-white p-2">
-              <p className="text-[8.5px] font-bold uppercase tracking-[0.12em] text-(--m-ink)/65">Extraído pela IA</p>
-              <div className="mt-1 grid grid-cols-2 gap-1">
+            <div className="flex min-h-0 flex-col overflow-hidden bg-white p-2">
+              <div className="flex items-center justify-between gap-2">
+                <p className="text-[8.5px] font-bold uppercase tracking-[0.12em] text-(--m-ink)/65">Extraído pela IA</p>
+                <span className="font-mono text-[8px] text-(--m-ink)/65">{phase >= 5 ? "exec. #1.285 · 2,1 s" : phase > 0 ? "executando…" : "aguardando"}</span>
+              </div>
+              <div className="mt-1.5 grid grid-cols-2 gap-1">
                 {Object.entries(lead.data).map(([k, v]) => (
                   <div key={k} className="rounded-md bg-(--m-bg) px-1.5 py-1">
                     <p className="text-[7.5px] text-(--m-ink)/65">{k}</p>
@@ -253,7 +260,7 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
                 ))}
               </div>
               {phase >= 4 && (
-                <p className={`mt-1.5 rounded-md px-1.5 py-1 text-[8.5px] font-semibold ${hot ? "bg-emerald-50 text-emerald-700" : "bg-lime-50 text-lime-800"}`}>
+                <p className={`mt-auto rounded-md px-1.5 py-1.5 text-[8.5px] font-semibold ${hot ? "bg-emerald-50 text-emerald-700" : "bg-lime-50 text-lime-800"}`}>
                   {hot ? `Card criado · score ${lead.score} · vendas avisada` : `Score ${lead.score} · entrou na nutrição`}
                 </p>
               )}
