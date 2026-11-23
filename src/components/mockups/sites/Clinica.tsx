@@ -278,7 +278,7 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
                 <div>
                   <p className="text-[11.5px] font-bold">{p.name}</p>
                   <p className="text-[10px] text-(--m-ink)/70">{p.role}</p>
-                  <p className="text-[9px] text-(--m-ink)/55">{p.reg}</p>
+                  <p className="text-[9px] text-(--m-ink)/65">{p.reg}</p>
                 </div>
               </div>
             ))}
@@ -307,7 +307,7 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
 
         {/* Convênios */}
         <section className="px-5 py-5">
-          <p className="text-center text-[9px] font-bold uppercase tracking-[0.16em] text-(--m-ink)/55">Convênios aceitos</p>
+          <p className="text-center text-[9px] font-bold uppercase tracking-[0.16em] text-(--m-ink)/65">Convênios aceitos</p>
           <div className="mt-2.5 flex flex-wrap justify-center gap-1.5">
             {["OdontoPrev", "Amil Dental", "SulAmérica", "Bradesco Dental", "Porto Seguro"].map((c) => (
               <span key={c} className="rounded-lg border border-(--m-ink)/10 px-2.5 py-1 text-[9.5px] font-semibold text-(--m-ink)/70">
