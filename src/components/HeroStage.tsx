@@ -10,7 +10,6 @@ import {
   SiteProgramScreen,
   TelemetryCardMockup,
 } from "@/components/RealMockups";
-import { HeroLens } from "@/components/HeroLens";
 import "@/components/HeroStage.css";
 
 const modeOrder: HeroModeId[] = ["sites", "sistemas", "automacoes"];
@@ -127,8 +126,6 @@ export function HeroStage() {
     >
       {/* Luz espectral por trás dos aparelhos: o "prisma" que o vidro deixa passar */}
       <div className="ps-hero-prism pointer-events-none absolute inset-x-0 bottom-0 top-[34%]" aria-hidden="true" />
-      {/* Lente de vidro líquido que acompanha o mouse */}
-      <HeroLens />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-10 2xl:max-w-[1600px]">
         {/* Top Studio Spec Tag */}
