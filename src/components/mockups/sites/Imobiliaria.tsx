@@ -46,7 +46,7 @@ export function SiteImobiliariaInteractive({ interactive = true }: { interactive
   }
 
   return (
-    <BrowserShell url="horizonteimoveis.com.br" palette="imobiliaria">
+    <BrowserShell url="prisma.estudio/modelos/horizonte-imoveis" palette="imobiliaria">
       <div className="bg-white text-left text-(--m-ink)">
         {/* Navegação */}
         <header className="sticky top-0 z-20 flex items-center justify-between border-b border-(--m-ink)/8 bg-white/95 px-5 py-2.5 backdrop-blur">

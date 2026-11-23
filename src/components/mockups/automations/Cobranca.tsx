@@ -41,7 +41,7 @@ export function AutomacaoCobrancaInteractive({ interactive = true }: { interacti
   }
 
   return (
-    <BrowserShell url="flow.prismaestudio.dev/cobranca-pix" palette="cobranca">
+    <BrowserShell url="prisma.estudio/modelos/cobranca-pix" palette="cobranca">
       <div className="min-h-[min(var(--mock-h,520px),520px)] bg-(--m-bg) p-3 text-left text-(--m-ink)">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">

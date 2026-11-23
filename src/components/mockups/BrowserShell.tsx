@@ -21,9 +21,8 @@ export function BrowserShell({
 }: BrowserShellProps) {
   const custom = useMockupCustomization();
   const style = custom.palette ? paletteOptionVars(custom.palette) : palette ? paletteVars(palette) : undefined;
-  // Com nome personalizado, o endereço vira o domínio do visitante, mantendo o caminho do modelo.
-  const path = url.includes("/") ? url.slice(url.indexOf("/")) : "";
-  const shownUrl = custom.brandName?.trim() && brandDomain(custom.brandName) ? brandDomain(custom.brandName) + path : url;
+  // Com nome personalizado, a barra mostra a prévia do visitante dentro do endereço do estúdio (nunca um domínio real)
+  const shownUrl = custom.brandName?.trim() && brandDomain(custom.brandName) ? `prisma.estudio/previa/${brandDomain(custom.brandName)}` : url;
   return (
     <div
       data-palette={palette}

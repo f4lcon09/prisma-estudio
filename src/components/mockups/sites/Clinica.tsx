@@ -44,7 +44,7 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
   const service = services.find((s) => s.id === serviceId) ?? services[0];
 
   return (
-    <BrowserShell url="clinicaaurora.com.br" palette="clinica">
+    <BrowserShell url="prisma.estudio/modelos/clinica-aurora" palette="clinica">
       <div className="bg-white text-left text-(--m-ink)">
         {/* Barra de contato */}
         <div className="flex flex-wrap items-center justify-between gap-2 bg-(--m-ink) px-5 py-1.5 text-[9px] text-white/80">

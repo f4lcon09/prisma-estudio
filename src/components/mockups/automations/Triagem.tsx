@@ -149,7 +149,7 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
     active ? (flowing ? "wire-flow stroke-(--m-accent)" : "stroke-emerald-400") : "stroke-(--m-ink)/18";
 
   return (
-    <BrowserShell url="flow.prismaestudio.dev/workflows/triagem-ia" palette="triagem">
+    <BrowserShell url="prisma.estudio/modelos/triagem-ia" palette="triagem">
       <div className="@container flex h-[min(var(--mock-h,540px),560px)] flex-col bg-(--m-bg) text-left text-(--m-ink)">
         {/* Barra do editor */}
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--m-ink)/10 bg-white px-3 py-2">

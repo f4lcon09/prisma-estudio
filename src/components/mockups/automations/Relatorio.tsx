@@ -31,7 +31,7 @@ export function AutomacaoRelatorioInteractive({ interactive = true }: { interact
   ];
 
   return (
-    <BrowserShell url="flow.prismaestudio.dev/resumo-diario" palette="relatorio">
+    <BrowserShell url="prisma.estudio/modelos/resumo-diario" palette="relatorio">
       <div className="grid min-h-[min(var(--mock-h,520px),520px)] gap-2.5 bg-(--m-bg) p-3 text-left text-(--m-ink) sm:grid-cols-[0.9fr_1.1fr]">
         {/* Configuração */}
         <div className="grid content-start gap-2.5">

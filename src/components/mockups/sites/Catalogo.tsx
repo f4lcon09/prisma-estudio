@@ -39,7 +39,7 @@ export function SiteCatalogoInteractive({ interactive = true }: { interactive?: 
   const visible = products.filter((p) => cat === "Todos" || p.cat === cat);
 
   return (
-    <BrowserShell url="emporiocentral.com.br/pedido" palette="catalogo">
+    <BrowserShell url="prisma.estudio/modelos/emporio-central" palette="catalogo">
       <div className="bg-white text-left text-(--m-ink)">
         <header className="sticky top-0 z-20 flex items-center justify-between border-b border-(--m-ink)/8 bg-white/95 px-5 py-2.5 backdrop-blur">
           <div className="flex items-center gap-2">

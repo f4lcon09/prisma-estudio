@@ -125,7 +125,7 @@ export function SistemaPortalInteractive({ interactive = true }: { interactive?:
   );
 
   return (
-    <BrowserShell url="cliente.prismaestudio.dev" palette="portal">
+    <BrowserShell url="prisma.estudio/modelos/portal-cliente" palette="portal">
       <div className="grid min-h-(--mock-h,520px) grid-cols-[150px_1fr] bg-(--m-bg) text-left text-(--m-ink)">
         {/* Menu lateral */}
         <aside className="flex flex-col justify-between bg-(--m-ink) p-3 text-white">

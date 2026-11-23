@@ -36,13 +36,14 @@ export function paletteOptionVars(p: PaletteOption): CSSProperties {
   } as CSSProperties;
 }
 
-/** "Padaria do João" -> "padariadojoao.com.br" */
+/** "Padaria do João" -> "padaria-do-joao" (usado só como caminho de prévia) */
 export function brandDomain(name: string) {
   const slug = name
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
-    .replace(/[^a-z0-9]/g, "")
-    .slice(0, 28);
-  return slug ? `${slug}.com.br` : "";
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 32);
+  return slug;
 }

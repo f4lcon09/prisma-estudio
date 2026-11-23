@@ -203,7 +203,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
   );
 
   return (
-    <BrowserShell url="app.vertice.com.br/painel" palette="erp">
+    <BrowserShell url="prisma.estudio/modelos/erp-vertice" palette="erp">
       <div className="@container">
       <div className="grid h-[min(var(--mock-h,540px),560px)] grid-cols-[46px_1fr] bg-(--m-bg) text-left text-(--m-ink) @[640px]:grid-cols-[168px_1fr]">
         {/* Menu lateral */}

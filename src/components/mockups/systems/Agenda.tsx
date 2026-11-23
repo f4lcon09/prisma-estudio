@@ -84,7 +84,7 @@ export function SistemaAgendaInteractive({ interactive = true }: { interactive?:
   }
 
   return (
-    <BrowserShell url="agenda.prismaestudio.dev/equipe" palette="agenda">
+    <BrowserShell url="prisma.estudio/modelos/agenda-equipe" palette="agenda">
       <div className="grid min-h-(--mock-h,520px) grid-cols-[44px_1fr] bg-(--m-bg) text-left text-(--m-ink)">
         <aside className="flex flex-col items-center gap-3 bg-(--m-ink) py-3 text-white/70">
           <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-(--m-accent) text-[10px] font-extrabold text-(--m-on-accent)">
