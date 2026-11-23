@@ -228,8 +228,6 @@ export function HeroStage() {
           onBlurCapture={() => setIsPaused(false)}
           className="ps-hero-stage-frame mx-auto mt-8 max-w-7xl"
         >
-          <span className="ps-hero-tick-tl hidden lg:block" aria-hidden="true" />
-          <span className="ps-hero-tick-tr hidden lg:block" aria-hidden="true" />
 
           <div className="relative flex flex-col items-center justify-center gap-6 md:flex-row md:flex-wrap md:items-start lg:grid lg:grid-cols-12 lg:items-center lg:gap-6">
             {/* Left Tilted 3D Phone */}
