@@ -49,6 +49,7 @@ export function FaqSection() {
           {faqs.map((item, idx) => (
             <details
               key={item.q}
+              name="duvidas"
               open={idx === 0}
               className="group rounded-2xl border border-(--fg)/12 bg-(--surface) px-5 open:pb-5"
             >

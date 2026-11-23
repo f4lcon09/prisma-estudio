@@ -1,8 +1,12 @@
 "use client";
 
+import { createContext, useContext } from "react";
 import { ChevronLeft, ChevronRight, Lock, Plus } from "lucide-react";
 import { paletteVars, type MockupPaletteId } from "@/components/mockups/palettes";
 import { brandDomain, paletteOptionVars, useMockupCustomization } from "@/components/mockups/MockupCustomization";
+
+/** false = só o conteúdo do site, sem barra de navegador (usado nas miniaturas dos cards). */
+export const BrowserChromeContext = createContext(true);
 
 interface BrowserShellProps {
   url: string;
@@ -20,6 +24,7 @@ export function BrowserShell({
   palette,
 }: BrowserShellProps) {
   const custom = useMockupCustomization();
+  const showChrome = useContext(BrowserChromeContext);
   const style = custom.palette ? paletteOptionVars(custom.palette) : palette ? paletteVars(palette) : undefined;
   // Com nome personalizado, a barra mostra a prévia do visitante dentro do endereço do estúdio (nunca um domínio real)
   const shownUrl = custom.brandName?.trim() && brandDomain(custom.brandName) ? `prisma.estudio/previa/${brandDomain(custom.brandName)}` : url;
@@ -27,7 +32,12 @@ export function BrowserShell({
     <div
       data-palette={palette}
       style={style}
-      className="w-full min-w-0 overflow-hidden rounded-[14px] border border-black/10 bg-(--m-bg,#FFFFFF) shadow-[0_30px_60px_-20px_rgba(0,0,0,0.28),0_0_0_0.5px_rgba(0,0,0,0.06)] dark:border-white/10 dark:shadow-[0_30px_70px_-16px_rgba(0,0,0,0.7)]">
+      className={`w-full min-w-0 overflow-hidden bg-(--m-bg,#FFFFFF) ${
+        showChrome
+          ? "rounded-[14px] border border-black/10 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.28),0_0_0_0.5px_rgba(0,0,0,0.06)] dark:border-white/10 dark:shadow-[0_30px_70px_-16px_rgba(0,0,0,0.7)]"
+          : ""
+      }`}>
+      {showChrome && (
       <div
         className={`flex items-center justify-between gap-2 border-b border-black/8 bg-[#EEF0F3]/90 px-3 backdrop-blur-xl ${
           compact ? "py-2" : "py-2.5"
@@ -56,6 +66,7 @@ export function BrowserShell({
           {rightBadge ?? <Plus className="h-3.5 w-3.5" aria-hidden="true" />}
         </div>
       </div>
+      )}
 
       {/* Corpo com rolagem própria: a altura vem de --mock-h (definida por quem exibe o mockup) */}
       <div className="max-h-(--mock-h,560px) overflow-y-auto overscroll-contain [scrollbar-width:thin]">{children}</div>

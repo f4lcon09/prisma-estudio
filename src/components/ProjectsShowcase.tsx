@@ -7,6 +7,7 @@ import { ProjectProgramVariant } from "@/components/ProjectProgramVariants";
 import { Reveal } from "@/components/Reveal";
 import { CtaPair } from "@/components/CtaPair";
 import { ModelInspector } from "@/components/ModelInspector";
+import { BrowserChromeContext } from "@/components/mockups/BrowserShell";
 import "@/components/ProjectsShowcase.css";
 
 type FilterOption = "Todos" | ModelProject["category"];
@@ -146,7 +147,10 @@ export function ProjectsShowcase() {
                     {/* Scaled Real Software Thumbnail */}
                     <div className={`ps-specimen-viewport relative h-52 overflow-hidden border ${styles.frameTint}`}>
                       <div className="pointer-events-none w-[181%] origin-top-left scale-[0.55]">
-                        <ProjectProgramVariant variant={project.variant} interactive={false} />
+                        {/* miniatura sem barra de navegador: ela volta na prévia (Testar programa) */}
+                        <BrowserChromeContext.Provider value={false}>
+                          <ProjectProgramVariant variant={project.variant} interactive={false} />
+                        </BrowserChromeContext.Provider>
                       </div>
                       <button
                         type="button"
