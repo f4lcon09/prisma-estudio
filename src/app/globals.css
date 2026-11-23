@@ -85,6 +85,28 @@ h3 {
 /* Pílula grafite com borda espectral que acende no hover: a assinatura do prisma */
 .ps-prism-cta {
   position: relative;
+  /* brilho espectral suave por baixo do botão */
+  box-shadow:
+    -10px 10px 26px -12px rgba(255, 107, 74, 0.55),
+    0 12px 26px -12px rgba(60, 207, 145, 0.45),
+    10px 10px 26px -12px rgba(138, 92, 255, 0.55);
+  transition: box-shadow 240ms ease, transform 240ms ease;
+}
+
+.ps-prism-cta:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    -12px 14px 30px -12px rgba(255, 107, 74, 0.7),
+    0 16px 30px -12px rgba(60, 207, 145, 0.55),
+    12px 14px 30px -12px rgba(138, 92, 255, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-prism-cta,
+  .ps-prism-cta:hover {
+    transition: none;
+    transform: none;
+  }
 }
 
 /* só a borda recebe o espectro (máscara recorta o miolo) */
@@ -98,7 +120,7 @@ h3 {
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-  opacity: 0.6;
+  opacity: 1;
   pointer-events: none;
   transition: opacity 240ms ease;
 }

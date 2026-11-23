@@ -84,8 +84,13 @@ export function ProjectsShowcase() {
       rail.style.setProperty("--rail-pad", `${Math.round(pad)}px`);
     }
     measure();
+    const ro = new ResizeObserver(measure);
+    if (railRef.current) ro.observe(railRef.current);
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
   }, []);
 
   useEffect(() => {
@@ -189,10 +194,14 @@ export function ProjectsShowcase() {
           style={{
             marginLeft: "calc(50% - 50vw)",
             marginRight: "calc(50% - 50vw)",
-            paddingLeft: "var(--rail-pad, calc(50vw - 50%))",
+            paddingLeft: "calc(50vw - 50%)",
+            paddingRight: "calc(50vw - 50%)",
             scrollPaddingLeft: "var(--rail-pad, 0px)",
+            // bordas esmaecidas e simétricas: os cards que vazam aparecem suaves dos dois lados
+            WebkitMaskImage: "linear-gradient(to right, transparent 0, #000 min(6vw, 96px), #000 calc(100% - min(6vw, 96px)), transparent 100%)",
+            maskImage: "linear-gradient(to right, transparent 0, #000 min(6vw, 96px), #000 calc(100% - min(6vw, 96px)), transparent 100%)",
           }}
-          className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6 pr-6 [scrollbar-width:none] lg:pr-10 [&::-webkit-scrollbar]:hidden"
+          className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {visibleProjects.map((project, idx) => {
             const waUrl = buildWhatsAppUrl(project.whatsappPrompt);
