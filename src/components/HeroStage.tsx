@@ -54,9 +54,30 @@ export function HeroStage() {
   const [stepCount, setStepCount] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  // largura de cada frase do título: o espaço acompanha a frase ativa (sem vão para as frases curtas)
+  const phraseRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [phraseWidths, setPhraseWidths] = useState<number[] | null>(null);
+  // os mockups dos outros modos só montam depois que a página carregou
+  const [allModesMounted, setAllModesMounted] = useState(false);
 
   const activeIndex = ((stepCount % modeOrder.length) + modeOrder.length) % modeOrder.length;
   const activeMode = modeOrder[activeIndex];
+
+  useEffect(() => {
+    function measure() {
+      setPhraseWidths(phraseRefs.current.map((el) => (el ? Math.ceil(el.getBoundingClientRect().width) : 0)));
+    }
+    measure();
+    document.fonts?.ready.then(measure).catch(() => {});
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  useEffect(() => {
+    const w = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number };
+    if (w.requestIdleCallback) w.requestIdleCallback(() => setAllModesMounted(true), { timeout: 2500 });
+    else window.setTimeout(() => setAllModesMounted(true), 1500);
+  }, []);
 
   useEffect(() => {
     if (isPaused) return;
@@ -131,10 +152,28 @@ export function HeroStage() {
         {/* Título com troca de palavra em 2D (sem 3D: o Firefox não desenha texto em gradiente dentro de preserve-3d) */}
         <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-[clamp(26px,7.6vw,32px)] leading-tight font-semibold tracking-tight text-(--fg) sm:text-4xl lg:text-[56px] lg:leading-[1.12] 2xl:text-[72px]">
           <span>Criamos</span>
-          <span className="relative inline-block h-[1.28em] overflow-hidden align-middle">
-            <span className="invisible block whitespace-nowrap px-1" aria-hidden="true">
-              sistemas de alto nível.
-            </span>
+          <span
+            className="relative inline-block h-[1.28em] overflow-hidden align-middle transition-[width] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+            style={phraseWidths ? { width: phraseWidths[activeIndex] } : undefined}
+          >
+            {/* medidores invisíveis (um por frase) e, antes da medição, a frase ativa dá a largura */}
+            {modeOrder.map((modeId, idx) => (
+              <span
+                key={`m-${modeId}`}
+                ref={(el) => {
+                  phraseRefs.current[idx] = el;
+                }}
+                aria-hidden="true"
+                className="invisible absolute left-0 top-0 whitespace-nowrap px-1"
+              >
+                {modeMeta[modeId].headlineHighlight}
+              </span>
+            ))}
+            {!phraseWidths && (
+              <span className="invisible block whitespace-nowrap px-1" aria-hidden="true">
+                {modeMeta[activeMode].headlineHighlight}
+              </span>
+            )}
             {modeOrder.map((modeId, idx) => {
               const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
               const isFront = rel === 0;
@@ -145,7 +184,7 @@ export function HeroStage() {
                   key={modeId}
                   aria-hidden={!isFront}
                   style={{ transform: offset }}
-                  className={`absolute inset-0 flex items-center justify-center whitespace-nowrap bg-gradient-to-r ${modeMeta[modeId].gradient} bg-clip-text text-transparent transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+                  className={`absolute inset-y-0 left-0 flex items-center whitespace-nowrap px-1 bg-gradient-to-r ${modeMeta[modeId].gradient} bg-clip-text text-transparent transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
                     isFront ? "opacity-100" : "opacity-0"
                   }`}
                 >
@@ -272,9 +311,9 @@ export function HeroStage() {
                       active ? "relative opacity-100" : "pointer-events-none absolute inset-x-0 top-0 opacity-0"
                     }`}
                   >
-                    {modeId === "sistemas" && <SaasProgramScreen interactive={active} />}
-                    {modeId === "sites" && <SiteProgramScreen interactive={active} />}
-                    {modeId === "automacoes" && <AutomationProgramScreen interactive={active} />}
+                    {(allModesMounted || active) && modeId === "sistemas" && <SaasProgramScreen interactive={active} />}
+                    {(allModesMounted || active) && modeId === "sites" && <SiteProgramScreen interactive={active} />}
+                    {(allModesMounted || active) && modeId === "automacoes" && <AutomationProgramScreen interactive={active} />}
                   </div>
                 );
               })}

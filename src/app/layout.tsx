@@ -21,12 +21,15 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
+  // não aparece na primeira tela: carrega sem pré-carregamento
+  preload: false,
 });
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-editorial",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  // só o peso 600 é usado (mockup da loja de moda)
+  weight: ["600"],
   style: ["normal", "italic"],
   display: "swap",
 });

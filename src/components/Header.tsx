@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, PackageSearch, X } from "lucide-react";
@@ -20,13 +20,28 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const isTracking = pathname === "/acompanhar";
+  // no topo o cabeçalho some no fundo; ao rolar vira vidro com sombra suave
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const defaultWaUrl = buildWhatsAppUrl(
     `Olá! Vim pelo portfólio (${siteConfig.brandName}) e gostaria de conversar sobre um projeto.`
   );
 
   return (
-    <header className="sticky top-0 z-40 border-b border-(--hairline) bg-(--glass) backdrop-blur-xl backdrop-saturate-[1.8] transition-colors duration-300">
+    <header
+      className={`sticky top-0 z-40 border-b transition-[background-color,border-color,box-shadow] duration-300 ${
+        scrolled || mobileOpen
+          ? "border-(--hairline) bg-(--glass) shadow-[0_10px_30px_-22px_rgba(0,0,0,0.35)] backdrop-blur-xl backdrop-saturate-[1.8]"
+          : "border-transparent bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3.5 sm:px-6 lg:px-10">
         <Link
           href="/"

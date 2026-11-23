@@ -52,7 +52,7 @@ export function ProcessSection() {
           <p className="text-[13px] font-semibold text-(--accent-text)">
             Como funciona
           </p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl 2xl:text-[56px] lg:leading-[1.05]">
+          <h2 className="ps-reveal mt-2 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl 2xl:text-[56px] lg:leading-[1.05]">
             Do primeiro contato ao projeto no ar
           </h2>
           <p className="mt-3 text-base leading-relaxed text-(--fg-2)">
@@ -83,7 +83,7 @@ export function ProcessSection() {
           })}
         </ol>
 
-        <div className="mt-14 grid gap-8 rounded-3xl border border-(--fg)/12 bg-(--surface) p-6 sm:p-8 lg:grid-cols-12 lg:items-center">
+        <div className="ps-reveal mt-14 grid gap-8 rounded-3xl border border-(--fg)/12 bg-(--surface) p-6 sm:p-8 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-5">
             <p className="text-[13px] font-semibold text-(--accent-text)">
               Em todo projeto
