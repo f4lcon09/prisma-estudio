@@ -50,7 +50,6 @@ export function ProjectsShowcase() {
   const [activeFilter, setActiveFilter] = useState<FilterOption>("Todos");
   const [inspectProject, setInspectProject] = useState<ModelProject | null>(null);
   const railRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
   const [edges, setEdges] = useState({ start: true, end: false });
 
   function updateEdges() {
@@ -73,25 +72,6 @@ export function ProjectsShowcase() {
         : siteConfig.projects.filter((p) => p.category === activeFilter),
     [activeFilter],
   );
-
-  // alinha o primeiro card com o título: mede o recuo real da coluna (porcentagem em scroll-padding usa a largura da galeria)
-  useEffect(() => {
-    function measure() {
-      const rail = railRef.current;
-      const title = titleRef.current;
-      if (!rail || !title) return;
-      const pad = Math.max(0, title.getBoundingClientRect().left - rail.getBoundingClientRect().left);
-      rail.style.setProperty("--rail-pad", `${Math.round(pad)}px`);
-    }
-    measure();
-    const ro = new ResizeObserver(measure);
-    if (railRef.current) ro.observe(railRef.current);
-    window.addEventListener("resize", measure);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, []);
 
   useEffect(() => {
     railRef.current?.scrollTo({ left: 0 });
@@ -127,7 +107,7 @@ export function ProjectsShowcase() {
             <p className="text-[13px] font-semibold text-(--accent-text)">
               Vitrine interativa
             </p>
-            <h2 ref={titleRef} className="mt-2 text-3xl font-semibold tracking-tight text-(--fg) sm:text-4xl lg:text-5xl 2xl:text-[56px] lg:leading-[1.05]">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-(--fg) sm:text-4xl lg:text-5xl 2xl:text-[56px] lg:leading-[1.05]">
               Projetos-Modelo
             </h2>
           </div>
@@ -187,19 +167,14 @@ export function ProjectsShowcase() {
           </div>
         </div>
 
-        {/* Galeria: o primeiro card alinha com o título e a fileira vaza até as duas bordas da tela */}
+        {/* Galeria dentro da coluna: mesmas bordas do título e dos filtros, 3 cards por vez no desktop */}
         <div
           ref={railRef}
           onScroll={updateEdges}
           style={{
-            marginLeft: "calc(50% - 50vw)",
-            marginRight: "calc(50% - 50vw)",
-            paddingLeft: "calc(50vw - 50%)",
-            paddingRight: "calc(50vw - 50%)",
-            scrollPaddingLeft: "var(--rail-pad, 0px)",
-            // bordas esmaecidas e simétricas: os cards que vazam aparecem suaves dos dois lados
-            WebkitMaskImage: "linear-gradient(to right, transparent 0, #000 min(6vw, 96px), #000 calc(100% - min(6vw, 96px)), transparent 100%)",
-            maskImage: "linear-gradient(to right, transparent 0, #000 min(6vw, 96px), #000 calc(100% - min(6vw, 96px)), transparent 100%)",
+            // fade só do lado em que ainda há cards, dentro da coluna
+            WebkitMaskImage: `linear-gradient(to right, ${edges.start ? "#000" : "transparent"} 0, #000 32px, #000 calc(100% - 32px), ${edges.end ? "#000" : "transparent"} 100%)`,
+            maskImage: `linear-gradient(to right, ${edges.start ? "#000" : "transparent"} 0, #000 32px, #000 calc(100% - 32px), ${edges.end ? "#000" : "transparent"} 100%)`,
           }}
           className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
@@ -208,7 +183,7 @@ export function ProjectsShowcase() {
             const styles = modeStyles[project.mode];
 
             return (
-              <Reveal key={project.id} delayMs={(idx % 3) * 80} className="w-[min(84vw,380px)] shrink-0 snap-start lg:w-[400px] 2xl:w-[440px]">
+              <Reveal key={project.id} delayMs={(idx % 3) * 80} className="w-[82%] shrink-0 snap-start sm:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)]">
                 <article
                   onMouseMove={(e) => {
                     const rect = e.currentTarget.getBoundingClientRect();
