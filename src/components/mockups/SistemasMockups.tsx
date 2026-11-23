@@ -16,6 +16,7 @@ import {
   Users,
 } from "lucide-react";
 import { BrowserShell } from "@/components/mockups/BrowserShell";
+import { useBrandLabel } from "@/components/mockups/MockupCustomization";
 
 type SaasTab = "painel" | "financeiro" | "clientes";
 type PeriodKey = "30d" | "90d" | "ano";
@@ -93,6 +94,7 @@ const initialOrders: OrderRow[] = [
 ];
 
 export function SistemaErpInteractive({ interactive = true }: { interactive?: boolean }) {
+  const brand = useBrandLabel("Prisma ERP", (n) => `${n} · Gestão`);
   const [activeTab, setActiveTab] = useState<SaasTab>("painel");
   const [period, setPeriod] = useState<PeriodKey>("30d");
   const [hoveredIdx, setHoveredIdx] = useState(5);
@@ -143,7 +145,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
               <div className="flex h-5 w-5 items-center justify-center rounded bg-(--m-accent) text-[10px] font-bold text-(--m-on-accent)">
                 P
               </div>
-              <span className="truncate text-[11px] font-semibold text-white">Prisma ERP</span>
+              <span className="truncate text-[11px] font-semibold text-white">{brand}</span>
             </div>
 
             <div className="mt-4 space-y-1">
@@ -451,6 +453,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
 }
 
 export function SistemaPortalInteractive({ interactive = true }: { interactive?: boolean }) {
+  const brand = useBrandLabel("Grupo Vértice");
   const [tab, setTab] = useState<"faturas" | "docs" | "chamados">("faturas");
   const [paid1042, setPaid1042] = useState(false);
   const [showPixBox, setShowPixBox] = useState(false);
@@ -474,7 +477,7 @@ export function SistemaPortalInteractive({ interactive = true }: { interactive?:
       <div className="min-h-[330px] bg-(--m-bg) p-4 text-left">
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--m-ink)/12 pb-2.5">
           <div>
-            <p className="text-xs font-bold text-(--m-ink)">Portal do Assinante · Grupo Vértice</p>
+            <p className="text-xs font-bold text-(--m-ink)">Portal do Assinante · {brand}</p>
             <p className="text-[10px] text-(--m-ink)/70">Plano Enterprise · Renovação ativa</p>
           </div>
           <div className="flex gap-1 rounded-lg bg-(--m-ink)/10 p-0.5">
@@ -618,6 +621,7 @@ interface AgendaSlot {
 }
 
 export function SistemaAgendaInteractive({ interactive = true }: { interactive?: boolean }) {
+  const brand = useBrandLabel("Grade Operacional", (n) => `${n} · Agenda`);
   const [selectedDay, setSelectedDay] = useState<"Hoje" | "Amanhã">("Hoje");
   const [slots, setSlots] = useState<AgendaSlot[]>([
     { id: "1", time: "09:00", title: "Dra. Camila · Avaliação", status: "Confirmado" },
@@ -655,7 +659,7 @@ export function SistemaAgendaInteractive({ interactive = true }: { interactive?:
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--m-ink)/12 pb-2.5">
           <div className="flex items-center gap-2">
             <Calendar className="h-4 w-4 text-(--m-accent-ink)" />
-            <span className="text-xs font-bold text-(--m-ink)">Grade Operacional</span>
+            <span className="text-xs font-bold text-(--m-ink)">{brand}</span>
           </div>
           <div className="flex items-center gap-1.5">
             <div className="flex gap-1 rounded-lg bg-(--m-ink)/10 p-0.5">

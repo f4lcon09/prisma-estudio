@@ -14,6 +14,7 @@ import {
   Webhook,
 } from "lucide-react";
 import { BrowserShell } from "@/components/mockups/BrowserShell";
+import { useBrandLabel } from "@/components/mockups/MockupCustomization";
 
 const sampleMessages = [
   {
@@ -46,6 +47,7 @@ const sampleMessages = [
 ];
 
 export function AutomacaoTriagemInteractive({ interactive = true }: { interactive?: boolean }) {
+  const brand = useBrandLabel("Triagem WhatsApp + IA", (n) => `${n} · Triagem IA`);
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [step, setStep] = useState(3);
   const [running, setRunning] = useState(false);
@@ -70,7 +72,7 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--m-ink)/12 bg-white px-3.5 py-2.5">
           <div className="flex items-center gap-2">
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            <span className="text-[11px] font-bold text-(--m-ink)">Triagem WhatsApp + IA</span>
+            <span className="text-[11px] font-bold text-(--m-ink)">{brand}</span>
             <span className="font-tech rounded bg-emerald-50 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-700">
               Ativo
             </span>
@@ -175,6 +177,7 @@ const billingTargets = [
 ];
 
 export function AutomacaoCobrancaInteractive({ interactive = true }: { interactive?: boolean }) {
+  const brand = useBrandLabel("Régua Pix Automática", (n) => `${n} · Régua Pix`);
   const [targetIdx, setTargetIdx] = useState(0);
   const [stage, setStage] = useState<"idle" | "sent" | "paid">("sent");
 
@@ -184,7 +187,7 @@ export function AutomacaoCobrancaInteractive({ interactive = true }: { interacti
     <BrowserShell url="flow.prismaestudio.dev/cobranca-pix" palette="cobranca">
       <div className="bg-canvas-dots min-h-[330px] bg-gradient-to-br from-emerald-50/40 via-(--m-bg) to-amber-50/40 p-4 text-left">
         <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-(--m-ink)/12 bg-white px-3 py-2">
-          <span className="text-[11px] font-bold text-(--m-ink)">Régua Pix Automática</span>
+          <span className="text-[11px] font-bold text-(--m-ink)">{brand}</span>
           <div className="flex items-center gap-1.5">
             {billingTargets.map((b, idx) => (
               <button
@@ -252,7 +255,7 @@ export function AutomacaoCobrancaInteractive({ interactive = true }: { interacti
               onClick={() =>
                 setStage((s) => (s === "idle" ? "sent" : s === "sent" ? "paid" : "idle"))
               }
-              className="rounded-lg bg-emerald-500 px-3 py-1.5 text-[10px] font-bold text-white hover:bg-emerald-400"
+              className="rounded-lg bg-(--m-accent) px-3 py-1.5 text-[10px] font-bold text-(--m-on-accent) hover:brightness-95"
             >
               {stage === "idle" && "Disparar cobrança"}
               {stage === "sent" && "Simular pagamento Pix"}
@@ -266,6 +269,7 @@ export function AutomacaoCobrancaInteractive({ interactive = true }: { interacti
 }
 
 export function AutomacaoRelatorioInteractive({ interactive = true }: { interactive?: boolean }) {
+  const brand = useBrandLabel("Resumo Executivo IA · 08:00", (n) => `${n} · Resumo IA 08:00`);
   const [includeAds, setIncludeAds] = useState(true);
   const [includeCash, setIncludeCash] = useState(true);
   const [tone, setTone] = useState<"direto" | "detalhado">("direto");
@@ -276,7 +280,7 @@ export function AutomacaoRelatorioInteractive({ interactive = true }: { interact
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--m-ink)/12 pb-2.5">
           <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-(--m-ink)">
             <Sparkles className="h-3.5 w-3.5 text-amber-500" />
-            Resumo Executivo IA · 08:00
+            {brand}
           </span>
           <div className="flex gap-1 rounded-lg bg-(--m-ink)/10 p-0.5">
             {(["direto", "detalhado"] as const).map((t) => (

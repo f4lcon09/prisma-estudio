@@ -151,6 +151,12 @@ export function ProjectsShowcase() {
                       <button
                         type="button"
                         onClick={() => setInspectProject(project)}
+                        className="absolute inset-0 cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#B08D57]"
+                        aria-label={`Abrir prévia de ${project.title}`}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setInspectProject(project)}
                         className="ps-specimen-btn absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-[#1A1715] px-3.5 py-1.5 text-[11px] font-semibold text-[#EAE3D5] hover:bg-[#332D28] dark:bg-[#B7410E] dark:text-[#FAF6EE] dark:hover:bg-[#9C3509]"
                       >
                         <Maximize2 className="h-3 w-3 text-[#B08D57] dark:text-[#FAF6EE]" aria-hidden="true" />

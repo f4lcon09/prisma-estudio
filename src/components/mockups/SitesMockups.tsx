@@ -17,6 +17,7 @@ import {
   ShoppingBag,
 } from "lucide-react";
 import { BrowserShell } from "@/components/mockups/BrowserShell";
+import { useBrandLabel } from "@/components/mockups/MockupCustomization";
 
 const fashionItems = {
   blazer: {
@@ -57,6 +58,7 @@ const fashionItems = {
 const fashionSizes = ["PP", "P", "M", "G", "GG"] as const;
 
 export function SiteModaVendasInteractive({ interactive = true }: { interactive?: boolean }) {
+  const brand = useBrandLabel("Atelier Verso");
   const [itemKey, setItemKey] = useState<keyof typeof fashionItems>("blazer");
   const [size, setSize] = useState<(typeof fashionSizes)[number]>("M");
   const [bagCount, setBagCount] = useState(1);
@@ -90,7 +92,7 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
           </div>
 
           <span className="font-editorial text-[16px] font-semibold uppercase tracking-[0.2em] text-(--m-ink)">
-            Atelier Verso
+            {brand}
           </span>
 
           <div className="flex items-center gap-2">
@@ -246,6 +248,7 @@ const clinicPlans = {
 const clinicSlots = ["09:30", "11:00", "14:30", "16:15"];
 
 export function SiteClinicaInteractive({ interactive = true }: { interactive?: boolean }) {
+  const brand = useBrandLabel("Aurora Saúde");
   const [planKey, setPlanKey] = useState<keyof typeof clinicPlans>("express");
   const [slot, setSlot] = useState("14:30");
   const [patientName, setPatientName] = useState("");
@@ -260,7 +263,7 @@ export function SiteClinicaInteractive({ interactive = true }: { interactive?: b
         <div className="flex items-center justify-between border-b border-(--m-ink)/8 pb-2.5">
           <div className="flex items-center gap-2">
             <div className="h-5 w-5 rounded-md bg-gradient-to-tr from-(--m-accent) to-amber-400" />
-            <span className="text-xs font-bold tracking-tight text-(--m-ink)">Aurora Saúde</span>
+            <span className="text-xs font-bold tracking-tight text-(--m-ink)">{brand}</span>
           </div>
           <div className="hidden items-center gap-3 text-[10px] font-medium text-(--m-ink)/70 sm:flex">
             <span>Tratamentos</span>
@@ -412,6 +415,7 @@ const properties = [
 ];
 
 export function SiteImobiliariaInteractive({ interactive = true }: { interactive?: boolean }) {
+  const brand = useBrandLabel("Horizonte Imóveis");
   const [query, setQuery] = useState("");
   const [zone, setZone] = useState<"Todos" | "Centro" | "Praia" | "Jardins">("Todos");
   const [favorites, setFavorites] = useState<string[]>(["mar"]);
@@ -439,7 +443,7 @@ export function SiteImobiliariaInteractive({ interactive = true }: { interactive
             <span className="flex h-5 w-5 items-center justify-center rounded-md bg-amber-500 text-white">
               <Building2 className="h-3 w-3" />
             </span>
-            <span className="text-xs font-bold text-(--m-ink)">Horizonte Imóveis</span>
+            <span className="text-xs font-bold text-(--m-ink)">{brand}</span>
           </div>
           <div className="flex flex-wrap gap-1 rounded-full border border-(--m-ink)/12 bg-white p-0.5">
             {(["Todos", "Centro", "Praia", "Jardins"] as const).map((z) => (
@@ -539,6 +543,7 @@ const catalogItems = [
 ];
 
 export function SiteCatalogoInteractive({ interactive = true }: { interactive?: boolean }) {
+  const brand = useBrandLabel("Empório Central");
   const [cart, setCart] = useState<Record<string, number>>({ cafe: 1, kit: 1 });
   const [pixDiscount, setPixDiscount] = useState(true);
   const [sentPreview, setSentPreview] = useState(false);
@@ -564,7 +569,7 @@ export function SiteCatalogoInteractive({ interactive = true }: { interactive?: 
             <span className="flex h-5 w-5 items-center justify-center rounded-md bg-(--m-accent) text-(--m-on-accent)">
               <ShoppingBag className="h-3 w-3" />
             </span>
-            <span className="text-xs font-bold text-(--m-ink)">Empório Central</span>
+            <span className="text-xs font-bold text-(--m-ink)">{brand}</span>
           </div>
           <button
             type="button"
