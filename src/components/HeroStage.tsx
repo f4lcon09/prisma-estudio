@@ -126,6 +126,8 @@ export function HeroStage() {
     >
       {/* Luz espectral por trás dos aparelhos: o "prisma" que o vidro deixa passar */}
       <div className="ps-hero-prism pointer-events-none absolute inset-x-0 bottom-0 top-[34%]" aria-hidden="true" />
+      {/* Bolha líquida que acompanha o mouse (posição em --mx/--my, já atualizadas no onMouseMove) */}
+      <div className="ps-hero-bubble pointer-events-none absolute" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-10 2xl:max-w-[1600px]">
         {/* Top Studio Spec Tag */}

@@ -92,3 +92,63 @@
 :root[data-theme="dark"] .ps-hero-prism {
   opacity: 0.45;
 }
+
+/* Bolha líquida que segue o mouse no hero */
+.ps-hero-bubble {
+  left: var(--mx);
+  top: var(--my);
+  z-index: 0;
+  width: 460px;
+  height: 460px;
+  translate: -50% -50%;
+  border-radius: 44% 56% 60% 40% / 46% 42% 58% 54%;
+  background:
+    radial-gradient(circle at 34% 30%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 34%),
+    radial-gradient(circle at 62% 66%, rgba(58, 139, 255, 0.22), transparent 55%),
+    radial-gradient(circle at 40% 60%, rgba(138, 92, 255, 0.2), transparent 60%),
+    radial-gradient(circle at 70% 35%, rgba(255, 107, 74, 0.14), transparent 55%);
+  filter: blur(26px) saturate(130%);
+  opacity: 0;
+  transition:
+    left 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    top 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 500ms ease;
+  animation: psBubbleMorph 9s ease-in-out infinite alternate;
+}
+
+:root[data-theme="dark"] .ps-hero-bubble {
+  background:
+    radial-gradient(circle at 34% 30%, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 34%),
+    radial-gradient(circle at 62% 66%, rgba(58, 139, 255, 0.26), transparent 55%),
+    radial-gradient(circle at 40% 60%, rgba(138, 92, 255, 0.24), transparent 60%),
+    radial-gradient(circle at 70% 35%, rgba(255, 107, 74, 0.14), transparent 55%);
+}
+
+/* só com mouse de verdade, e só enquanto ele está no hero */
+@media (hover: hover) and (pointer: fine) {
+  .ps-hero-section:hover .ps-hero-bubble {
+    opacity: 1;
+  }
+}
+
+@keyframes psBubbleMorph {
+  0% {
+    border-radius: 44% 56% 60% 40% / 46% 42% 58% 54%;
+    scale: 1;
+  }
+  50% {
+    border-radius: 58% 42% 46% 54% / 54% 60% 40% 46%;
+    scale: 1.05;
+  }
+  100% {
+    border-radius: 48% 52% 38% 62% / 40% 52% 48% 60%;
+    scale: 0.97;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-hero-bubble {
+    animation: none;
+    transition: opacity 300ms ease;
+  }
+}
