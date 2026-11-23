@@ -185,7 +185,7 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
           </div>
         </div>
 
-        <div className="grid min-h-0 flex-1 grid-rows-[minmax(0,1.7fr)_minmax(0,1fr)] @[720px]:grid-cols-[1fr_250px] @[720px]:grid-rows-1">
+        <div className="grid min-h-0 flex-1 grid-rows-[minmax(0,1.25fr)_minmax(0,1fr)] @[720px]:grid-cols-[1fr_250px] @[720px]:grid-rows-1">
           {/* Canvas */}
           <div className="bg-canvas-dots relative min-h-0 overflow-hidden">
             <svg viewBox="0 0 600 230" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
@@ -213,7 +213,7 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
           </div>
 
           {/* Execução */}
-          <div className="grid min-h-0 grid-cols-2 gap-px border-t border-(--m-ink)/10 bg-(--m-ink)/10 @[720px]:grid-cols-1 @[720px]:grid-rows-[1.3fr_1fr] @[720px]:border-l @[720px]:border-t-0">
+          <div className="grid min-h-0 grid-cols-[1.2fr_1fr] gap-px border-t border-(--m-ink)/10 bg-(--m-ink)/10 @[720px]:grid-cols-1 @[720px]:grid-rows-[1.3fr_1fr] @[720px]:border-l @[720px]:border-t-0">
             <div className="flex min-h-0 flex-col bg-[#ECE5DD]">
               <div className="flex items-center gap-1.5 bg-(--m-ink) px-2 py-1 text-white">
                 <span className="flex h-4 w-4 items-center justify-center rounded-full bg-white/15 text-[8px] font-bold">{lead.name[0]}</span>
@@ -222,7 +222,7 @@ export function AutomacaoTriagemInteractive({ interactive = true }: { interactiv
                 </span>
               </div>
               {/* Conversa alinhada por baixo, como no WhatsApp: as mensagens antigas somem por cima */}
-              <div className="flex min-h-0 flex-1 flex-col justify-end gap-1.5 overflow-hidden px-2 pb-1.5 pt-2 text-[8.5px] leading-snug">
+              <div className="flex min-h-0 flex-1 flex-col justify-end gap-1.5 overflow-hidden px-2 pb-1.5 pt-2 text-[8.5px] leading-snug [mask-image:linear-gradient(to_bottom,transparent_0,black_8px)]">
                 {phase === 0 ? (
                   <p className="m-auto max-w-[22ch] text-center text-(--m-ink)/65">Clique em Executar para ver o atendimento.</p>
                 ) : (
