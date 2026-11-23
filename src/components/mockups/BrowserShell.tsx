@@ -58,7 +58,8 @@ export function BrowserShell({
         </div>
       </div>
 
-      {children}
+      {/* Corpo com rolagem própria: a altura vem de --mock-h (definida por quem exibe o mockup) */}
+      <div className="max-h-(--mock-h,560px) overflow-y-auto overscroll-contain [scrollbar-width:thin]">{children}</div>
     </div>
   );
 }

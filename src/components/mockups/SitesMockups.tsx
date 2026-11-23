@@ -2,22 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import {
-  Building2,
-  Calendar,
-  Check,
-  CheckCircle2,
-  Globe,
-  Heart,
-  MapPin,
-  Minus,
-  Plus,
-  RotateCcw,
-  Search,
-  ShoppingBag,
-} from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 import { BrowserShell } from "@/components/mockups/BrowserShell";
 import { useBrandLabel } from "@/components/mockups/MockupCustomization";
+import { MockFooter } from "@/components/mockups/kit";
 
 const fashionItems = {
   blazer: {
@@ -234,426 +222,80 @@ export function SiteModaVendasInteractive({ interactive = true }: { interactive?
             </div>
           </div>
         </div>
-      </div>
-    </BrowserShell>
-  );
-}
 
-const clinicPlans = {
-  express: { label: "Avaliação Express", duration: "30 min", price: "R$ 180,00", doctor: "Dra. Camila" },
-  clareamento: { label: "Clareamento LED", duration: "50 min", price: "R$ 490,00", doctor: "Dr. Rafael" },
-  completo: { label: "Check-up Completo", duration: "1h", price: "R$ 340,00", doctor: "Dra. Camila" },
-} as const;
-
-const clinicSlots = ["09:30", "11:00", "14:30", "16:15"];
-
-export function SiteClinicaInteractive({ interactive = true }: { interactive?: boolean }) {
-  const brand = useBrandLabel("Aurora Saúde");
-  const [planKey, setPlanKey] = useState<keyof typeof clinicPlans>("express");
-  const [slot, setSlot] = useState("14:30");
-  const [patientName, setPatientName] = useState("");
-  const [confirmed, setConfirmed] = useState(false);
-
-  const plan = clinicPlans[planKey];
-
-  return (
-    <BrowserShell url="clinicaaurora.com.br" palette="clinica">
-      <div className="min-h-[330px] bg-gradient-to-br from-amber-50/60 via-white to-(--m-accent)/10 p-4 text-left">
-        {/* Site Header */}
-        <div className="flex items-center justify-between border-b border-(--m-ink)/8 pb-2.5">
-          <div className="flex items-center gap-2">
-            <div className="h-5 w-5 rounded-md bg-gradient-to-tr from-(--m-accent) to-amber-400" />
-            <span className="text-xs font-bold tracking-tight text-(--m-ink)">{brand}</span>
-          </div>
-          <div className="hidden items-center gap-3 text-[10px] font-medium text-(--m-ink)/70 sm:flex">
-            <span>Tratamentos</span>
-            <span>Especialistas</span>
-            <span>Convênios</span>
-          </div>
-          <span className="rounded-full bg-(--m-accent) px-2.5 py-1 text-[10px] font-semibold text-(--m-on-accent)">
-            Agendar online
-          </span>
-        </div>
-
-        {/* Hero + Interactive Booking Widget */}
-        <div className="mt-3.5 grid gap-4 sm:grid-cols-12 sm:items-start">
-          <div className="sm:col-span-6">
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[9px] font-semibold text-emerald-700">
-              <CheckCircle2 className="h-2.5 w-2.5" /> Horários disponíveis hoje
-            </span>
-            <h4 className="mt-2 text-base font-extrabold leading-tight tracking-tight text-(--m-ink)">
-              Sua consulta confirmada em menos de 1 minuto.
-            </h4>
-            <p className="mt-1 text-[11px] leading-relaxed text-(--m-ink)/70">
-              Escolha o atendimento e o horário ao lado para simular a reserva ao vivo.
-            </p>
-
-            {/* Treatment switcher */}
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              {(Object.keys(clinicPlans) as (keyof typeof clinicPlans)[]).map((key) => {
-                const active = planKey === key;
-                return (
-                  <button
-                    key={key}
-                    type="button"
-                    disabled={!interactive}
-                    onClick={() => {
-                      if (!interactive) return;
-                      setPlanKey(key);
-                      setConfirmed(false);
-                    }}
-                    className={`rounded-lg border px-2.5 py-1 text-[10px] font-semibold transition-all ${
-                      active
-                        ? "border-(--m-accent) bg-(--m-accent) text-(--m-on-accent) shadow-xs"
-                        : "border-(--m-ink)/12 bg-white text-(--m-ink)/75 hover:border-(--m-accent)/60"
-                    }`}
-                  >
-                    {clinicPlans[key].label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="rounded-xl border border-(--m-ink)/12 bg-white p-3 shadow-sm sm:col-span-6">
-            {confirmed ? (
-              <div className="space-y-2.5 py-1">
-                <div className="flex items-center gap-2 text-emerald-700">
-                  <CheckCircle2 className="h-4 w-4 shrink-0" />
-                  <span className="text-xs font-bold">Pré-reserva confirmada (#AUR-482)</span>
-                </div>
-                <div className="rounded-lg bg-emerald-50/70 p-2.5 text-[10px] text-(--m-ink)/85">
-                  <p>
-                    <strong>{patientName.trim() || "Visitante"}</strong> · {plan.label}
-                  </p>
-                  <p className="mt-0.5 text-(--m-ink)/75">
-                    Hoje às <strong>{slot}</strong> com {plan.doctor} ({plan.price})
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  disabled={!interactive}
-                  onClick={() => interactive && setConfirmed(false)}
-                  className="inline-flex w-full items-center justify-center gap-1 rounded-lg border border-(--m-ink)/12 py-1.5 text-[10px] font-semibold text-(--m-ink)/85 hover:bg-(--m-bg)"
-                >
-                  <RotateCcw className="h-3 w-3" />
-                  <span>Escolher outro horário</span>
-                </button>
-              </div>
-            ) : (
-              <>
-                <div className="flex items-center justify-between text-[10px]">
-                  <span className="font-semibold text-(--m-ink)">{plan.doctor}</span>
-                  <span className="font-tech font-bold text-(--m-accent-ink)">{plan.price}</span>
-                </div>
-
-                {/* Slot Picker */}
-                <div className="mt-2 grid grid-cols-4 gap-1">
-                  {clinicSlots.map((s) => (
-                    <button
-                      key={s}
-                      type="button"
-                      disabled={!interactive}
-                      onClick={() => interactive && setSlot(s)}
-                      className={`font-tech rounded-md py-1 text-[9px] font-semibold transition-colors ${
-                        slot === s
-                          ? "bg-(--m-ink) text-white"
-                          : "bg-(--m-ink)/5 text-(--m-ink)/75 hover:bg-(--m-ink)/10"
-                      }`}
-                    >
-                      {s}
-                    </button>
-                  ))}
-                </div>
-
-                {interactive && (
-                  <input
-                    type="text"
-                    value={patientName}
-                    onChange={(e) => setPatientName(e.target.value)}
-                    placeholder="Seu nome (opcional)"
-                    aria-label="Nome do paciente na simulação"
-                    className="mt-2 w-full rounded-lg border border-(--m-ink)/12 bg-(--m-bg) px-2.5 py-1 text-[10px] text-(--m-ink) placeholder:text-(--m-ink)/45 focus:border-(--m-accent) focus:bg-white focus:outline-none"
-                  />
-                )}
-
-                <button
-                  type="button"
-                  disabled={!interactive}
-                  onClick={() => interactive && setConfirmed(true)}
-                  className="mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-(--m-accent) to-(--m-accent) py-1.5 text-[10px] font-semibold text-(--m-on-accent) shadow-xs transition-all hover:brightness-95"
-                >
-                  <Calendar className="h-3 w-3" />
-                  <span>Reservar {slot} · {plan.duration}</span>
-                </button>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* Web Vitals */}
-        <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-(--m-ink)/10 bg-white px-3 py-1.5 text-[10px]">
-          <span className="flex items-center gap-1.5 font-medium text-(--m-ink)/85">
-            <Globe className="h-3.5 w-3.5 text-(--m-accent-ink)" />
-            Lighthouse Score
-          </span>
-          <div className="font-tech flex items-center gap-3 text-[10px]">
-            <span className="font-bold text-emerald-600">99 Performance</span>
-            <span className="font-bold text-emerald-600">100 SEO</span>
-            <span className="text-(--m-ink)/70">0.6s LCP</span>
-          </div>
-        </div>
-      </div>
-    </BrowserShell>
-  );
-}
-
-const properties = [
-  { id: "cob", title: "Cobertura Duplex · 142m²", zone: "Centro", price: 890000, beds: "3 suítes" },
-  { id: "mar", title: "Apto Vista Mar · 98m²", zone: "Praia", price: 680000, beds: "2 vagas" },
-  { id: "cas", title: "Casa Térrea · 180m²", zone: "Jardins", price: 620000, beds: "Piscina" },
-];
-
-export function SiteImobiliariaInteractive({ interactive = true }: { interactive?: boolean }) {
-  const brand = useBrandLabel("Horizonte Imóveis");
-  const [query, setQuery] = useState("");
-  const [zone, setZone] = useState<"Todos" | "Centro" | "Praia" | "Jardins">("Todos");
-  const [favorites, setFavorites] = useState<string[]>(["mar"]);
-  const [visitScheduled, setVisitScheduled] = useState<string | null>(null);
-
-  const visible = properties.filter((item) => {
-    const matchZone = zone === "Todos" || item.zone === zone;
-    const matchText =
-      !query.trim() ||
-      item.title.toLowerCase().includes(query.toLowerCase()) ||
-      item.zone.toLowerCase().includes(query.toLowerCase());
-    return matchZone && matchText;
-  });
-
-  function toggleFav(id: string) {
-    if (!interactive) return;
-    setFavorites((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
-  }
-
-  return (
-    <BrowserShell url="horizonteimoveis.com.br" palette="imobiliaria">
-      <div className="min-h-[330px] bg-gradient-to-b from-amber-50/50 via-white to-(--m-bg) p-4 text-left">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-(--m-ink)/8 pb-2.5">
-          <div className="flex items-center gap-2">
-            <span className="flex h-5 w-5 items-center justify-center rounded-md bg-amber-500 text-white">
-              <Building2 className="h-3 w-3" />
-            </span>
-            <span className="text-xs font-bold text-(--m-ink)">{brand}</span>
-          </div>
-          <div className="flex flex-wrap gap-1 rounded-full border border-(--m-ink)/12 bg-white p-0.5">
-            {(["Todos", "Centro", "Praia", "Jardins"] as const).map((z) => (
-              <button
-                key={z}
-                type="button"
-                disabled={!interactive}
-                onClick={() => interactive && setZone(z)}
-                className={`rounded-full px-2 py-0.5 text-[9px] font-semibold transition-colors ${
-                  zone === z ? "bg-(--m-ink) text-white" : "text-(--m-ink)/70 hover:text-(--m-ink)"
-                }`}
-              >
-                {z}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="relative mt-2.5">
-          <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3 w-3 -translate-y-1/2 text-amber-500" />
-          <input
-            type="text"
-            disabled={!interactive}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Filtrar por bairro ou tipo (ex.: Praia, Duplex)..."
-            aria-label="Buscar imóveis"
-            className="w-full rounded-xl border border-(--m-ink)/12 bg-white py-1.5 pl-8 pr-3 text-[10px] text-(--m-ink) placeholder:text-(--m-ink)/45 focus:border-(--m-accent) focus:outline-none"
-          />
-        </div>
-
-        <div className="mt-3 grid gap-2.5 sm:grid-cols-3">
-          {visible.map((item) => {
-            const isFav = favorites.includes(item.id);
-            const isBooked = visitScheduled === item.id;
-            return (
-              <div
-                key={item.id}
-                className="flex flex-col justify-between rounded-xl border border-(--m-ink)/10 bg-white p-2.5 shadow-2xs"
-              >
-                <div>
-                  <div className="flex h-14 items-start justify-between rounded-lg bg-gradient-to-br from-[#3B4A63] via-[#7D8BA0] to-[#D8C7AE] p-1.5 text-white">
-                    <span className="inline-flex items-center gap-0.5 rounded bg-(--m-ink)/50 px-1.5 py-0.5 text-[8px] font-semibold">
-                      <MapPin className="h-2.5 w-2.5" /> {item.zone}
-                    </span>
-                    <button
-                      type="button"
-                      disabled={!interactive}
-                      onClick={() => toggleFav(item.id)}
-                      aria-label={`Favoritar ${item.title}`}
-                      className="rounded-full bg-(--m-ink)/40 p-1 hover:bg-(--m-ink)/70"
-                    >
-                      <Heart
-                        className={`h-2.5 w-2.5 ${isFav ? "fill-rose-400 text-rose-400" : "text-white"}`}
-                      />
-                    </button>
-                  </div>
-                  <p className="mt-2 text-[10px] font-bold leading-snug text-(--m-ink)">{item.title}</p>
-                  <p className="text-[9px] text-(--m-ink)/55">{item.beds}</p>
-                </div>
-
-                <div className="mt-2 flex items-center justify-between border-t border-(--m-ink)/8 pt-2">
-                  <span className="font-tech text-[10px] font-extrabold text-(--m-accent-ink)">
-                    R$ {(item.price / 1000).toFixed(0)}k
-                  </span>
-                  <button
-                    type="button"
-                    disabled={!interactive}
-                    onClick={() => interactive && setVisitScheduled(isBooked ? null : item.id)}
-                    className={`rounded-md px-2 py-0.5 text-[9px] font-semibold transition-colors ${
-                      isBooked
-                        ? "bg-emerald-600 text-white"
-                        : "bg-(--m-ink) text-white hover:bg-(--m-ink)/85"
-                    }`}
-                  >
-                    {isBooked ? "Visita ok ✓" : "Visitar"}
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-          {visible.length === 0 && (
-            <p className="col-span-3 py-6 text-center text-[11px] text-(--m-ink)/70">
-              Nenhum imóvel encontrado para &quot;{query}&quot;.
-            </p>
-          )}
-        </div>
-      </div>
-    </BrowserShell>
-  );
-}
-
-const catalogItems = [
-  { id: "cafe", name: "Combo Café Especial 500g", cat: "Cafés", price: 64 },
-  { id: "kit", name: "Kit Degustação Artesanal", cat: "Kits", price: 84 },
-  { id: "drip", name: "Drip Coffee Box (10 un.)", cat: "Cafés", price: 39 },
-];
-
-export function SiteCatalogoInteractive({ interactive = true }: { interactive?: boolean }) {
-  const brand = useBrandLabel("Empório Central");
-  const [cart, setCart] = useState<Record<string, number>>({ cafe: 1, kit: 1 });
-  const [pixDiscount, setPixDiscount] = useState(true);
-  const [sentPreview, setSentPreview] = useState(false);
-
-  function changeQty(id: string, delta: number) {
-    if (!interactive) return;
-    setSentPreview(false);
-    setCart((prev) => {
-      const next = Math.max(0, (prev[id] ?? 0) + delta);
-      return { ...prev, [id]: next };
-    });
-  }
-
-  const totalCount = Object.values(cart).reduce((acc, q) => acc + q, 0);
-  const subtotal = catalogItems.reduce((acc, item) => acc + (cart[item.id] ?? 0) * item.price, 0);
-  const finalTotal = pixDiscount ? subtotal * 0.95 : subtotal;
-
-  return (
-    <BrowserShell url="emporiocentral.com.br/pedido" palette="catalogo">
-      <div className="min-h-[330px] bg-gradient-to-br from-white via-amber-50/35 to-(--m-accent)/6 p-4 text-left">
-        <div className="flex items-center justify-between border-b border-(--m-ink)/8 pb-2.5">
-          <div className="flex items-center gap-2">
-            <span className="flex h-5 w-5 items-center justify-center rounded-md bg-(--m-accent) text-(--m-on-accent)">
-              <ShoppingBag className="h-3 w-3" />
-            </span>
-            <span className="text-xs font-bold text-(--m-ink)">{brand}</span>
-          </div>
-          <button
-            type="button"
-            disabled={!interactive}
-            onClick={() => interactive && setPixDiscount((v) => !v)}
-            className={`font-tech rounded-full border px-2 py-0.5 text-[9px] font-semibold transition-colors ${
-              pixDiscount
-                ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-                : "border-(--m-ink)/12 bg-white text-(--m-ink)/70"
-            }`}
-          >
-            {pixDiscount ? "✓ Pix -5% ativo" : "Ativar Pix -5%"}
-          </button>
-        </div>
-
-        <div className="mt-3 space-y-2">
-          {catalogItems.map((product) => {
-            const qty = cart[product.id] ?? 0;
-            return (
-              <div
-                key={product.id}
-                className="flex items-center justify-between rounded-xl border border-(--m-ink)/10 bg-white px-3 py-2"
-              >
-                <div>
-                  <p className="text-[11px] font-bold text-(--m-ink)">{product.name}</p>
-                  <p className="text-[9px] text-(--m-ink)/70">
-                    {product.cat} · R$ {product.price.toFixed(2).replace(".", ",")}
-                  </p>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <button
-                    type="button"
-                    disabled={!interactive || qty === 0}
-                    onClick={() => changeQty(product.id, -1)}
-                    className="inline-flex h-6 w-6 items-center justify-center rounded-lg border border-(--m-ink)/12 bg-(--m-bg) text-(--m-ink)/85 disabled:opacity-40"
-                    aria-label={`Remover ${product.name}`}
-                  >
-                    <Minus className="h-3 w-3" />
-                  </button>
-                  <span className="font-tech w-4 text-center text-[11px] font-bold text-(--m-ink)">
-                    {qty}
-                  </span>
-                  <button
-                    type="button"
-                    disabled={!interactive}
-                    onClick={() => changeQty(product.id, 1)}
-                    className="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-(--m-accent) text-(--m-on-accent) hover:brightness-95"
-                    aria-label={`Adicionar ${product.name}`}
-                  >
-                    <Plus className="h-3 w-3" />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-3.5 rounded-xl bg-(--m-ink) p-3 text-white">
-          <div className="flex flex-wrap items-center justify-between gap-2">
+        {/* Lookbook */}
+        <section className="border-t border-(--m-ink)/10 px-4 py-5">
+          <div className="flex items-end justify-between">
             <div>
-              <p className="text-[9px] text-white/55">
-                {totalCount} {totalCount === 1 ? "item" : "itens"} {pixDiscount ? "(com 5% Pix)" : ""}
-              </p>
-              <p className="font-tech text-sm font-bold">
-                R$ {finalTotal.toFixed(2).replace(".", ",")}
-              </p>
+              <p className="font-tech text-[8.5px] uppercase tracking-[0.18em] text-(--m-accent-ink)">Lookbook · Outono</p>
+              <h5 className="font-editorial mt-1 text-[20px] font-semibold leading-tight">Três jeitos de usar linho</h5>
             </div>
-            <button
-              type="button"
-              disabled={!interactive || totalCount === 0}
-              onClick={() => interactive && setSentPreview((v) => !v)}
-              className="rounded-full bg-emerald-500 px-3.5 py-1.5 text-[10px] font-bold text-(--m-ink) transition-colors hover:bg-emerald-400 disabled:opacity-40"
-            >
-              {sentPreview ? "Ocultar resumo" : "Gerar resumo WhatsApp →"}
-            </button>
+            <span className="text-[9px] font-semibold uppercase tracking-[0.12em] underline underline-offset-4">Ver coleção</span>
           </div>
-          {sentPreview && (
-            <p className="mt-2 border-t border-white/10 pt-2 text-[10px] text-emerald-300">
-              <Check className="mr-1 inline h-3 w-3" />
-              Pedido pronto: {catalogItems.filter((i) => (cart[i.id] ?? 0) > 0).map((i) => `${cart[i.id]}x ${i.name}`).join(" + ")} — Total R$ {finalTotal.toFixed(2).replace(".", ",")}
-            </p>
-          )}
+          <div className="mt-3 grid grid-cols-3 gap-2">
+            {(Object.keys(fashionItems) as (keyof typeof fashionItems)[]).map((key) => {
+              const it = fashionItems[key];
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  disabled={!interactive}
+                  onClick={() => setItemKey(key)}
+                  className={`group/look text-left ${itemKey === key ? "opacity-100" : "opacity-85 hover:opacity-100"}`}
+                >
+                  <span className="relative block h-36 overflow-hidden rounded-lg bg-[#DFD6C5]">
+                    <Image src={it.image} alt={it.name} fill sizes="200px" className="object-cover object-top transition-transform duration-500 group-hover/look:scale-[1.04]" />
+                  </span>
+                  <span className="mt-1.5 block text-[10px] font-semibold">{it.name}</span>
+                  <span className="font-tech block text-[9px] text-(--m-ink)/70">R$ {it.price},00</span>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Benefícios */}
+        <div className="grid grid-cols-2 gap-px border-y border-(--m-ink)/10 bg-(--m-ink)/10 text-center sm:grid-cols-4">
+          {[
+            ["Envio em 24h", "para capitais"],
+            ["Troca grátis", "em até 30 dias"],
+            ["5% no Pix", "em qualquer peça"],
+            ["3x sem juros", "no cartão"],
+          ].map(([t, d]) => (
+            <div key={t} className="bg-[#FAF6EE] px-2 py-2.5">
+              <p className="text-[10px] font-bold uppercase tracking-[0.08em]">{t}</p>
+              <p className="text-[9px] text-(--m-ink)/65">{d}</p>
+            </div>
+          ))}
         </div>
+
+        {/* Newsletter */}
+        <section className="grid items-center gap-3 bg-(--m-bg) px-4 py-5 sm:grid-cols-2">
+          <div>
+            <h5 className="font-editorial text-[18px] font-semibold leading-tight">Receba o próximo drop antes de todo mundo.</h5>
+            <p className="mt-1 text-[10px] text-(--m-ink)/70">Uma mensagem por lançamento. Sem spam.</p>
+          </div>
+          <div className="flex gap-1.5">
+            <span className="flex-1 rounded-md border border-(--m-ink)/20 bg-white px-2.5 py-2 text-[10px] text-(--m-ink)/50">seu@email.com</span>
+            <span className="rounded-md bg-(--m-ink) px-3 py-2 text-[9.5px] font-bold uppercase tracking-[0.1em] text-(--m-bg)">Quero</span>
+          </div>
+        </section>
+
+        <MockFooter
+          brand={brand}
+          note="Alfaiataria atemporal em fibras naturais, feita em pequenos lotes."
+          columns={[
+            { title: "Loja", items: ["Novidades", "Lookbook", "Essenciais"] },
+            { title: "Ajuda", items: ["Trocas", "Guia de medidas", "Envio"] },
+            { title: "Ateliê", items: ["Sobre", "Instagram", "Contato"] },
+          ]}
+        />
       </div>
     </BrowserShell>
   );
 }
+
+
+export { SiteClinicaInteractive } from "@/components/mockups/sites/Clinica";
+export { SiteImobiliariaInteractive } from "@/components/mockups/sites/Imobiliaria";
+export { SiteCatalogoInteractive } from "@/components/mockups/sites/Catalogo";

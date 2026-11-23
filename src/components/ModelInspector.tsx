@@ -118,7 +118,7 @@ export function ModelInspector({ project, position, total, onClose, onStep }: Mo
         <div className="grid min-h-0 flex-1 overflow-y-auto lg:grid-cols-[minmax(0,1fr)_340px]">
           <div className="flex min-w-0 flex-col justify-center bg-[#EAE3D5]/60 p-3 sm:p-5 dark:bg-[#202226]/60">
             {/* zoom amplia o mockup inteiro (texto e cliques) sem distorcer o layout */}
-            <div className="min-w-0 md:[zoom:1.15] lg:[zoom:1.25] xl:[zoom:1.4] 2xl:[zoom:1.5]">
+            <div className="min-w-0 [--mock-h:62dvh] md:[zoom:1.15] md:[--mock-h:58dvh] lg:[zoom:1.25] lg:[--mock-h:54dvh] xl:[zoom:1.4] xl:[--mock-h:50dvh] 2xl:[zoom:1.5] 2xl:[--mock-h:48dvh]">
               <MockupCustomizationProvider value={{ palette: customized ? chosen : undefined, brandName: name }}>
                 <ProjectProgramVariant variant={project.variant} interactive={true} />
               </MockupCustomizationProvider>

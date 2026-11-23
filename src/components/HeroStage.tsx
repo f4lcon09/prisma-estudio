@@ -271,7 +271,7 @@ export function HeroStage() {
             </div>
 
             {/* Center Real Browser Window */}
-            <div className="ps-hero-center-tilt relative z-10 order-1 w-full min-w-0 max-w-[700px] md:basis-full lg:col-span-6 lg:order-none lg:max-w-none lg:basis-auto">
+            <div className="ps-hero-center-tilt relative z-10 order-1 w-full [--mock-h:440px] min-w-0 max-w-[700px] md:basis-full lg:col-span-6 lg:order-none lg:max-w-none lg:basis-auto">
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
                 const active = rel === 0;
