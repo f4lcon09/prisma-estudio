@@ -46,6 +46,16 @@ const modeStyles: Record<
   },
 };
 
+/** Em "Todos", intercala site, sistema e automação: a primeira tela mostra um de cada. */
+function interleaveByMode(projects: readonly ModelProject[]) {
+  const order: HeroModeId[] = ["sites", "sistemas", "automacoes"];
+  const groups = order.map((mode) => projects.filter((p) => p.mode === mode));
+  const longest = Math.max(...groups.map((g) => g.length));
+  const out: ModelProject[] = [];
+  for (let i = 0; i < longest; i++) for (const g of groups) if (g[i]) out.push(g[i]);
+  return out;
+}
+
 export function ProjectsShowcase() {
   const [activeFilter, setActiveFilter] = useState<FilterOption>("Todos");
   const [inspectProject, setInspectProject] = useState<ModelProject | null>(null);
@@ -68,7 +78,7 @@ export function ProjectsShowcase() {
   const visibleProjects = useMemo(
     () =>
       activeFilter === "Todos"
-        ? siteConfig.projects
+        ? interleaveByMode(siteConfig.projects)
         : siteConfig.projects.filter((p) => p.category === activeFilter),
     [activeFilter],
   );
