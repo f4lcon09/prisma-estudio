@@ -5,6 +5,7 @@ import { ArrowUpRight, Maximize2, X } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig, type HeroModeId, type ModelProject } from "@/config/site";
 import { ProjectProgramVariant } from "@/components/ProjectProgramVariants";
 import { Reveal } from "@/components/Reveal";
+import { CtaPair } from "@/components/CtaPair";
 import "@/components/ProjectsShowcase.css";
 
 type FilterOption = "Todos" | ModelProject["category"];
@@ -74,7 +75,7 @@ export function ProjectsShowcase() {
           </div>
 
           <div
-            className="flex flex-wrap gap-1.5 rounded-full border border-[#1A1715]/15 bg-[#FAF6EE] p-1 dark:border-[#17181A]/15 dark:bg-[#DFD8CA]"
+            className="grid w-full grid-cols-2 gap-1 rounded-2xl border border-[#1A1715]/15 bg-[#FAF6EE] p-1 sm:inline-flex sm:w-auto sm:gap-1.5 sm:rounded-full dark:border-[#17181A]/15 dark:bg-[#DFD8CA]"
             role="tablist"
             aria-label="Filtrar projetos por categoria"
           >
@@ -87,7 +88,7 @@ export function ProjectsShowcase() {
                   role="tab"
                   aria-selected={selected}
                   onClick={() => setActiveFilter(f.value)}
-                  className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+                  className={`inline-flex min-h-10 items-center justify-center gap-1.5 rounded-xl px-3.5 py-1.5 text-[13px] font-semibold transition-colors sm:min-h-0 sm:rounded-full sm:text-xs ${
                     selected
                       ? "bg-[#1A1715] text-[#EAE3D5] shadow-sm dark:bg-[#17181A] dark:text-[#ECE5D8]"
                       : "text-[#5C5348] hover:text-[#1A1715] dark:text-[#4A453E] dark:hover:text-[#17181A]"
@@ -109,7 +110,7 @@ export function ProjectsShowcase() {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 [&>*]:min-w-0">
           {visibleProjects.map((project, idx) => {
             const waUrl = buildWhatsAppUrl(project.whatsappPrompt);
             const styles = modeStyles[project.mode];
@@ -176,9 +177,9 @@ export function ProjectsShowcase() {
                       href={waUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-[#8E6F3E] hover:text-[#1A1715] dark:text-[#B7410E] dark:hover:text-[#7C2B08]"
+                      className="inline-flex min-h-10 shrink-0 items-center gap-1 rounded-full border border-[#1A1715]/25 px-3.5 text-xs font-semibold text-[#1A1715] transition-colors hover:border-[#1A1715] hover:bg-[#1A1715] hover:text-[#EAE3D5] dark:border-[#17181A]/25 dark:text-[#17181A] dark:hover:bg-[#17181A] dark:hover:text-[#ECE5D8]"
                     >
-                      <span>Cotar</span>
+                      <span>Cotar este modelo</span>
                       <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                     </a>
                   </div>
@@ -187,6 +188,7 @@ export function ProjectsShowcase() {
             );
           })}
         </div>
+        <CtaPair showSecondary={false} className="mt-12" />
       </div>
 
       {/* Live Interactive Software Modal */}

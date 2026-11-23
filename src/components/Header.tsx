@@ -37,7 +37,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Navegação principal">
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Navegação principal">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -64,10 +64,17 @@ export function Header() {
           <ThemeToggle />
 
           <a
+            href="#orcamento"
+            className="hidden items-center rounded-full bg-[#B08D57] px-4 py-2 text-xs font-semibold text-[#1A1715] transition-colors hover:bg-[#C8A464] lg:inline-flex dark:bg-[#B7410E] dark:text-[#FAF6EE] dark:hover:bg-[#9C3509]"
+          >
+            Montar orçamento
+          </a>
+
+          <a
             href={defaultWaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-[#1A1715] bg-[#1A1715] px-3 py-1.5 text-xs font-semibold text-[#EAE3D5] shadow-2xs transition-all hover:border-[#8E6F3E] hover:bg-[#231F1C] hover:text-[#FAF6EE] sm:gap-2 sm:px-4 sm:py-2 dark:border-[#ECE5D8]/20 dark:bg-[#202226] dark:text-[#ECE5D8] dark:hover:border-[#B7410E] dark:hover:bg-[#B7410E] dark:hover:text-white"
+            className="hidden items-center gap-1.5 rounded-full border border-[#1A1715] bg-[#1A1715] px-3 py-1.5 md:inline-flex text-xs font-semibold text-[#EAE3D5] shadow-2xs transition-all hover:border-[#8E6F3E] hover:bg-[#231F1C] hover:text-[#FAF6EE] sm:gap-2 sm:px-4 sm:py-2 dark:border-[#ECE5D8]/20 dark:bg-[#202226] dark:text-[#ECE5D8] dark:hover:border-[#B7410E] dark:hover:bg-[#B7410E] dark:hover:text-white"
           >
             <MessageCircle className="h-3.5 w-3.5 text-[#B08D57]" aria-hidden="true" />
             <span className="hidden sm:inline">Fale Conosco</span>
@@ -77,7 +84,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#1A1715]/15 bg-[#FAF6EE] text-[#1A1715] md:hidden dark:border-[#ECE5D8]/15 dark:bg-[#202226] dark:text-[#ECE5D8]"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#1A1715]/15 bg-[#FAF6EE] text-[#1A1715] lg:hidden dark:border-[#ECE5D8]/15 dark:bg-[#202226] dark:text-[#ECE5D8]"
             aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={mobileOpen}
           >
@@ -87,7 +94,7 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-[#1A1715]/12 bg-[#FAF6EE] px-6 py-4 md:hidden dark:border-[#ECE5D8]/12 dark:bg-[#202226]">
+        <div className="border-t border-[#1A1715]/12 bg-[#FAF6EE] px-6 py-4 lg:hidden dark:border-[#ECE5D8]/12 dark:bg-[#202226]">
           <nav className="flex flex-col gap-3" aria-label="Navegação móvel">
             {navLinks.map((link) => (
               <Link

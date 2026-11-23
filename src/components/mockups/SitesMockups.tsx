@@ -481,7 +481,7 @@ export function SiteImobiliariaInteractive({ interactive = true }: { interactive
                 className="flex flex-col justify-between rounded-xl border border-(--m-ink)/10 bg-white p-2.5 shadow-2xs"
               >
                 <div>
-                  <div className="flex h-14 items-start justify-between rounded-lg bg-gradient-to-br from-(--m-accent)/90 via-(--m-accent) to-amber-500/85 p-1.5 text-(--m-on-accent)">
+                  <div className="flex h-14 items-start justify-between rounded-lg bg-gradient-to-br from-[#3B4A63] via-[#7D8BA0] to-[#D8C7AE] p-1.5 text-white">
                     <span className="inline-flex items-center gap-0.5 rounded bg-(--m-ink)/50 px-1.5 py-0.5 text-[8px] font-semibold">
                       <MapPin className="h-2.5 w-2.5" /> {item.zone}
                     </span>

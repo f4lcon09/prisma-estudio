@@ -80,28 +80,28 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
                   <div>
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-[8px] text-slate-400">Resumo diário</p>
-                        <p className="text-[11px] font-bold text-slate-900">Prisma Mobile</p>
+                        <p className="text-[8px] text-[#102A43]/55">Resumo diário</p>
+                        <p className="text-[11px] font-bold text-[#102A43]">Prisma Mobile</p>
                       </div>
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-50 text-[9px] font-bold text-blue-700">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#00A86B]/12 text-[9px] font-bold text-[#008051]">
                         LA
                       </span>
                     </div>
 
-                    <div className="mt-2.5 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 p-2.5 text-white">
-                      <p className="text-[8px] text-blue-100">Recebido hoje</p>
+                    <div className="mt-2.5 rounded-xl bg-[#102A43] p-2.5 text-white">
+                      <p className="text-[8px] text-white/70">Recebido hoje</p>
                       <p className="font-tech mt-0.5 text-sm font-bold">R$ 4.820,00</p>
-                      <p className="mt-1 text-[8px] text-amber-300">▲ 3 pagamentos Pix</p>
+                      <p className="mt-1 text-[8px] text-[#5FD3A5]">▲ 3 pagamentos Pix</p>
                     </div>
 
-                    <div className="mt-2.5 rounded-xl border border-slate-100 bg-slate-50 p-2">
-                      <p className="text-[9px] font-semibold text-slate-700">Pedidos na semana</p>
+                    <div className="mt-2.5 rounded-xl border border-[#102A43]/8 bg-[#F5F7FA] p-2">
+                      <p className="text-[9px] font-semibold text-[#102A43]">Pedidos na semana</p>
                       <div className="mt-2 flex h-12 items-end justify-between gap-1 px-0.5">
                         {[40, 65, 52, 85, 70, 95, 78].map((h, i) => (
                           <div
                             key={i}
                             style={{ height: `${h}%` }}
-                            className={`w-full rounded-t ${i === 5 ? "bg-blue-600" : "bg-blue-200"}`}
+                            className={`w-full rounded-t ${i === 5 ? "bg-[#00A86B]" : "bg-[#102A43]/15"}`}
                           />
                         ))}
                       </div>
@@ -112,7 +112,7 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
                     <div className="rounded-lg border border-emerald-100 bg-emerald-50/70 px-2 py-1.5 text-[8.5px] font-medium text-emerald-800">
                       ● Pix confirmado · R$ 2.400
                     </div>
-                    <div className="rounded-lg border border-slate-100 bg-slate-50 px-2 py-1.5 text-[8.5px] font-medium text-slate-600">
+                    <div className="rounded-lg border border-[#102A43]/8 bg-[#F5F7FA] px-2 py-1.5 text-[8.5px] font-medium text-[#102A43]/75">
                       ● Contrato Studio Atlas assinado
                     </div>
                   </div>
@@ -120,7 +120,7 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
               )}
 
               {mode === "sites" && (
-                <div className="flex h-full flex-col justify-between bg-[#FAF6EE] text-left text-[#1A1715]">
+                <div className="flex h-full flex-col justify-between bg-[#F3EEE7] text-left text-[#2B2724]">
                   {/* Full-bleed Lookbook Photo Half */}
                   <div className="relative h-[182px] w-full overflow-hidden bg-[#DFD6C5]">
                     <Image
@@ -130,22 +130,22 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
                       sizes="180px"
                       className="object-cover object-top"
                     />
-                    <div className="absolute inset-x-0 top-0 flex items-center justify-between bg-gradient-to-b from-[#1A1715]/75 to-transparent px-2.5 pb-3 pt-2 text-[#EAE3D5]">
+                    <div className="absolute inset-x-0 top-0 flex items-center justify-between bg-gradient-to-b from-[#2B2724]/75 to-transparent px-2.5 pb-3 pt-2 text-[#F3EEE7]">
                       <span className="font-editorial text-[9px] font-semibold uppercase tracking-[0.2em]">
                         Atelier Verso
                       </span>
-                      <span className="font-tech rounded bg-[#B08D57] px-1.5 py-0.5 text-[7px] font-bold text-[#1A1715] dark:bg-[#B7410E] dark:text-[#FAF6EE]">
+                      <span className="font-tech rounded bg-[#8C4A2F] px-1.5 py-0.5 text-[7px] font-bold text-white">
                         DROP 04
                       </span>
                     </div>
 
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A1715]/90 via-[#1A1715]/45 to-transparent px-2.5 pb-2 pt-5 text-[#EAE3D5]">
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#2B2724]/90 via-[#2B2724]/45 to-transparent px-2.5 pb-2 pt-5 text-[#F3EEE7]">
                       <p className="font-editorial text-[12px] font-semibold leading-tight">
                         Blazer Linho Cru
                       </p>
                       <div className="mt-0.5 flex items-center justify-between text-[8px]">
-                        <span className="font-tech font-bold text-[#EAE3D5]">R$ 389,00</span>
-                        <span className="text-[#9CAF88]">R$ 370 Pix</span>
+                        <span className="font-tech font-bold text-[#F3EEE7]">R$ 389,00</span>
+                        <span className="text-[#E7C3A8]">R$ 370 Pix</span>
                       </div>
                     </div>
                   </div>
@@ -153,18 +153,18 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
                   {/* Quick-Buy Bottom Sheet */}
                   <div className="flex flex-1 flex-col justify-between p-2.5">
                     <div className="grid grid-cols-3 gap-1 text-center text-[8px]">
-                      <span className="font-tech rounded border border-[#1A1715]/15 bg-white py-1 font-semibold text-[#5C5348]">
+                      <span className="font-tech rounded border border-[#2B2724]/15 bg-white py-1 font-semibold text-[#2B2724]">
                         P
                       </span>
-                      <span className="font-tech rounded bg-[#1A1715] py-1 font-semibold text-[#EAE3D5]">
+                      <span className="font-tech rounded bg-[#2B2724] py-1 font-semibold text-[#F3EEE7]">
                         M ✓
                       </span>
-                      <span className="font-tech rounded border border-[#1A1715]/15 bg-white py-1 font-semibold text-[#5C5348]">
+                      <span className="font-tech rounded border border-[#2B2724]/15 bg-white py-1 font-semibold text-[#2B2724]">
                         G
                       </span>
                     </div>
 
-                    <div className="rounded-lg bg-[#1A1715] py-2 text-center text-[8.5px] font-bold uppercase tracking-[0.12em] text-[#EAE3D5] shadow-sm dark:bg-[#B7410E] dark:text-[#FAF6EE]">
+                    <div className="rounded-lg bg-[#2B2724] py-2 text-center text-[8.5px] font-bold uppercase tracking-[0.12em] text-[#F3EEE7] shadow-sm">
                       Adicionar à sacola
                     </div>
                   </div>
@@ -172,36 +172,36 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
               )}
 
               {mode === "automacoes" && (
-                <div className="flex h-full flex-col justify-between bg-[#EFEAE2] p-2.5 text-left">
+                <div className="flex h-full flex-col justify-between bg-[#F2F7F4] p-2.5 text-left">
                   <div>
-                    <div className="flex items-center gap-1.5 rounded-lg bg-[#075E54] px-2 py-1.5 text-white">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-400 text-[9px] font-bold text-slate-900">
+                    <div className="flex items-center gap-1.5 rounded-lg bg-[#0B3D2E] px-2 py-1.5 text-white">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#FF7A5C] text-[9px] font-bold text-[#0B3D2E]">
                         IA
                       </span>
                       <div>
                         <p className="text-[9px] font-bold leading-none">Assistente Prisma</p>
-                        <p className="text-[7.5px] text-emerald-200">online agora</p>
+                        <p className="text-[7.5px] text-white/70">online agora</p>
                       </div>
                     </div>
 
                     <div className="mt-2.5 space-y-2 text-[8.5px]">
-                      <div className="max-w-[88%] rounded-lg bg-white p-2 text-slate-800 shadow-2xs">
+                      <div className="max-w-[88%] rounded-lg bg-white p-2 text-[#0B3D2E] shadow-2xs">
                         Olá! Preciso de um sistema para pedidos.
                       </div>
-                      <div className="ml-auto max-w-[90%] rounded-lg bg-[#D9FDD3] p-2 text-slate-800 shadow-2xs">
+                      <div className="ml-auto max-w-[90%] rounded-lg bg-[#D9FDD3] p-2 text-[#0B3D2E] shadow-2xs">
                         Perfeito! Registrei sua demanda no CRM (#482).
                       </div>
-                      <div className="max-w-[84%] rounded-lg bg-white p-2 text-slate-800 shadow-2xs">
+                      <div className="max-w-[84%] rounded-lg bg-white p-2 text-[#0B3D2E] shadow-2xs">
                         Ótimo, posso ver a prévia?
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-1.5">
-                    <div className="rounded-md bg-blue-600/95 px-2 py-1 text-center text-[8px] font-semibold text-white">
+                    <div className="rounded-md bg-[#FF7A5C] px-2 py-1 text-center text-[8px] font-semibold text-[#0B3D2E]">
                       ✓ Lead qualificado · Score 94
                     </div>
-                    <div className="rounded-full bg-white px-2.5 py-1 text-[8px] text-slate-400">
+                    <div className="rounded-full bg-white px-2.5 py-1 text-[8px] text-[#0B3D2E]/55">
                       Mensagem automática ativa...
                     </div>
                   </div>
@@ -212,7 +212,7 @@ export function MobileProgramMockup({ mode }: { mode: HeroModeId }) {
             {/* Bottom Navigation + iOS Home Indicator */}
             <div className="border-t border-slate-100 bg-white pt-1.5">
               <div className="flex items-center justify-around px-2 pb-1.5 text-slate-400">
-                <Home className="h-3 w-3 text-blue-600" />
+                <Home className={`h-3 w-3 ${mode === "sistemas" ? "text-[#008051]" : mode === "automacoes" ? "text-[#B35540]" : "text-[#8C4A2F]"}`} />
                 <Activity className="h-3 w-3" />
                 <FileText className="h-3 w-3" />
                 <Settings className="h-3 w-3" />
@@ -240,7 +240,7 @@ export function TelemetryCardMockup({ mode }: { mode: HeroModeId }) {
         <div className="mt-3 grid grid-cols-2 gap-2">
           <div className="rounded-lg border border-[#EAE3D5]/10 bg-[#231F1C] p-2 dark:bg-[#262C28]">
             <p className="text-[9px] text-[#EAE3D5]/65">Conversão</p>
-            <p className="font-tech text-xs font-bold text-[#B08D57]">6,8%</p>
+            <p className="font-tech text-xs font-bold text-[#E0A486]">6,8%</p>
           </div>
           <div className="rounded-lg border border-[#EAE3D5]/10 bg-[#231F1C] p-2 dark:bg-[#262C28]">
             <p className="text-[9px] text-[#EAE3D5]/65">PageSpeed</p>
@@ -259,24 +259,24 @@ export function TelemetryCardMockup({ mode }: { mode: HeroModeId }) {
       <div className="w-[222px] rounded-2xl border border-[#B08D57]/30 bg-[#1A1715] p-3.5 text-left text-[#EAE3D5] shadow-[0_22px_45px_-12px_rgba(26,23,21,0.45)] backdrop-blur-md dark:bg-[#1E2421]">
         <div className="flex items-center justify-between text-[10px] font-bold text-[#EAE3D5]">
           <span>Monitor do Sistema</span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-[#263A32] px-2 py-0.5 text-[9px] font-semibold text-[#9CAF88]">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#9CAF88]" />
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#00A86B]/20 px-2 py-0.5 text-[9px] font-semibold text-[#5FD3A5]">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#5FD3A5]" />
             Online
           </span>
         </div>
         <div className="mt-3 grid grid-cols-2 gap-2">
           <div className="rounded-lg border border-[#EAE3D5]/10 bg-[#231F1C] p-2 dark:bg-[#262C28]">
             <p className="text-[9px] text-[#EAE3D5]/65">Uptime API</p>
-            <p className="font-tech text-xs font-bold text-[#B08D57]">99,98%</p>
+            <p className="font-tech text-xs font-bold text-[#5FD3A5]">99,98%</p>
           </div>
           <div className="rounded-lg border border-[#EAE3D5]/10 bg-[#231F1C] p-2 dark:bg-[#262C28]">
             <p className="text-[9px] text-[#EAE3D5]/65">Latência DB</p>
-            <p className="font-tech text-xs font-bold text-[#C88B53]">14ms</p>
+            <p className="font-tech text-xs font-bold text-[#F5F7FA]">14ms</p>
           </div>
         </div>
         <div className="mt-2.5 flex items-center justify-between rounded-lg border border-[#EAE3D5]/10 bg-[#231F1C] px-2.5 py-1.5 text-[9px] dark:bg-[#262C28]">
           <span className="font-medium text-[#EAE3D5]/85">14 pedidos hoje</span>
-          <span className="font-tech font-semibold text-[#9CAF88]">Pix ok</span>
+          <span className="font-tech font-semibold text-[#5FD3A5]">Pix ok</span>
         </div>
       </div>
     );
@@ -286,26 +286,26 @@ export function TelemetryCardMockup({ mode }: { mode: HeroModeId }) {
     <div className="w-[226px] rounded-2xl border border-[#B08D57]/30 bg-[#1A1715] p-3.5 text-left text-[#EAE3D5] shadow-[0_22px_45px_-12px_rgba(26,23,21,0.45)] backdrop-blur-md dark:bg-[#1E2421]">
       <div className="flex items-center justify-between text-[11px] font-bold text-[#EAE3D5]">
         <span>WhatsApp → IA → CRM</span>
-        <Sparkles className="h-3.5 w-3.5 text-[#B08D57]" />
+        <Sparkles className="h-3.5 w-3.5 text-[#FF7A5C]" />
       </div>
 
       <div className="mt-3 flex items-center justify-between px-1">
         <div className="flex flex-col items-center gap-1">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#B08D57]/20 text-[#C8A464]">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F2F7F4]/15 text-[#F2F7F4]">
             <MessageSquare className="h-3 w-3" />
           </span>
           <span className="text-[8px] font-medium text-[#EAE3D5]/65">Msg</span>
         </div>
-        <div className="h-[2px] flex-1 bg-gradient-to-r from-[#B08D57] via-[#9CAF88] to-[#B7410E]" />
+        <div className="h-[2px] flex-1 bg-gradient-to-r from-[#F2F7F4]/40 to-[#5FD3A5]" />
         <div className="flex flex-col items-center gap-1">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#263A32] text-[#9CAF88]">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#5FD3A5]/20 text-[#5FD3A5]">
             <Bot className="h-3 w-3" />
           </span>
           <span className="text-[8px] font-medium text-[#EAE3D5]/65">IA</span>
         </div>
-        <div className="h-[2px] flex-1 bg-gradient-to-r from-[#9CAF88] to-[#B7410E]" />
+        <div className="h-[2px] flex-1 bg-gradient-to-r from-[#5FD3A5] to-[#FF7A5C]" />
         <div className="flex flex-col items-center gap-1">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#B7410E]/25 text-[#E08A65]">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#FF7A5C]/25 text-[#FF9B83]">
             <CheckCircle2 className="h-3 w-3" />
           </span>
           <span className="text-[8px] font-medium text-[#EAE3D5]/65">CRM</span>
@@ -314,10 +314,10 @@ export function TelemetryCardMockup({ mode }: { mode: HeroModeId }) {
 
       <div className="mt-3 flex items-center justify-between rounded-lg border border-[#EAE3D5]/10 bg-[#231F1C] px-2.5 py-1.5 text-[9px] dark:bg-[#262C28]">
         <span className="flex items-center gap-1 font-medium text-[#EAE3D5]/85">
-          <Zap className="h-2.5 w-2.5 text-[#B08D57]" />
+          <Zap className="h-2.5 w-2.5 text-[#FF7A5C]" />
           Disparo IA · 466ms
         </span>
-        <span className="font-tech font-semibold text-[#9CAF88]">Score 94</span>
+        <span className="font-tech font-semibold text-[#FF9B83]">Score 94</span>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { ArrowUpRight, Clock, Code2, Cpu, Globe, Wrench } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig } from "@/config/site";
 import { Reveal } from "@/components/Reveal";
+import { CtaPair } from "@/components/CtaPair";
 import "@/components/ServicesStrip.css";
 
 const serviceVisuals = {
@@ -99,6 +100,7 @@ export function ServicesStrip() {
             );
           })}
         </div>
+        <CtaPair tone="dark" className="mt-12" />
       </div>
     </section>
   );

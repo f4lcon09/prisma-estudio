@@ -75,7 +75,7 @@ export const siteConfig = {
   hero: {
     badge: "STUDIO DE SOFTWARE SOB MEDIDA",
     title: "Criamos software de alto nível.",
-    primaryCta: "Pedir orçamento",
+    primaryCta: "Montar meu orçamento",
   },
 
   services: [

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
-import { siteConfig, type HeroModeId } from "@/config/site";
+import { CtaPair } from "@/components/CtaPair";
+import type { HeroModeId } from "@/config/site";
 import {
   AutomationProgramScreen,
   MobileProgramMockup,
@@ -134,7 +134,7 @@ export function HeroStage() {
         </div>
 
         {/* Display Headline with 3D Cylindrical Roulette Drum */}
-        <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-[22px] font-extrabold tracking-tight text-[#1A1715] sm:text-4xl lg:text-[48px] lg:leading-[1.15] dark:text-[#ECE5D8]">
+        <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-[clamp(26px,7.6vw,32px)] leading-tight font-extrabold tracking-tight text-[#1A1715] sm:text-4xl lg:text-[56px] lg:leading-[1.12] dark:text-[#ECE5D8]">
           <span>Criamos</span>
           <span
             className="relative inline-block h-[1.28em] overflow-hidden align-middle [mask-image:linear-gradient(to_bottom,transparent_0%,black_14%,black_86%,transparent_100%)]"
@@ -212,15 +212,9 @@ export function HeroStage() {
         </div>
 
         {/* Primary Quiet-Luxury / Editorial CTA */}
-        <div className="mt-4 flex flex-col items-center gap-1.5">
-          <a
-            href="#orcamento"
-            className="ps-hero-cta inline-flex items-center gap-2 rounded-full bg-[#1A1715] px-6 py-2.5 text-sm font-semibold text-[#EAE3D5] hover:bg-[#2E2924] dark:bg-[#B7410E] dark:text-[#FAF6EE] dark:hover:bg-[#9C3509]"
-          >
-            <span>{siteConfig.hero.primaryCta}</span>
-            <ArrowRight className="h-4 w-4 text-[#B08D57] dark:text-[#FAF6EE]" aria-hidden="true" />
-          </a>
-          <div className="inline-grid items-center justify-items-center">
+        <div className="mt-5 flex flex-col items-center gap-1.5">
+          <CtaPair />
+          <div className="mt-5 inline-grid items-center justify-items-center">
             {modeOrder.map((modeId) => {
               const active = activeMode === modeId;
               return (
@@ -249,9 +243,9 @@ export function HeroStage() {
           <span className="ps-hero-tick-tl hidden lg:block" aria-hidden="true" />
           <span className="ps-hero-tick-tr hidden lg:block" aria-hidden="true" />
 
-          <div className="relative flex flex-col items-center justify-center gap-6 lg:grid lg:grid-cols-12 lg:items-center lg:gap-6">
+          <div className="relative flex flex-col items-center justify-center gap-6 md:flex-row md:flex-wrap md:items-start lg:grid lg:grid-cols-12 lg:items-center lg:gap-6">
             {/* Left Tilted 3D Phone */}
-            <div className="z-20 order-2 grid min-w-0 justify-items-center transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:-rotate-6 lg:justify-self-end lg:translate-y-6">
+            <div className="relative z-20 order-2 hidden min-w-0 justify-items-center md:grid transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:-rotate-6 lg:justify-self-end lg:translate-y-6">
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
                 const active = rel === 0;
@@ -277,7 +271,7 @@ export function HeroStage() {
             </div>
 
             {/* Center Real Browser Window */}
-            <div className="ps-hero-center-tilt z-10 order-1 grid w-full min-w-0 max-w-[700px] lg:col-span-6 lg:order-none lg:max-w-none">
+            <div className="ps-hero-center-tilt relative z-10 order-1 w-full min-w-0 max-w-[700px] md:basis-full lg:col-span-6 lg:order-none lg:max-w-none lg:basis-auto">
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
                 const active = rel === 0;
@@ -293,8 +287,8 @@ export function HeroStage() {
                     style={{
                       transform: active ? "translateX(0px) rotateY(0deg) scale(1)" : hiddenStyle,
                     }}
-                    className={`col-start-1 row-start-1 min-w-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                      active ? "opacity-100" : "pointer-events-none opacity-0"
+                    className={`min-w-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      active ? "relative opacity-100" : "pointer-events-none absolute inset-x-0 top-0 opacity-0"
                     }`}
                   >
                     {modeId === "sistemas" && <SaasProgramScreen interactive={active} />}
@@ -306,7 +300,7 @@ export function HeroStage() {
             </div>
 
             {/* Right Floating Telemetry Card */}
-            <div className="animate-float-slow z-20 order-3 grid min-w-0 justify-items-center transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:rotate-3 lg:justify-self-start lg:translate-y-4">
+            <div className="animate-float-slow relative z-20 order-3 hidden min-w-0 justify-items-center md:grid md:self-center transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:rotate-3 lg:justify-self-start lg:translate-y-4">
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
                 const active = rel === 0;
