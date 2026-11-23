@@ -110,20 +110,20 @@ function SistemasPhone() {
         </div>
         <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-rose-400 text-[8px] font-bold">LA</span>
       </div>
-      <div className="mx-2 rounded-2xl p-2.5 text-white" style={{ background: erp.ink }}>
-        <p className="text-[8px] text-white/70">Vendido hoje</p>
-        <p className="text-[17px] font-bold tracking-tight tabular-nums">R$ 31.480</p>
-        <p className="text-[8px] font-semibold" style={{ color: "#5FD3A5" }}>
+      <div className="mx-2 rounded-2xl bg-white p-2.5 shadow-[0_1px_3px_rgba(16,42,67,0.08)]">
+        <p className="text-[8px] opacity-60">Vendido hoje</p>
+        <p className="text-[18px] font-semibold tracking-tight tabular-nums">R$ 31.480</p>
+        <p className="text-[8px] font-semibold" style={{ color: erp.accentInk }}>
           ↗ 12,4% sobre terça passada
         </p>
         <div className="mt-2 flex h-9 items-end gap-1">
           {bars.map((h, i) => (
-            <span key={i} className="flex-1 rounded-sm" style={{ height: `${h}%`, background: i === bars.length - 1 ? erp.accent : "rgba(255,255,255,.22)" }} />
+            <span key={i} className="flex-1 rounded-sm" style={{ height: `${h}%`, background: i === bars.length - 1 ? erp.accent : "rgba(16,42,67,.12)" }} />
           ))}
         </div>
       </div>
       <p className="mt-2 px-3 text-[8.5px] font-bold">Pedidos recentes</p>
-      <div className="mx-2 mt-1 overflow-hidden rounded-xl bg-white">
+      <div className="mx-2 mt-1 overflow-hidden rounded-2xl bg-white shadow-[0_1px_3px_rgba(16,42,67,0.08)]">
         {[
           ["MB", "Mercado Bom Preço", "R$ 12.480", "Pendente", "bg-amber-50 text-amber-800"],
           ["TF", "Padaria Trigo Fino", "R$ 3.260", "Pago", "bg-emerald-50 text-emerald-700"],

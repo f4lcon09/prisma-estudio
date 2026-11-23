@@ -168,7 +168,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
   ];
 
   const orderTable = (rows: Order[], compact = false) => (
-    <div className="overflow-hidden rounded-xl bg-white ring-1 ring-(--m-ink)/8">
+    <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_3px_rgba(16,42,67,0.07)]">
       <div className="grid grid-cols-[1fr_auto_auto] gap-2 border-b border-(--m-ink)/8 px-3 py-1.5 text-[8.5px] font-semibold uppercase tracking-[0.1em] text-(--m-ink)/60 @[600px]:grid-cols-[0.6fr_1.6fr_0.7fr_0.9fr_0.8fr]">
         <span className="hidden @[600px]:block">Pedido</span>
         <span>Cliente</span>
@@ -193,7 +193,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
             disabled={!interactive}
             onClick={() => cycle(o.id)}
             title="Clique para mudar o status"
-            className={`w-fit rounded-full px-2 py-0.5 text-[8.5px] font-bold ring-1 ${statusTone[o.status]}`}
+            className={`w-fit rounded-full px-2 py-0.5 text-[8.5px] font-semibold ${statusTone[o.status]}`}
           >
             {o.status}
           </button>
@@ -207,22 +207,22 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
       <div className="@container">
       <div className="grid h-[min(var(--mock-h,540px),560px)] grid-cols-[46px_1fr] bg-(--m-bg) text-left text-(--m-ink) @[640px]:grid-cols-[168px_1fr]">
         {/* Menu lateral */}
-        <aside className="flex min-h-0 flex-col bg-(--m-ink) py-3 text-white @[640px]:px-2.5">
-          <div className="flex items-center justify-center gap-2 @[640px]:justify-start @[640px]:rounded-lg @[640px]:bg-white/8 @[640px]:px-2 @[640px]:py-1.5">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-(--m-accent) text-[10px] font-extrabold text-(--m-on-accent)">
+        <aside className="flex min-h-0 flex-col border-r border-(--m-ink)/8 bg-[#F3F5F8] py-3 text-(--m-ink) @[640px]:px-2.5">
+          <div className="flex items-center justify-center gap-2 @[640px]:justify-start @[640px]:rounded-xl @[640px]:bg-white @[640px]:shadow-[0_1px_2px_rgba(16,42,67,0.08)] @[640px]:px-2 @[640px]:py-1.5">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-(--m-accent) text-[10px] font-semibold text-(--m-on-accent)">
               {brand.slice(0, 1).toUpperCase()}
             </span>
             <span className="hidden min-w-0 flex-1 @[640px]:block">
               <span className="block truncate text-[10.5px] font-bold">{brand}</span>
-              <span className="block text-[8.5px] text-white/60">Matriz · Campinas</span>
+              <span className="block text-[8.5px] text-(--m-ink)/60">Matriz · Campinas</span>
             </span>
-            <ChevronDown className="hidden h-3 w-3 text-white/50 @[640px]:block" />
+            <ChevronDown className="hidden h-3 w-3 text-(--m-ink)/60 @[640px]:block" />
           </div>
-          <div className="mt-2.5 hidden items-center gap-1.5 rounded-lg bg-white/6 px-2 py-1 text-[9.5px] text-white/55 @[640px]:flex">
+          <div className="mt-2.5 hidden items-center gap-1.5 rounded-lg bg-(--m-ink)/[0.05] px-2 py-1 text-[9.5px] text-(--m-ink)/60 @[640px]:flex">
             <Search className="h-3 w-3" /> Buscar
-            <span className="ml-auto rounded bg-white/10 px-1 font-mono text-[8px]">Ctrl K</span>
+            <span className="ml-auto rounded bg-white px-1 font-mono text-[8px]">Ctrl K</span>
           </div>
-          <p className="mt-3 hidden px-2 text-[8px] font-bold uppercase tracking-[0.14em] text-white/40 @[640px]:block">Operação</p>
+          <p className="mt-3 hidden px-2 text-[8px] font-bold uppercase tracking-[0.14em] text-(--m-ink)/60 @[640px]:block">Operação</p>
           <nav className="mt-1 grid gap-0.5 px-1.5 @[640px]:px-0">
             {nav.map((n) => {
               const Icon = n.icon;
@@ -235,7 +235,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                   onClick={() => go(n.id)}
                   aria-label={n.label}
                   className={`relative flex items-center justify-center gap-2 rounded-lg py-1.5 text-[10.5px] font-medium @[640px]:justify-start @[640px]:px-2 ${
-                    active ? "bg-white/12 text-white" : "text-white/60 hover:bg-white/6 hover:text-white"
+                    active ? "bg-white text-(--m-ink) shadow-[0_1px_2px_rgba(16,42,67,0.1)]" : "text-(--m-ink)/65 hover:bg-(--m-ink)/[0.05] hover:text-(--m-ink)"
                   }`}
                 >
                   <Icon className="h-3.5 w-3.5 shrink-0" />
@@ -249,28 +249,28 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
               );
             })}
           </nav>
-          <p className="mt-3 hidden px-2 text-[8px] font-bold uppercase tracking-[0.14em] text-white/40 @[640px]:block">Mais</p>
-          <div className="mt-1 hidden gap-0.5 text-[10.5px] text-white/55 @[640px]:grid">
+          <p className="mt-3 hidden px-2 text-[8px] font-bold uppercase tracking-[0.14em] text-(--m-ink)/60 @[640px]:block">Mais</p>
+          <div className="mt-1 hidden gap-0.5 text-[10.5px] text-(--m-ink)/60 @[640px]:grid">
             <span className="flex items-center gap-2 px-2 py-1.5"><Boxes className="h-3.5 w-3.5" /> Estoque</span>
             <span className="flex items-center gap-2 px-2 py-1.5"><FileText className="h-3.5 w-3.5" /> Notas fiscais</span>
           </div>
-          <div className="mt-auto flex items-center justify-center gap-2 @[640px]:justify-start @[640px]:rounded-lg @[640px]:bg-white/6 @[640px]:p-1.5">
+          <div className="mt-auto flex items-center justify-center gap-2 @[640px]:justify-start @[640px]:rounded-xl @[640px]:bg-white @[640px]:p-1.5 @[640px]:shadow-[0_1px_2px_rgba(16,42,67,0.08)]">
             <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-rose-400 text-[8.5px] font-bold text-(--m-ink)">LA</span>
             <span className="hidden min-w-0 @[640px]:block">
               <span className="block truncate text-[10px] font-semibold">Lucas Almeida</span>
-              <span className="block text-[8.5px] text-white/55">Administrador</span>
+              <span className="block text-[8.5px] text-(--m-ink)/60">Administrador</span>
             </span>
           </div>
         </aside>
 
         <div className="@container flex min-h-0 min-w-0 flex-col">
           {/* Barra superior */}
-          <div className="flex items-center justify-between gap-2 border-b border-(--m-ink)/8 bg-white px-3 py-2">
+          <div className="flex items-center justify-between gap-2 border-b border-(--m-ink)/6 bg-white/80 px-3 py-2 backdrop-blur-xl">
             <p className="truncate text-[10px] text-(--m-ink)/60">
               {brand} / <span className="font-semibold text-(--m-ink)">{nav.find((n) => n.id === tab)?.label}</span>
             </p>
             <div className="flex items-center gap-1.5">
-              <div className="flex gap-0.5 rounded-lg bg-(--m-bg) p-0.5">
+              <div className="flex gap-0.5 rounded-full bg-(--m-ink)/[0.05] p-0.5">
                 {(["7d", "30d", "90d"] as Period[]).map((p) => (
                   <button
                     key={p}
@@ -280,7 +280,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                       setPeriod(p);
                       setHover(series[p].values.length - 1);
                     }}
-                    className={`rounded-md px-1.5 py-0.5 text-[9px] font-semibold ${period === p ? "bg-white shadow-2xs" : "text-(--m-ink)/60"}`}
+                    className={`rounded-full px-2 py-0.5 text-[9px] font-semibold ${period === p ? "bg-white shadow-[0_1px_2px_rgba(16,42,67,0.12)]" : "text-(--m-ink)/60"}`}
                   >
                     {p}
                   </button>
@@ -293,7 +293,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                 type="button"
                 disabled={!interactive}
                 onClick={() => setShowForm((v) => !v)}
-                className="inline-flex items-center gap-1 rounded-lg bg-(--m-ink) px-2 py-1 text-[9.5px] font-bold text-white"
+                className="inline-flex items-center gap-1 rounded-full bg-(--m-ink) px-2.5 py-1 text-[9.5px] font-semibold text-white"
               >
                 <Plus className="h-3 w-3" /> Pedido
               </button>
@@ -306,7 +306,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
 
           <div className="min-h-0 flex-1 overflow-y-auto p-3 [scrollbar-width:thin]">
             {showForm && (
-              <form onSubmit={addOrder} className="mb-2.5 flex flex-wrap items-center gap-1.5 rounded-xl bg-white p-2 ring-1 ring-(--m-accent)/40">
+              <form onSubmit={addOrder} className="mb-2.5 flex flex-wrap items-center gap-1.5 rounded-2xl bg-white p-2 shadow-[0_0_0_1.5px_var(--m-accent)]">
                 <input value={newClient} disabled={!interactive} onChange={(e) => setNewClient(e.target.value)} placeholder="Cliente" className="min-w-0 flex-1 rounded-md border border-(--m-ink)/12 px-2 py-1 text-[10px] focus:border-(--m-accent) focus:outline-none" />
                 <input value={newValue} disabled={!interactive} onChange={(e) => setNewValue(e.target.value)} placeholder="Valor (R$)" className="w-20 rounded-md border border-(--m-ink)/12 px-2 py-1 text-[10px] focus:border-(--m-accent) focus:outline-none" />
                 <button type="submit" disabled={!interactive} className="rounded-md bg-(--m-accent) px-2.5 py-1 text-[10px] font-bold text-(--m-on-accent)">
@@ -319,7 +319,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
               <div className="grid gap-2.5">
                 <div className="flex items-end justify-between">
                   <div>
-                    <p className="text-[14px] font-extrabold tracking-tight">Bom dia, Lucas</p>
+                    <p className="text-[14px] font-semibold tracking-tight">Bom dia, Lucas</p>
                     <p className="text-[9.5px] text-(--m-ink)/60">Resumo dos últimos {period === "7d" ? "7 dias" : period === "30d" ? "30 dias" : "90 dias"}</p>
                   </div>
                   <span className="hidden text-[9px] text-(--m-ink)/60 @[480px]:block">Atualizado há 1 min</span>
@@ -334,9 +334,9 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                   ].map((k) => {
                     const up = k.l === "Inadimplência" ? k.d < 0 : k.d >= 0;
                     return (
-                      <div key={k.l} className="rounded-xl bg-white p-2.5 ring-1 ring-(--m-ink)/8">
+                      <div key={k.l} className="rounded-2xl bg-white p-3 shadow-[0_1px_3px_rgba(16,42,67,0.07)]">
                         <p className="text-[9px] font-medium text-(--m-ink)/60">{k.l}</p>
-                        <p className="mt-0.5 truncate text-[13.5px] font-extrabold tabular-nums">{k.v}</p>
+                        <p className="mt-0.5 truncate text-[17px] font-semibold tracking-tight tabular-nums">{k.v}</p>
                         <div className="mt-1 flex items-center justify-between">
                           <span className={`inline-flex items-center gap-0.5 rounded-full px-1.5 text-[8.5px] font-bold ${up ? "bg-emerald-50 text-emerald-700" : "bg-rose-50 text-rose-700"}`}>
                             {k.d >= 0 ? <ArrowUpRight className="h-2.5 w-2.5" /> : <ArrowDownRight className="h-2.5 w-2.5" />}
@@ -350,10 +350,10 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                 </div>
 
                 <div className="grid gap-2 @[500px]:grid-cols-[1.6fr_1fr]">
-                  <div className="rounded-xl bg-white p-2.5 ring-1 ring-(--m-ink)/8">
+                  <div className="rounded-2xl bg-white p-3 shadow-[0_1px_3px_rgba(16,42,67,0.07)]">
                     <div className="flex items-center justify-between">
                       <p className="text-[10.5px] font-bold">Receita</p>
-                      <span className="rounded-md bg-(--m-ink) px-1.5 py-0.5 font-mono text-[8.5px] text-white">
+                      <span className="rounded-full bg-(--m-ink)/90 px-2 py-0.5 text-[8.5px] font-medium text-white">
                         {s.labels[hover]} · R$ {s.values[hover]} mil
                       </span>
                     </div>
@@ -361,7 +361,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                       <AreaChart labels={s.labels} values={s.values} hover={hover} onHover={setHover} interactive={interactive} />
                     </div>
                   </div>
-                  <div className="rounded-xl bg-white p-2.5 ring-1 ring-(--m-ink)/8">
+                  <div className="rounded-2xl bg-white p-3 shadow-[0_1px_3px_rgba(16,42,67,0.07)]">
                     <p className="text-[10.5px] font-bold">Metas de novembro</p>
                     <div className="mt-2 grid gap-2">
                       {[
@@ -393,7 +393,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                     </div>
                     {orderTable(orders, true)}
                   </div>
-                  <div className="rounded-xl bg-white p-2.5 ring-1 ring-(--m-ink)/8">
+                  <div className="rounded-2xl bg-white p-3 shadow-[0_1px_3px_rgba(16,42,67,0.07)]">
                     <p className="text-[10.5px] font-bold">Atividade</p>
                     <ul className="mt-2 grid gap-2 text-[9.5px]">
                       {[
@@ -418,7 +418,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
             {tab === "pedidos" && (
               <div className="grid gap-2">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="text-[14px] font-extrabold">Pedidos</p>
+                  <p className="text-[14px] font-semibold">Pedidos</p>
                   <div className="flex gap-1">
                     {(["Todos", "Pendente", "Pago", "Enviado"] as const).map((f) => (
                       <button
@@ -442,7 +442,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
             {tab === "clientes" && (
               <div className="grid gap-2">
                 <div className="flex items-center justify-between gap-2">
-                  <p className="text-[14px] font-extrabold">Clientes</p>
+                  <p className="text-[14px] font-semibold">Clientes</p>
                   <div className="relative">
                     <Search className="absolute left-2 top-1/2 h-3 w-3 -translate-y-1/2 text-(--m-ink)/50" />
                     <input
@@ -454,7 +454,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                     />
                   </div>
                 </div>
-                <div className="overflow-hidden rounded-xl bg-white ring-1 ring-(--m-ink)/8">
+                <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_3px_rgba(16,42,67,0.07)]">
                   {visibleClients.map((c) => (
                     <div key={c.name} className="flex items-center justify-between gap-2 border-b border-(--m-ink)/6 px-3 py-2 last:border-0">
                       <span className="flex min-w-0 items-center gap-2">
@@ -477,7 +477,7 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
 
             {tab === "financeiro" && (
               <div className="grid gap-2">
-                <p className="text-[14px] font-extrabold">Financeiro</p>
+                <p className="text-[14px] font-semibold">Financeiro</p>
                 <div className="grid grid-cols-3 gap-2">
                   {[
                     ["Em caixa", "R$ 142.380", CircleDollarSign],
@@ -486,15 +486,15 @@ export function SistemaErpInteractive({ interactive = true }: { interactive?: bo
                   ].map(([l, v, Icon]) => {
                     const I = Icon as typeof Wallet;
                     return (
-                      <div key={l as string} className="rounded-xl bg-white p-2.5 ring-1 ring-(--m-ink)/8">
+                      <div key={l as string} className="rounded-2xl bg-white p-3 shadow-[0_1px_3px_rgba(16,42,67,0.07)]">
                         <I className="h-3.5 w-3.5 text-(--m-accent-ink)" />
                         <p className="mt-1 text-[9px] text-(--m-ink)/60">{l as string}</p>
-                        <p className="truncate text-[12.5px] font-extrabold tabular-nums">{v as string}</p>
+                        <p className="truncate text-[12.5px] font-semibold tabular-nums">{v as string}</p>
                       </div>
                     );
                   })}
                 </div>
-                <div className="overflow-hidden rounded-xl bg-white ring-1 ring-(--m-ink)/8">
+                <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_3px_rgba(16,42,67,0.07)]">
                   {ledger.map((l) => (
                     <div key={l.desc} className="flex items-center justify-between gap-2 border-b border-(--m-ink)/6 px-3 py-2 last:border-0">
                       <span className="min-w-0">
