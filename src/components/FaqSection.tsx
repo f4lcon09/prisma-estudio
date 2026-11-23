@@ -39,7 +39,7 @@ export function FaqSection() {
           <p className="text-[13px] font-semibold text-(--accent-text)">
             Dúvidas
           </p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">Antes de pedir o orçamento</h2>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl 2xl:text-[56px] lg:leading-[1.05]">Antes de pedir o orçamento</h2>
           <p className="mt-3 text-base leading-relaxed text-(--fg-2)">
             As perguntas que mais aparecem na primeira conversa.
           </p>

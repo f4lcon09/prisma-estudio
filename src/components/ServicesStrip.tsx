@@ -34,7 +34,7 @@ export function ServicesStrip() {
           <p className="text-[13px] font-semibold text-(--accent-text)">
             Frentes de entrega
           </p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-(--fg) sm:text-4xl">
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-(--fg) sm:text-4xl lg:text-5xl 2xl:text-[56px] lg:leading-[1.05]">
             Do site rápido ao sistema completo
           </h2>
         </div>

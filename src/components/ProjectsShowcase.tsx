@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
-import { ArrowUpRight, Maximize2 } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig, type HeroModeId, type ModelProject } from "@/config/site";
 import { ProjectProgramVariant } from "@/components/ProjectProgramVariants";
 import { Reveal } from "@/components/Reveal";
@@ -49,6 +49,22 @@ const modeStyles: Record<
 export function ProjectsShowcase() {
   const [activeFilter, setActiveFilter] = useState<FilterOption>("Todos");
   const [inspectProject, setInspectProject] = useState<ModelProject | null>(null);
+  const railRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const [edges, setEdges] = useState({ start: true, end: false });
+
+  function updateEdges() {
+    const el = railRef.current;
+    if (!el) return;
+    setEdges({ start: el.scrollLeft < 8, end: el.scrollLeft + el.clientWidth > el.scrollWidth - 8 });
+  }
+
+  function slide(dir: 1 | -1) {
+    const el = railRef.current;
+    if (!el) return;
+    const card = el.firstElementChild as HTMLElement | null;
+    el.scrollBy({ left: dir * ((card?.offsetWidth ?? 400) + 24), behavior: "smooth" });
+  }
 
   const visibleProjects = useMemo(
     () =>
@@ -57,6 +73,25 @@ export function ProjectsShowcase() {
         : siteConfig.projects.filter((p) => p.category === activeFilter),
     [activeFilter],
   );
+
+  // alinha o primeiro card com o título: mede o recuo real da coluna (porcentagem em scroll-padding usa a largura da galeria)
+  useEffect(() => {
+    function measure() {
+      const rail = railRef.current;
+      const title = titleRef.current;
+      if (!rail || !title) return;
+      const pad = Math.max(0, title.getBoundingClientRect().left - rail.getBoundingClientRect().left);
+      rail.style.setProperty("--rail-pad", `${Math.round(pad)}px`);
+    }
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  useEffect(() => {
+    railRef.current?.scrollTo({ left: 0 });
+    updateEdges();
+  }, [activeFilter]);
 
   const inspectIndex = inspectProject ? visibleProjects.findIndex((p) => p.id === inspectProject.id) : -1;
   const closeInspector = useCallback(() => setInspectProject(null), []);
@@ -87,11 +122,12 @@ export function ProjectsShowcase() {
             <p className="text-[13px] font-semibold text-(--accent-text)">
               Vitrine interativa
             </p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-(--fg) sm:text-4xl">
+            <h2 ref={titleRef} className="mt-2 text-3xl font-semibold tracking-tight text-(--fg) sm:text-4xl lg:text-5xl 2xl:text-[56px] lg:leading-[1.05]">
               Projetos-Modelo
             </h2>
           </div>
 
+          <div className="flex flex-wrap items-center gap-2">
           <div
             className="grid w-full grid-cols-2 gap-1 rounded-2xl border border-(--fg)/15 bg-(--surface) p-1 sm:inline-flex sm:w-auto sm:gap-1.5 sm:rounded-full"
             role="tablist"
@@ -126,15 +162,44 @@ export function ProjectsShowcase() {
               );
             })}
           </div>
+          <div className="hidden items-center gap-1.5 md:flex">
+            {([
+              [-1, ChevronLeft, "Modelos anteriores", edges.start],
+              [1, ChevronRight, "Próximos modelos", edges.end],
+            ] as const).map(([dir, Icon, label, disabled]) => (
+              <button
+                key={label}
+                type="button"
+                onClick={() => slide(dir)}
+                disabled={disabled}
+                aria-label={label}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-(--glass-border) bg-(--glass) text-(--fg) shadow-[0_6px_18px_-12px_rgba(0,0,0,0.3)] backdrop-blur-xl transition-opacity disabled:opacity-35"
+              >
+                <Icon className="h-4 w-4" aria-hidden="true" />
+              </button>
+            ))}
+          </div>
+          </div>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 [&>*]:min-w-0">
+        {/* Galeria: o primeiro card alinha com o título e a fileira vaza até as duas bordas da tela */}
+        <div
+          ref={railRef}
+          onScroll={updateEdges}
+          style={{
+            marginLeft: "calc(50% - 50vw)",
+            marginRight: "calc(50% - 50vw)",
+            paddingLeft: "var(--rail-pad, calc(50vw - 50%))",
+            scrollPaddingLeft: "var(--rail-pad, 0px)",
+          }}
+          className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6 pr-6 [scrollbar-width:none] lg:pr-10 [&::-webkit-scrollbar]:hidden"
+        >
           {visibleProjects.map((project, idx) => {
             const waUrl = buildWhatsAppUrl(project.whatsappPrompt);
             const styles = modeStyles[project.mode];
 
             return (
-              <Reveal key={project.id} delayMs={(idx % 3) * 80}>
+              <Reveal key={project.id} delayMs={(idx % 3) * 80} className="w-[min(84vw,380px)] shrink-0 snap-start lg:w-[400px] 2xl:w-[440px]">
                 <article
                   onMouseMove={(e) => {
                     const rect = e.currentTarget.getBoundingClientRect();

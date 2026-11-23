@@ -55,7 +55,7 @@ export function OrderTracker() {
             <PackageSearch className="h-3.5 w-3.5 text-(--accent-text)" aria-hidden="true" />
             Portal do Cliente
           </span>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-(--fg) sm:text-4xl">
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-(--fg) sm:text-4xl lg:text-5xl 2xl:text-[56px] lg:leading-[1.05]">
             Acompanhe seu{" "}
             <span className="bg-gradient-to-r from-(--accent) via-(--accent) to-(--accent) bg-clip-text text-transparent">
               pedido ao vivo

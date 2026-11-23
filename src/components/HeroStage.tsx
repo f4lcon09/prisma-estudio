@@ -106,7 +106,7 @@ export function HeroStage() {
       {/* Luz espectral por trás dos aparelhos: o "prisma" que o vidro deixa passar */}
       <div className="ps-hero-prism pointer-events-none absolute inset-x-0 bottom-0 top-[34%]" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-10">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-10 2xl:max-w-[1600px]">
         {/* Top Studio Spec Tag */}
         <div className="inline-grid items-center justify-items-center">
           {modeOrder.map((modeId) => {
@@ -129,7 +129,7 @@ export function HeroStage() {
         </div>
 
         {/* Título com troca de palavra em 2D (sem 3D: o Firefox não desenha texto em gradiente dentro de preserve-3d) */}
-        <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-[clamp(26px,7.6vw,32px)] leading-tight font-semibold tracking-tight text-(--fg) sm:text-4xl lg:text-[56px] lg:leading-[1.12]">
+        <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-[clamp(26px,7.6vw,32px)] leading-tight font-semibold tracking-tight text-(--fg) sm:text-4xl lg:text-[56px] lg:leading-[1.12] 2xl:text-[72px]">
           <span>Criamos</span>
           <span className="relative inline-block h-[1.28em] overflow-hidden align-middle">
             <span className="invisible block whitespace-nowrap px-1" aria-hidden="true">
@@ -221,12 +221,12 @@ export function HeroStage() {
           onMouseLeave={() => setIsPaused(false)}
           onFocusCapture={() => setIsPaused(true)}
           onBlurCapture={() => setIsPaused(false)}
-          className="ps-hero-stage-frame mx-auto mt-8 max-w-7xl"
+          className="ps-hero-stage-frame mx-auto mt-8 max-w-7xl 2xl:mt-12 2xl:max-w-[1560px]"
         >
 
           <div className="relative flex flex-col items-center justify-center gap-6 md:flex-row md:flex-wrap md:items-start lg:grid lg:grid-cols-12 lg:items-center lg:gap-6">
             {/* Left Tilted 3D Phone */}
-            <div className="relative z-20 order-2 hidden min-w-0 justify-items-center md:grid transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:-rotate-6 lg:justify-self-end lg:translate-y-6">
+            <div className="relative z-20 order-2 hidden min-w-0 justify-items-center md:grid transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:-rotate-6 lg:justify-self-end lg:translate-y-6 2xl:[zoom:1.18]">
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
                 const active = rel === 0;
@@ -252,7 +252,7 @@ export function HeroStage() {
             </div>
 
             {/* Center Real Browser Window */}
-            <div className="ps-hero-center-tilt relative z-10 order-1 w-full [--mock-h:440px] min-w-0 max-w-[700px] md:basis-full lg:col-span-6 lg:order-none lg:max-w-none lg:basis-auto">
+            <div className="ps-hero-center-tilt relative z-10 order-1 w-full [--mock-h:440px] min-w-0 2xl:[--mock-h:560px] max-w-[700px] md:basis-full lg:col-span-6 lg:order-none lg:max-w-none lg:basis-auto">
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
                 const active = rel === 0;
@@ -281,7 +281,7 @@ export function HeroStage() {
             </div>
 
             {/* Right Floating Telemetry Card */}
-            <div className="animate-float-slow relative z-20 order-3 hidden min-w-0 justify-items-center md:grid md:self-center transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:rotate-3 lg:justify-self-start lg:translate-y-4">
+            <div className="animate-float-slow relative z-20 order-3 hidden min-w-0 justify-items-center md:grid md:self-center transition-transform duration-500 hover:rotate-0 hover:scale-[1.03] lg:col-span-3 lg:order-none lg:rotate-3 lg:justify-self-start 2xl:[zoom:1.18] lg:translate-y-4">
               {modeOrder.map((modeId, idx) => {
                 const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
                 const active = rel === 0;
