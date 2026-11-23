@@ -133,43 +133,31 @@ export function HeroStage() {
           })}
         </div>
 
-        {/* Display Headline with 3D Cylindrical Roulette Drum */}
+        {/* Título com troca de palavra em 2D (sem 3D: o Firefox não desenha texto em gradiente dentro de preserve-3d) */}
         <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-[clamp(26px,7.6vw,32px)] leading-tight font-extrabold tracking-tight text-[#1A1715] sm:text-4xl lg:text-[56px] lg:leading-[1.12] dark:text-[#ECE5D8]">
           <span>Criamos</span>
-          <span
-            className="relative inline-block h-[1.28em] overflow-hidden align-middle [mask-image:linear-gradient(to_bottom,transparent_0%,black_14%,black_86%,transparent_100%)]"
-            style={{ perspective: "900px" }}
-          >
+          <span className="relative inline-block h-[1.28em] overflow-hidden align-middle">
             <span className="invisible block whitespace-nowrap px-1" aria-hidden="true">
               sistemas de alto nível.
             </span>
-
-            <span
-              className="absolute inset-0 block transition-transform duration-700 ease-[cubic-bezier(0.22,1.12,0.36,1)]"
-              style={{
-                transformStyle: "preserve-3d",
-                transform: `translateZ(-0.46em) rotateX(${stepCount * 120}deg)`,
-              }}
-            >
-              {modeOrder.map((modeId, idx) => {
-                const isFront = idx === activeIndex;
-                return (
-                  <span
-                    key={modeId}
-                    aria-hidden={!isFront}
-                    className={`absolute inset-0 flex items-center justify-center whitespace-nowrap bg-gradient-to-r ${modeMeta[modeId].gradient} bg-clip-text text-transparent transition-opacity duration-500 ${
-                      isFront ? "opacity-100" : "opacity-60"
-                    }`}
-                    style={{
-                      backfaceVisibility: "hidden",
-                      transform: `rotateX(${-idx * 120}deg) translateZ(0.46em)`,
-                    }}
-                  >
-                    {modeMeta[modeId].headlineHighlight}
-                  </span>
-                );
-              })}
-            </span>
+            {modeOrder.map((modeId, idx) => {
+              const rel = (idx - activeIndex + modeOrder.length) % modeOrder.length;
+              const isFront = rel === 0;
+              // ativa no centro; a anterior sai por cima; a próxima espera embaixo
+              const offset = isFront ? "translateY(0)" : rel === modeOrder.length - 1 ? "translateY(-105%)" : "translateY(105%)";
+              return (
+                <span
+                  key={modeId}
+                  aria-hidden={!isFront}
+                  style={{ transform: offset }}
+                  className={`absolute inset-0 flex items-center justify-center whitespace-nowrap bg-gradient-to-r ${modeMeta[modeId].gradient} bg-clip-text text-transparent transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+                    isFront ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {modeMeta[modeId].headlineHighlight}
+                </span>
+              );
+            })}
           </span>
         </h1>
 
