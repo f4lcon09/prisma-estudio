@@ -26,26 +26,26 @@ const modeMeta: Record<
 > = {
   sites: {
     label: "Sites",
-    badge: "SITES & LOJAS · DESIGN EDITORIAL",
+    badge: "Sites e lojas",
     headlineHighlight: "sites que vendem.",
     gradient:
-      "from-[#6E5636] via-[#8E6F3E] to-[#B08D57] dark:from-[#C88B53] dark:via-[#E09F67] dark:to-[#B7410E]",
+      "from-[#E3401F] via-[#E5631B] to-[#C8235F]",
     caption: "Prévia responsiva: loja de moda publicada em desktop e celular + métricas ao vivo",
   },
   sistemas: {
     label: "Sistemas",
-    badge: "SISTEMAS WEB & SAAS · PAINÉIS SOB MEDIDA",
+    badge: "Sistemas web e SaaS",
     headlineHighlight: "sistemas de alto nível.",
     gradient:
-      "from-[#1A1715] via-[#5C5348] to-[#B08D57] dark:from-[#ECE5D8] dark:via-[#B08D57] dark:to-[#C88B53]",
+      "from-[#0071E3] via-[#4B5BFF] to-[#7A3FE4]",
     caption: "Software web completo com app mobile e monitoramento em tempo real",
   },
   automacoes: {
     label: "Automações",
-    badge: "AUTOMAÇÕES & IA · WHATSAPP E CRM",
+    badge: "Automações com IA",
     headlineHighlight: "automações com IA.",
     gradient:
-      "from-[#263A32] via-[#8E6F3E] to-[#1A1715] dark:from-[#9CAF88] dark:via-[#B08D57] dark:to-[#B7410E]",
+      "from-[#0F9F72] via-[#0A93B8] to-[#0071E3]",
     caption: "Fluxo conectado de ponta a ponta: WhatsApp, agente de IA e CRM",
   },
 };
@@ -101,15 +101,10 @@ export function HeroStage() {
       ref={sectionRef}
       onMouseMove={handlePointerMove}
       onMouseLeave={handlePointerLeave}
-      className="ps-hero-section overflow-hidden bg-[#EAE3D5] pb-16 pt-6 transition-colors duration-300 sm:pb-22 sm:pt-8 dark:bg-[#17181A]"
+      className="ps-hero-section overflow-hidden bg-(--bg) pb-16 pt-6 transition-colors duration-300 sm:pb-22 sm:pt-8"
     >
-      {/* Architectural Grid + Tactile Studio Grain */}
-      <div
-        className="bg-studio-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_85%_80%_at_50%_35%,black_45%,transparent_100%)]"
-        aria-hidden="true"
-      />
-      <div className="ps-hero-grain pointer-events-none absolute inset-0" aria-hidden="true" />
-      <div className="ps-hero-light pointer-events-none absolute inset-0" aria-hidden="true" />
+      {/* Luz espectral por trás dos aparelhos: o "prisma" que o vidro deixa passar */}
+      <div className="ps-hero-prism pointer-events-none absolute inset-x-0 bottom-0 top-[34%]" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-10">
         {/* Top Studio Spec Tag */}
@@ -120,13 +115,13 @@ export function HeroStage() {
               <div
                 key={modeId}
                 aria-hidden={!active}
-                className={`font-tech col-start-1 row-start-1 inline-flex items-center gap-2 rounded-md border border-[#1A1715]/16 bg-[#FAF6EE]/95 px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#1A1715] transition-all duration-500 ease-out dark:border-[#ECE5D8]/16 dark:bg-[#202226]/95 dark:text-[#ECE5D8] ${
+                className={`col-start-1 row-start-1 inline-flex items-center gap-2 rounded-full border border-(--glass-border) bg-(--glass) px-3.5 py-1 text-[13px] font-semibold text-(--fg-2) shadow-sm backdrop-blur-xl backdrop-saturate-150 transition-all duration-500 ease-out ${
                   active
                     ? "translate-y-0 opacity-100"
                     : "pointer-events-none -translate-y-1.5 opacity-0"
                 }`}
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-[#B08D57] dark:bg-[#B7410E]" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-(--accent)" aria-hidden="true" />
                 <span>{modeMeta[modeId].badge}</span>
               </div>
             );
@@ -134,7 +129,7 @@ export function HeroStage() {
         </div>
 
         {/* Título com troca de palavra em 2D (sem 3D: o Firefox não desenha texto em gradiente dentro de preserve-3d) */}
-        <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-[clamp(26px,7.6vw,32px)] leading-tight font-extrabold tracking-tight text-[#1A1715] sm:text-4xl lg:text-[56px] lg:leading-[1.12] dark:text-[#ECE5D8]">
+        <h1 className="mx-auto mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 text-[clamp(26px,7.6vw,32px)] leading-tight font-semibold tracking-tight text-(--fg) sm:text-4xl lg:text-[56px] lg:leading-[1.12]">
           <span>Criamos</span>
           <span className="relative inline-block h-[1.28em] overflow-hidden align-middle">
             <span className="invisible block whitespace-nowrap px-1" aria-hidden="true">
@@ -168,7 +163,7 @@ export function HeroStage() {
             aria-label="Alternar tipo de software na vitrine"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            className="inline-flex items-center rounded-full border border-[#1A1715]/15 bg-[#FAF6EE]/95 p-1 shadow-sm backdrop-blur-sm dark:border-[#ECE5D8]/15 dark:bg-[#202226]/95"
+            className="inline-flex items-center rounded-full border border-(--glass-border) bg-(--glass) p-1 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.25)] backdrop-blur-xl backdrop-saturate-150"
           >
             {modeOrder.map((modeId) => {
               const selected = activeMode === modeId;
@@ -179,10 +174,10 @@ export function HeroStage() {
                   role="tab"
                   aria-selected={selected}
                   onClick={() => selectMode(modeId)}
-                  className={`relative overflow-hidden rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B08D57]/60 sm:px-5 sm:text-sm ${
+                  className={`relative overflow-hidden rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)/60 sm:px-5 sm:text-sm ${
                     selected
-                      ? "bg-[#1A1715] text-[#EAE3D5] shadow-sm dark:bg-[#B7410E] dark:text-[#FAF6EE]"
-                      : "text-[#5C5348] hover:text-[#1A1715] dark:text-[#A8A095] dark:hover:text-[#ECE5D8]"
+                      ? "bg-(--surface) text-(--fg) shadow-[0_1px_3px_rgba(0,0,0,0.12)]"
+                      : "text-(--fg-2) hover:text-(--fg)"
                   }`}
                 >
                   <span className="relative z-10">{modeMeta[modeId].label}</span>
@@ -190,7 +185,7 @@ export function HeroStage() {
                     <span
                       key={`progress-${stepCount}`}
                       aria-hidden="true"
-                      className="animate-tab-progress absolute inset-x-2 bottom-0.5 h-[2px] rounded-full bg-[#B08D57] dark:bg-[#FAF6EE]/70"
+                      className="animate-tab-progress absolute inset-x-2 bottom-0.5 h-[2px] rounded-full bg-(--accent)"
                     />
                   )}
                 </button>
@@ -209,7 +204,7 @@ export function HeroStage() {
                 <span
                   key={modeId}
                   aria-hidden={!active}
-                  className={`col-start-1 row-start-1 text-[11px] font-medium text-[#5C5348] transition-all duration-500 ease-out dark:text-[#A8A095] ${
+                  className={`col-start-1 row-start-1 text-[11px] font-medium text-(--fg-2) transition-all duration-500 ease-out ${
                     active ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-1 opacity-0"
                   }`}
                 >

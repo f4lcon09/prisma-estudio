@@ -2,54 +2,75 @@
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
+/*
+ * Identidade inspirada na Apple: cinza claro + branco, tinta quase preta, azul de ação,
+ * vidro translúcido nas barras e luz espectral só no hero.
+ * --bg fundo da página · --bg-alt seção alternada · --surface cartões
+ * --fg texto · --fg-2 texto secundário · --ink/--on-ink pílulas escuras
+ * --accent botão principal · --accent-text links e destaques em texto · --ok sucesso
+ */
 :root {
-  --background: #eae3d5;
-  --foreground: #1a1715;
-  --surface: #faf6ee;
-  --surface-soft: #dfd6c5;
-  --surface-contrast: #231f1c;
-  --surface-contrast-ink: #eae3d5;
-  --border-subtle: rgba(26, 23, 21, 0.14);
-  --ink-muted: #5c5348;
-  --accent: #b08d57;
-  --accent-hover: #8e6f3e;
-  --grid-line: rgba(26, 23, 21, 0.055);
-  --dot-color: rgba(26, 23, 21, 0.14);
-  --studio-grain-blend: multiply;
-  --studio-grain-opacity: 1;
-  --light-primary: rgba(176, 141, 87, 0.1);
-  --light-secondary: rgba(35, 31, 28, 0.03);
-  --tick-color: rgba(26, 23, 21, 0.28);
-  --cta-shadow-color: #0e0c0b;
-  --cta-drop-shadow: rgba(26, 23, 21, 0.34);
-  --drafting-line: rgba(26, 23, 21, 0.036);
-  --ticket-shadow: 6px 6px 0 0 rgba(176, 141, 87, 0.28), 0 20px 44px -18px rgba(26, 23, 21, 0.2);
-  --card-glow: rgba(176, 141, 87, 0.14);
+  --bg: #f5f5f7;
+  --bg-alt: #ffffff;
+  --surface: #ffffff;
+  --fg: #1d1d1f;
+  --fg-2: #6e6e73;
+  --ink: #1d1d1f;
+  --ink-hover: #3a3a3c;
+  --on-ink: #ffffff;
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --accent-text: #0066cc;
+  --on-accent: #ffffff;
+  --ok: #1b7f44;
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --hairline: rgba(0, 0, 0, 0.08);
+
+  /* nomes antigos ainda lidos pelos CSS isolados */
+  --background: var(--bg);
+  --foreground: var(--fg);
+  --surface-soft: var(--bg-alt);
+  --surface-contrast: var(--ink);
+  --surface-contrast-ink: var(--on-ink);
+  --border-subtle: var(--hairline);
+  --ink-muted: var(--fg-2);
+  --grid-line: transparent;
+  --dot-color: rgba(0, 0, 0, 0.12);
+  --studio-grain-blend: normal;
+  --studio-grain-opacity: 0;
+  --light-primary: transparent;
+  --light-secondary: transparent;
+  --tick-color: transparent;
+  --cta-shadow-color: transparent;
+  --cta-drop-shadow: rgba(0, 0, 0, 0.16);
+  --drafting-line: transparent;
+  --ticket-shadow: 0 20px 44px -18px rgba(0, 0, 0, 0.2);
+  --card-glow: rgba(0, 113, 227, 0.08);
 }
 
-:root[data-theme="dark"] {
-  --background: #17181a;
-  --foreground: #ece5d8;
-  --surface: #202226;
-  --surface-soft: #1e2421;
-  --surface-contrast: #ece5d8;
-  --surface-contrast-ink: #17181a;
-  --border-subtle: rgba(236, 229, 216, 0.14);
-  --ink-muted: #a8a095;
-  --accent: #b7410e;
-  --accent-hover: #9c3509;
-  --grid-line: rgba(236, 229, 216, 0.045);
-  --dot-color: rgba(236, 229, 216, 0.14);
-  --studio-grain-blend: screen;
-  --studio-grain-opacity: 0.5;
-  --light-primary: rgba(183, 65, 14, 0.12);
-  --light-secondary: rgba(38, 58, 50, 0.12);
-  --tick-color: rgba(236, 229, 216, 0.24);
-  --cta-shadow-color: #7c2b08;
-  --cta-drop-shadow: rgba(0, 0, 0, 0.6);
-  --drafting-line: rgba(236, 229, 216, 0.032);
-  --ticket-shadow: 6px 6px 0 0 rgba(183, 65, 14, 0.25), 0 24px 50px -18px rgba(0, 0, 0, 0.58);
-  --card-glow: rgba(183, 65, 14, 0.1);
+:root[data-theme="dark"],
+.band-dark {
+  --bg: #000000;
+  --bg-alt: #111113;
+  --surface: #1c1c1e;
+  --fg: #f5f5f7;
+  --fg-2: #a1a1a6;
+  --ink: #f5f5f7;
+  --ink-hover: #ffffff;
+  --on-ink: #1d1d1f;
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --accent-text: #2997ff;
+  --on-accent: #ffffff;
+  --ok: #30d158;
+  --glass: rgba(22, 22, 23, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --hairline: rgba(255, 255, 255, 0.12);
+  --dot-color: rgba(0, 0, 0, 0.12);
+  --cta-drop-shadow: rgba(0, 0, 0, 0.5);
+  --ticket-shadow: 0 24px 50px -18px rgba(0, 0, 0, 0.6);
+  --card-glow: rgba(41, 151, 255, 0.1);
 }
 
 @theme inline {
@@ -60,8 +81,9 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--fg);
+  letter-spacing: -0.011em;
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
 

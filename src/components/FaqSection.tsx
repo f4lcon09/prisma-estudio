@@ -32,15 +32,15 @@ export function FaqSection() {
   return (
     <section
       id="duvidas"
-      className="border-t border-[#1A1715]/12 bg-[#DFD6C5] py-20 text-[#1A1715] transition-colors duration-300 sm:py-24 dark:border-[#ECE5D8]/12 dark:bg-[#1B1C1F] dark:text-[#ECE5D8]"
+      className="border-t border-(--fg)/12 bg-(--bg-alt) py-20 text-(--fg) transition-colors duration-300 sm:py-24"
     >
       <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-12 lg:px-10">
         <div className="lg:col-span-4">
-          <p className="font-tech text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8E6F3E] dark:text-[#B08D57]">
+          <p className="text-[13px] font-semibold text-(--accent-text)">
             Dúvidas
           </p>
-          <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">Antes de pedir o orçamento</h2>
-          <p className="mt-3 text-base leading-relaxed text-[#5C5348] dark:text-[#A8A095]">
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">Antes de pedir o orçamento</h2>
+          <p className="mt-3 text-base leading-relaxed text-(--fg-2)">
             As perguntas que mais aparecem na primeira conversa.
           </p>
         </div>
@@ -50,16 +50,16 @@ export function FaqSection() {
             <details
               key={item.q}
               open={idx === 0}
-              className="group rounded-2xl border border-[#1A1715]/12 bg-[#FAF6EE] px-5 open:pb-5 dark:border-[#ECE5D8]/12 dark:bg-[#202226]"
+              className="group rounded-2xl border border-(--fg)/12 bg-(--surface) px-5 open:pb-5"
             >
               <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold [&::-webkit-details-marker]:hidden">
                 <span>{item.q}</span>
                 <Plus
-                  className="h-4 w-4 shrink-0 text-[#8E6F3E] transition-transform duration-200 group-open:rotate-45 dark:text-[#B08D57]"
+                  className="h-4 w-4 shrink-0 text-(--accent-text) transition-transform duration-200 group-open:rotate-45"
                   aria-hidden="true"
                 />
               </summary>
-              <p className="max-w-[65ch] text-sm leading-relaxed text-[#5C5348] dark:text-[#A8A095]">{item.a}</p>
+              <p className="max-w-[65ch] text-sm leading-relaxed text-(--fg-2)">{item.a}</p>
             </details>
           ))}
         </div>

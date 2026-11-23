@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, JetBrains_Mono, Cormorant_Garamond } from "next/font/google";
+import { Inter, JetBrains_Mono, Cormorant_Garamond } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
+// Inter no lugar da SF Pro (a fonte da Apple não pode ser usada na web por licença)
+const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
@@ -46,12 +47,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="pt-BR"
       suppressHydrationWarning
-      className={`${plusJakarta.variable} ${jetbrainsMono.variable} ${cormorant.variable} h-full scroll-smooth antialiased`}
+      className={`${inter.variable} ${jetbrainsMono.variable} ${cormorant.variable} h-full scroll-smooth antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 selection:bg-[#D85D2A]/20 selection:text-[var(--foreground)]">
+      <body className="min-h-full flex flex-col bg-(--bg) text-(--fg) transition-colors duration-300 selection:bg-(--accent)/20 selection:text-(--fg)">
         {children}
       </body>
     </html>
